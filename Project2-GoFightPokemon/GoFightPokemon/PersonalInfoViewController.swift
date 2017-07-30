@@ -25,6 +25,8 @@ class PersonalInfoViewController: UIViewController {
 
     var fireUpload: String?
 
+    @IBOutlet weak var nickName: UILabel!
+
     @IBOutlet weak var headPhoto: UIImageView!
 
 //////
@@ -64,11 +66,72 @@ class PersonalInfoViewController: UIViewController {
             }
         }
 
+    }
+/////
+///////////////////////////////
+
+    @IBAction func saveUserData(_ sender: Any) {
+
+        if let team = teamSelect.text {
+
+            let dataBaseRef = Database.database().reference().child("users").child(autoID).child("playerTeam")
+
+            dataBaseRef.setValue(team, withCompletionBlock: { (error, data) in
+
+                if error != nil {
+
+                    print("Database Error: \(error!.localizedDescription)")
+                }
+                else {
+                    print("team has saved")
+                }
+            }
+            )
+        }
+
+
+        if let pLevel = levelSelect.text {
+
+            let dataBaseRef = Database.database().reference().child("users").child(autoID).child("playerLevel")
+
+            dataBaseRef.setValue(pLevel, withCompletionBlock: { (error, data) in
+
+                if error != nil {
+
+                    print("Database Error: \(error!.localizedDescription)")
+                }
+                else {
+                    print("playerLevel has saved")
+                }
+            }
+            )
+        }
+
+
+        if let gLevel = gymLevelSelect.text {
+
+            let dataBaseRef = Database.database().reference().child("users").child(autoID).child("gymLevel")
+
+            dataBaseRef.setValue(gLevel, withCompletionBlock: { (error, data) in
+
+                if error != nil {
+
+                    print("Database Error: \(error!.localizedDescription)")
+                }
+                else {
+                    print("challengeLevel has saved")
+                }
+            }
+            )
+        }
+
+
 
     }
 
-//////
-   
+///////////////////////////////
+
+
 
     @IBAction func getPhotoFromLocal(_ sender: Any) {
 
@@ -103,6 +166,22 @@ class PersonalInfoViewController: UIViewController {
 
         gymLevelChoose.delegate = self
         gymLevelSelect.inputView = gymLevelChoose
+
+//////////////////////////////////////////////////////
+        let reference = Database.database().reference().child("users").child(autoID).child("nickName")
+
+
+        reference.observe(.value, with: { [weak self] (snapshot) in
+
+            if let uploadData = snapshot.value as? String {
+
+                self?.nickName.text = uploadData
+
+            }
+            
+        })
+//////////////////////////////////////////////////////
+
 
 /////
 
@@ -150,16 +229,10 @@ print("⚫️⚫️⚫️⚫️⚫️⚫️⚫️⚫️")
 }
 
 
-
-
-
 extension PersonalInfoViewController :  UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-
-
-
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
 
@@ -192,10 +265,6 @@ extension PersonalInfoViewController :  UIPickerViewDelegate, UIPickerViewDataSo
             return titleRow
             
         }
-
-
-
-
 
         return ""
 
@@ -312,12 +381,16 @@ extension PersonalInfoViewController: UIImagePickerControllerDelegate, UINavigat
             )}
 
 
-        self.dismiss(animated: true, completion: nil)
+
+
+            self.dismiss(animated: true, completion: nil)
+
+
+
+        }
 
 
     }
-
-}
 
 
 

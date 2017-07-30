@@ -41,11 +41,15 @@ class SignUpViewController: UIViewController {
 
                     var userData : [String : AnyObject] = [String : AnyObject]()
                     userData["nickName"] = self.signUpNickName.text as AnyObject
-                    userData["headPhoto"] = "photoAddress" as AnyObject
+
+                    userData["headPhoto"] = "請選取照片" as AnyObject
+                    userData["playerTeam"] = "請選擇隊伍" as AnyObject
+                    userData["playerLevel"] = "請選擇等級" as AnyObject
+                    userData["gymLevel"] = "請選擇道館難度" as AnyObject
+
+                    userData["childId"] =  childRef.key as AnyObject
 //                    userData["userId"] = Auth.auth().currentUser?.uid as AnyObject
 //                    userData["userEmail"] = Auth.auth().currentUser?.email as AnyObject
-                    userData["childId"] =  childRef.key as AnyObject
-
                     autoID = childRef.key
 
                     let userReference = ref.child(childRef.key)
