@@ -23,95 +23,76 @@ class PersonalInfoViewController: UIViewController {
     @IBOutlet weak var levelSelect: UITextField!
     @IBOutlet weak var gymLevelSelect: UITextField!
 
-    var fireUploadDic: String?
+    var fireUpload: String?
 
     @IBOutlet weak var headPhoto: UIImageView!
 
 //////
-        func getHeadPhotoImage() {
-    
-            if let dataDic = fireUploadDic {
 
-                    if let imageUrl = URL(string: dataDic) {
+    func getHeadPhotoImage() {
     
-                        URLSession.shared.dataTask(with: imageUrl, completionHandler: { (data, response, error) in
-    
-                            if error != nil {
 
-                                print("Download Image Task Fail: \(error!.localizedDescription)")
+        if let dataDic = fireUpload {
+
+
+            if let imageUrl = URL(string: dataDic) {
+    
+
+                URLSession.shared.dataTask(with: imageUrl, completionHandler: { (data, response, error) in
+    
+
+                    if error != nil {
+
+
+                        print("Download Image Task Fail: \(error!.localizedDescription)")
                             }
-                            else if let imageData = data {
-    
-                                DispatchQueue.main.async {
+
+                    else if let imageData = data {
     
 
-                                    self.headPhoto.image = UIImage(data: imageData)
+                        DispatchQueue.main.async {
+    
 
-                                    self.headPhoto.contentMode = UIViewContentMode.scaleAspectFit
-                                }
-                            }
-                            
-                        }).resume()
-                }
+
+                            self.headPhoto.image = UIImage(data: imageData)
+
+
+                            self.headPhoto.contentMode = UIViewContentMode.scaleAspectFit
+                        }
+                    }
+                }).resume()
+            }
         }
+
+
     }
 
 //////
    
 
-    @IBAction func getPhotoFromLocal(_ sender: Any) {
-
+    @IBAction func getPhotoFromLocal(_ sender: UIButton) {
 
         // 建立一個UIAlertController 的實體
         let photoImagePickerController = UIImagePickerController()
 
         photoImagePickerController.delegate = self
 
-        // 設定 UIAlertController 的style為 actionSheet
-        let photoAlertController = UIAlertController(title: "上傳圖片", message: "請選擇要上傳的頭像圖片", preferredStyle: UIAlertControllerStyle.actionSheet)
 
 
-        //製造三個 UIAlertAction實體
-        let photoFromLibraryAction = UIAlertAction(title: "照片圖庫", style: UIAlertActionStyle.default) {(Void) in
-
-            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
-                photoImagePickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
-                self.present(photoAlertController, animated: true, completion: nil)
-            }
-        }
+        photoImagePickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
 
 
-        let photoFromCameraAction = UIAlertAction(title: "拍照取得", style: UIAlertActionStyle.default) {(Void) in
-
-            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
-                    photoImagePickerController.sourceType = UIImagePickerControllerSourceType.camera
-
-                self.present(photoAlertController, animated: true, completion: nil)
-            }
-        }
-
-        let cancelAlertController = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel) { (Void) in
-
-            photoImagePickerController.dismiss(animated: true, completion: nil)
-        }
+        photoImagePickerController.allowsEditing = true
 
 
-        //將三個UIAlertAction實體 添加給 UIAlertController
-        photoAlertController.addAction(photoFromLibraryAction)
-        photoAlertController.addAction(photoFromCameraAction)
-        photoAlertController.addAction(cancelAlertController)
 
         self.present(photoImagePickerController, animated: true, completion: nil)
-
-
-
     }
+
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
-
 
         teamChoose.delegate = self
         teamSelect.inputView = teamChoose
@@ -123,28 +104,28 @@ class PersonalInfoViewController: UIViewController {
         gymLevelChoose.delegate = self
         gymLevelSelect.inputView = gymLevelChoose
 
-
-
 /////
 
         let databaseRef = Database.database().reference().child("users").child("\(userID)").child("headPhoto")
-        
+
 
         databaseRef.observe(.value, with: { [weak self] (snapshot) in
 
 print("🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵")
-                    print(snapshot)
+            print(snapshot)
 print("🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴")
-                    if let uploadDataDic = snapshot.value as? String {
 
-                        self?.fireUploadDic = uploadDataDic
-                        self?.getHeadPhotoImage()
+            if let uploadData = snapshot.value as? String {
 
-  print("⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️")
-                        print(self?.fireUploadDic ?? "🎁🎁🎁🎁🎁🎁")
-  print("⚫️⚫️⚫️⚫️⚫️⚫️⚫️⚫️")
-                    }
-                })
+                self?.fireUpload = uploadData
+                self?.getHeadPhotoImage()
+
+print("⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️")
+                print(self?.fireUpload ?? "🎁🎁🎁🎁🎁🎁")
+print("⚫️⚫️⚫️⚫️⚫️⚫️⚫️⚫️")
+            }
+
+        })
 
 
 /////
@@ -269,7 +250,7 @@ extension PersonalInfoViewController : UITextFieldDelegate {
 //處理UIImagePickerControll
 extension PersonalInfoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    // 接從相片圖庫，或拍照取得的照片
+    // 接從相片圖庫取得的照片
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         var selectedPhotoFromPicker: UIImage?
 
@@ -281,21 +262,13 @@ extension PersonalInfoViewController: UIImagePickerControllerDelegate, UINavigat
 
         }
 
-        // 自動產生一個獨一無二的編碼，方便命名之後要上傳的圖片
-        let uniqueString = NSUUID().uuidString
-
-
 
 
         // 當selectedPhoto有東西時，將照片上傳
         if let selectedPhoto = selectedPhotoFromPicker {
 
-
-            print("\(uniqueString), \(selectedPhoto)")
-
             // 設定storage 儲存位置,將圖片上傳
-            let storageRef = Storage.storage().reference().child("playerPhoto").child("headPhoto").child("\(uniqueString).png")
-
+            let storageRef = Storage.storage().reference().child("playerPhoto").child("headPhoto")
             //接收回傳的資料
             if let uploadData = UIImagePNGRepresentation(selectedPhoto) {
 
@@ -315,7 +288,7 @@ extension PersonalInfoViewController: UIImagePickerControllerDelegate, UINavigat
                         print ("photo url: \(uploadImageUrl)")
 
                         // 儲存網址到dataBase上
-                        let dataBaseRef = Database.database().reference().child("users").child("\(userID)").child("headPhoto").child(uniqueString)
+                        let dataBaseRef = Database.database().reference().child("users").child("\(userID)").child("headPhoto")
 
                         dataBaseRef.setValue(uploadImageUrl, withCompletionBlock: { (error, data) in
 
