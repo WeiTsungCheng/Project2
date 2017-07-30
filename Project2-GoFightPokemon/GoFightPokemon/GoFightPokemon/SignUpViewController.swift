@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-var userID: String = ""
+var autoID: String = ""
 
 class SignUpViewController: UIViewController {
 
@@ -41,11 +41,12 @@ class SignUpViewController: UIViewController {
 
                     var userData : [String : AnyObject] = [String : AnyObject]()
                     userData["nickName"] = self.signUpNickName.text as AnyObject
-                    userData["userId"] = Auth.auth().currentUser?.uid as AnyObject
-                    userData["userEmail"] = Auth.auth().currentUser?.email as AnyObject
+                    userData["headPhoto"] = "photoAddress" as AnyObject
+//                    userData["userId"] = Auth.auth().currentUser?.uid as AnyObject
+//                    userData["userEmail"] = Auth.auth().currentUser?.email as AnyObject
                     userData["childId"] =  childRef.key as AnyObject
 
-                    userID = childRef.key
+                    autoID = childRef.key
 
                     let userReference = ref.child(childRef.key)
 
@@ -54,7 +55,7 @@ class SignUpViewController: UIViewController {
                             print(err!)
                             return
                         }
-                        
+
                         user?.sendEmailVerification() { error in
                             if let error = error {
                                 print(error)

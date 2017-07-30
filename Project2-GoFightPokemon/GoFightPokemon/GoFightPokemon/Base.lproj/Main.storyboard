@@ -398,7 +398,7 @@
                                 <rect key="frame" x="131" y="132" width="62" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="取得照片"/>
+                                <state key="normal" title="選擇照片"/>
                                 <connections>
                                     <action selector="getPhotoFromLocal:" destination="5m8-J9-Ci1" eventType="touchUpInside" id="ewD-X8-SVo"/>
                                 </connections>
@@ -408,7 +408,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons8-Lion Head Filled-50" translatesAutoresizingMaskIntoConstraints="NO" id="Qs7-zH-PQY">
-                                        <rect key="frame" x="4" y="8" width="143" height="127"/>
+                                        <rect key="frame" x="4" y="0.0" width="143" height="127"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>

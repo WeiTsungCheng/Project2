@@ -70,7 +70,7 @@ class PersonalInfoViewController: UIViewController {
 //////
    
 
-    @IBAction func getPhotoFromLocal(_ sender: UIButton) {
+    @IBAction func getPhotoFromLocal(_ sender: Any) {
 
         // 建立一個UIAlertController 的實體
         let photoImagePickerController = UIImagePickerController()
@@ -106,10 +106,10 @@ class PersonalInfoViewController: UIViewController {
 
 /////
 
-        let databaseRef = Database.database().reference().child("users").child("\(userID)").child("headPhoto")
+        let ref = Database.database().reference().child("users").child(autoID).child("headPhoto")
 
 
-        databaseRef.observe(.value, with: { [weak self] (snapshot) in
+        ref.observe(.value, with: { [weak self] (snapshot) in
 
 print("🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵")
             print(snapshot)
@@ -121,7 +121,7 @@ print("🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴")
                 self?.getHeadPhotoImage()
 
 print("⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️")
-                print(self?.fireUpload ?? "🎁🎁🎁🎁🎁🎁")
+                print(self?.fireUpload ?? "")
 print("⚫️⚫️⚫️⚫️⚫️⚫️⚫️⚫️")
             }
 
@@ -268,7 +268,7 @@ extension PersonalInfoViewController: UIImagePickerControllerDelegate, UINavigat
         if let selectedPhoto = selectedPhotoFromPicker {
 
             // 設定storage 儲存位置,將圖片上傳
-            let storageRef = Storage.storage().reference().child("playerPhoto").child("headPhoto")
+            let storageRef = Storage.storage().reference().child("userPhoto").child("head")
             //接收回傳的資料
             if let uploadData = UIImagePNGRepresentation(selectedPhoto) {
 
@@ -288,7 +288,7 @@ extension PersonalInfoViewController: UIImagePickerControllerDelegate, UINavigat
                         print ("photo url: \(uploadImageUrl)")
 
                         // 儲存網址到dataBase上
-                        let dataBaseRef = Database.database().reference().child("users").child("\(userID)").child("headPhoto")
+                        let dataBaseRef = Database.database().reference().child("users").child(autoID).child("headPhoto")
 
                         dataBaseRef.setValue(uploadImageUrl, withCompletionBlock: { (error, data) in
 
