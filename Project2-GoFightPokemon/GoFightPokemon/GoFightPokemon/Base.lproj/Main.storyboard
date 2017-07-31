@@ -518,7 +518,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="Cell" reuseIdentifier="Cell" id="jRN-sZ-Eg9" customClass="PlayerShowcaseCollectionViewCell" customModule="GoFightPokemon" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-29" width="173" height="187"/>
+                                        <rect key="frame" x="0.0" y="27.5" width="173" height="187"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="173" height="187"/>
@@ -546,9 +546,16 @@
                                     <outlet property="delegate" destination="fRB-wc-Znt" id="aLf-bT-Y2D"/>
                                 </connections>
                             </collectionView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Pokemon_Go-11-128" translatesAutoresizingMaskIntoConstraints="NO" id="1RW-lV-0zs">
+                                <rect key="frame" x="16" y="222" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="Photo" destination="1RW-lV-0zs" id="AVU-gm-nGy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uem-hi-VCX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -596,6 +603,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Pokemon_Go-11-128" width="128" height="128"/>
         <image name="Pokemon_evolution_pokeball_games_-128" width="128" height="128"/>
         <image name="icons8-Cylon Head New-40" width="40" height="40"/>
         <image name="icons8-Lion Head Filled-50" width="50" height="50"/>
