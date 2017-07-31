@@ -389,7 +389,6 @@ extension PersonalInfoViewController: UIImagePickerControllerDelegate, UINavigat
         }
         self.dismiss(animated: true, completion: nil)
 
-        //不要把placehold預設圖像放的填滿控制放在viewDidLoad()下，否則剛進入頁面時會造成預設圖像模糊，而是放在拿完圖後（拍照,或相簿拿圖）,存入imageView時再改成scaleAspectFit，讓圖片撐開外面的scrollView
         headPhoto.contentMode = UIViewContentMode.scaleAspectFit
 
 

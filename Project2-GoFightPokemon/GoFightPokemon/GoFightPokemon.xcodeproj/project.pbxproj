@@ -18,7 +18,8 @@
 		C50034681F286A0B00DC51A8 /* SecretNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50034671F286A0B00DC51A8 /* SecretNumberViewController.swift */; };
 		C500346B1F286D3B00DC51A8 /* LoginViewController:.swift in Sources */ = {isa = PBXBuildFile; fileRef = C500346A1F286D3B00DC51A8 /* LoginViewController:.swift */; };
 		C500346F1F2889E700DC51A8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C500346E1F2889E700DC51A8 /* HomeViewController.swift */; };
-		C5011D5B1F2F193C0006AE24 /* ShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5011D5A1F2F193C0006AE24 /* ShowcaseViewController.swift */; };
+		C5011D5F1F2F56490006AE24 /* PlayerShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5011D5E1F2F56490006AE24 /* PlayerShowcaseViewController.swift */; };
+		C5011D611F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5011D601F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift */; };
 		C527C75D1F297E310099C2DB /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C527C75C1F297E310099C2DB /* PersonalInfoViewController.swift */; };
 		C55F18771F28C7930084D840 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C55F18761F28C7930084D840 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -39,7 +40,8 @@
 		C50034671F286A0B00DC51A8 /* SecretNumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecretNumberViewController.swift; sourceTree = "<group>"; };
 		C500346A1F286D3B00DC51A8 /* LoginViewController:.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoginViewController:.swift"; sourceTree = "<group>"; };
 		C500346E1F2889E700DC51A8 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		C5011D5A1F2F193C0006AE24 /* ShowcaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowcaseViewController.swift; sourceTree = "<group>"; };
+		C5011D5E1F2F56490006AE24 /* PlayerShowcaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerShowcaseViewController.swift; sourceTree = "<group>"; };
+		C5011D601F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerShowcaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		C527C75C1F297E310099C2DB /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonalInfoViewController.swift; path = ../PersonalInfoViewController.swift; sourceTree = "<group>"; };
 		C55F18761F28C7930084D840 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,7 +117,8 @@
 				C527C75C1F297E310099C2DB /* PersonalInfoViewController.swift */,
 				C500346A1F286D3B00DC51A8 /* LoginViewController:.swift */,
 				C500346E1F2889E700DC51A8 /* HomeViewController.swift */,
-				C5011D5A1F2F193C0006AE24 /* ShowcaseViewController.swift */,
+				C5011D5E1F2F56490006AE24 /* PlayerShowcaseViewController.swift */,
+				C5011D601F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift */,
 			);
 			name = VC;
 			sourceTree = "<group>";
@@ -246,13 +249,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C50034661F2869E500DC51A8 /* SignUpViewController.swift in Sources */,
-				C5011D5B1F2F193C0006AE24 /* ShowcaseViewController.swift in Sources */,
+				C5011D5F1F2F56490006AE24 /* PlayerShowcaseViewController.swift in Sources */,
 				C50034551F28625A00DC51A8 /* GoFightPokemon.xcdatamodeld in Sources */,
 				C500344F1F28625A00DC51A8 /* ViewController.swift in Sources */,
 				C500346B1F286D3B00DC51A8 /* LoginViewController:.swift in Sources */,
 				C527C75D1F297E310099C2DB /* PersonalInfoViewController.swift in Sources */,
 				C50034681F286A0B00DC51A8 /* SecretNumberViewController.swift in Sources */,
 				C500346F1F2889E700DC51A8 /* HomeViewController.swift in Sources */,
+				C5011D611F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift in Sources */,
 				C500344D1F28625A00DC51A8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
