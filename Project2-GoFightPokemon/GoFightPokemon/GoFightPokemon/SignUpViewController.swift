@@ -9,8 +9,6 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-var userID: String = ""
-
 class SignUpViewController: UIViewController {
 
     @IBOutlet weak var signUpEmail: UITextField!
@@ -34,27 +32,29 @@ class SignUpViewController: UIViewController {
                 if error == nil {
                     print("signUp success")
 
+                    let uid = Auth.auth().currentUser?.uid
                     //建立dataBase 資料庫結構
-                    let ref = Database.database().reference().child("users")
+                    let ref = Database.database().reference().child("users").child(uid!)
 
-                    let childRef = ref.childByAutoId()
+                  
 
                     var userData : [String : AnyObject] = [String : AnyObject]()
                     userData["nickName"] = self.signUpNickName.text as AnyObject
+
+                    userData["headPhoto"] = "" as AnyObject
+                    userData["playerTeam"] = "" as AnyObject
+                    userData["playerLevel"] = "" as AnyObject
+                    userData["gymLevel"] = "" as AnyObject
+
                     userData["userId"] = Auth.auth().currentUser?.uid as AnyObject
                     userData["userEmail"] = Auth.auth().currentUser?.email as AnyObject
-                    userData["childId"] =  childRef.key as AnyObject
 
-                    userID = childRef.key
-
-                    let userReference = ref.child(childRef.key)
-
-                    userReference.updateChildValues(userData) { (err, ref) in
+                    ref.updateChildValues(userData) { (err, ref) in
                         if err != nil {
                             print(err!)
                             return
                         }
-                        
+
                         user?.sendEmailVerification() { error in
                             if let error = error {
                                 print(error)
