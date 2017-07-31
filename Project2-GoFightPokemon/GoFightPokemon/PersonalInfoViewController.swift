@@ -91,10 +91,16 @@ class PersonalInfoViewController: UIViewController {
         //儲存相簿選擇的照片到fireBase
         // 當selectedPhoto有東西時，將照片上傳
 
+        //判定如果image 為預設原圖不要上傳
+        if headPhoto.image != #imageLiteral(resourceName: "icons8-Lion Head Filled-50") {
+
+
         if let selectedPhoto = headPhoto.image {
 
+
+            let uniqueString = NSUUID().uuidString
             // 設定storage 儲存位置,將圖片上傳
-            let storageRef = Storage.storage().reference().child("userPhoto").child(uid!).child("userHead")
+            let storageRef = Storage.storage().reference().child("userPhoto").child(uid!).child("userHead").child("\(uniqueString).png")
             //接收回傳的資料
             if let uploadData = UIImagePNGRepresentation(selectedPhoto) {
 
@@ -124,17 +130,26 @@ class PersonalInfoViewController: UIViewController {
                                 
                                 print("picture has saved")
                             }
-                            
+
                         }
                         )}
                 }
                 )}
 
            print("didn't pick picture")
+
+            }
+
+
+        } else {
+            print("It is a origin photo")
         }
 
 
+
     }
+
+
 
 
 
@@ -160,9 +175,7 @@ class PersonalInfoViewController: UIViewController {
     }
 
 
-
-
-
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -250,7 +263,7 @@ print("🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴")
                             DispatchQueue.main.async {
 
                                 self?.headPhoto.image = UIImage(data: imageData)
-                             //   self?.headPhoto.contentMode = UIViewContentMode.scaleAspectFit
+                                self?.headPhoto.contentMode = UIViewContentMode.scaleAspectFit
 
                             }
 
@@ -368,7 +381,6 @@ extension PersonalInfoViewController: UIImagePickerControllerDelegate, UINavigat
 
     // 儲存相片圖庫取得的照片
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-
 
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             headPhoto.image = image

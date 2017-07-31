@@ -455,10 +455,10 @@
             </objects>
             <point key="canvasLocation" x="6408.8000000000002" y="-1210.344827586207"/>
         </scene>
-        <!--View Controller-->
+        <!--Showcase View Controller-->
         <scene sceneID="zXA-Pv-ZrZ">
             <objects>
-                <viewController id="gbz-vX-gcI" sceneMemberID="viewController">
+                <viewController id="gbz-vX-gcI" customClass="ShowcaseViewController" customModule="GoFightPokemon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jUC-Jd-EU7"/>
                         <viewControllerLayoutGuide type="bottom" id="gxp-jc-7tc"/>
@@ -486,22 +486,23 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2Pa-6C-DHo">
-                                    <size key="itemSize" width="182" height="168"/>
+                                    <size key="itemSize" width="168" height="173"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="3KO-pv-phE">
-                                        <rect key="frame" x="0.0" y="0.0" width="182" height="168"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="168" height="173"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="182" height="168"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="168" height="173"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PWv-0y-gR7">
-                                                    <rect key="frame" x="15" y="17" width="133" height="131"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Pokemon_evolution_pokeball_games_-128" translatesAutoresizingMaskIntoConstraints="NO" id="PWv-0y-gR7">
+                                                    <rect key="frame" x="12" y="16" width="145" height="141"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -509,8 +510,23 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1YE-Fq-2XL">
+                                <rect key="frame" x="143" y="196" width="89" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="上傳圖片"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDX-dC-uon">
+                                <rect key="frame" x="143" y="196" width="89" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="上傳圖片"/>
+                                <connections>
+                                    <action selector="showPokemon:" destination="gbz-vX-gcI" eventType="touchUpInside" id="d6S-jD-ofj"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="展示櫥窗" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="liw-5b-ANc">
-                                <rect key="frame" x="10" y="205" width="70" height="21"/>
+                                <rect key="frame" x="24" y="215" width="70" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -566,6 +582,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Pokemon_evolution_pokeball_games_-128" width="128" height="128"/>
         <image name="icons8-Cylon Head New-40" width="40" height="40"/>
         <image name="icons8-Lion Head Filled-50" width="50" height="50"/>
         <image name="icons8-Lion Head-50" width="50" height="50"/>
