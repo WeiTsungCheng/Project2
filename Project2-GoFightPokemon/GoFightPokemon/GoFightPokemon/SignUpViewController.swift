@@ -9,8 +9,6 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-var autoID: String = ""
-
 class SignUpViewController: UIViewController {
 
     @IBOutlet weak var signUpEmail: UITextField!
@@ -34,10 +32,11 @@ class SignUpViewController: UIViewController {
                 if error == nil {
                     print("signUp success")
 
+                    let uid = Auth.auth().currentUser?.uid
                     //建立dataBase 資料庫結構
-                    let ref = Database.database().reference().child("users")
+                    let ref = Database.database().reference().child("users").child(uid!)
 
-                    let childRef = ref.childByAutoId()
+                  
 
                     var userData : [String : AnyObject] = [String : AnyObject]()
                     userData["nickName"] = self.signUpNickName.text as AnyObject
@@ -47,14 +46,16 @@ class SignUpViewController: UIViewController {
                     userData["playerLevel"] = "請選擇等級" as AnyObject
                     userData["gymLevel"] = "請選擇道館難度" as AnyObject
 
-                    userData["childId"] =  childRef.key as AnyObject
-//                    userData["userId"] = Auth.auth().currentUser?.uid as AnyObject
-//                    userData["userEmail"] = Auth.auth().currentUser?.email as AnyObject
-                    autoID = childRef.key
+        //          userData["childId"] =  childRef.key as AnyObject
 
-                    let userReference = ref.child(childRef.key)
+                    userData["userId"] = Auth.auth().currentUser?.uid as AnyObject
+                    userData["userEmail"] = Auth.auth().currentUser?.email as AnyObject
 
-                    userReference.updateChildValues(userData) { (err, ref) in
+        //           autoID = childRef.key
+
+        //            let userReference = ref.child(childRef.key)
+
+                    ref.updateChildValues(userData) { (err, ref) in
                         if err != nil {
                             print(err!)
                             return

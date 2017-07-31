@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseStorage
 import FirebaseDatabase
 
 class PersonalInfoViewController: UIViewController {
-
+    let uid = Auth.auth().currentUser?.uid
 
     var teams = ["請選擇隊伍", "急凍鳥隊", "閃電鳥隊", "火焰鳥隊"]
     let gymLevelChoose = UIPickerView()
@@ -29,52 +30,73 @@ class PersonalInfoViewController: UIViewController {
 
     @IBOutlet weak var headPhoto: UIImageView!
 
+
+
+
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            headPhoto.image = image
+        } else {
+            print("Something went wrong")
+        }
+        self.dismiss(animated: true, completion: nil)
+
+        //不要把placehold預設圖像放的填滿控制放在viewDidLoad()下，否則剛進入頁面時會造成預設圖像模糊，而是放在拿完圖後（拍照,或相簿拿圖）,存入imageView時再改成scaleAspectFit，讓圖片撐開外面的scrollView
+        headPhoto.contentMode = UIViewContentMode.scaleAspectFit
+        
+    }
+
 //////
 
-    func getHeadPhotoImage() {
-    
+//    func getHeadPhotoImage() {
+//    
+//
+//        if let dataDic = fireUpload {
+//
+//
+//            if let imageUrl = URL(string: dataDic) {
+//    
+//
+//                URLSession.shared.dataTask(with: imageUrl, completionHandler: { (data, response, error) in
+//    
+//
+//                    if error != nil {
+//
+//
+//                        print("Download Image Task Fail: \(error!.localizedDescription)")
+//                            }
+//
+//                    else if let imageData = data {
+//    
+//
+//                        DispatchQueue.main.async {
+//    
+//
+//
+//                            self.headPhoto.image = UIImage(data: imageData)
+//
+//
+//                            self.headPhoto.contentMode = UIViewContentMode.scaleAspectFit
+//                        }
+//                    }
+//                }).resume()
+//            }
+//        }
+//
+//    }
 
-        if let dataDic = fireUpload {
 
-
-            if let imageUrl = URL(string: dataDic) {
-    
-
-                URLSession.shared.dataTask(with: imageUrl, completionHandler: { (data, response, error) in
-    
-
-                    if error != nil {
-
-
-                        print("Download Image Task Fail: \(error!.localizedDescription)")
-                            }
-
-                    else if let imageData = data {
-    
-
-                        DispatchQueue.main.async {
-    
-
-
-                            self.headPhoto.image = UIImage(data: imageData)
-
-
-                            self.headPhoto.contentMode = UIViewContentMode.scaleAspectFit
-                        }
-                    }
-                }).resume()
-            }
-        }
-
-    }
 /////
+
 ///////////////////////////////
 
     @IBAction func saveUserData(_ sender: Any) {
 
         if let team = teamSelect.text {
 
-            let dataBaseRef = Database.database().reference().child("users").child(autoID).child("playerTeam")
+            let dataBaseRef = Database.database().reference().child("users").child(uid!).child("playerTeam")
 
             dataBaseRef.setValue(team, withCompletionBlock: { (error, data) in
 
@@ -92,7 +114,7 @@ class PersonalInfoViewController: UIViewController {
 
         if let pLevel = levelSelect.text {
 
-            let dataBaseRef = Database.database().reference().child("users").child(autoID).child("playerLevel")
+            let dataBaseRef = Database.database().reference().child("users").child(uid!).child("playerLevel")
 
             dataBaseRef.setValue(pLevel, withCompletionBlock: { (error, data) in
 
@@ -110,7 +132,7 @@ class PersonalInfoViewController: UIViewController {
 
         if let gLevel = gymLevelSelect.text {
 
-            let dataBaseRef = Database.database().reference().child("users").child(autoID).child("gymLevel")
+            let dataBaseRef = Database.database().reference().child("users").child(uid!).child("gymLevel")
 
             dataBaseRef.setValue(gLevel, withCompletionBlock: { (error, data) in
 
@@ -168,14 +190,18 @@ class PersonalInfoViewController: UIViewController {
         gymLevelSelect.inputView = gymLevelChoose
 
 //////////////////////////////////////////////////////
-        let reference = Database.database().reference().child("users").child(autoID).child("nickName")
 
 
-        reference.observe(.value, with: { [weak self] (snapshot) in
+        print("!!!!!!!!!", uid!)
+
+        let reference = Database.database().reference().child("users").child(uid!).child("nickName")
+
+
+        reference.observe(.value, with: { (snapshot) in
 
             if let uploadData = snapshot.value as? String {
 
-                self?.nickName.text = uploadData
+                self.nickName.text = uploadData
 
             }
             
@@ -185,8 +211,7 @@ class PersonalInfoViewController: UIViewController {
 
 /////
 
-        let ref = Database.database().reference().child("users").child(autoID).child("headPhoto")
-
+        let ref = Database.database().reference().child("users").child(uid!).child("headPhoto")
 
         ref.observe(.value, with: { [weak self] (snapshot) in
 
@@ -197,7 +222,7 @@ print("🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴")
             if let uploadData = snapshot.value as? String {
 
                 self?.fireUpload = uploadData
-                self?.getHeadPhotoImage()
+       //         self?.getHeadPhotoImage()
 
 print("⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️")
                 print(self?.fireUpload ?? "")
@@ -332,12 +357,11 @@ extension PersonalInfoViewController: UIImagePickerControllerDelegate, UINavigat
         }
 
 
-
         // 當selectedPhoto有東西時，將照片上傳
         if let selectedPhoto = selectedPhotoFromPicker {
 
             // 設定storage 儲存位置,將圖片上傳
-            let storageRef = Storage.storage().reference().child("userPhoto").child("head")
+            let storageRef = Storage.storage().reference().child("userPhoto").child(uid!).child("userHead")
             //接收回傳的資料
             if let uploadData = UIImagePNGRepresentation(selectedPhoto) {
 
@@ -357,7 +381,7 @@ extension PersonalInfoViewController: UIImagePickerControllerDelegate, UINavigat
                         print ("photo url: \(uploadImageUrl)")
 
                         // 儲存網址到dataBase上
-                        let dataBaseRef = Database.database().reference().child("users").child(autoID).child("headPhoto")
+                        let dataBaseRef = Database.database().reference().child("users").child(self.uid!).child("headPhoto")
 
                         dataBaseRef.setValue(uploadImageUrl, withCompletionBlock: { (error, data) in
 

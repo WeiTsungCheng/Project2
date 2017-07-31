@@ -32,7 +32,7 @@ class LoginViewController_: UIViewController {
 
 
                 //是否通過驗證
-                if user?.isEmailVerified == true {
+              //  if user?.isEmailVerified == true {
 
 
 
@@ -76,9 +76,9 @@ class LoginViewController_: UIViewController {
 
 
 
-                } else {
-                    print("email haven't verified")
-                }
+               // } else {
+               //     print("email haven't verified")
+              //  }
 
 
 
