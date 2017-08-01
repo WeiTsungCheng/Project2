@@ -114,9 +114,9 @@
 				C500344E1F28625A00DC51A8 /* ViewController.swift */,
 				C50034651F2869E500DC51A8 /* SignUpViewController.swift */,
 				C50034671F286A0B00DC51A8 /* SecretNumberViewController.swift */,
-				C527C75C1F297E310099C2DB /* PersonalInfoViewController.swift */,
 				C500346A1F286D3B00DC51A8 /* LoginViewController:.swift */,
 				C500346E1F2889E700DC51A8 /* HomeViewController.swift */,
+				C527C75C1F297E310099C2DB /* PersonalInfoViewController.swift */,
 				C5011D5E1F2F56490006AE24 /* PlayerShowcaseViewController.swift */,
 				C5011D601F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift */,
 			);

@@ -501,6 +501,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="確認"/>
+                                <connections>
+                                    <action selector="saveUserPokemon:" destination="fRB-wc-Znt" eventType="touchUpInside" id="egx-l7-3m6"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="展示櫥窗" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="liw-5b-ANc">
                                 <rect key="frame" x="50" y="184" width="70" height="21"/>
@@ -563,7 +566,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uem-hi-VCX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7212" y="-397.15142428785612"/>
+            <point key="canvasLocation" x="7418" y="-362"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="fcI-vX-Qb4">

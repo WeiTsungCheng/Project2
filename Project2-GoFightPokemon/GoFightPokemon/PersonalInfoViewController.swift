@@ -90,7 +90,7 @@ class PersonalInfoViewController: UIViewController {
 
         //儲存相簿選擇的照片到fireBase
         // 當selectedPhoto有東西時，將照片上傳
-        //判定如果image 為預設原圖不要上傳
+        //判定如果image 為預設原圖不要上傳  icons8-Lion Head Filled-50
         if headPhoto.image != #imageLiteral(resourceName: "icons8-Lion Head Filled-50") {
 
 
@@ -404,9 +404,6 @@ extension PersonalInfoViewController : UITextFieldDelegate {
     
     
 }
-
-
-
 
 
 

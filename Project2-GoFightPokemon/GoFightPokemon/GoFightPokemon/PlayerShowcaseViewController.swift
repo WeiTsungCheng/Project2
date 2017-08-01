@@ -17,9 +17,16 @@ class PlayerShowcaseViewController: UIViewController {
 
     let uid = Auth.auth().currentUser?.uid
 
+    //存放用戶存檔前所選的圖片
     var playerPokemonImage: [UIImage] = [UIImage]()
+    //存放用戶從fireBases拿下來的圖片
+    var playerPokemonImageFireBase: [UIImage] = [UIImage]()
+
 
     @IBOutlet weak var Photo: UIImageView!
+
+    // 設定一個字典存filepbase取下的資料
+    var uploadPhotoDic : [String: Any]?
 
 
 
@@ -72,7 +79,54 @@ class PlayerShowcaseViewController: UIViewController {
         // 當使用者按下 uploadBtnAction 時會 present 剛剛建立好的三個 UIAlertAction 動作與
         present(imagePickerAlertController, animated: true, completion: nil)
 
+    }
 
+    @IBAction func saveUserPokemon(_ sender: Any) {
+
+
+
+        for image in playerPokemonImage{
+
+            let uniqueString = NSUUID().uuidString
+
+            let storageRef = Storage.storage().reference().child("userPhoto").child(uid!).child("userPokemon").child("\(uniqueString).png")
+
+            if let uploadData = UIImagePNGRepresentation(image) {
+
+                storageRef.putData(uploadData, metadata: nil, completion: { (data, error) in
+
+                    if error != nil {
+
+                        print("Error: \(error!.localizedDescription)")
+
+                        return
+                    }
+
+                    if let uploadImageUrl = data?.downloadURL()?.absoluteString {
+
+                        print("Photo Url: \(uploadImageUrl)")
+
+                        let dataBaseRef = Database.database().reference().child("usersShowcase").child(self.uid!).child("pokemonPhoto")
+
+                        let childRef = dataBaseRef.childByAutoId()
+
+                        childRef.setValue(uploadImageUrl, withCompletionBlock: { (error, data) in
+
+                            if error != nil {
+
+                                print("Database Error: \(error!.localizedDescription)")
+                            }
+                            else {
+
+                                print("picture has saved")
+
+                            }
+                        }
+                        )}
+                }
+                )}
+        }
+    }
 
       //  let storageRef = Storage.storage().reference().child("userPhoto").child(uid!).child("userPokemon").child("\(uniqueString).png")
 
@@ -81,17 +135,6 @@ class PlayerShowcaseViewController: UIViewController {
 
 
 
-//        if let uploadData = UIImagePNGRepresentation(selectedImage) {
-//            // 這行就是 FirebaseStorage 關鍵的存取方法。
-//            storageRef.putData(uploadData, metadata: nil, completion: { (data, error) in
-//
-//                if error != nil {
-//
-//                    // 若有接收到錯誤，我們就直接印在 Console 就好，在這邊就不另外做處理。
-//                    print("Error: \(error!.localizedDescription)")
-//                    return
-//                }
-//
 //                // 連結取得方式就是：data?.downloadURL()?.absoluteString。
 //                if let uploadImageUrl = data?.downloadURL()?.absoluteString {
 //
@@ -107,7 +150,7 @@ class PlayerShowcaseViewController: UIViewController {
 
 
 
-    }
+
 
 
 
@@ -153,6 +196,60 @@ class PlayerShowcaseViewController: UIViewController {
         super.viewDidLoad()
 
 
+    //取下之前存在fireBase圖檔的url
+        let dataBaseRef = Database.database().reference().child("usersShowcase").child(self.uid!).child("pokemonPhoto")
+
+
+
+
+        dataBaseRef.observe(.value, with: { [weak self] (snapshot) in
+
+            if let uploadDataDic = snapshot.value as? [String:Any] {
+
+                self?.uploadPhotoDic = uploadDataDic
+            }
+
+            print("◻️")
+            print(snapshot)
+            print("♥️")
+
+            if let dataDic = self?.uploadPhotoDic {
+
+                let valueArray = Array(dataDic.values)
+
+                for value in valueArray {
+
+
+                    if let imageUrl = URL(string: value as! String) {
+
+                    URLSession.shared.dataTask(with: imageUrl, completionHandler: { (data, response, error) in
+
+                        if error != nil {
+
+                            print("Download Image Task Fail: \(error!.localizedDescription)")
+
+                        }
+
+                        else if let imageData = data {
+
+                            DispatchQueue.main.async {
+
+                                self?.playerPokemonImageFireBase.append(UIImage(data: imageData)!)
+                                self?.collectionView.reloadData()
+
+                            }
+                            
+                        }
+                        
+                    }).resume()
+                }
+            }
+
+            }
+        })
+
+
+
 
         // Do any additional setup after loading the view.
     }
@@ -175,7 +272,7 @@ class PlayerShowcaseViewController: UIViewController {
 
 }
 
-extension PlayerShowcaseViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension PlayerShowcaseViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     //取從手機取到的照片
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -185,15 +282,17 @@ extension PlayerShowcaseViewController: UIImagePickerControllerDelegate, UINavig
 
             playerPokemonImage.append(pickedPhoto)
 
-            print( playerPokemonImage.count, "🔵")
+            print(playerPokemonImage.count, "🔵")
             self.dismiss(animated: true, completion: nil)
 
             self.collectionView.reloadData()
         }
 
     }
+}
 
 
+extension PlayerShowcaseViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
 
     //放資料在collectionView上
