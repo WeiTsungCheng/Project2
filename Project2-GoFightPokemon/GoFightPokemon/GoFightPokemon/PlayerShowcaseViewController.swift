@@ -128,33 +128,6 @@ class PlayerShowcaseViewController: UIViewController {
         }
     }
 
-      //  let storageRef = Storage.storage().reference().child("userPhoto").child(uid!).child("userPokemon").child("\(uniqueString).png")
-
-
-
-
-
-
-//                // 連結取得方式就是：data?.downloadURL()?.absoluteString。
-//                if let uploadImageUrl = data?.downloadURL()?.absoluteString {
-//
-//                    // 我們可以 print 出來看看這個連結事不是我們剛剛所上傳的照片。
-//                    print("Photo Url: \(uploadImageUrl)")
-//
-//                }
-//
-//            }
-//
-//            )}
-
-
-
-
-
-
-
-
-
 
 
 
