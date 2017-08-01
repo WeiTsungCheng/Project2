@@ -19,16 +19,8 @@ class PlayerShowcaseViewController: UIViewController {
 
     //存放用戶存檔前所選的圖片
     var playerPokemonImage: [UIImage] = [UIImage]()
-    //存放用戶從fireBases拿下來的圖片
-    var playerPokemonImageFireBase: [UIImage] = [UIImage]()
-
 
     @IBOutlet weak var Photo: UIImageView!
-
-    // 設定一個字典存filepbase取下的資料
-    var uploadPhotoDic : [String: Any]?
-
-
 
     @IBAction func uploadPokemonImage(_ sender: Any) {
 
@@ -169,57 +161,6 @@ class PlayerShowcaseViewController: UIViewController {
         super.viewDidLoad()
 
 
-    //取下之前存在fireBase圖檔的url
-        let dataBaseRef = Database.database().reference().child("usersShowcase").child(self.uid!).child("pokemonPhoto")
-
-
-
-
-        dataBaseRef.observe(.value, with: { [weak self] (snapshot) in
-
-            if let uploadDataDic = snapshot.value as? [String:Any] {
-
-                self?.uploadPhotoDic = uploadDataDic
-            }
-
-            print("◻️")
-            print(snapshot)
-            print("♥️")
-
-            if let dataDic = self?.uploadPhotoDic {
-
-                let valueArray = Array(dataDic.values)
-
-                for value in valueArray {
-
-
-                    if let imageUrl = URL(string: value as! String) {
-
-                    URLSession.shared.dataTask(with: imageUrl, completionHandler: { (data, response, error) in
-
-                        if error != nil {
-
-                            print("Download Image Task Fail: \(error!.localizedDescription)")
-
-                        }
-
-                        else if let imageData = data {
-
-                            DispatchQueue.main.async {
-
-                                self?.playerPokemonImageFireBase.append(UIImage(data: imageData)!)
-                                self?.collectionView.reloadData()
-
-                            }
-                            
-                        }
-                        
-                    }).resume()
-                }
-            }
-
-            }
-        })
 
 
 
