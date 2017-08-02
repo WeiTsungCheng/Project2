@@ -25,6 +25,8 @@
 		C5F6C1811F30A42C007B6E12 /* WatchPersonShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F6C1801F30A42C007B6E12 /* WatchPersonShowcaseViewController.swift */; };
 		C5F6C1831F30A463007B6E12 /* WatchPersonShowcaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F6C1821F30A463007B6E12 /* WatchPersonShowcaseCollectionViewCell.swift */; };
 		C5F6C1851F30A49C007B6E12 /* WatchPersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F6C1841F30A49C007B6E12 /* WatchPersonalInfoViewController.swift */; };
+		C5F985421F31A9A10022295A /* GroupSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F985411F31A9A10022295A /* GroupSetViewController.swift */; };
+		C5F985441F31A9C50022295A /* GroupListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F985431F31A9C50022295A /* GroupListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		C5F6C1801F30A42C007B6E12 /* WatchPersonShowcaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchPersonShowcaseViewController.swift; sourceTree = "<group>"; };
 		C5F6C1821F30A463007B6E12 /* WatchPersonShowcaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchPersonShowcaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		C5F6C1841F30A49C007B6E12 /* WatchPersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchPersonalInfoViewController.swift; sourceTree = "<group>"; };
+		C5F985411F31A9A10022295A /* GroupSetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupSetViewController.swift; sourceTree = "<group>"; };
+		C5F985431F31A9C50022295A /* GroupListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,8 @@
 				C5F6C1841F30A49C007B6E12 /* WatchPersonalInfoViewController.swift */,
 				C5F6C1801F30A42C007B6E12 /* WatchPersonShowcaseViewController.swift */,
 				C5F6C1821F30A463007B6E12 /* WatchPersonShowcaseCollectionViewCell.swift */,
+				C5F985411F31A9A10022295A /* GroupSetViewController.swift */,
+				C5F985431F31A9C50022295A /* GroupListTableViewController.swift */,
 			);
 			name = VC;
 			sourceTree = "<group>";
@@ -266,8 +272,10 @@
 				C527C75D1F297E310099C2DB /* PersonalInfoViewController.swift in Sources */,
 				C5F6C1811F30A42C007B6E12 /* WatchPersonShowcaseViewController.swift in Sources */,
 				C50034681F286A0B00DC51A8 /* SecretNumberViewController.swift in Sources */,
+				C5F985441F31A9C50022295A /* GroupListTableViewController.swift in Sources */,
 				C500346F1F2889E700DC51A8 /* HomeViewController.swift in Sources */,
 				C5011D611F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift in Sources */,
+				C5F985421F31A9A10022295A /* GroupSetViewController.swift in Sources */,
 				C500344D1F28625A00DC51A8 /* AppDelegate.swift in Sources */,
 				C5F6C1851F30A49C007B6E12 /* WatchPersonalInfoViewController.swift in Sources */,
 			);
