@@ -15,12 +15,25 @@ class PlayerShowcaseViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
 
+
+
+
+
+
     let uid = Auth.auth().currentUser?.uid
 
     //存放用戶存檔前所選的圖片
     var playerPokemonImage: [UIImage] = [UIImage]()
 
     @IBOutlet weak var Photo: UIImageView!
+
+
+
+    @IBAction func cancelImg(_ sender: Any) {
+        playerPokemonImage = [UIImage]()
+
+        self.collectionView.reloadData()
+    }
 
     @IBAction func uploadPokemonImage(_ sender: Any) {
 
@@ -75,6 +88,14 @@ class PlayerShowcaseViewController: UIViewController {
 
     @IBAction func saveUserPokemon(_ sender: Any) {
 
+        Database.database().reference().child("usersShowcase").child(self.uid!).child("pokemonPhoto").removeValue { (error, ref) in
+            if error != nil{
+                print(error!)
+                return
+            }
+
+            print("remove data success...")
+        }
 
 
         for image in playerPokemonImage{
@@ -222,7 +243,15 @@ extension PlayerShowcaseViewController: UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PlayerShowcaseCollectionViewCell
 
+
         cell.pokemonImage.image = playerPokemonImage[indexPath.row]
+
+        cell.deletePokemon.tag = indexPath.row
+
+//        cell.deletePokemon.addTarget(self, action: #selector(deletePokemonImg(_:)), for: .touchUpInside)
+
+
+
 
 
         return cell

@@ -12,6 +12,8 @@ class PlayerShowcaseCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var pokemonImage: UIImageView!
 
+    @IBOutlet weak var deletePokemon: UIButton!
+
 }
 
 
