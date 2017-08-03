@@ -12,6 +12,12 @@ import FirebaseStorage
 import FirebaseDatabase
 
 class PersonalInfoViewController: UIViewController {
+    @IBAction func goBackFuncList(_ sender: Any) {
+
+         dismiss(animated: true, completion: nil)
+        
+    }
+
     let uid = Auth.auth().currentUser?.uid
 
     var teams = ["請選擇隊伍", "急凍鳥隊", "閃電鳥隊", "火焰鳥隊"]
@@ -19,6 +25,8 @@ class PersonalInfoViewController: UIViewController {
 
     var gymLavels = ["請選擇難度", "簡單", "普通", "困難", "極困難", "傳說" ]
     let teamChoose = UIPickerView()
+
+    
 
     @IBOutlet weak var teamSelect: UITextField!
     @IBOutlet weak var levelSelect: UITextField!

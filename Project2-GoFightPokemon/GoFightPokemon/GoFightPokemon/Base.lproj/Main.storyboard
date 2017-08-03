@@ -207,7 +207,7 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="設定個人資料"/>
                                 <connections>
-                                    <segue destination="5m8-J9-Ci1" kind="show" id="C36-kY-kQi"/>
+                                    <segue destination="Wdq-TK-mgV" kind="presentation" id="cQ3-n6-3wC"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ggv-Tt-FB2">
@@ -670,14 +670,14 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="ci4-tV-kT1" kind="relationship" relationship="rootViewController" id="csJ-qQ-qvl"/>
+                        <segue destination="ci4-tV-kT1" kind="relationship" relationship="rootViewController" id="sdS-ZE-vyz"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CAt-JA-1eT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5398" y="-1944"/>
         </scene>
-        <!--Watch Personal Info View Controller-->
+        <!--Title-->
         <scene sceneID="LV4-yA-LBr">
             <objects>
                 <viewController id="ci4-tV-kT1" customClass="WatchPersonalInfoViewController" customModule="GoFightPokemon" customModuleProvider="target" sceneMemberID="viewController">
@@ -766,7 +766,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="fnK-ad-kHb"/>
+                    <navigationItem key="navigationItem" title="Title" id="UI7-fl-loB"/>
                     <connections>
                         <outlet property="gymLevelSelect" destination="SFX-YC-41I" id="qGe-dW-tvm"/>
                         <outlet property="headPhoto" destination="BpN-no-Fl9" id="VqI-5o-7mn"/>
@@ -778,7 +778,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6xR-sm-rSa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6402.3999999999996" y="-1938.08095952024"/>
+            <point key="canvasLocation" x="6551" y="-1944"/>
         </scene>
         <!--Watch Person Showcase View Controller-->
         <scene sceneID="aHg-RB-wr1">
@@ -807,7 +807,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="s4M-zr-D0U">
-                                <rect key="frame" x="0.0" y="222" width="375" height="396"/>
+                                <rect key="frame" x="0.0" y="222" width="375" height="445"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zct-Xj-iFN">
@@ -857,9 +857,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ybv-4N-6GW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7500" y="-1938.08095952024"/>
+            <point key="canvasLocation" x="7945" y="-1944"/>
         </scene>
-        <!--Personal Info View Controller-->
+        <!--Title-->
         <scene sceneID="rgy-tf-Vot">
             <objects>
                 <viewController id="5m8-J9-Ci1" customClass="PersonalInfoViewController" customModule="GoFightPokemon" customModuleProvider="target" sceneMemberID="viewController">
@@ -969,13 +969,19 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="下一頁"/>
                                 <connections>
-                                    <segue destination="fRB-wc-Znt" kind="show" id="rJn-7y-FSJ"/>
+                                    <segue destination="fRB-wc-Znt" kind="show" id="RDR-WY-AwA"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="1rq-qm-Zcr"/>
+                    <navigationItem key="navigationItem" title="Title" id="z50-IY-CRO">
+                        <barButtonItem key="leftBarButtonItem" title="功能選單" id="sSC-9m-buc">
+                            <connections>
+                                <action selector="goBackFuncList:" destination="5m8-J9-Ci1" id="O4A-ur-pJa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="gymLevelSelect" destination="MDc-dc-wiM" id="ayZ-di-fix"/>
                         <outlet property="headPhoto" destination="Qs7-zH-PQY" id="wV0-O1-gwi"/>
@@ -986,7 +992,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RkQ-QL-yGd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6408.8000000000002" y="-1234.6326836581711"/>
+            <point key="canvasLocation" x="7348" y="-1235.5322338830586"/>
         </scene>
         <!--Player Showcase View Controller-->
         <scene sceneID="Flz-ba-jWz">
@@ -1017,7 +1023,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GRZ-RE-Caj">
-                                <rect key="frame" x="0.0" y="193" width="375" height="425"/>
+                                <rect key="frame" x="0.0" y="193" width="375" height="474"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HAl-av-gli">
@@ -1089,7 +1095,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uem-hi-VCX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7500" y="-1236.4317841079462"/>
+            <point key="canvasLocation" x="8439.2000000000007" y="-1236.4317841079462"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="fcI-vX-Qb4">
@@ -1148,6 +1154,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u96-b7-BLC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7500" y="-362"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="pSL-Yu-ld0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wdq-TK-mgV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4lJ-GN-QrM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5m8-J9-Ci1" kind="relationship" relationship="rootViewController" id="o7g-Vi-lEW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CKw-xL-kOf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6408.8000000000002" y="-1235.5322338830586"/>
         </scene>
     </scenes>
     <resources>
