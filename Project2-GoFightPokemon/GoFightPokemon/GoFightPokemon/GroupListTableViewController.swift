@@ -12,6 +12,10 @@ import FirebaseDatabase
 
 class GroupListTableViewController: UITableViewController {
 
+    @IBAction func goBackFuncList(_ sender: Any) {
+
+        dismiss(animated: true, completion: nil)
+    }
 
     var handle: DatabaseHandle?
     var reference: DatabaseReference?
