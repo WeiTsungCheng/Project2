@@ -10,9 +10,25 @@ import UIKit
 
 class DiscussionViewController: UIViewController {
 
+    @IBOutlet weak var gymLevel: UILabel!
+
+    @IBOutlet weak var bossName: UILabel!
+
+    var gymLevelName = ""
+    var bossNameName = ""
+    var childIdName = ""
+
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        gymLevel.text = gymLevelName
+        bossName.text = bossNameName
+        let childId = childIdName
+print("⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️")
+print(childId)
+print("⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️")
         // Do any additional setup after loading the view.
     }
 
