@@ -440,7 +440,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DiscussionCell" rowHeight="68" id="YfT-kL-1mA">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DiscussionCell" rowHeight="68" id="YfT-kL-1mA" customClass="DiscussionTableViewCell" customModule="GoFightPokemon" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YfT-kL-1mA" id="hQC-yn-t8U">
@@ -481,8 +481,15 @@
                                                 </textView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="putComment" destination="PWn-wE-G7h" id="mdX-Eb-FLS"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="V5v-Vl-BxM" id="KAQ-rb-QDd"/>
+                                    <outlet property="delegate" destination="V5v-Vl-BxM" id="0Zz-Ro-oN9"/>
+                                </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="道館等級:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IdH-Ng-rW2">
                                 <rect key="frame" x="16" y="65" width="74" height="21"/>
@@ -564,6 +571,7 @@
                     <connections>
                         <outlet property="bossName" destination="tgz-pT-McS" id="nPK-vw-voJ"/>
                         <outlet property="gymLevel" destination="GWk-Gk-5F9" id="dTh-5q-NOL"/>
+                        <outlet property="tableView" destination="pTn-Oa-fua" id="kSB-vX-0z4"/>
                         <outlet property="writeComment" destination="b2l-8W-e6D" id="VMd-g4-qcM"/>
                     </connections>
                 </viewController>

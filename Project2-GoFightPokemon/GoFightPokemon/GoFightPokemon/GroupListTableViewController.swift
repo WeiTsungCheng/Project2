@@ -19,7 +19,6 @@ class GroupListTableViewController: UITableViewController {
 
     var handle: DatabaseHandle?
     var reference: DatabaseReference?
-
     var getItem: [GroupItem] = []
 
 
@@ -37,7 +36,7 @@ class GroupListTableViewController: UITableViewController {
             if snapshot.childrenCount > 0 {
 
 
-                var datalist: [GroupItem] = []
+                var datalist: [GroupItem] = [GroupItem]()
 
                 for item in snapshot.children {
                     let data = GroupItem(snapshot: item as! DataSnapshot)
