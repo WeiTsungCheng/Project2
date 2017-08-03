@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class DiscussionViewController: UIViewController {
 
@@ -14,10 +17,55 @@ class DiscussionViewController: UIViewController {
 
     @IBOutlet weak var bossName: UILabel!
 
+    @IBOutlet weak var writeComment: UITextView!
+
     var gymLevelName = ""
     var bossNameName = ""
     var childIdName = ""
+    var ownerIdName = ""
 
+
+    @IBAction func sendComment(_ sender: Any) {
+
+        let childId = childIdName
+
+     //   let ownerId = ownerIdName
+
+        if self.writeComment.text == "" {
+
+            return
+
+        }
+        let reference : DatabaseReference! =
+                Database.database().reference().child("gropReview").child("\(childId)")
+
+        var discussion: [String: AnyObject] = [String: AnyObject]()
+
+     //   discussion["ownerId"] = ownerId as AnyObject
+     //   discussion["participantEmail"] = Auth.auth().currentUser?.email as AnyObject
+        discussion["childId"] = childId as AnyObject
+        discussion["participantId"] = Auth.auth().currentUser?.uid as AnyObject
+        discussion["participantComment"] = writeComment.text as AnyObject
+        
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+ 
 
 
     override func viewDidLoad() {
@@ -25,10 +73,11 @@ class DiscussionViewController: UIViewController {
 
         gymLevel.text = gymLevelName
         bossName.text = bossNameName
-        let childId = childIdName
-print("⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️")
-print(childId)
-print("⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️⚜️")
+
+
+
+
+
         // Do any additional setup after loading the view.
     }
 

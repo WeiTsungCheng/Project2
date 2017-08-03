@@ -92,6 +92,7 @@ class GroupListTableViewController: UITableViewController {
                 destinationController.gymLevelName = getItem[indexPath.row].gymLevel
                 destinationController.bossNameName = getItem[indexPath.row].bossName
                 destinationController.childIdName = getItem[indexPath.row].childId
+                destinationController.ownerIdName = getItem[indexPath.row].ownerId
 
 
             }
