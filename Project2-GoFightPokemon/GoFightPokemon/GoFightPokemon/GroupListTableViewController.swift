@@ -12,6 +12,10 @@ import FirebaseDatabase
 
 class GroupListTableViewController: UITableViewController {
 
+    @IBAction func goBackFuncList(_ sender: Any) {
+
+        dismiss(animated: true, completion: nil)
+    }
 
     var handle: DatabaseHandle?
     var reference: DatabaseReference?
@@ -46,19 +50,9 @@ class GroupListTableViewController: UITableViewController {
 
                 }
 
-
-
-
             }
 
-
-
-
-
         })
-
-
-
 
     }
 
@@ -85,8 +79,30 @@ class GroupListTableViewController: UITableViewController {
         cell.gymLevel.text = getItem[indexPath.row].gymLevel
         cell.bossName.text = getItem[indexPath.row].bossName
 
+
         return cell
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if segue.identifier == "goToGroupReview" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let destinationController = segue.destination as! DiscussionViewController
+
+                destinationController.gymLevelName = getItem[indexPath.row].gymLevel
+                destinationController.bossNameName = getItem[indexPath.row].bossName
+                destinationController.childIdName = getItem[indexPath.row].childId
+                destinationController.ownerIdName = getItem[indexPath.row].ownerId
+
+
+            }
+        }
+
+
+    }
+
+
+
 
 }
 
