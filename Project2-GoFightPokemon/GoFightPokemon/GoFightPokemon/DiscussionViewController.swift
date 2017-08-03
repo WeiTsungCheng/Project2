@@ -25,6 +25,8 @@ class DiscussionViewController: UIViewController {
     var ownerIdName = ""
 
 
+
+
     @IBAction func sendComment(_ sender: Any) {
 
         let childId = childIdName
@@ -36,8 +38,9 @@ class DiscussionViewController: UIViewController {
             return
 
         }
+
         let reference : DatabaseReference! =
-                Database.database().reference().child("gropReview").child("\(childId)")
+                Database.database().reference().child("gropComment").child("\(childId)")
 
         var discussion: [String: AnyObject] = [String: AnyObject]()
 
@@ -46,16 +49,22 @@ class DiscussionViewController: UIViewController {
         discussion["childId"] = childId as AnyObject
         discussion["participantId"] = Auth.auth().currentUser?.uid as AnyObject
         discussion["participantComment"] = writeComment.text as AnyObject
-        
 
+        reference.updateChildValues(discussion) { (err, ref) in
+            if err != nil {
+                print("err \(err!)")
+                return
+            }
 
+            print("✳️✳️✳️✳️✳️✳️✳️✳️")
 
+            print(reference.description())
 
+            print("✳️✳️✳️✳️✳️✳️✳️✳️")
 
+        }
 
     }
-
-
 
 
 

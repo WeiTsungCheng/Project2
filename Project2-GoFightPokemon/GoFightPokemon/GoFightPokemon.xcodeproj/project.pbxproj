@@ -56,12 +56,12 @@
 		C5F6C1801F30A42C007B6E12 /* WatchPersonShowcaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchPersonShowcaseViewController.swift; sourceTree = "<group>"; };
 		C5F6C1821F30A463007B6E12 /* WatchPersonShowcaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchPersonShowcaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		C5F6C1841F30A49C007B6E12 /* WatchPersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchPersonalInfoViewController.swift; sourceTree = "<group>"; };
-		C5F985411F31A9A10022295A /* GroupSetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupSetViewController.swift; sourceTree = "<group>"; };
-		C5F985431F31A9C50022295A /* GroupListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupListTableViewController.swift; sourceTree = "<group>"; };
-		C5F985451F31BF100022295A /* GroupItem .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GroupItem .swift"; sourceTree = "<group>"; };
-		C5F985471F31D47E0022295A /* GroupListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupListTableViewCell.swift; sourceTree = "<group>"; };
-		C5F985491F31FF620022295A /* DiscussionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscussionViewController.swift; sourceTree = "<group>"; };
-		C5F9854B1F3203420022295A /* DiscussionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscussionTableViewCell.swift; sourceTree = "<group>"; };
+		C5F985411F31A9A10022295A /* GroupSetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupSetViewController.swift; path = GoFightPokemon/GroupSetViewController.swift; sourceTree = "<group>"; };
+		C5F985431F31A9C50022295A /* GroupListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupListTableViewController.swift; path = GoFightPokemon/GroupListTableViewController.swift; sourceTree = "<group>"; };
+		C5F985451F31BF100022295A /* GroupItem .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "GroupItem .swift"; path = "GoFightPokemon/GroupItem .swift"; sourceTree = "<group>"; };
+		C5F985471F31D47E0022295A /* GroupListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupListTableViewCell.swift; path = GoFightPokemon/GroupListTableViewCell.swift; sourceTree = "<group>"; };
+		C5F985491F31FF620022295A /* DiscussionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscussionViewController.swift; path = GoFightPokemon/DiscussionViewController.swift; sourceTree = "<group>"; };
+		C5F9854B1F3203420022295A /* DiscussionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscussionTableViewCell.swift; path = GoFightPokemon/DiscussionTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,39 +115,82 @@
 			isa = PBXGroup;
 			children = (
 				C500344C1F28625A00DC51A8 /* AppDelegate.swift */,
-				C50034691F286A2100DC51A8 /* VC */,
-				C5F985451F31BF100022295A /* GroupItem .swift */,
-				C5011D601F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift */,
-				C5F6C1821F30A463007B6E12 /* WatchPersonShowcaseCollectionViewCell.swift */,
-				C5F985471F31D47E0022295A /* GroupListTableViewCell.swift */,
-				C5F9854B1F3203420022295A /* DiscussionTableViewCell.swift */,
 				C50034501F28625A00DC51A8 /* Main.storyboard */,
 				C50034561F28625A00DC51A8 /* Assets.xcassets */,
 				C50034581F28625A00DC51A8 /* LaunchScreen.storyboard */,
 				C500345B1F28625A00DC51A8 /* Info.plist */,
 				C50034531F28625A00DC51A8 /* GoFightPokemon.xcdatamodeld */,
 				C55F18761F28C7930084D840 /* GoogleService-Info.plist */,
+				C50034691F286A2100DC51A8 /* LogIn */,
+				C55F1BC91F334252000E4AAC /* PlayerInfo */,
+				C55F1BCA1F33433C000E4AAC /* WatchPlayerInfo */,
+				C55F1BCB1F334424000E4AAC /* GroupList */,
+				C55F1BCC1F33447F000E4AAC /* GroupSet */,
+				C55F1BCD1F334572000E4AAC /* Discussion */,
 			);
 			path = GoFightPokemon;
 			sourceTree = "<group>";
 		};
-		C50034691F286A2100DC51A8 /* VC */ = {
+		C50034691F286A2100DC51A8 /* LogIn */ = {
 			isa = PBXGroup;
 			children = (
 				C500344E1F28625A00DC51A8 /* ViewController.swift */,
 				C50034651F2869E500DC51A8 /* SignUpViewController.swift */,
-				C50034671F286A0B00DC51A8 /* SecretNumberViewController.swift */,
 				C500346A1F286D3B00DC51A8 /* LoginViewController:.swift */,
+				C50034671F286A0B00DC51A8 /* SecretNumberViewController.swift */,
 				C500346E1F2889E700DC51A8 /* HomeViewController.swift */,
+			);
+			name = LogIn;
+			sourceTree = "<group>";
+		};
+		C55F1BC91F334252000E4AAC /* PlayerInfo */ = {
+			isa = PBXGroup;
+			children = (
 				C527C75C1F297E310099C2DB /* PersonalInfoViewController.swift */,
 				C5011D5E1F2F56490006AE24 /* PlayerShowcaseViewController.swift */,
+				C5011D601F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift */,
+			);
+			name = PlayerInfo;
+			sourceTree = "<group>";
+		};
+		C55F1BCA1F33433C000E4AAC /* WatchPlayerInfo */ = {
+			isa = PBXGroup;
+			children = (
 				C5F6C1841F30A49C007B6E12 /* WatchPersonalInfoViewController.swift */,
 				C5F6C1801F30A42C007B6E12 /* WatchPersonShowcaseViewController.swift */,
-				C5F985431F31A9C50022295A /* GroupListTableViewController.swift */,
-				C5F985411F31A9A10022295A /* GroupSetViewController.swift */,
-				C5F985491F31FF620022295A /* DiscussionViewController.swift */,
+				C5F6C1821F30A463007B6E12 /* WatchPersonShowcaseCollectionViewCell.swift */,
 			);
-			name = VC;
+			name = WatchPlayerInfo;
+			sourceTree = "<group>";
+		};
+		C55F1BCB1F334424000E4AAC /* GroupList */ = {
+			isa = PBXGroup;
+			children = (
+				C5F985431F31A9C50022295A /* GroupListTableViewController.swift */,
+				C5F985471F31D47E0022295A /* GroupListTableViewCell.swift */,
+			);
+			name = GroupList;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		C55F1BCC1F33447F000E4AAC /* GroupSet */ = {
+			isa = PBXGroup;
+			children = (
+				C5F985411F31A9A10022295A /* GroupSetViewController.swift */,
+				C5F985451F31BF100022295A /* GroupItem .swift */,
+			);
+			name = GroupSet;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		C55F1BCD1F334572000E4AAC /* Discussion */ = {
+			isa = PBXGroup;
+			children = (
+				C5F985491F31FF620022295A /* DiscussionViewController.swift */,
+				C5F9854B1F3203420022295A /* DiscussionTableViewCell.swift */,
+			);
+			name = Discussion;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
