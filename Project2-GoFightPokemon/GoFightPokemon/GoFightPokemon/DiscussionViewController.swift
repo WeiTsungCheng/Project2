@@ -49,6 +49,8 @@ class DiscussionViewController: UIViewController {
         let reference : DatabaseReference! =
                 Database.database().reference().child("groupComment").child("\(childId)")
 
+        let childRef = reference.childByAutoId()
+
         var discussion: [String: AnyObject] = [String: AnyObject]()
 
      //   discussion["ownerId"] = ownerId as AnyObject
@@ -57,7 +59,8 @@ class DiscussionViewController: UIViewController {
         discussion["participantId"] = Auth.auth().currentUser?.uid as AnyObject
         discussion["participantComment"] = writeComment.text as AnyObject
 
-        reference.updateChildValues(discussion) { (err, ref) in
+        let discussionReference = reference.child(childRef.key)
+        discussionReference.updateChildValues(discussion) { (err, ref) in
             if err != nil {
                 print("err \(err!)")
                 return
@@ -86,7 +89,7 @@ class DiscussionViewController: UIViewController {
 
         //載入即時更新的comment
         reference = Database.database().reference()
-        handle = reference?.child("groupComment").observe(.value , with: {(snapshot) in
+        handle = reference?.child("groupComment").child("\(childId)").observe(.value , with: {(snapshot) in
 
             print(snapshot)
 
