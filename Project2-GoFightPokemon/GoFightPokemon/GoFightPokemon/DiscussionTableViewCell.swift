@@ -10,6 +10,8 @@ import UIKit
 
 class DiscussionTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var putComment: UITextView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

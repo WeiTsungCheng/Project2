@@ -20,8 +20,6 @@ class GroupSetViewController: UIViewController {
 
     @IBAction func groupSet(_ sender: UIButton) {
 
-
-
         let reference: DatabaseReference! = Database.database().reference().child("groupFight")
 
         let childRef = reference.childByAutoId()
@@ -49,6 +47,10 @@ class GroupSetViewController: UIViewController {
                 return
             }
         }
+
+        self.navigationController?.popViewController(animated: true)
+
+
 
 
 

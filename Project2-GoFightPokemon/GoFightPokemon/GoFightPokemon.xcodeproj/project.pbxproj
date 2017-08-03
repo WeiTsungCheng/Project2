@@ -22,6 +22,7 @@
 		C5011D611F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5011D601F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift */; };
 		C527C75D1F297E310099C2DB /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C527C75C1F297E310099C2DB /* PersonalInfoViewController.swift */; };
 		C55F18771F28C7930084D840 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C55F18761F28C7930084D840 /* GoogleService-Info.plist */; };
+		C55F1BCF1F335070000E4AAC /* DiscussionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55F1BCE1F335070000E4AAC /* DiscussionItem.swift */; };
 		C5F6C1811F30A42C007B6E12 /* WatchPersonShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F6C1801F30A42C007B6E12 /* WatchPersonShowcaseViewController.swift */; };
 		C5F6C1831F30A463007B6E12 /* WatchPersonShowcaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F6C1821F30A463007B6E12 /* WatchPersonShowcaseCollectionViewCell.swift */; };
 		C5F6C1851F30A49C007B6E12 /* WatchPersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F6C1841F30A49C007B6E12 /* WatchPersonalInfoViewController.swift */; };
@@ -53,6 +54,7 @@
 		C5011D601F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerShowcaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		C527C75C1F297E310099C2DB /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonalInfoViewController.swift; path = ../PersonalInfoViewController.swift; sourceTree = "<group>"; };
 		C55F18761F28C7930084D840 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C55F1BCE1F335070000E4AAC /* DiscussionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscussionItem.swift; sourceTree = "<group>"; };
 		C5F6C1801F30A42C007B6E12 /* WatchPersonShowcaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchPersonShowcaseViewController.swift; sourceTree = "<group>"; };
 		C5F6C1821F30A463007B6E12 /* WatchPersonShowcaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchPersonShowcaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		C5F6C1841F30A49C007B6E12 /* WatchPersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchPersonalInfoViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			children = (
 				C5F985491F31FF620022295A /* DiscussionViewController.swift */,
 				C5F9854B1F3203420022295A /* DiscussionTableViewCell.swift */,
+				C55F1BCE1F335070000E4AAC /* DiscussionItem.swift */,
 			);
 			name = Discussion;
 			path = ..;
@@ -332,6 +335,7 @@
 				C500346F1F2889E700DC51A8 /* HomeViewController.swift in Sources */,
 				C5F9854A1F31FF620022295A /* DiscussionViewController.swift in Sources */,
 				C5F985481F31D47E0022295A /* GroupListTableViewCell.swift in Sources */,
+				C55F1BCF1F335070000E4AAC /* DiscussionItem.swift in Sources */,
 				C5F9854C1F3203420022295A /* DiscussionTableViewCell.swift in Sources */,
 				C5011D611F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift in Sources */,
 				C5F985421F31A9A10022295A /* GroupSetViewController.swift in Sources */,

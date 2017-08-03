@@ -21,6 +21,9 @@ struct GroupItem {
 
     init(snapshot: DataSnapshot) {
 
+print("🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀")
+        print(snapshot)
+print("🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀")
         let snapshotValue: [String: AnyObject] = snapshot.value as![String:AnyObject]
 
         self.ownerId = snapshotValue["ownerId"] as! String
