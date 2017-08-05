@@ -21,7 +21,7 @@ class PlayerShowcaseViewController: UIViewController {
     //存放用戶存檔前所選的圖片
     var playerPokemonImage: [UIImage] = [UIImage]()
 
-    @IBOutlet weak var Photo: UIImageView!
+   // @IBOutlet weak var Photo: UIImageView!
 
     //var mArray = [Int]()
 

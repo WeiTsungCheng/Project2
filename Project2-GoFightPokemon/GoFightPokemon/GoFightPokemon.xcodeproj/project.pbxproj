@@ -22,7 +22,6 @@
 		C5011D611F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5011D601F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift */; };
 		C527C75D1F297E310099C2DB /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C527C75C1F297E310099C2DB /* PersonalInfoViewController.swift */; };
 		C55F18771F28C7930084D840 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C55F18761F28C7930084D840 /* GoogleService-Info.plist */; };
-		C55F1BCF1F335070000E4AAC /* DiscussionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55F1BCE1F335070000E4AAC /* DiscussionItem.swift */; };
 		C5F6C1811F30A42C007B6E12 /* WatchPersonShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F6C1801F30A42C007B6E12 /* WatchPersonShowcaseViewController.swift */; };
 		C5F6C1831F30A463007B6E12 /* WatchPersonShowcaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F6C1821F30A463007B6E12 /* WatchPersonShowcaseCollectionViewCell.swift */; };
 		C5F6C1851F30A49C007B6E12 /* WatchPersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F6C1841F30A49C007B6E12 /* WatchPersonalInfoViewController.swift */; };
@@ -32,6 +31,9 @@
 		C5F985481F31D47E0022295A /* GroupListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F985471F31D47E0022295A /* GroupListTableViewCell.swift */; };
 		C5F9854A1F31FF620022295A /* DiscussionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F985491F31FF620022295A /* DiscussionViewController.swift */; };
 		C5F9854C1F3203420022295A /* DiscussionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F9854B1F3203420022295A /* DiscussionTableViewCell.swift */; };
+		C5FB6E1A1F35961E00248D0F /* OwnerDiscussionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FB6E191F35961E00248D0F /* OwnerDiscussionTableViewCell.swift */; };
+		C5FB6E221F35A1C400248D0F /* PersonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FB6E211F35A1C400248D0F /* PersonItem.swift */; };
+		C5FB6E241F35A2B900248D0F /* DiscussionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FB6E231F35A2B900248D0F /* DiscussionItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +56,6 @@
 		C5011D601F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerShowcaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		C527C75C1F297E310099C2DB /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonalInfoViewController.swift; path = ../PersonalInfoViewController.swift; sourceTree = "<group>"; };
 		C55F18761F28C7930084D840 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C55F1BCE1F335070000E4AAC /* DiscussionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscussionItem.swift; sourceTree = "<group>"; };
 		C5F6C1801F30A42C007B6E12 /* WatchPersonShowcaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchPersonShowcaseViewController.swift; sourceTree = "<group>"; };
 		C5F6C1821F30A463007B6E12 /* WatchPersonShowcaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchPersonShowcaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		C5F6C1841F30A49C007B6E12 /* WatchPersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchPersonalInfoViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +65,9 @@
 		C5F985471F31D47E0022295A /* GroupListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupListTableViewCell.swift; path = GoFightPokemon/GroupListTableViewCell.swift; sourceTree = "<group>"; };
 		C5F985491F31FF620022295A /* DiscussionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscussionViewController.swift; path = GoFightPokemon/DiscussionViewController.swift; sourceTree = "<group>"; };
 		C5F9854B1F3203420022295A /* DiscussionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscussionTableViewCell.swift; path = GoFightPokemon/DiscussionTableViewCell.swift; sourceTree = "<group>"; };
+		C5FB6E191F35961E00248D0F /* OwnerDiscussionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerDiscussionTableViewCell.swift; sourceTree = "<group>"; };
+		C5FB6E211F35A1C400248D0F /* PersonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonItem.swift; sourceTree = "<group>"; };
+		C5FB6E231F35A2B900248D0F /* DiscussionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscussionItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,8 +193,10 @@
 			isa = PBXGroup;
 			children = (
 				C5F985491F31FF620022295A /* DiscussionViewController.swift */,
+				C5FB6E211F35A1C400248D0F /* PersonItem.swift */,
 				C5F9854B1F3203420022295A /* DiscussionTableViewCell.swift */,
-				C55F1BCE1F335070000E4AAC /* DiscussionItem.swift */,
+				C5FB6E231F35A2B900248D0F /* DiscussionItem.swift */,
+				C5FB6E191F35961E00248D0F /* OwnerDiscussionTableViewCell.swift */,
 			);
 			name = Discussion;
 			path = ..;
@@ -321,6 +327,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5FB6E241F35A2B900248D0F /* DiscussionItem.swift in Sources */,
 				C50034661F2869E500DC51A8 /* SignUpViewController.swift in Sources */,
 				C5011D5F1F2F56490006AE24 /* PlayerShowcaseViewController.swift in Sources */,
 				C50034551F28625A00DC51A8 /* GoFightPokemon.xcdatamodeld in Sources */,
@@ -328,14 +335,15 @@
 				C5F6C1831F30A463007B6E12 /* WatchPersonShowcaseCollectionViewCell.swift in Sources */,
 				C500346B1F286D3B00DC51A8 /* LoginViewController:.swift in Sources */,
 				C527C75D1F297E310099C2DB /* PersonalInfoViewController.swift in Sources */,
+				C5FB6E1A1F35961E00248D0F /* OwnerDiscussionTableViewCell.swift in Sources */,
 				C5F985461F31BF100022295A /* GroupItem .swift in Sources */,
 				C5F6C1811F30A42C007B6E12 /* WatchPersonShowcaseViewController.swift in Sources */,
 				C50034681F286A0B00DC51A8 /* SecretNumberViewController.swift in Sources */,
 				C5F985441F31A9C50022295A /* GroupListTableViewController.swift in Sources */,
 				C500346F1F2889E700DC51A8 /* HomeViewController.swift in Sources */,
+				C5FB6E221F35A1C400248D0F /* PersonItem.swift in Sources */,
 				C5F9854A1F31FF620022295A /* DiscussionViewController.swift in Sources */,
 				C5F985481F31D47E0022295A /* GroupListTableViewCell.swift in Sources */,
-				C55F1BCF1F335070000E4AAC /* DiscussionItem.swift in Sources */,
 				C5F9854C1F3203420022295A /* DiscussionTableViewCell.swift in Sources */,
 				C5011D611F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift in Sources */,
 				C5F985421F31A9A10022295A /* GroupSetViewController.swift in Sources */,

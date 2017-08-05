@@ -13,25 +13,31 @@ import FirebaseDatabase
 
 class DiscussionViewController: UIViewController {
 
+    let uid = Auth.auth().currentUser?.uid
+
     @IBOutlet weak var tableView: UITableView!
 
     @IBOutlet weak var gymLevel: UILabel!
-
     @IBOutlet weak var bossName: UILabel!
 
     @IBOutlet weak var writeComment: UITextView!
 
 
-    
+
+
+    //設定新變數為了從GroupListTabaleView傳值過來
     var gymLevelName = ""
     var bossNameName = ""
     var childIdName = ""
     var ownerIdName = ""
 
-
-    var handle: DatabaseHandle?
     var reference: DatabaseReference?
     var getItem: [DiscussionItem] = []
+    var personItem : [PersonItem] = []
+
+
+
+
 
 
     @IBAction func sendComment(_ sender: Any) {
@@ -41,9 +47,7 @@ class DiscussionViewController: UIViewController {
      //   let ownerId = ownerIdName
 
         if self.writeComment.text == "" {
-
             return
-
         }
 
         let reference : DatabaseReference! =
@@ -71,7 +75,6 @@ class DiscussionViewController: UIViewController {
             print(reference.description())
 
             print("✳️✳️✳️✳️✳️✳️✳️✳️")
-
         }
 
     }
@@ -82,14 +85,15 @@ class DiscussionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //從GroupListTableView傳值過來
+        //從GroupListTableViewCell傳值過來
         gymLevel.text = gymLevelName
         bossName.text = bossNameName
         let childId = childIdName
 
         //載入即時更新的comment
-        reference = Database.database().reference()
-        handle = reference?.child("groupComment").child("\(childId)").observe(.value , with: {(snapshot) in
+      let reference = Database.database().reference()
+
+        reference.child("groupComment").child("\(childId)").observe(.value , with: {(snapshot) in
 
             print(snapshot)
 
@@ -115,12 +119,52 @@ class DiscussionViewController: UIViewController {
 
                 self.getItem = datalist
                 print(self.getItem)
-
                 self.tableView.reloadData()
             }
-
-
         })
+
+
+        //取player個人資料
+
+/////////
+
+       reference.child("users").observe(.value, with: {(snapshot) in
+
+            print(snapshot)
+
+        if snapshot.childrenCount > 0 {
+
+            var datalist: [PersonItem] = [PersonItem]()
+
+
+            for item in snapshot.children {
+                    let data = PersonItem(snapshot: item as! DataSnapshot)
+                    datalist.append(data)
+
+
+                    print(datalist)
+                    self.personItem = datalist
+
+                self.tableView.reloadData()
+                
+
+                    
+                }
+
+
+        
+
+                
+            }
+            
+        })
+
+//////////
+
+        
+
+
+
 
     }
 
@@ -143,6 +187,9 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
 
         cell.putComment.text = getItem[indexPath.row].participantComment
 
+        cell.playerNickName.text =  personItem[indexPath.row].nickName
+        cell.playerLevel.text = personItem[indexPath.row].playerLevel
+        cell.playerTeam.text = personItem[indexPath.row].playerTeam
 
 
 

@@ -1,22 +1,20 @@
 //
-//  DiscussionTableViewCell.swift
+//  OwnerDiscussionTableViewCell.swift
 //  GoFightPokemon
 //
-//  Created by Wei-Tsung Cheng on 2017/8/2.
+//  Created by Wei-Tsung Cheng on 2017/8/5.
 //  Copyright © 2017年 Wei-Tsung Cheng. All rights reserved.
 //
 
 import UIKit
 
-class DiscussionTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var putComment: UITextView!
-
-    @IBOutlet weak var playerNickName: UILabel!
-    @IBOutlet weak var playerTeam: UILabel!
-    @IBOutlet weak var playerLevel: UILabel!
+class OwnerDiscussionTableViewCell: UITableViewCell {
 
 
+    
+        @IBOutlet weak var ownerNickName: UILabel!
+        @IBOutlet weak var ownerTeam: UILabel!
+        @IBOutlet weak var ownerLevel: UILabel!
 
 
     override func awakeFromNib() {
