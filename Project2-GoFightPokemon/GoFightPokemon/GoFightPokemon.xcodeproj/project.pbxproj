@@ -34,6 +34,7 @@
 		C5FB6E1A1F35961E00248D0F /* OwnerDiscussionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FB6E191F35961E00248D0F /* OwnerDiscussionTableViewCell.swift */; };
 		C5FB6E221F35A1C400248D0F /* PersonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FB6E211F35A1C400248D0F /* PersonItem.swift */; };
 		C5FB6E241F35A2B900248D0F /* DiscussionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FB6E231F35A2B900248D0F /* DiscussionItem.swift */; };
+		C5FB6E281F35C87A00248D0F /* GroupSetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FB6E271F35C87A00248D0F /* GroupSetManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		C5FB6E191F35961E00248D0F /* OwnerDiscussionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerDiscussionTableViewCell.swift; sourceTree = "<group>"; };
 		C5FB6E211F35A1C400248D0F /* PersonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonItem.swift; sourceTree = "<group>"; };
 		C5FB6E231F35A2B900248D0F /* DiscussionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscussionItem.swift; sourceTree = "<group>"; };
+		C5FB6E271F35C87A00248D0F /* GroupSetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupSetManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				C5F985411F31A9A10022295A /* GroupSetViewController.swift */,
+				C5FB6E271F35C87A00248D0F /* GroupSetManager.swift */,
 				C5F985451F31BF100022295A /* GroupItem .swift */,
 			);
 			name = GroupSet;
@@ -346,6 +349,7 @@
 				C5F985481F31D47E0022295A /* GroupListTableViewCell.swift in Sources */,
 				C5F9854C1F3203420022295A /* DiscussionTableViewCell.swift in Sources */,
 				C5011D611F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift in Sources */,
+				C5FB6E281F35C87A00248D0F /* GroupSetManager.swift in Sources */,
 				C5F985421F31A9A10022295A /* GroupSetViewController.swift in Sources */,
 				C500344D1F28625A00DC51A8 /* AppDelegate.swift in Sources */,
 				C5F6C1851F30A49C007B6E12 /* WatchPersonalInfoViewController.swift in Sources */,

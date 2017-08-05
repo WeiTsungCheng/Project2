@@ -36,8 +36,6 @@ class SignUpViewController: UIViewController {
                     //建立dataBase 資料庫結構
                     let ref = Database.database().reference().child("users").child(uid!)
 
-                  
-
                     var userData : [String : AnyObject] = [String : AnyObject]()
                     userData["nickName"] = self.signUpNickName.text as AnyObject
 
@@ -55,6 +53,8 @@ class SignUpViewController: UIViewController {
                             return
                         }
 
+
+
                         user?.sendEmailVerification() { error in
                             if let error = error {
                                 print(error)
@@ -62,6 +62,10 @@ class SignUpViewController: UIViewController {
                                 print("email has sent")
                             }
                         }
+
+
+
+
                     }
 
 

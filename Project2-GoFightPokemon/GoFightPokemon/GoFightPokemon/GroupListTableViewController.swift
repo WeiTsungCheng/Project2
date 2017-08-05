@@ -10,48 +10,45 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class GroupListTableViewController: UITableViewController {
+class GroupListTableViewController: UITableViewController, GroupDelegate {
+
+
+    let groupsetManager = GroupManager()
+
+    var getItem: [GroupItem] = []
+
+    func manager(_ controller: GroupManager, success: Bool){
+
+    }
+    func manager(_ controller: GroupManager, groupItem: [GroupItem]){
+
+
+        getItem = groupItem
+
+        self.tableView.reloadData()
+
+    }
+
 
     @IBAction func goBackFuncList(_ sender: Any) {
 
         dismiss(animated: true, completion: nil)
     }
 
-    var handle: DatabaseHandle?
-    var reference: DatabaseReference?
-    var getItem: [GroupItem] = []
+
+
+
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
 
-        reference = Database.database().reference()
-        handle = reference?.child("groupFight").observe(.value, with: {(snapshot) in
-
-   print(snapshot)
-
+        groupsetManager.delegate = self
+        groupsetManager.getGroupItem()
+       // tableView.reloadData()
 
 
-            if snapshot.childrenCount > 0 {
-
-
-                var datalist: [GroupItem] = [GroupItem]()
-
-                for item in snapshot.children {
-                    let data = GroupItem(snapshot: item as! DataSnapshot)
-                    datalist.append(data)
-
-
-    print(datalist)
-                    self.getItem = datalist
-                    self.tableView.reloadData()
-
-                }
-
-            }
-
-        })
 
     }
 
