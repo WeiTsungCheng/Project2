@@ -9,7 +9,16 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, PersonDelegate {
+
+
+    func manager(_ controller: PersonManager, success: Bool){
+
+    }
+    func manager(_ controller: PersonManager, groupItem: [UserItem]){
+
+    }
+    let personmanager = PersonManager()
 
     @IBOutlet weak var signUpEmail: UITextField!
     
@@ -32,28 +41,8 @@ class SignUpViewController: UIViewController {
                 if error == nil {
                     print("signUp success")
 
-                    let uid = Auth.auth().currentUser?.uid
-                    //建立dataBase 資料庫結構
-                    let ref = Database.database().reference().child("users").child(uid!)
-
-                    var userData : [String : AnyObject] = [String : AnyObject]()
-                    userData["nickName"] = self.signUpNickName.text as AnyObject
-
-                    userData["headPhoto"] = "" as AnyObject
-                    userData["playerTeam"] = "" as AnyObject
-                    userData["playerLevel"] = "" as AnyObject
-                    userData["gymLevel"] = "" as AnyObject
-
-                    userData["userId"] = Auth.auth().currentUser?.uid as AnyObject
-                    userData["userEmail"] = Auth.auth().currentUser?.email as AnyObject
-
-                    ref.updateChildValues(userData) { (err, ref) in
-                        if err != nil {
-                            print(err!)
-                            return
-                        }
-
-
+                    //呼叫personmanager建立資料
+                    self.personmanager.setPersonItem(nickName: self.signUpNickName.text!, playerTeam: "", playerLevel: "", gymLevel: "", headPhoto: "", userId: (Auth.auth().currentUser?.uid)! , userEmail: (Auth.auth().currentUser?.email)!)
 
                         user?.sendEmailVerification() { error in
                             if let error = error {
@@ -62,13 +51,7 @@ class SignUpViewController: UIViewController {
                                 print("email has sent")
                             }
                         }
-
-
-
-
-                    }
-
-
+                    
 
                     //如果資料獲取成功跳轉頁面
                     let alertController = UIAlertController(title: "恭喜", message: "成功創建帳號", preferredStyle: UIAlertControllerStyle.alert)
@@ -95,6 +78,8 @@ class SignUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        personmanager.delegate = self
 
         // Do any additional setup after loading the view.
     }

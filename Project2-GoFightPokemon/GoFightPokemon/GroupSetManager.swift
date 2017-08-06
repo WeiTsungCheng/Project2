@@ -23,10 +23,6 @@ class GroupManager {
 
     var delegate: GroupDelegate? = nil
 
-    var handle: DatabaseHandle?
-    var reference: DatabaseReference?
-
-
     func setGroupItem(gymLevel: String, bossName: String) {
 
 
