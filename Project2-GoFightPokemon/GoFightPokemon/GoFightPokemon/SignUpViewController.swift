@@ -15,6 +15,9 @@ class SignUpViewController: UIViewController, PersonDelegate {
     func manager(_ controller: PersonManager, success: Bool){
 
     }
+    func manager(_ controller: PersonManager){
+
+    }
     func manager(_ controller: PersonManager, groupItem: [UserItem]){
 
     }

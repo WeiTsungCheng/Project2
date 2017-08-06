@@ -12,8 +12,11 @@ import FirebaseDatabase
 protocol PersonDelegate: class {
 
     func manager(_ controller: PersonManager, success: Bool)
+    func manager(_ controller: PersonManager)
     func manager(_ controller: PersonManager, groupItem: [UserItem])
 }
+
+let uid = Auth.auth().currentUser?.uid
 
 class PersonManager {
 
@@ -21,10 +24,9 @@ class PersonManager {
 
     func setPersonItem(nickName: String, playerTeam: String, playerLevel: String, gymLevel: String, headPhoto: String, userId: String,  userEmail: String) {
 
-        let reference: DatabaseReference! = Database.database().reference().child("users")
+        let reference: DatabaseReference! = Database.database().reference().child("users").child(uid!)
 
-        let childRef = reference.childByAutoId()
-
+    //    let childRef = reference.childByAutoId()
 
         var person : [String : AnyObject] = [String : AnyObject]()
 
@@ -41,17 +43,63 @@ class PersonManager {
         person["playerTeam"] = playerTeam as AnyObject
 
 
-        let groupReference = reference.child(childRef.key)
+     //   let groupReference = reference.child(childRef.key)
 
-        groupReference.updateChildValues(person) { (err, ref) in
+        reference.updateChildValues(person) { (err, ref) in
 
             if err == nil {
                 self.delegate?.manager(self, success: true)
                 return
             }
             
-            
+
         }
+    }
+
+    func setValuePersonItem(teamSelect: String, levelSelect: String, gymLevelSelect: String ){
+
+        let dataBaseRef = Database.database().reference().child("users").child(uid!)
+
+
+        dataBaseRef.child("playerTeam").setValue(teamSelect, withCompletionBlock: { (error, data) in
+
+            if error != nil {
+
+                print("Database Error: \(error!.localizedDescription)")
+            }
+            else {
+                print("team has saved")
+            }
+        }
+        )
+
+
+        dataBaseRef.child("playerLevel").setValue(levelSelect, withCompletionBlock: { (error, data) in
+
+            if error != nil {
+
+                print("Database Error: \(error!.localizedDescription)")
+            }
+            else {
+                print("playerLevel has saved")
+            }
+        }
+        )
+
+        dataBaseRef.child("gymLevel").setValue(gymLevelSelect, withCompletionBlock: { (error, data) in
+
+            if error != nil {
+
+                print("Database Error: \(error!.localizedDescription)")
+            }
+            else {
+                print("challengeLevel has saved")
+            }
+        }
+        )
+
+        self.delegate?.manager(self)
+
     }
 
 

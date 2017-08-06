@@ -11,7 +11,22 @@ import Firebase
 import FirebaseStorage
 import FirebaseDatabase
 
-class PersonalInfoViewController: UIViewController {
+class PersonalInfoViewController: UIViewController, PersonDelegate {
+
+    func manager(_ controller: PersonManager, success: Bool){
+
+    }
+    func manager(_ controller: PersonManager){
+
+    }
+    func manager(_ controller: PersonManager, groupItem: [UserItem]){
+
+    }
+
+
+    let personmanager = PersonManager()
+
+
     @IBAction func goBackFuncList(_ sender: Any) {
 
          dismiss(animated: true, completion: nil)
@@ -43,58 +58,63 @@ class PersonalInfoViewController: UIViewController {
     @IBAction func saveUserData(_ sender: Any) {
 
         //儲存textfield所填資料到firebase
-        if let team = teamSelect.text {
-
-            let dataBaseRef = Database.database().reference().child("users").child(uid!).child("playerTeam")
-
-            dataBaseRef.setValue(team, withCompletionBlock: { (error, data) in
-
-                if error != nil {
-
-                    print("Database Error: \(error!.localizedDescription)")
-                }
-                else {
-                    print("team has saved")
-                }
-            }
-            )
-        }
+        self.personmanager.setValuePersonItem(teamSelect: teamSelect.text!, levelSelect: levelSelect.text!, gymLevelSelect: gymLevelSelect.text!)
 
 
-        if let pLevel = levelSelect.text {
-
-            let dataBaseRef = Database.database().reference().child("users").child(uid!).child("playerLevel")
-
-            dataBaseRef.setValue(pLevel, withCompletionBlock: { (error, data) in
-
-                if error != nil {
-
-                    print("Database Error: \(error!.localizedDescription)")
-                }
-                else {
-                    print("playerLevel has saved")
-                }
-            }
-            )
-        }
 
 
-        if let gLevel = gymLevelSelect.text {
-
-            let dataBaseRef = Database.database().reference().child("users").child(uid!).child("gymLevel")
-
-            dataBaseRef.setValue(gLevel, withCompletionBlock: { (error, data) in
-
-                if error != nil {
-
-                    print("Database Error: \(error!.localizedDescription)")
-                }
-                else {
-                    print("challengeLevel has saved")
-                }
-            }
-            )
-        }
+//        if let team = teamSelect.text {
+//
+//            let dataBaseRef = Database.database().reference().child("users").child(uid!).child("playerTeam")
+//
+//            dataBaseRef.setValue(team, withCompletionBlock: { (error, data) in
+//
+//                if error != nil {
+//
+//                    print("Database Error: \(error!.localizedDescription)")
+//                }
+//                else {
+//                    print("team has saved")
+//                }
+//            }
+//            )
+//        }
+//
+//
+//        if let pLevel = levelSelect.text {
+//
+//            let dataBaseRef = Database.database().reference().child("users").child(uid!).child("playerLevel")
+//
+//            dataBaseRef.setValue(pLevel, withCompletionBlock: { (error, data) in
+//
+//                if error != nil {
+//
+//                    print("Database Error: \(error!.localizedDescription)")
+//                }
+//                else {
+//                    print("playerLevel has saved")
+//                }
+//            }
+//            )
+//        }
+//
+//
+//        if let gLevel = gymLevelSelect.text {
+//
+//            let dataBaseRef = Database.database().reference().child("users").child(uid!).child("gymLevel")
+//
+//            dataBaseRef.setValue(gLevel, withCompletionBlock: { (error, data) in
+//
+//                if error != nil {
+//
+//                    print("Database Error: \(error!.localizedDescription)")
+//                }
+//                else {
+//                    print("challengeLevel has saved")
+//                }
+//            }
+//            )
+//        }
 
         //儲存相簿選擇的照片到fireBase
         // 當selectedPhoto有東西時，將照片上傳
@@ -228,11 +248,12 @@ class PersonalInfoViewController: UIViewController {
         gymLevelChoose.delegate = self
         gymLevelSelect.inputView = gymLevelChoose
 
+        personmanager.delegate = self
+
 
 
         //如果用戶已存過用戶資料，下載fireBase上的用戶資料，填入textfield
         let reference = Database.database().reference().child("users").child(uid!)
-
 
 
         // nickName 註冊時填入，註冊完成後不可改
@@ -243,76 +264,80 @@ class PersonalInfoViewController: UIViewController {
                 self.nickName.text = uploadNickName
                 print(uploadNickName, "🔵")
             }
-        })
-
-
-        reference.child("playerLevel").observe(.value, with: {(snapshot) in
-
-            if let uploadPlayerLevel = snapshot.value as? String {
-
-                self.levelSelect.text = uploadPlayerLevel
-                print(uploadPlayerLevel, "🔴")
-            }
-        })
-
-        reference.child("playerTeam").observe(.value, with: {(snapshot) in
-
-            if let uploadPlayerTeam = snapshot.value as? String {
-
-                self.teamSelect.text = uploadPlayerTeam
-                print(uploadPlayerTeam, "⚪️")
-
-            }
-        })
-
-        reference.child("gymLevel").observe(.value, with: {(snapshot) in
-
-            if let uploadGymLevel = snapshot.value as? String {
-
-                self.gymLevelSelect.text = uploadGymLevel
-            }
-        })
-
-        //如果用戶已存過用戶照片，下載fireBase上的用戶照片的網址
-        reference.child("headPhoto").observe(.value, with: { [weak self] (snapshot) in
-
-print("🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵")
-            print(snapshot)
-print("🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴")
-
-
-            if let uploaPhoto = snapshot.value as? String {
-
-print("⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️")
-                //將照片網址解開，存入圖片放在imageView上
-
-                if let imageUrl = URL(string: uploaPhoto) {
-
-                    URLSession.shared.dataTask(with: imageUrl, completionHandler: { (data, response, error) in
-
-                        if error != nil {
-
-                            print("Download Image Task Fail: \(error!.localizedDescription)")
-
-                        }
-
-
-                        else if let imageData = data {
-                            DispatchQueue.main.async {
-
-                                self?.headPhoto.image = UIImage(data: imageData)
-                                self?.headPhoto.contentMode = UIViewContentMode.scaleAspectFit
-
-                            }
-
-                        }
-
-                    }).resume()
-
-                }
-            }
 
         })
+
+
+        
+//
+//
+//        reference.child("playerLevel").observe(.value, with: {(snapshot) in
+//
+//            if let uploadPlayerLevel = snapshot.value as? String {
+//
+//                self.levelSelect.text = uploadPlayerLevel
+//                print(uploadPlayerLevel, "🔴")
+//            }
+//        })
+//
+//        reference.child("playerTeam").observe(.value, with: {(snapshot) in
+//
+//            if let uploadPlayerTeam = snapshot.value as? String {
+//
+//                self.teamSelect.text = uploadPlayerTeam
+//                print(uploadPlayerTeam, "⚪️")
+//
+//            }
+//        })
+//
+//        reference.child("gymLevel").observe(.value, with: {(snapshot) in
+//
+//            if let uploadGymLevel = snapshot.value as? String {
+//
+//                self.gymLevelSelect.text = uploadGymLevel
+//            }
+//        })
+//
+//        //如果用戶已存過用戶照片，下載fireBase上的用戶照片的網址
+//        reference.child("headPhoto").observe(.value, with: { [weak self] (snapshot) in
+//
+//print("🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵")
+//            print(snapshot)
+//print("🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴")
+//
+//
+//            if let uploaPhoto = snapshot.value as? String {
+//
+//print("⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️")
+//                //將照片網址解開，存入圖片放在imageView上
+//
+//                if let imageUrl = URL(string: uploaPhoto) {
+//
+//                    URLSession.shared.dataTask(with: imageUrl, completionHandler: { (data, response, error) in
+//
+//                        if error != nil {
+//
+//                            print("Download Image Task Fail: \(error!.localizedDescription)")
+//
+//                        }
+//
+//
+//                        else if let imageData = data {
+//                            DispatchQueue.main.async {
+//
+//                                self?.headPhoto.image = UIImage(data: imageData)
+//                                self?.headPhoto.contentMode = UIViewContentMode.scaleAspectFit
+//
+//                            }
+//
+//                        }
+//
+//                    }).resume()
+//
+//                }
+//            }
+//
+//        })
 
     }
 

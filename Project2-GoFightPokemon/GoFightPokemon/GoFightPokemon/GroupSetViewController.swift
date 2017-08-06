@@ -34,7 +34,6 @@ class GroupSetViewController: UIViewController, GroupDelegate {
         setGroupManager.setGroupItem(gymLevel: gymLevel.text!, bossName: bossName.text!)
 
 
-
         self.navigationController?.popViewController(animated: true)
 
 
