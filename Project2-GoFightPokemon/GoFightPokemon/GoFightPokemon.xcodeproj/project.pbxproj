@@ -22,6 +22,7 @@
 		C5011D611F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5011D601F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift */; };
 		C503DF901F3725C500FF7A97 /* HeadPhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C503DF8F1F3725C500FF7A97 /* HeadPhotoManager.swift */; };
 		C503DF921F37395500FF7A97 /* ShowcaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C503DF911F37395500FF7A97 /* ShowcaseManager.swift */; };
+		C503DF941F3749D700FF7A97 /* DiscussionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C503DF931F3749D700FF7A97 /* DiscussionManager.swift */; };
 		C527C75D1F297E310099C2DB /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C527C75C1F297E310099C2DB /* PersonalInfoViewController.swift */; };
 		C55F18771F28C7930084D840 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C55F18761F28C7930084D840 /* GoogleService-Info.plist */; };
 		C5F2C81D1F3622CF009D636B /* UserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F2C81C1F3622CF009D636B /* UserItem.swift */; };
@@ -61,6 +62,7 @@
 		C5011D601F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerShowcaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		C503DF8F1F3725C500FF7A97 /* HeadPhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadPhotoManager.swift; sourceTree = "<group>"; };
 		C503DF911F37395500FF7A97 /* ShowcaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowcaseManager.swift; sourceTree = "<group>"; };
+		C503DF931F3749D700FF7A97 /* DiscussionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscussionManager.swift; path = GoFightPokemon/DiscussionManager.swift; sourceTree = "<group>"; };
 		C527C75C1F297E310099C2DB /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonalInfoViewController.swift; path = ../PersonalInfoViewController.swift; sourceTree = "<group>"; };
 		C55F18761F28C7930084D840 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C5F2C81C1F3622CF009D636B /* UserItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserItem.swift; sourceTree = "<group>"; };
@@ -209,9 +211,10 @@
 			children = (
 				C5F985491F31FF620022295A /* DiscussionViewController.swift */,
 				C5FB6E211F35A1C400248D0F /* PersonItem.swift */,
-				C5F9854B1F3203420022295A /* DiscussionTableViewCell.swift */,
 				C5FB6E231F35A2B900248D0F /* DiscussionItem.swift */,
+				C5F9854B1F3203420022295A /* DiscussionTableViewCell.swift */,
 				C5FB6E191F35961E00248D0F /* OwnerDiscussionTableViewCell.swift */,
+				C503DF931F3749D700FF7A97 /* DiscussionManager.swift */,
 			);
 			name = Discussion;
 			path = ..;
@@ -359,6 +362,7 @@
 				C5FB6E221F35A1C400248D0F /* PersonItem.swift in Sources */,
 				C5F9854A1F31FF620022295A /* DiscussionViewController.swift in Sources */,
 				C503DF901F3725C500FF7A97 /* HeadPhotoManager.swift in Sources */,
+				C503DF941F3749D700FF7A97 /* DiscussionManager.swift in Sources */,
 				C5F985481F31D47E0022295A /* GroupListTableViewCell.swift in Sources */,
 				C5F9854C1F3203420022295A /* DiscussionTableViewCell.swift in Sources */,
 				C5011D611F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift in Sources */,
