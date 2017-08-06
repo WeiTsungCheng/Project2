@@ -21,6 +21,7 @@
 		C5011D5F1F2F56490006AE24 /* PlayerShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5011D5E1F2F56490006AE24 /* PlayerShowcaseViewController.swift */; };
 		C5011D611F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5011D601F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift */; };
 		C503DF901F3725C500FF7A97 /* HeadPhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C503DF8F1F3725C500FF7A97 /* HeadPhotoManager.swift */; };
+		C503DF921F37395500FF7A97 /* ShowcaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C503DF911F37395500FF7A97 /* ShowcaseManager.swift */; };
 		C527C75D1F297E310099C2DB /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C527C75C1F297E310099C2DB /* PersonalInfoViewController.swift */; };
 		C55F18771F28C7930084D840 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C55F18761F28C7930084D840 /* GoogleService-Info.plist */; };
 		C5F2C81D1F3622CF009D636B /* UserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F2C81C1F3622CF009D636B /* UserItem.swift */; };
@@ -59,6 +60,7 @@
 		C5011D5E1F2F56490006AE24 /* PlayerShowcaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerShowcaseViewController.swift; sourceTree = "<group>"; };
 		C5011D601F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerShowcaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		C503DF8F1F3725C500FF7A97 /* HeadPhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadPhotoManager.swift; sourceTree = "<group>"; };
+		C503DF911F37395500FF7A97 /* ShowcaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowcaseManager.swift; sourceTree = "<group>"; };
 		C527C75C1F297E310099C2DB /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonalInfoViewController.swift; path = ../PersonalInfoViewController.swift; sourceTree = "<group>"; };
 		C55F18761F28C7930084D840 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C5F2C81C1F3622CF009D636B /* UserItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserItem.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				C5F6C1841F30A49C007B6E12 /* WatchPersonalInfoViewController.swift */,
 				C5F6C1801F30A42C007B6E12 /* WatchPersonShowcaseViewController.swift */,
 				C5F6C1821F30A463007B6E12 /* WatchPersonShowcaseCollectionViewCell.swift */,
+				C503DF911F37395500FF7A97 /* ShowcaseManager.swift */,
 			);
 			name = WatchPlayerInfo;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				C5F2C81F1F362694009D636B /* PersonInfoManager.swift in Sources */,
 				C5F6C1851F30A49C007B6E12 /* WatchPersonalInfoViewController.swift in Sources */,
 				C5F2C81D1F3622CF009D636B /* UserItem.swift in Sources */,
+				C503DF921F37395500FF7A97 /* ShowcaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

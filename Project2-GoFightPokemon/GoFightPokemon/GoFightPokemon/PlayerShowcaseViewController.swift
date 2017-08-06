@@ -7,16 +7,21 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseStorage
-import FirebaseDatabase
 
-class PlayerShowcaseViewController: UIViewController {
+
+class PlayerShowcaseViewController: UIViewController, ShowcaseDelegate{
 
     @IBOutlet weak var collectionView: UICollectionView!
 
+    func manager(_ controller: ShowcaseManager, success: Bool){
 
-    let uid = Auth.auth().currentUser?.uid
+    }
+    func manager(_ controller: ShowcaseManager, updatePhotoDic: [String:Any]){
+
+    }
+
+    let showcaseManager = ShowcaseManager()
+
 
     //存放用戶存檔前所選的圖片
     var playerPokemonImage: [UIImage] = [UIImage]()
@@ -92,57 +97,8 @@ class PlayerShowcaseViewController: UIViewController {
 
     @IBAction func saveUserPokemon(_ sender: Any) {
 
-        Database.database().reference().child("usersShowcase").child(self.uid!).child("pokemonPhoto").removeValue { (error, ref) in
-            if error != nil{
-                print(error!)
-                return
-            }
+         showcaseManager.setShowcaseItem(playerPokemonImage: playerPokemonImage)
 
-            print("remove data success...")
-        }
-
-
-        for image in playerPokemonImage{
-
-            let uniqueString = NSUUID().uuidString
-
-            let storageRef = Storage.storage().reference().child("userPhoto").child(uid!).child("userPokemon").child("\(uniqueString).png")
-
-            if let uploadData = UIImagePNGRepresentation(image) {
-
-                storageRef.putData(uploadData, metadata: nil, completion: { (data, error) in
-
-                    if error != nil {
-
-                        print("Error: \(error!.localizedDescription)")
-
-                        return
-                    }
-
-                    if let uploadImageUrl = data?.downloadURL()?.absoluteString {
-
-                        print("Photo Url: \(uploadImageUrl)")
-
-                        let dataBaseRef = Database.database().reference().child("usersShowcase").child(self.uid!).child("pokemonPhoto")
-
-                        let childRef = dataBaseRef.childByAutoId()
-
-                        childRef.setValue(uploadImageUrl, withCompletionBlock: { (error, data) in
-
-                            if error != nil {
-
-                                print("Database Error: \(error!.localizedDescription)")
-                            }
-                            else {
-
-                                print("picture has saved")
-
-                            }
-                        }
-                        )}
-                }
-                )}
-        }
     }
 
 
@@ -150,6 +106,8 @@ class PlayerShowcaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        showcaseManager.delegate = self
 
 
     }
