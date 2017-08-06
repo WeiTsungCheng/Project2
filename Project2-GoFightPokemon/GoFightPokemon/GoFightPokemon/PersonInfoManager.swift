@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+
 protocol PersonDelegate: class {
 
     func manager(_ controller: PersonManager, success: Bool)
@@ -16,13 +17,12 @@ protocol PersonDelegate: class {
     func manager(_ controller: PersonManager, userItem: UserItem)
 }
 
-let uid = Auth.auth().currentUser?.uid
+
 
 class PersonManager {
 
+    let uid = Auth.auth().currentUser?.uid
     var delegate: PersonDelegate? = nil
-
-    var user: UserItem?
 
     func setPersonItem(nickName: String, playerTeam: String, playerLevel: String, gymLevel: String, headPhoto: String, userId: String,  userEmail: String) {
 

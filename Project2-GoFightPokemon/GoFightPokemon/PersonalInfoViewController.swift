@@ -7,11 +7,9 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseStorage
-import FirebaseDatabase
 
-class PersonalInfoViewController: UIViewController, PersonDelegate {
+
+class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDelegate {
 
     func manager(_ controller: PersonManager, success: Bool){
 
@@ -24,7 +22,16 @@ class PersonalInfoViewController: UIViewController, PersonDelegate {
     }
 
 
-    let personmanager = PersonManager()
+    func manager(_ controller: HeadPhotoManager, success: Bool){
+
+    }
+    func manager(_ controller: HeadPhotoManager, headPhoto: UIImage){
+
+    }
+
+
+    let personManager = PersonManager()
+    let headPhotoManager = HeadPhotoManager()
 
 
     @IBAction func goBackFuncList(_ sender: Any) {
@@ -33,7 +40,7 @@ class PersonalInfoViewController: UIViewController, PersonDelegate {
         
     }
 
-    let uid = Auth.auth().currentUser?.uid
+//    let uid = Auth.auth().currentUser?.uid
 
     var teams = ["請選擇隊伍", "急凍鳥隊", "閃電鳥隊", "火焰鳥隊"]
     let gymLevelChoose = UIPickerView()
@@ -58,71 +65,9 @@ class PersonalInfoViewController: UIViewController, PersonDelegate {
     @IBAction func saveUserData(_ sender: Any) {
 
         //儲存textfield所填資料到firebase
-        self.personmanager.setValuePersonItem(teamSelect: teamSelect.text!, levelSelect: levelSelect.text!, gymLevelSelect: gymLevelSelect.text!)
+        self.personManager.setValuePersonItem(teamSelect: teamSelect.text!, levelSelect: levelSelect.text!, gymLevelSelect: gymLevelSelect.text!)
 
-
-
-        //儲存相簿選擇的照片到fireBase
-        // 當selectedPhoto有東西時，將照片上傳
-        //判定如果image 為預設原圖不要上傳  icons8-Lion Head Filled-50
-        if headPhoto.image != #imageLiteral(resourceName: "icons8-Lion Head Filled-50") {
-
-
-        if let selectedPhoto = headPhoto.image {
-
-
-            let uniqueString = NSUUID().uuidString
-            // 設定storage 儲存位置,將圖片上傳
-            let storageRef = Storage.storage().reference().child("userPhoto").child(uid!).child("userHead").child("\(uniqueString).png")
-            //接收回傳的資料
-
-
-
-
-            if let uploadData = UIImagePNGRepresentation(selectedPhoto) {
-
-                storageRef.putData(uploadData, metadata: nil, completion: { (data, error) in
-
-                    // 若發生錯誤
-                    if error != nil {
-                        print(error!.localizedDescription)
-                        return
-                    }
-
-                    // 接收回傳的圖片網址位置
-                    if let uploadImageUrl = data?.downloadURL()?.absoluteString {
-
-                        print ("photo url: \(uploadImageUrl)")
-
-                        // 儲存網址到dataBase上
-                        let dataBaseRef = Database.database().reference().child("users").child(self.uid!).child("headPhoto")
-
-                        dataBaseRef.setValue(uploadImageUrl, withCompletionBlock: { (error, data) in
-
-                            if error != nil {
-
-                                print("Database Error: \(error!.localizedDescription)")
-                            }
-                            else {
-                                
-                                print("picture has saved")
-                            }
-
-                        }
-                        )}
-                }
-                )}
-
-           print("didn't pick picture")
-
-            }
-
-
-        } else {
-            print("It is a origin photo")
-        }
-
-
+        self.headPhotoManager.setHeadPhoto(headPhoto: headPhoto.image)
 
     }
 
@@ -194,28 +139,8 @@ class PersonalInfoViewController: UIViewController, PersonDelegate {
         gymLevelChoose.delegate = self
         gymLevelSelect.inputView = gymLevelChoose
 
-        personmanager.delegate = self
-
-
-
-
-        //從firebase 拿用戶的nickname
-
-        let reference = Database.database().reference().child("users").child(uid!)
-        // nickName 註冊時填入，註冊完成後不可改
-        reference.child("nickName").observe(.value, with: { (snapshot) in
-
-            if let uploadNickName = snapshot.value as? String {
-
-                self.nickName.text = uploadNickName
-                print(uploadNickName, "🔵")
-            }
-
-        })
-
-
-        
-
+        personManager.delegate = self
+        headPhotoManager.delegate = self
 
 
     }

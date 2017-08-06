@@ -20,6 +20,7 @@
 		C500346F1F2889E700DC51A8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C500346E1F2889E700DC51A8 /* HomeViewController.swift */; };
 		C5011D5F1F2F56490006AE24 /* PlayerShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5011D5E1F2F56490006AE24 /* PlayerShowcaseViewController.swift */; };
 		C5011D611F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5011D601F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift */; };
+		C503DF901F3725C500FF7A97 /* HeadPhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C503DF8F1F3725C500FF7A97 /* HeadPhotoManager.swift */; };
 		C527C75D1F297E310099C2DB /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C527C75C1F297E310099C2DB /* PersonalInfoViewController.swift */; };
 		C55F18771F28C7930084D840 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C55F18761F28C7930084D840 /* GoogleService-Info.plist */; };
 		C5F2C81D1F3622CF009D636B /* UserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F2C81C1F3622CF009D636B /* UserItem.swift */; };
@@ -57,6 +58,7 @@
 		C500346E1F2889E700DC51A8 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C5011D5E1F2F56490006AE24 /* PlayerShowcaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerShowcaseViewController.swift; sourceTree = "<group>"; };
 		C5011D601F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerShowcaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		C503DF8F1F3725C500FF7A97 /* HeadPhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadPhotoManager.swift; sourceTree = "<group>"; };
 		C527C75C1F297E310099C2DB /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonalInfoViewController.swift; path = ../PersonalInfoViewController.swift; sourceTree = "<group>"; };
 		C55F18761F28C7930084D840 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C5F2C81C1F3622CF009D636B /* UserItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserItem.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				C5011D5E1F2F56490006AE24 /* PlayerShowcaseViewController.swift */,
 				C5011D601F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift */,
 				C5F2C81E1F362694009D636B /* PersonInfoManager.swift */,
+				C503DF8F1F3725C500FF7A97 /* HeadPhotoManager.swift */,
 			);
 			name = PlayerInfo;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				C500346F1F2889E700DC51A8 /* HomeViewController.swift in Sources */,
 				C5FB6E221F35A1C400248D0F /* PersonItem.swift in Sources */,
 				C5F9854A1F31FF620022295A /* DiscussionViewController.swift in Sources */,
+				C503DF901F3725C500FF7A97 /* HeadPhotoManager.swift in Sources */,
 				C5F985481F31D47E0022295A /* GroupListTableViewCell.swift in Sources */,
 				C5F9854C1F3203420022295A /* DiscussionTableViewCell.swift in Sources */,
 				C5011D611F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift in Sources */,
