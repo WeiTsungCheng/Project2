@@ -76,11 +76,7 @@ class GroupManager {
                     let data = GroupItem(snapshot: item as! DataSnapshot)
                     datalist.append(data)
 
-
                     print(datalist)
-
-    //                self.getItem = datalist
-   //                 self.tableView.reloadData()
 
                 }
 
@@ -89,10 +85,6 @@ class GroupManager {
             }
             
         })
-
-
-
-
 
     }
 

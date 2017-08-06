@@ -18,9 +18,10 @@ class SignUpViewController: UIViewController, PersonDelegate {
     func manager(_ controller: PersonManager){
 
     }
-    func manager(_ controller: PersonManager, groupItem: [UserItem]){
+    func manager(_ controller: PersonManager, userItem: UserItem){
 
     }
+    
     let personmanager = PersonManager()
 
     @IBOutlet weak var signUpEmail: UITextField!

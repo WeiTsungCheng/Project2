@@ -13,7 +13,7 @@ protocol PersonDelegate: class {
 
     func manager(_ controller: PersonManager, success: Bool)
     func manager(_ controller: PersonManager)
-    func manager(_ controller: PersonManager, groupItem: [UserItem])
+    func manager(_ controller: PersonManager, userItem: UserItem)
 }
 
 let uid = Auth.auth().currentUser?.uid
@@ -22,11 +22,11 @@ class PersonManager {
 
     var delegate: PersonDelegate? = nil
 
+    var user: UserItem?
+
     func setPersonItem(nickName: String, playerTeam: String, playerLevel: String, gymLevel: String, headPhoto: String, userId: String,  userEmail: String) {
 
         let reference: DatabaseReference! = Database.database().reference().child("users").child(uid!)
-
-    //    let childRef = reference.childByAutoId()
 
         var person : [String : AnyObject] = [String : AnyObject]()
 
@@ -41,9 +41,6 @@ class PersonManager {
         person["playerLevel"] = playerLevel as AnyObject
 
         person["playerTeam"] = playerTeam as AnyObject
-
-
-     //   let groupReference = reference.child(childRef.key)
 
         reference.updateChildValues(person) { (err, ref) in
 
@@ -99,6 +96,24 @@ class PersonManager {
         )
 
         self.delegate?.manager(self)
+    }
+
+
+
+
+    func getPersonItem() {
+
+       Database.database().reference().child("users").child(uid!).observe(.value, with: {(snapshot) in
+
+        print("🏧")
+        print(snapshot)
+        print("🏧")
+            let data = UserItem(snapshot: snapshot)
+            self.delegate?.manager(self, userItem: data)
+
+
+
+        })
 
     }
 
