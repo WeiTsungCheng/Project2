@@ -7,23 +7,24 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseStorage
-import FirebaseDatabase
 
-class PlayerShowcaseViewController: UIViewController {
+
+class PlayerShowcaseViewController: UIViewController, ShowcaseDelegate{
 
     @IBOutlet weak var collectionView: UICollectionView!
 
+    func manager(_ controller: ShowcaseManager, success: Bool){
 
-    let uid = Auth.auth().currentUser?.uid
+    }
+    func manager(_ controller: ShowcaseManager, updatePhotoDic: [String:Any]){
+
+    }
+
+    let showcaseManager = ShowcaseManager()
+
 
     //存放用戶存檔前所選的圖片
     var playerPokemonImage: [UIImage] = [UIImage]()
-
-    @IBOutlet weak var Photo: UIImageView!
-
-    //var mArray = [Int]()
 
     //deletePokemonAct方法為移除 playerPokemonImage 陣列中特定的值
     @IBAction func deletePokemonAct(_ sender: UIButton) {
@@ -96,92 +97,9 @@ class PlayerShowcaseViewController: UIViewController {
 
     @IBAction func saveUserPokemon(_ sender: Any) {
 
-        Database.database().reference().child("usersShowcase").child(self.uid!).child("pokemonPhoto").removeValue { (error, ref) in
-            if error != nil{
-                print(error!)
-                return
-            }
+         showcaseManager.setShowcaseItem(playerPokemonImage: playerPokemonImage)
 
-            print("remove data success...")
-        }
-
-
-        for image in playerPokemonImage{
-
-            let uniqueString = NSUUID().uuidString
-
-            let storageRef = Storage.storage().reference().child("userPhoto").child(uid!).child("userPokemon").child("\(uniqueString).png")
-
-            if let uploadData = UIImagePNGRepresentation(image) {
-
-                storageRef.putData(uploadData, metadata: nil, completion: { (data, error) in
-
-                    if error != nil {
-
-                        print("Error: \(error!.localizedDescription)")
-
-                        return
-                    }
-
-                    if let uploadImageUrl = data?.downloadURL()?.absoluteString {
-
-                        print("Photo Url: \(uploadImageUrl)")
-
-                        let dataBaseRef = Database.database().reference().child("usersShowcase").child(self.uid!).child("pokemonPhoto")
-
-                        let childRef = dataBaseRef.childByAutoId()
-
-                        childRef.setValue(uploadImageUrl, withCompletionBlock: { (error, data) in
-
-                            if error != nil {
-
-                                print("Database Error: \(error!.localizedDescription)")
-                            }
-                            else {
-
-                                print("picture has saved")
-
-                            }
-                        }
-                        )}
-                }
-                )}
-        }
     }
-
-
-
-
-//
-//    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
-//
-//        let size = Photo.image?.size
-//
-//        let widthRatio  = targetSize.width  / image.size.width
-//        let heightRatio = targetSize.height / image.size.height
-//
-//        var newSize: CGSize
-//        if(widthRatio > heightRatio) {
-//            newSize = CGSize(width: (size?.width)! * heightRatio, height: (size?.height)! * heightRatio)
-//        } else {
-//            newSize = CGSize(width: (size?.width)! * widthRatio,  height: (size?.height)! * widthRatio)
-//        }
-//
-//        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
-//
-//        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
-//        Photo.image?.draw(in: rect)
-//        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
-//        
-//        return newImage!
-//    }
-
-
-
-
-
-
 
 
 
@@ -189,29 +107,16 @@ class PlayerShowcaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        showcaseManager.delegate = self
 
 
-
-
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
@@ -256,7 +161,6 @@ extension PlayerShowcaseViewController: UICollectionViewDataSource, UICollection
 
 
         //增加一個cell的target,此target為當deletePokemonAct被按時的方法
-
         //設定button的標籤數字為當前indexPath.row
         cell.deletePokemon.tag = indexPath.row
 

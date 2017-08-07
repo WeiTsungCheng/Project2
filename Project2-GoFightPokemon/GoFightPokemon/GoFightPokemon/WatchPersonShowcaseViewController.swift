@@ -7,51 +7,33 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseStorage
-import FirebaseDatabase
 
-class WatchPersonShowcaseViewController: UIViewController {
+class WatchPersonShowcaseViewController: UIViewController, ShowcaseDelegate {
+
+    func manager(_ controller: ShowcaseManager, success: Bool){
+
+    }
+    func manager(_ controller: ShowcaseManager, updatePhotoDic: [String:Any]){
+
+        photoDic = updatePhotoDic
+        self.collectionView.reloadData()
+
+    }
+    let showcaseＭanager = ShowcaseManager()
 
     @IBOutlet weak var collectionView: UICollectionView!
- 
-
-    let uid = Auth.auth().currentUser?.uid
 
     var playerPokemonImageFireBase: [UIImage] = [UIImage]()
 
     // 設定一個字典存filepbase取下的資料
-    var uploadPhotoDic : [String: Any]?
+    var photoDic : [String: Any]?
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        showcaseＭanager.delegate = self
+        showcaseＭanager.getShowcaseItem()
 
-        //取下之前存在fireBase圖檔的url
-        let dataBaseRef = Database.database().reference().child("usersShowcase").child(self.uid!).child("pokemonPhoto")
-
-        dataBaseRef.observe(.value, with: { [weak self] (snapshot) in
-
-            if let uploadDataDic = snapshot.value as? [String:Any] {
-
-                self?.uploadPhotoDic = uploadDataDic
-                self?.collectionView.reloadData()
-
-                print("◻️")
-
-                print(snapshot)
-
-                print("♥️")
-
-            }
-            })
-            
-
-
-
-
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,7 +55,7 @@ extension WatchPersonShowcaseViewController: UICollectionViewDataSource, UIColle
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        if let dataDic = uploadPhotoDic {
+        if let dataDic = photoDic {
 
             return dataDic.count
         }
@@ -85,7 +67,7 @@ extension WatchPersonShowcaseViewController: UICollectionViewDataSource, UIColle
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "WatchCell", for: indexPath) as! WatchPersonShowcaseCollectionViewCell
 
-        if let dataDic = uploadPhotoDic {
+        if let dataDic = photoDic {
 
             let keyArray = Array(dataDic.keys)
 
@@ -106,6 +88,7 @@ extension WatchPersonShowcaseViewController: UICollectionViewDataSource, UIColle
                             DispatchQueue.main.async {
 
                                 cell.pokemonImage.image = UIImage(data: imageData)
+                     
 
                             }
                             

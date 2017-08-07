@@ -7,18 +7,40 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseStorage
-import FirebaseDatabase
 
-class PersonalInfoViewController: UIViewController {
+
+class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDelegate {
+
+    func manager(_ controller: PersonManager, success: Bool){
+
+    }
+    func manager(_ controller: PersonManager){
+
+    }
+    func manager(_ controller: PersonManager, userItem: UserItem){
+
+    }
+
+
+    func manager(_ controller: HeadPhotoManager, success: Bool){
+
+    }
+    func manager(_ controller: HeadPhotoManager, headPhoto: UIImage){
+
+    }
+
+
+    let personManager = PersonManager()
+    let headPhotoManager = HeadPhotoManager()
+
+
     @IBAction func goBackFuncList(_ sender: Any) {
 
          dismiss(animated: true, completion: nil)
         
     }
 
-    let uid = Auth.auth().currentUser?.uid
+//    let uid = Auth.auth().currentUser?.uid
 
     var teams = ["請選擇隊伍", "急凍鳥隊", "閃電鳥隊", "火焰鳥隊"]
     let gymLevelChoose = UIPickerView()
@@ -43,120 +65,9 @@ class PersonalInfoViewController: UIViewController {
     @IBAction func saveUserData(_ sender: Any) {
 
         //儲存textfield所填資料到firebase
-        if let team = teamSelect.text {
+        self.personManager.setValuePersonItem(teamSelect: teamSelect.text!, levelSelect: levelSelect.text!, gymLevelSelect: gymLevelSelect.text!)
 
-            let dataBaseRef = Database.database().reference().child("users").child(uid!).child("playerTeam")
-
-            dataBaseRef.setValue(team, withCompletionBlock: { (error, data) in
-
-                if error != nil {
-
-                    print("Database Error: \(error!.localizedDescription)")
-                }
-                else {
-                    print("team has saved")
-                }
-            }
-            )
-        }
-
-
-        if let pLevel = levelSelect.text {
-
-            let dataBaseRef = Database.database().reference().child("users").child(uid!).child("playerLevel")
-
-            dataBaseRef.setValue(pLevel, withCompletionBlock: { (error, data) in
-
-                if error != nil {
-
-                    print("Database Error: \(error!.localizedDescription)")
-                }
-                else {
-                    print("playerLevel has saved")
-                }
-            }
-            )
-        }
-
-
-        if let gLevel = gymLevelSelect.text {
-
-            let dataBaseRef = Database.database().reference().child("users").child(uid!).child("gymLevel")
-
-            dataBaseRef.setValue(gLevel, withCompletionBlock: { (error, data) in
-
-                if error != nil {
-
-                    print("Database Error: \(error!.localizedDescription)")
-                }
-                else {
-                    print("challengeLevel has saved")
-                }
-            }
-            )
-        }
-
-        //儲存相簿選擇的照片到fireBase
-        // 當selectedPhoto有東西時，將照片上傳
-        //判定如果image 為預設原圖不要上傳  icons8-Lion Head Filled-50
-        if headPhoto.image != #imageLiteral(resourceName: "icons8-Lion Head Filled-50") {
-
-
-        if let selectedPhoto = headPhoto.image {
-
-
-            let uniqueString = NSUUID().uuidString
-            // 設定storage 儲存位置,將圖片上傳
-            let storageRef = Storage.storage().reference().child("userPhoto").child(uid!).child("userHead").child("\(uniqueString).png")
-            //接收回傳的資料
-
-
-
-
-            if let uploadData = UIImagePNGRepresentation(selectedPhoto) {
-
-                storageRef.putData(uploadData, metadata: nil, completion: { (data, error) in
-
-                    // 若發生錯誤
-                    if error != nil {
-                        print(error!.localizedDescription)
-                        return
-                    }
-
-                    // 接收回傳的圖片網址位置
-                    if let uploadImageUrl = data?.downloadURL()?.absoluteString {
-
-                        print ("photo url: \(uploadImageUrl)")
-
-                        // 儲存網址到dataBase上
-                        let dataBaseRef = Database.database().reference().child("users").child(self.uid!).child("headPhoto")
-
-                        dataBaseRef.setValue(uploadImageUrl, withCompletionBlock: { (error, data) in
-
-                            if error != nil {
-
-                                print("Database Error: \(error!.localizedDescription)")
-                            }
-                            else {
-                                
-                                print("picture has saved")
-                            }
-
-                        }
-                        )}
-                }
-                )}
-
-           print("didn't pick picture")
-
-            }
-
-
-        } else {
-            print("It is a origin photo")
-        }
-
-
+        self.headPhotoManager.setHeadPhoto(headPhoto: headPhoto.image)
 
     }
 
@@ -228,91 +139,9 @@ class PersonalInfoViewController: UIViewController {
         gymLevelChoose.delegate = self
         gymLevelSelect.inputView = gymLevelChoose
 
+        personManager.delegate = self
+        headPhotoManager.delegate = self
 
-
-        //如果用戶已存過用戶資料，下載fireBase上的用戶資料，填入textfield
-        let reference = Database.database().reference().child("users").child(uid!)
-
-
-
-        // nickName 註冊時填入，註冊完成後不可改
-        reference.child("nickName").observe(.value, with: { (snapshot) in
-
-            if let uploadNickName = snapshot.value as? String {
-
-                self.nickName.text = uploadNickName
-                print(uploadNickName, "🔵")
-            }
-        })
-
-
-        reference.child("playerLevel").observe(.value, with: {(snapshot) in
-
-            if let uploadPlayerLevel = snapshot.value as? String {
-
-                self.levelSelect.text = uploadPlayerLevel
-                print(uploadPlayerLevel, "🔴")
-            }
-        })
-
-        reference.child("playerTeam").observe(.value, with: {(snapshot) in
-
-            if let uploadPlayerTeam = snapshot.value as? String {
-
-                self.teamSelect.text = uploadPlayerTeam
-                print(uploadPlayerTeam, "⚪️")
-
-            }
-        })
-
-        reference.child("gymLevel").observe(.value, with: {(snapshot) in
-
-            if let uploadGymLevel = snapshot.value as? String {
-
-                self.gymLevelSelect.text = uploadGymLevel
-            }
-        })
-
-        //如果用戶已存過用戶照片，下載fireBase上的用戶照片的網址
-        reference.child("headPhoto").observe(.value, with: { [weak self] (snapshot) in
-
-print("🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵")
-            print(snapshot)
-print("🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴")
-
-
-            if let uploaPhoto = snapshot.value as? String {
-
-print("⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️")
-                //將照片網址解開，存入圖片放在imageView上
-
-                if let imageUrl = URL(string: uploaPhoto) {
-
-                    URLSession.shared.dataTask(with: imageUrl, completionHandler: { (data, response, error) in
-
-                        if error != nil {
-
-                            print("Download Image Task Fail: \(error!.localizedDescription)")
-
-                        }
-
-
-                        else if let imageData = data {
-                            DispatchQueue.main.async {
-
-                                self?.headPhoto.image = UIImage(data: imageData)
-                                self?.headPhoto.contentMode = UIViewContentMode.scaleAspectFit
-
-                            }
-
-                        }
-
-                    }).resume()
-
-                }
-            }
-
-        })
 
     }
 
