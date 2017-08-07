@@ -39,6 +39,8 @@ class DiscussionViewController: UIViewController, DiscussionDelegate {
     //設定新變數為了從GroupListTabaleView傳值過來
     var gymLevelName = ""
     var bossNameName = ""
+
+    //需要傳入這場團戰的childId才能找到正確的留言位置
     var childIdName = ""
     var ownerIdName = ""
 
@@ -49,7 +51,7 @@ class DiscussionViewController: UIViewController, DiscussionDelegate {
 
     @IBAction func sendComment(_ sender: Any) {
 
-      discussionManager.setGroupItem(writeComment: writeComment.text)
+      discussionManager.setGroupItem(writeComment: writeComment.text, childId: childIdName)
 
 
     }
@@ -60,7 +62,8 @@ class DiscussionViewController: UIViewController, DiscussionDelegate {
         gymLevel.text = gymLevelName
         bossName.text = bossNameName
         discussionManager.delegate = self
-        discussionManager.getGroupItem()
+        
+        discussionManager.getGroupItem(childId: childIdName)
 
 
         

@@ -20,16 +20,16 @@ protocol DiscussionDelegate: class {
 class DiscussionManager {
 
     var delegate: DiscussionDelegate? = nil
-    let uid = Auth.auth().currentUser?.uid
+   // let uid = Auth.auth().currentUser?.uid
 
-    func setGroupItem(writeComment: String){
+    func setGroupItem(writeComment: String, childId: String){
 
         if writeComment == "" {
             return
         }
 
         let reference : DatabaseReference! =
-            Database.database().reference().child("groupComment").child(uid!)
+            Database.database().reference().child("groupComment").child(childId)
 
         let childRef = reference.childByAutoId()
 
@@ -37,7 +37,7 @@ class DiscussionManager {
 
         //   discussion["ownerId"] = ownerId as AnyObject
         //   discussion["participantEmail"] = Auth.auth().currentUser?.email as AnyObject
-        discussion["childId"] = uid as AnyObject
+        discussion["childId"] = childId as AnyObject
         discussion["participantId"] = Auth.auth().currentUser?.uid as AnyObject
         discussion["participantComment"] = writeComment as AnyObject
 
@@ -58,12 +58,12 @@ class DiscussionManager {
 
     }
 
-    func getGroupItem(){
+    func getGroupItem(childId: String){
 
         //載入即時更新的comment
         let reference = Database.database().reference()
 
-        reference.child("groupComment").child(uid!).observe(.value , with: {(snapshot) in
+        reference.child("groupComment").child(childId).observe(.value , with: {(snapshot) in
 
             var getItem = [DiscussionItem]()
 
