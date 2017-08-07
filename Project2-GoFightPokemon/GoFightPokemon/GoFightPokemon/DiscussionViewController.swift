@@ -63,39 +63,6 @@ class DiscussionViewController: UIViewController, DiscussionDelegate {
         discussionManager.getGroupItem()
 
 
-        //取player個人資料
-
-/////////
-
-//        Database.database().reference().child("users").observe(.value, with: {(snapshot) in
-//
-//            print(snapshot)
-//
-//        if snapshot.childrenCount > 0 {
-//
-//            var datalist: [PersonItem] = [PersonItem]()
-//
-//
-//            for item in snapshot.children {
-//                    let data = PersonItem(snapshot: item as! DataSnapshot)
-//                    datalist.append(data)
-//
-//
-//                    print(datalist)
-//                    self.personItem = datalist
-//
-//                self.tableView.reloadData()
-//                
-//
-//                    
-//                }
-//
-//            }
-//            
-//        })
-
-//////////
-
         
 
 
@@ -120,11 +87,10 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DiscussionCell", for: indexPath) as! DiscussionTableViewCell
 
-        cell.putComment.text = getItem[indexPath.row].participantComment
 
-//        cell.playerNickName.text =  personItem[indexPath.row].nickName
-//        cell.playerLevel.text = personItem[indexPath.row].playerLevel
-//        cell.playerTeam.text = personItem[indexPath.row].playerTeam
+
+
+        cell.putComment.text = getItem[indexPath.row].participantComment
 
 
 

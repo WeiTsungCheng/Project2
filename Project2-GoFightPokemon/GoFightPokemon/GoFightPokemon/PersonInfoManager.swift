@@ -21,18 +21,18 @@ protocol PersonDelegate: class {
 
 class PersonManager {
 
-    let uid = Auth.auth().currentUser?.uid
+   // let uid = Auth.auth().currentUser?.uid
     var delegate: PersonDelegate? = nil
 
     func setPersonItem(nickName: String, playerTeam: String, playerLevel: String, gymLevel: String, headPhoto: String, userId: String,  userEmail: String) {
 
-        let reference: DatabaseReference! = Database.database().reference().child("users").child(uid!)
+        let reference = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!)
 
         var person : [String : AnyObject] = [String : AnyObject]()
 
-        person["userId"] = Auth.auth().currentUser?.uid as AnyObject
+        person["userId"] = userId as AnyObject
 
-        person["userEmail"] = Auth.auth().currentUser?.email as AnyObject
+        person["userEmail"] = userEmail as AnyObject
 
         person["nickName"] = nickName as AnyObject
 
@@ -41,6 +41,8 @@ class PersonManager {
         person["playerLevel"] = playerLevel as AnyObject
 
         person["playerTeam"] = playerTeam as AnyObject
+
+        person["gymLevel"] = gymLevel as AnyObject
 
         reference.updateChildValues(person) { (err, ref) in
 
@@ -53,9 +55,11 @@ class PersonManager {
         }
     }
 
+
+
     func setValuePersonItem(teamSelect: String, levelSelect: String, gymLevelSelect: String ){
 
-        let dataBaseRef = Database.database().reference().child("users").child(uid!)
+        let dataBaseRef = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!)
 
 
         dataBaseRef.child("playerTeam").setValue(teamSelect, withCompletionBlock: { (error, data) in
@@ -103,7 +107,7 @@ class PersonManager {
 
     func getPersonItem() {
 
-       Database.database().reference().child("users").child(uid!).observe(.value, with: {(snapshot) in
+       Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).observe(.value, with: {(snapshot) in
 
         print("🏧")
         print(snapshot)
