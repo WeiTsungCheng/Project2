@@ -37,7 +37,6 @@
 		C5F9854A1F31FF620022295A /* DiscussionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F985491F31FF620022295A /* DiscussionViewController.swift */; };
 		C5F9854C1F3203420022295A /* DiscussionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F9854B1F3203420022295A /* DiscussionTableViewCell.swift */; };
 		C5FB6E1A1F35961E00248D0F /* OwnerDiscussionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FB6E191F35961E00248D0F /* OwnerDiscussionTableViewCell.swift */; };
-		C5FB6E221F35A1C400248D0F /* PersonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FB6E211F35A1C400248D0F /* PersonItem.swift */; };
 		C5FB6E241F35A2B900248D0F /* DiscussionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FB6E231F35A2B900248D0F /* DiscussionItem.swift */; };
 		C5FB6E281F35C87A00248D0F /* GroupSetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FB6E271F35C87A00248D0F /* GroupSetManager.swift */; };
 /* End PBXBuildFile section */
@@ -77,7 +76,6 @@
 		C5F985491F31FF620022295A /* DiscussionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscussionViewController.swift; path = GoFightPokemon/DiscussionViewController.swift; sourceTree = "<group>"; };
 		C5F9854B1F3203420022295A /* DiscussionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscussionTableViewCell.swift; path = GoFightPokemon/DiscussionTableViewCell.swift; sourceTree = "<group>"; };
 		C5FB6E191F35961E00248D0F /* OwnerDiscussionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerDiscussionTableViewCell.swift; sourceTree = "<group>"; };
-		C5FB6E211F35A1C400248D0F /* PersonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonItem.swift; sourceTree = "<group>"; };
 		C5FB6E231F35A2B900248D0F /* DiscussionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscussionItem.swift; sourceTree = "<group>"; };
 		C5FB6E271F35C87A00248D0F /* GroupSetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupSetManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -210,7 +208,6 @@
 			isa = PBXGroup;
 			children = (
 				C5F985491F31FF620022295A /* DiscussionViewController.swift */,
-				C5FB6E211F35A1C400248D0F /* PersonItem.swift */,
 				C5FB6E231F35A2B900248D0F /* DiscussionItem.swift */,
 				C5F9854B1F3203420022295A /* DiscussionTableViewCell.swift */,
 				C5FB6E191F35961E00248D0F /* OwnerDiscussionTableViewCell.swift */,
@@ -359,7 +356,6 @@
 				C50034681F286A0B00DC51A8 /* SecretNumberViewController.swift in Sources */,
 				C5F985441F31A9C50022295A /* GroupListTableViewController.swift in Sources */,
 				C500346F1F2889E700DC51A8 /* HomeViewController.swift in Sources */,
-				C5FB6E221F35A1C400248D0F /* PersonItem.swift in Sources */,
 				C5F9854A1F31FF620022295A /* DiscussionViewController.swift in Sources */,
 				C503DF901F3725C500FF7A97 /* HeadPhotoManager.swift in Sources */,
 				C503DF941F3749D700FF7A97 /* DiscussionManager.swift in Sources */,

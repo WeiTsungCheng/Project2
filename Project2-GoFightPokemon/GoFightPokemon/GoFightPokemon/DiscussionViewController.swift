@@ -11,7 +11,21 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class DiscussionViewController: UIViewController, DiscussionDelegate {
+class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDelegate {
+
+    func manager(_ controller: PersonManager, success: Bool){
+
+    }
+    func manager(_ controller: PersonManager){
+
+    }
+    func manager(_ controller: PersonManager, userItem: UserItem){
+
+       getUserItem = userItem
+
+    self.tableView.reloadData()
+
+    }
 
 
     func manager(_ controller: DiscussionManager, success: Bool){
@@ -19,12 +33,18 @@ class DiscussionViewController: UIViewController, DiscussionDelegate {
     }
     func manager(_ controller: DiscussionManager, groupItem: [DiscussionItem]){
 
+
        getItem = groupItem
 
-        self.tableView.reloadData()
+
+       self.tableView.reloadData()
 
     }
+
     let discussionManager = DiscussionManager()
+
+    let personManager = PersonManager()
+
 
     let uid = Auth.auth().currentUser?.uid
 
@@ -46,12 +66,16 @@ class DiscussionViewController: UIViewController, DiscussionDelegate {
 
     var reference: DatabaseReference?
     var getItem: [DiscussionItem] = []
-    var personItem : [PersonItem] = []
+
+    //設定一個字典裝，uid為key,value為UserItem
+    var getPersonInfo: [String: UserItem] = [:]
+    var getUserItem: UserItem?
+
 
 
     @IBAction func sendComment(_ sender: Any) {
 
-      discussionManager.setGroupItem(writeComment: writeComment.text, childId: childIdName)
+      discussionManager.setDiscussionItem(writeComment: writeComment.text, childId: childIdName)
 
 
     }
@@ -63,7 +87,10 @@ class DiscussionViewController: UIViewController, DiscussionDelegate {
         bossName.text = bossNameName
         discussionManager.delegate = self
         
-        discussionManager.getGroupItem(childId: childIdName)
+        discussionManager.getDiscussionItem(childId: childIdName)
+
+        personManager.delegate = self
+
 
 
         
@@ -88,21 +115,47 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "DiscussionCell", for: indexPath) as! DiscussionTableViewCell
 
 
+        if getPersonInfo[getItem[indexPath.row].participantId] == nil {
 
+            personManager.getOtherPersonItem(userId: getItem[indexPath.row].participantId)
 
-        cell.putComment.text = getItem[indexPath.row].participantComment
+            getPersonInfo[getItem[indexPath.row].participantId] = getUserItem
 
+            print("⭕️")
 
+        } else {
 
-        return cell
+            cell.putComment.text = getItem[indexPath.row].participantComment
+
+            cell.playerNickName.text = getUserItem?.nickName
+
+            print("❌")
+        }
+
+            return cell
+
     }
 
-
-
 }
+
+//        if userDictionary[getItem[indexPath.row].participantId] == nil{
+//
+//            manager.抓資料{
+//
+//            }
+//
+//
+//        }  else{
+//
+//            show on cell
+//
+//        }
+
+
 
 
 

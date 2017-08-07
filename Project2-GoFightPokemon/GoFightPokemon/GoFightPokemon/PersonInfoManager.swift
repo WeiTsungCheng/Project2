@@ -121,6 +121,16 @@ class PersonManager {
 
     }
 
+    func getOtherPersonItem(userId: String) {
+
+        Database.database().reference().child("users").child(userId).observe(.value, with: {(snapshot) in
+
+            let data = UserItem(snapshot: snapshot)
+            self.delegate?.manager(self, userItem: data)
+
+        })
+
+    }
 
 
 }

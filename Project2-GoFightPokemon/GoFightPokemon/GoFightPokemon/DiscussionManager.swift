@@ -21,7 +21,7 @@ class DiscussionManager {
 
     var delegate: DiscussionDelegate? = nil
 
-    func setGroupItem(writeComment: String, childId: String){
+    func setDiscussionItem(writeComment: String, childId: String){
 
         if writeComment == "" {
             return
@@ -57,7 +57,7 @@ class DiscussionManager {
 
     }
 
-    func getGroupItem(childId: String){
+    func getDiscussionItem(childId: String){
 
         //載入即時更新的comment
         let reference = Database.database().reference()
