@@ -14,6 +14,7 @@ struct DiscussionItem {
     var childId: String
     var participantId: String
     var participantComment: String
+    
 
     init(snapshot: DataSnapshot) {
 

@@ -134,7 +134,8 @@ class HeadPhotoManager {
 
 
 
-func getHeadPhoto(){
+
+    func getHeadPhoto(){
     //如果用戶已存過用戶照片，下載fireBase上的用戶照片的網址
     Database.database().reference().child("users").child(uid!).child("headPhoto").observe(.value, with: { (snapshot) in
 
@@ -173,5 +174,53 @@ func getHeadPhoto(){
         
     })
 
-}
+
+    }
+
+    func getOtherPersonHeadPhoto(userId: String) {
+
+        Database.database().reference().child("users").child(userId).child("headPhoto").observe(.value, with: { (snapshot) in
+
+            print(snapshot)
+            var headPhoto: UIImage?
+
+            if let uploaPhoto = snapshot.value as? String {
+
+                //將照片網址解開，存入圖片放在imageView上
+
+                if let imageUrl = URL(string: uploaPhoto) {
+
+                    URLSession.shared.dataTask(with: imageUrl, completionHandler: { (data, response, error) in
+
+                        if error != nil {
+
+                            print("Download Image Task Fail: \(error!.localizedDescription)")
+
+                        }
+
+
+                        else if let imageData = data {
+                            DispatchQueue.main.async {
+
+                                headPhoto = UIImage(data: imageData)
+                                self.delegate?.manager(self, headPhoto: headPhoto!)
+                                
+                            }
+                            
+                        }
+                        
+                    }).resume()
+                    
+                }
+            }
+            
+        })
+
+
+
+
+    }
+
+
+
 }

@@ -484,6 +484,7 @@
                                         <connections>
                                             <outlet property="playerLevel" destination="XRL-Zn-WaJ" id="2MP-wn-iVM"/>
                                             <outlet property="playerNickName" destination="c39-oG-631" id="buc-Us-YmO"/>
+                                            <outlet property="playerPhoto" destination="r3b-0e-PaS" id="yYj-yS-Py6"/>
                                             <outlet property="playerTeam" destination="eb8-HE-vww" id="OLo-YV-5FH"/>
                                             <outlet property="putComment" destination="PWn-wE-G7h" id="mdX-Eb-FLS"/>
                                         </connections>
