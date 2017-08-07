@@ -40,7 +40,7 @@ class DiscussionViewController: UIViewController, DiscussionDelegate {
     var gymLevelName = ""
     var bossNameName = ""
 
-    //需要傳入這場團戰的childId才能找到正確的留言位置
+    //需要傳入這場團戰的childId才能找到正確的團戰位置
     var childIdName = ""
     var ownerIdName = ""
 

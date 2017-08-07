@@ -27,7 +27,9 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
     @IBOutlet weak var bossName: UITextField!
 
-    
+    var gymLavels = ["請選擇難度", "簡單", "普通", "困難", "極困難", "傳說"]
+    let gymLevelChoose = UIPickerView()
+
 
     @IBAction func groupSet(_ sender: UIButton) {
 
@@ -45,6 +47,9 @@ class GroupSetViewController: UIViewController, GroupDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        gymLevelChoose.delegate = self
+        gymLevel.inputView = gymLevelChoose
+
         setGroupManager.delegate = self
 
 
@@ -57,3 +62,48 @@ class GroupSetViewController: UIViewController, GroupDelegate {
     
 
 }
+
+
+extension GroupSetViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+
+        return gymLavels.count
+
+    }
+
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+
+        let titleRow = gymLavels[row]
+
+        return titleRow
+
+    }
+
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+
+
+        if row == 0 {
+
+            gymLevel.text = ""
+
+        }
+
+        else {
+
+            gymLevel.text = gymLavels[row]
+        }
+                
+
+    }
+
+
+
+}
+

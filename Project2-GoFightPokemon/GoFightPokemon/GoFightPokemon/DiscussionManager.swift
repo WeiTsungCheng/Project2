@@ -20,7 +20,6 @@ protocol DiscussionDelegate: class {
 class DiscussionManager {
 
     var delegate: DiscussionDelegate? = nil
-   // let uid = Auth.auth().currentUser?.uid
 
     func setGroupItem(writeComment: String, childId: String){
 
@@ -90,7 +89,6 @@ class DiscussionManager {
                 getItem = datalist
                 self.delegate?.manager(self, groupItem: getItem)
 
-    //            self.tableView.reloadData()
             }
         })
 
