@@ -40,7 +40,7 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
         
     }
 
-//    let uid = Auth.auth().currentUser?.uid
+
 
     var teams = ["請選擇隊伍", "急凍鳥隊", "閃電鳥隊", "火焰鳥隊"]
     let gymLevelChoose = UIPickerView()

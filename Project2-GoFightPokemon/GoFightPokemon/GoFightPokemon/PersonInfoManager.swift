@@ -22,7 +22,7 @@ protocol PersonDelegate: class {
 class PersonManager {
 
    // let uid = Auth.auth().currentUser?.uid
-    var delegate: PersonDelegate? = nil
+    var delegate: PersonDelegate?
 
     func setPersonItem(nickName: String, playerTeam: String, playerLevel: String, gymLevel: String, headPhoto: String, userId: String,  userEmail: String) {
 
@@ -121,6 +121,16 @@ class PersonManager {
 
     }
 
+    func getOtherPersonItem(userId: String) {
+
+        Database.database().reference().child("users").child(userId).observe(.value, with: {(snapshot) in
+
+            let data = UserItem(snapshot: snapshot)
+            self.delegate?.manager(self, userItem: data)
+
+        })
+
+    }
 
 
 }

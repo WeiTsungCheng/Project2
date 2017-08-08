@@ -11,7 +11,32 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class DiscussionViewController: UIViewController, DiscussionDelegate {
+
+var getURLImageDic : [String : UIImage] = [:]
+
+class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDelegate, URLImageDelegate {
+
+
+    func manager(_ controller: URLImageManager, imageIndexPath: IndexPath){
+
+        self.tableView.reloadRows(at: [imageIndexPath], with: .fade)
+
+    }
+    func manager(_ controller: PersonManager, success: Bool){
+
+    }
+    func manager(_ controller: PersonManager){
+
+    }
+    func manager(_ controller: PersonManager, userItem: UserItem){
+
+        //用updateValue找到key
+        getPersonInfoDic.updateValue(userItem, forKey: userItem.userId)
+
+
+        self.tableView.reloadData()
+
+    }
 
 
     func manager(_ controller: DiscussionManager, success: Bool){
@@ -21,10 +46,16 @@ class DiscussionViewController: UIViewController, DiscussionDelegate {
 
        getItem = groupItem
 
-        self.tableView.reloadData()
+       self.tableView.reloadData()
 
     }
+
     let discussionManager = DiscussionManager()
+
+    let personManager = PersonManager()
+
+    let urlImageManager = URLImageManager()
+
 
     let uid = Auth.auth().currentUser?.uid
 
@@ -36,39 +67,40 @@ class DiscussionViewController: UIViewController, DiscussionDelegate {
     @IBOutlet weak var writeComment: UITextView!
 
 
+
     //設定新變數為了從GroupListTabaleView傳值過來
     var gymLevelName = ""
     var bossNameName = ""
 
-    //需要傳入這場團戰的childId才能找到正確的留言位置
+    //需要傳入這場團戰的childId才能找到正確的團戰位置
     var childIdName = ""
     var ownerIdName = ""
 
     var reference: DatabaseReference?
     var getItem: [DiscussionItem] = []
-    var personItem : [PersonItem] = []
 
+    //設定一個字典裝，uid為key,value為UserItem
+    var getPersonInfoDic: [String: UserItem] = [:]
 
     @IBAction func sendComment(_ sender: Any) {
 
-      discussionManager.setGroupItem(writeComment: writeComment.text, childId: childIdName)
+      discussionManager.setDiscussionItem(writeComment: writeComment.text, childId: childIdName)
 
 
     }
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
         //從GroupListTableViewCell傳值過來
         gymLevel.text = gymLevelName
         bossName.text = bossNameName
         discussionManager.delegate = self
         
-        discussionManager.getGroupItem(childId: childIdName)
+        discussionManager.getDiscussionItem(childId: childIdName)
+        personManager.delegate = self
 
-
-        
-
-
+        urlImageManager.delegate = self
 
 
     }
@@ -88,27 +120,78 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DiscussionCell", for: indexPath) as! DiscussionTableViewCell
+
+
+        switch getItem[indexPath.row].participantId  {
+
+        case ownerIdName:
+
+
+        let ownerCell = tableView.dequeueReusableCell(withIdentifier: "OwnerDiscussionCell", for: indexPath) as! OwnerDiscussionTableViewCell
+
+
+        if getPersonInfoDic[getItem[indexPath.row].participantId] == nil {
+
+            personManager.getOtherPersonItem(userId: getItem[indexPath.row].participantId)
+
+        } else {
+
+            ownerCell.putComment.text = getItem[indexPath.row].participantComment
+
+            ownerCell.ownerNickName.text = getPersonInfoDic[getItem[indexPath.row].participantId]?.nickName
+
+            ownerCell.ownerLevel.text = getPersonInfoDic[getItem[indexPath.row].participantId]?.playerLevel
+
+            ownerCell.ownerTeam.text = getPersonInfoDic[getItem[indexPath.row].participantId]?.playerTeam
+
+            if getURLImageDic[(getPersonInfoDic[getItem[indexPath.row].participantId]?.headPhoto)!] == nil {
+
+                urlImageManager.getURLImage(imageURL: (getPersonInfoDic[getItem[indexPath.row].participantId]?.headPhoto)!, indexPath: indexPath)
+
+            } else {
+
+                ownerCell.ownerPhoto.image = getURLImageDic[(getPersonInfoDic[getItem[indexPath.row].participantId]?.headPhoto)!]
+            }
+
+
+        }
+
+        return ownerCell
 
 
 
+        default:
 
-        cell.putComment.text = getItem[indexPath.row].participantComment
+            let playerCell = tableView.dequeueReusableCell(withIdentifier: "PlayerDiscussionCell", for: indexPath) as! DiscussionTableViewCell
 
+            if getPersonInfoDic[getItem[indexPath.row].participantId] == nil {
 
+                personManager.getOtherPersonItem(userId: getItem[indexPath.row].participantId)
 
-        return cell
+            } else {
+
+                playerCell.putComment.text = getItem[indexPath.row].participantComment
+
+                playerCell.playerNickName.text = getPersonInfoDic[getItem[indexPath.row].participantId]?.nickName
+
+                playerCell.playerLevel.text = getPersonInfoDic[getItem[indexPath.row].participantId]?.playerLevel
+
+                playerCell.playerTeam.text = getPersonInfoDic[getItem[indexPath.row].participantId]?.playerTeam
+
+                if getURLImageDic[(getPersonInfoDic[getItem[indexPath.row].participantId]?.headPhoto)!] == nil {
+
+                    urlImageManager.getURLImage(imageURL: (getPersonInfoDic[getItem[indexPath.row].participantId]?.headPhoto)!, indexPath: indexPath)
+
+                } else {
+                    
+                   playerCell.playerPhoto.image = getURLImageDic[(getPersonInfoDic[getItem[indexPath.row].participantId]?.headPhoto)!]
+                }
+
+                
+            }
+
+            return playerCell
+
+        }
     }
-
-
-
 }
-
-
-
-
-
-
-
-
-

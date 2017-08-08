@@ -21,6 +21,8 @@ struct UserItem {
 
     var userId: String
     var userEmail: String
+    
+//    var indexPath: IndexPath?
 
     init(snapshot: DataSnapshot) {
 
