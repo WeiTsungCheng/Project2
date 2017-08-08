@@ -440,7 +440,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DiscussionCell" rowHeight="68" id="YfT-kL-1mA" customClass="DiscussionTableViewCell" customModule="GoFightPokemon" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayerDiscussionCell" rowHeight="68" id="YfT-kL-1mA" customClass="DiscussionTableViewCell" customModule="GoFightPokemon" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YfT-kL-1mA" id="hQC-yn-t8U">
@@ -533,7 +533,9 @@
                                         <connections>
                                             <outlet property="ownerLevel" destination="wCb-7i-IG7" id="4xZ-y3-0He"/>
                                             <outlet property="ownerNickName" destination="N6t-hi-iTd" id="ExN-Lk-SR3"/>
+                                            <outlet property="ownerPhoto" destination="gpp-Ng-5j4" id="Jmf-cv-YrO"/>
                                             <outlet property="ownerTeam" destination="KrV-4Y-aT7" id="RN9-ZL-naw"/>
+                                            <outlet property="putComment" destination="etG-iq-2hw" id="o9k-xW-TbU"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
