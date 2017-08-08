@@ -121,14 +121,14 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let playerCell = tableView.dequeueReusableCell(withIdentifier: "PlayerDiscussionCell", for: indexPath) as! DiscussionTableViewCell
-
-         let ownerCell = tableView.dequeueReusableCell(withIdentifier: "OwnerDiscussionCell", for: indexPath) as! OwnerDiscussionTableViewCell
-
 
         switch getItem[indexPath.row].participantId  {
 
         case ownerIdName:
+
+
+        let ownerCell = tableView.dequeueReusableCell(withIdentifier: "OwnerDiscussionCell", for: indexPath) as! OwnerDiscussionTableViewCell
+
 
         if getPersonInfoDic[getItem[indexPath.row].participantId] == nil {
 
@@ -161,6 +161,8 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
 
 
         default:
+
+            let playerCell = tableView.dequeueReusableCell(withIdentifier: "PlayerDiscussionCell", for: indexPath) as! DiscussionTableViewCell
 
             if getPersonInfoDic[getItem[indexPath.row].participantId] == nil {
 
