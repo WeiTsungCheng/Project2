@@ -34,6 +34,9 @@ class GroupListTableViewController: UITableViewController, GroupDelegate {
         dismiss(animated: true, completion: nil)
     }
 
+    let personManager = PersonManager()
+
+
 
 
 
@@ -73,6 +76,10 @@ class GroupListTableViewController: UITableViewController, GroupDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath) as! GroupListTableViewCell
         cell.gymLevel.text = getItems[indexPath.row].gymLevel
         cell.bossName.text = getItems[indexPath.row].bossName
+        cell.setTime.text = getItems[indexPath.row].setTime
+
+
+
 
 
         return cell
@@ -80,7 +87,7 @@ class GroupListTableViewController: UITableViewController, GroupDelegate {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
-        if segue.identifier == "goToGroupReview" {
+        if segue.identifier == "goToGroupDiscussion" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let destinationController = segue.destination as! DiscussionViewController
 

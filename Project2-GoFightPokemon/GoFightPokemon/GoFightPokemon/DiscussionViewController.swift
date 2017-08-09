@@ -71,7 +71,6 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
     //設定新變數為了從GroupListTabaleView傳值過來
     var gymLevelName = ""
     var bossNameName = ""
-
     //需要傳入這場團戰的childId才能找到正確的團戰位置
     var childIdName = ""
     var ownerIdName = ""
@@ -95,9 +94,11 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
         //從GroupListTableViewCell傳值過來
         gymLevel.text = gymLevelName
         bossName.text = bossNameName
+
+
         discussionManager.delegate = self
-        
         discussionManager.getDiscussionItem(childId: childIdName)
+
         personManager.delegate = self
 
         urlImageManager.delegate = self

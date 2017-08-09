@@ -13,6 +13,10 @@ import FirebaseDatabase
 
 class GroupSetViewController: UIViewController, GroupDelegate {
 
+
+
+
+
     func manager(_ controller: GroupManager, success: Bool){
 
     }
@@ -33,14 +37,23 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
     @IBAction func groupSet(_ sender: UIButton) {
 
-        setGroupManager.setGroupItem(gymLevel: gymLevel.text!, bossName: bossName.text!)
+        setGroupManager.setGroupItem(gymLevel: gymLevel.text!, bossName: bossName.text!, setTime: setTime.text!)
 
 
         self.navigationController?.popViewController(animated: true)
 
+    }
 
 
+    @IBOutlet weak var setTime: UITextField!
 
+
+    func datePickerValueChanged(sender: UIDatePicker) {
+
+        let formatter = DateFormatter()
+        formatter.dateStyle = DateFormatter.Style.short
+        formatter.timeStyle = DateFormatter.Style.short
+        setTime.text = formatter.string(from: sender.date)
 
     }
 
@@ -51,6 +64,14 @@ class GroupSetViewController: UIViewController, GroupDelegate {
         gymLevel.inputView = gymLevelChoose
 
         setGroupManager.delegate = self
+
+        let gymTimePicker = UIDatePicker()
+        gymTimePicker.datePickerMode = UIDatePickerMode.dateAndTime
+        gymTimePicker.addTarget(self, action: #selector(self.datePickerValueChanged(sender:)), for: UIControlEvents.valueChanged)
+        setTime.inputView = gymTimePicker
+
+
+
 
 
     }
