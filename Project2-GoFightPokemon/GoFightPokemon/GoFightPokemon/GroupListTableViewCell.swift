@@ -14,6 +14,9 @@ class GroupListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var bossName: UILabel!
 
+    @IBOutlet weak var setTime: UILabel!
+
+    @IBOutlet weak var ownerNickName: UILabel!
 
 
 

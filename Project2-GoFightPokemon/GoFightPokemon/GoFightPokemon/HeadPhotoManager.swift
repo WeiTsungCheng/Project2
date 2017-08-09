@@ -132,6 +132,7 @@ class HeadPhotoManager {
 
     }
 
+    
 
 
 
@@ -176,6 +177,7 @@ class HeadPhotoManager {
 
 
     }
+    
 
     func getOtherPersonHeadPhoto(userId: String) {
 

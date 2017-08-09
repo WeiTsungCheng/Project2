@@ -33,7 +33,6 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
     let personManager = PersonManager()
     let headPhotoManager = HeadPhotoManager()
 
-
     @IBAction func goBackFuncList(_ sender: Any) {
 
          dismiss(animated: true, completion: nil)
@@ -42,12 +41,14 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
 
 
 
-    var teams = ["請選擇隊伍", "急凍鳥隊", "閃電鳥隊", "火焰鳥隊"]
+
     let gymLevelChoose = UIPickerView()
 
     var gymLavels = ["請選擇難度", "簡單", "普通", "困難", "極困難", "傳說" ]
+
     let teamChoose = UIPickerView()
 
+    var teams = ["請選擇隊伍", "急凍鳥隊", "閃電鳥隊", "火焰鳥隊"]
     
 
     @IBOutlet weak var teamSelect: UITextField!

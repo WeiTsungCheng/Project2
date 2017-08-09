@@ -23,7 +23,7 @@ class GroupManager {
 
     var delegate: GroupDelegate? = nil
 
-    func setGroupItem(gymLevel: String, bossName: String) {
+    func setGroupItem(gymLevel: String, bossName: String, setTime: String) {
 
 
         let reference: DatabaseReference! = Database.database().reference().child("groupFight")
@@ -40,7 +40,7 @@ class GroupManager {
 
         group["childId"] = childRef.key as AnyObject
 
-        group["setTime"] = "11:10 01/01/2018" as AnyObject
+        group["setTime"] = setTime as AnyObject
 
         group["gymLocation"] = "myHome" as AnyObject
 
