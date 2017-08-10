@@ -12,6 +12,8 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import IQKeyboardManagerSwift
+import GooglePlaces
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -62,7 +64,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         }
 
+        GMSServices.provideAPIKey("AIzaSyA4lClSORaEMt9a_acM4HvS6WtK3QkPs7c")
 
+        GMSPlacesClient.provideAPIKey("AIzaSyDOicPhgoalgN5h9b6WnpiIHVBEWx24VDc")
 
         // Override point for customization after application launch.
         return true
