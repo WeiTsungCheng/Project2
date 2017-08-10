@@ -235,7 +235,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lSE-y1-CUi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6408.8000000000002" y="-362.06896551724139"/>
+            <point key="canvasLocation" x="6551" y="299"/>
         </scene>
         <!--道館資訊-->
         <scene sceneID="Wz6-7U-4nb">
@@ -332,7 +332,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0vB-sr-B1P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9461.6000000000004" y="-362.06896551724139"/>
+            <point key="canvasLocation" x="9974" y="299"/>
         </scene>
         <!--團戰列表-->
         <scene sceneID="BY8-wc-ex1">
@@ -427,7 +427,7 @@
                                     <outlet property="bossName" destination="ybt-To-twb" id="GHZ-5z-jed"/>
                                     <outlet property="gymLevel" destination="SfN-cu-IFG" id="Qh6-jv-lAS"/>
                                     <outlet property="gymLocation" destination="PW7-a6-Iwd" id="Dcx-eE-uKF"/>
-                                    <outlet property="ownerNickName" destination="8P9-gE-BAW" id="K8x-mI-uP9"/>
+                                    <outlet property="ownerNickName" destination="8P9-gE-BAW" id="oPH-gM-fbk"/>
                                     <outlet property="setTime" destination="6eg-ov-Qbu" id="EWC-Pj-Cwq"/>
                                     <segue destination="V5v-Vl-BxM" kind="show" identifier="goToGroupDiscussion" id="GCQ-MC-hTR"/>
                                 </connections>
@@ -453,7 +453,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p0w-Mc-nGv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8493.6000000000004" y="-362.06896551724139"/>
+            <point key="canvasLocation" x="8897" y="299"/>
         </scene>
         <!--Discussion View Controller-->
         <scene sceneID="80l-dd-xsL">
@@ -682,7 +682,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FQG-Ai-z4l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8493.6000000000004" y="413.3433283358321"/>
+            <point key="canvasLocation" x="8897" y="1474"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="50l-av-0JB">
@@ -767,9 +767,10 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="O88-Wy-sav" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="個人資料" image="icons8-Lion Head-50" id="Ag2-ap-d8j"/>
                     <toolbarItems/>
+                    <value key="contentSizeForViewInPopover" type="size" width="375" height="667"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="WYe-BG-omf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WYe-BG-omf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -962,7 +963,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ybv-4N-6GW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7945" y="-1944"/>
+            <point key="canvasLocation" x="7797" y="-1945"/>
         </scene>
         <!--Title-->
         <scene sceneID="rgy-tf-Vot">
@@ -1082,7 +1083,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RkQ-QL-yGd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7348" y="-1235.5322338830586"/>
+            <point key="canvasLocation" x="7188" y="-1237"/>
         </scene>
         <!--Player Showcase View Controller-->
         <scene sceneID="Flz-ba-jWz">
@@ -1185,13 +1186,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uem-hi-VCX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8634" y="-1236"/>
+            <point key="canvasLocation" x="8350" y="-1238"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="fcI-vX-Qb4">
             <objects>
                 <tabBarController storyboardIdentifier="goHome" id="iC7-qk-Peb" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="4ld-KK-v8m"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="fSx-3J-aE8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1212,9 +1215,10 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1H1-P6-Z6J" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="揪團列表" image="icons8-Cylon Head New-40" id="a6i-Oy-Bvk"/>
                     <toolbarItems/>
+                    <value key="contentSizeForViewInPopover" type="size" width="375" height="667"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wpG-2Y-3IQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wpG-2Y-3IQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1225,14 +1229,16 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LQo-2j-nse" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5398" y="-362"/>
+            <point key="canvasLocation" x="5398" y="299"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9O6-ZU-AtG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wxr-Qr-SUH" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Ets-dg-ged">
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ets-dg-ged">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1243,14 +1249,16 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u96-b7-BLC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7500" y="-362"/>
+            <point key="canvasLocation" x="7797" y="299"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pSL-Yu-ld0">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wdq-TK-mgV" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="4lJ-GN-QrM">
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4lJ-GN-QrM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1261,7 +1269,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CKw-xL-kOf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6408.8000000000002" y="-1235.5322338830586"/>
+            <point key="canvasLocation" x="6011" y="-1237"/>
         </scene>
     </scenes>
     <resources>

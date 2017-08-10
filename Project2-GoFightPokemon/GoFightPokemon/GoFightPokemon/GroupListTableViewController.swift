@@ -11,6 +11,11 @@ import UIKit
 
 class GroupListTableViewController: UITableViewController, GroupDelegate, PersonDelegate {
 
+    let personManager = PersonManager()
+
+    var getUserItemDic: [String : UserItem] = [:]
+
+
 
     func manager(_ controller: PersonManager, success: Bool){
 
@@ -20,21 +25,13 @@ class GroupListTableViewController: UITableViewController, GroupDelegate, Person
     }
     func manager(_ controller: PersonManager, userItem: UserItem){
 
-        getUserItemDic?.updateValue(userItem, forKey: userItem.userId)
+        getUserItemDic.updateValue(userItem, forKey: userItem.userId)
 
         self.tableView.reloadData()
     }
 
 
 
-    var getUserItemDic: [String : UserItem]?
-
-
-
-
-    let personManager = PersonManager()
-
-    
 
 
     let groupsetManager = GroupManager()
@@ -58,12 +55,6 @@ class GroupListTableViewController: UITableViewController, GroupDelegate, Person
 
         dismiss(animated: true, completion: nil)
     }
-
-
-
-
-
-
 
 
     override func viewDidLoad() {
@@ -99,18 +90,18 @@ class GroupListTableViewController: UITableViewController, GroupDelegate, Person
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath) as! GroupListTableViewCell
+
         cell.gymLevel.text = getItems[indexPath.row].gymLevel
         cell.bossName.text = getItems[indexPath.row].bossName
         cell.setTime.text = getItems[indexPath.row].setTime
         cell.gymLocation.text = getItems[indexPath.row].gymLocation
 
-
-
-
-        if getUserItemDic?[getItems[indexPath.row].ownerId] == nil{
+        if getUserItemDic[getItems[indexPath.row].ownerId] == nil{
             personManager.getOtherPersonItem(userId: getItems[indexPath.row].ownerId) } else {
 
-        cell.ownerNickName.text = getUserItemDic?[getItems[indexPath.row].ownerId]?.nickName
+        cell.ownerNickName.text = getUserItemDic[getItems[indexPath.row].ownerId]?.nickName
+
+            print("🔆")
 
         }
 
