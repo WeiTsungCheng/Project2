@@ -57,13 +57,14 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
     let urlImageManager = URLImageManager()
 
 
-    let uid = Auth.auth().currentUser?.uid
+    //let uid = Auth.auth().currentUser?.uid
 
     @IBOutlet weak var tableView: UITableView!
 
     @IBOutlet weak var gymLevel: UILabel!
     @IBOutlet weak var bossName: UILabel!
-
+    @IBOutlet weak var gymLocation: UILabel!
+    
     @IBOutlet weak var writeComment: UITextView!
 
 
@@ -71,9 +72,12 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
     //設定新變數為了從GroupListTabaleView傳值過來
     var gymLevelName = ""
     var bossNameName = ""
+   
     //需要傳入這場團戰的childId才能找到正確的團戰位置
     var childIdName = ""
     var ownerIdName = ""
+
+    var gymLocationName = ""
 
     var reference: DatabaseReference?
     var getItem: [DiscussionItem] = []
@@ -83,7 +87,9 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
 
     @IBAction func sendComment(_ sender: Any) {
 
-      discussionManager.setDiscussionItem(writeComment: writeComment.text, childId: childIdName)
+        discussionManager.setDiscussionItem(writeComment: writeComment.text, childId: childIdName)
+
+        writeComment.text = ""
 
 
     }
@@ -94,6 +100,7 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
         //從GroupListTableViewCell傳值過來
         gymLevel.text = gymLevelName
         bossName.text = bossNameName
+        gymLocation.text = gymLocationName
 
 
         discussionManager.delegate = self

@@ -11,10 +11,15 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
+import GoogleMaps
+import GooglePlaces
+
+
 class GroupSetViewController: UIViewController, GroupDelegate {
 
 
 
+  
 
 
     func manager(_ controller: GroupManager, success: Bool){
@@ -26,6 +31,7 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
     let setGroupManager = GroupManager()
 
+    @IBOutlet weak var gymLocation: UITextField!
 
     @IBOutlet weak var gymLevel: UITextField!
 
@@ -37,7 +43,7 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
     @IBAction func groupSet(_ sender: UIButton) {
 
-        setGroupManager.setGroupItem(gymLevel: gymLevel.text!, bossName: bossName.text!, setTime: setTime.text!)
+        setGroupManager.setGroupItem(gymLevel: gymLevel.text!, bossName: bossName.text!, setTime: setTime.text!, gymLocation: gymLocation.text!)
 
 
         self.navigationController?.popViewController(animated: true)
@@ -58,7 +64,7 @@ class GroupSetViewController: UIViewController, GroupDelegate {
     }
 
 
-
+    //建立地圖
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
     var resultView: UITextView?
@@ -72,10 +78,10 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
         let camera = GMSCameraPosition.camera(withLatitude: latitude!, longitude: longitude!, zoom: 16.0)
 
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        let mapView = GMSMapView.map(withFrame: CGRect(x: 16, y: 182, width: 343, height: 252), camera: camera)
         mapView.isMyLocationEnabled = true
 
-        view = mapView
+        view.addSubview(mapView)
 
         let gmsMarket = GMSMarker()
 
@@ -84,10 +90,12 @@ class GroupSetViewController: UIViewController, GroupDelegate {
         gmsMarket.map = mapView
         
         
+
+
+
+
+
     }
-
-
-
 
 
     override func viewDidLoad() {
@@ -103,6 +111,28 @@ class GroupSetViewController: UIViewController, GroupDelegate {
         gymTimePicker.addTarget(self, action: #selector(self.datePickerValueChanged(sender:)), for: UIControlEvents.valueChanged)
         setTime.inputView = gymTimePicker
 
+      
+
+
+        //建立地圖搜尋控制器
+        resultsViewController = GMSAutocompleteResultsViewController()
+        resultsViewController?.delegate = self
+
+        searchController = UISearchController(searchResultsController: resultsViewController)
+        searchController?.searchResultsUpdater = resultsViewController
+
+        let subView = UIView(frame: CGRect(x: 16, y: 130.0, width: 342, height: 45.0))
+
+        subView.addSubview((searchController?.searchBar)!)
+        view.addSubview(subView)
+        searchController?.searchBar.sizeToFit()
+        searchController?.hidesNavigationBarDuringPresentation = false
+
+        // When UISearchController presents the results view, present it in
+        // this view controller, not one further up the chain.
+        definesPresentationContext = true
+
+        // Do any additional setup after loading the view.
 
 
 
@@ -157,9 +187,44 @@ extension GroupSetViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 
 }
 
-extension GroupSetViewController {
+extension GroupSetViewController: GMSAutocompleteResultsViewControllerDelegate {
 
 
+    func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
+    didAutocompleteWith place: GMSPlace) {
+    searchController?.isActive = false
+
+
+    latitude = place.coordinate.latitude
+    longitude = place.coordinate.longitude
+
+
+    // Do something with the selected place.
+    print("Place name: \(place.name)")
+    print("Place address: \(String(describing: place.formattedAddress))")
+    print("Place attributions: \(String(describing: place.attributions))")
+
+    gymLocation.text = place.formattedAddress
+    getMapPosition()
+
+    }
+
+    func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
+    didFailAutocompleteWithError error: Error){
+    // TODO: handle the error.
+    print("Error: ", error.localizedDescription)
+    }
+
+    // Turn the network activity indicator on and off again.
+
+    func didRequestAutocompletePredictions(forResultsController resultsController: GMSAutocompleteResultsViewController) {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+
+
+    func didUpdateAutocompletePredictions(forResultsController resultsController: GMSAutocompleteResultsViewController) {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
 
 
 
