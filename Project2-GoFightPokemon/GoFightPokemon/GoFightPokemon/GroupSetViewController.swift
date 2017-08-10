@@ -57,6 +57,39 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
     }
 
+
+
+    var resultsViewController: GMSAutocompleteResultsViewController?
+    var searchController: UISearchController?
+    var resultView: UITextView?
+
+
+    var latitude: CLLocationDegrees?
+    var longitude: CLLocationDegrees?
+
+
+    func getMapPosition(){
+
+        let camera = GMSCameraPosition.camera(withLatitude: latitude!, longitude: longitude!, zoom: 16.0)
+
+        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        mapView.isMyLocationEnabled = true
+
+        view = mapView
+
+        let gmsMarket = GMSMarker()
+
+        gmsMarket.position = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+
+        gmsMarket.map = mapView
+        
+        
+    }
+
+
+
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -120,11 +153,30 @@ extension GroupSetViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 
             gymLevel.text = gymLavels[row]
         }
-                
-
     }
+
+}
+
+extension GroupSetViewController {
+
+
+
+
+
 
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
 

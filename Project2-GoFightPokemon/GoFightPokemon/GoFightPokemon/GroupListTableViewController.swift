@@ -103,8 +103,5 @@ class GroupListTableViewController: UITableViewController, GroupDelegate {
 
     }
 
-
-
-
 }
 
