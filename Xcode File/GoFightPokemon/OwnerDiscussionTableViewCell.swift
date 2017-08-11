@@ -13,11 +13,13 @@ class OwnerDiscussionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var ownerPhoto: UIImageView!
     @IBOutlet weak var putComment: UITextView!
-    
-        @IBOutlet weak var ownerNickName: UILabel!
-        @IBOutlet weak var ownerTeam: UILabel!
-        @IBOutlet weak var ownerLevel: UILabel!
 
+
+    @IBOutlet weak var ownerNickName: UILabel!
+
+    @IBOutlet weak var ownerTeam: UILabel!
+
+    @IBOutlet weak var ownerLevel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

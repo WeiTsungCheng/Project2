@@ -14,18 +14,12 @@ import FirebaseDatabase
 import GoogleMaps
 import GooglePlaces
 
-
 class GroupSetViewController: UIViewController, GroupDelegate {
 
-
-
-  
-
-
-    func manager(_ controller: GroupManager, success: Bool){
+    func manager(_ controller: GroupManager, success: Bool) {
 
     }
-    func manager(_ controller: GroupManager, groupItem: [GroupItem]){
+    func manager(_ controller: GroupManager, groupItem: [GroupItem]) {
 
     }
 
@@ -37,11 +31,14 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
     @IBOutlet weak var bossName: UITextField!
 
+
     var gymLavels = ["請選擇難度", "簡單", "普通", "困難", "極困難", "傳說"]
+
     let gymLevelChoose = UIPickerView()
 
 
     @IBAction func groupSet(_ sender: UIButton) {
+
 
         setGroupManager.setGroupItem(gymLevel: gymLevel.text!, bossName: bossName.text!, setTime: setTime.text!, gymLocation: gymLocation.text!)
 
@@ -50,11 +47,11 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
     }
 
-
     @IBOutlet weak var setTime: UITextField!
 
 
     func datePickerValueChanged(sender: UIDatePicker) {
+
 
         let formatter = DateFormatter()
         formatter.dateStyle = DateFormatter.Style.short
@@ -63,8 +60,8 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
     }
 
-
     //建立地圖
+
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
     var resultView: UITextView?
@@ -74,7 +71,7 @@ class GroupSetViewController: UIViewController, GroupDelegate {
     var longitude: CLLocationDegrees?
 
 
-    func getMapPosition(){
+    func getMapPosition() {
 
         let camera = GMSCameraPosition.camera(withLatitude: latitude!, longitude: longitude!, zoom: 16.0)
 
@@ -85,34 +82,27 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
         let gmsMarket = GMSMarker()
 
+
         gmsMarket.position = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
 
         gmsMarket.map = mapView
-        
-        
-
-
-
-
 
     }
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
+
 
         gymLevelChoose.delegate = self
         gymLevel.inputView = gymLevelChoose
 
         setGroupManager.delegate = self
 
+
         let gymTimePicker = UIDatePicker()
         gymTimePicker.datePickerMode = UIDatePickerMode.dateAndTime
         gymTimePicker.addTarget(self, action: #selector(self.datePickerValueChanged(sender:)), for: UIControlEvents.valueChanged)
         setTime.inputView = gymTimePicker
-
-      
-
 
         //建立地圖搜尋控制器
         resultsViewController = GMSAutocompleteResultsViewController()
@@ -120,6 +110,7 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
         searchController = UISearchController(searchResultsController: resultsViewController)
         searchController?.searchResultsUpdater = resultsViewController
+
 
         let subView = UIView(frame: CGRect(x: 16, y: 130.0, width: 342, height: 45.0))
 
@@ -135,22 +126,20 @@ class GroupSetViewController: UIViewController, GroupDelegate {
         // Do any additional setup after loading the view.
 
 
-
-
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 
     }
-    
 
 }
 
-
 extension GroupSetViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
+
         return 1
     }
 
@@ -160,7 +149,6 @@ extension GroupSetViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 
     }
 
-
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
 
         let titleRow = gymLavels[row]
@@ -169,17 +157,13 @@ extension GroupSetViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 
     }
 
-
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-
 
         if row == 0 {
 
             gymLevel.text = ""
 
-        }
-
-        else {
+        } else {
 
             gymLevel.text = gymLavels[row]
         }
@@ -189,15 +173,14 @@ extension GroupSetViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 
 extension GroupSetViewController: GMSAutocompleteResultsViewControllerDelegate {
 
-
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
     didAutocompleteWith place: GMSPlace) {
     searchController?.isActive = false
 
 
-    latitude = place.coordinate.latitude
-    longitude = place.coordinate.longitude
+        latitude = place.coordinate.latitude
 
+        longitude = place.coordinate.longitude
 
     // Do something with the selected place.
     print("Place name: \(place.name)")
@@ -209,8 +192,9 @@ extension GroupSetViewController: GMSAutocompleteResultsViewControllerDelegate {
 
     }
 
+
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
-    didFailAutocompleteWithError error: Error){
+    didFailAutocompleteWithError error: Error) {
     // TODO: handle the error.
     print("Error: ", error.localizedDescription)
     }
@@ -221,27 +205,8 @@ extension GroupSetViewController: GMSAutocompleteResultsViewControllerDelegate {
     UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
 
-
     func didUpdateAutocompletePredictions(forResultsController resultsController: GMSAutocompleteResultsViewController) {
     UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
 
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

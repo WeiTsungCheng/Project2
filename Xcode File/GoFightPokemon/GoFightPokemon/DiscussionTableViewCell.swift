@@ -18,8 +18,6 @@ class DiscussionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var playerPhoto: UIImageView!
 
-
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

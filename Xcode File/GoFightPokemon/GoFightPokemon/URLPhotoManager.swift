@@ -9,19 +9,16 @@
 import Foundation
 import UIKit
 
-
-
 protocol URLImageDelegate: class {
 
     func manager(_ controller: URLImageManager, imageIndexPath: IndexPath)
 }
 
-
 class URLImageManager {
 
-    var delegate: URLImageDelegate?
+    weak var delegate: URLImageDelegate?
 
-    func getURLImage(imageURL: String, indexPath: IndexPath){
+    func getURLImage(imageURL: String, indexPath: IndexPath) {
 
         DispatchQueue.global().async {
 
@@ -31,7 +28,7 @@ class URLImageManager {
 
             DispatchQueue.main.async {
 
-                if let imageData = data{
+                if let imageData = data {
 
                     getURLImageDic.updateValue(UIImage(data: imageData as Data)!, forKey: imageURL)
                     self.delegate?.manager(self, imageIndexPath: indexPath)
@@ -41,7 +38,4 @@ class URLImageManager {
         }
     }
 
-
 }
-
-

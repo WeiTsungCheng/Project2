@@ -11,38 +11,34 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-
-var getURLImageDic : [String : UIImage] = [:]
+var getURLImageDic: [String : UIImage] = [:]
 
 class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDelegate, URLImageDelegate {
 
-
-    func manager(_ controller: URLImageManager, imageIndexPath: IndexPath){
+    func manager(_ controller: URLImageManager, imageIndexPath: IndexPath) {
 
         self.tableView.reloadRows(at: [imageIndexPath], with: .fade)
 
     }
-    func manager(_ controller: PersonManager, success: Bool){
+    func manager(_ controller: PersonManager, success: Bool) {
 
     }
-    func manager(_ controller: PersonManager){
+    func manager(_ controller: PersonManager) {
 
     }
-    func manager(_ controller: PersonManager, userItem: UserItem){
+    func manager(_ controller: PersonManager, userItem: UserItem) {
 
         //用updateValue找到key
         getPersonInfoDic.updateValue(userItem, forKey: userItem.userId)
-
 
         self.tableView.reloadData()
 
     }
 
-
-    func manager(_ controller: DiscussionManager, success: Bool){
+    func manager(_ controller: DiscussionManager, success: Bool) {
 
     }
-    func manager(_ controller: DiscussionManager, groupItem: [DiscussionItem]){
+    func manager(_ controller: DiscussionManager, groupItem: [DiscussionItem]) {
 
        getItem = groupItem
 
@@ -56,7 +52,6 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
 
     let urlImageManager = URLImageManager()
 
-
     //let uid = Auth.auth().currentUser?.uid
 
     @IBOutlet weak var tableView: UITableView!
@@ -64,15 +59,13 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
     @IBOutlet weak var gymLevel: UILabel!
     @IBOutlet weak var bossName: UILabel!
     @IBOutlet weak var gymLocation: UILabel!
-    
+
     @IBOutlet weak var writeComment: UITextView!
-
-
 
     //設定新變數為了從GroupListTabaleView傳值過來
     var gymLevelName = ""
     var bossNameName = ""
-   
+
     //需要傳入這場團戰的childId才能找到正確的團戰位置
     var childIdName = ""
     var ownerIdName = ""
@@ -87,21 +80,19 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
 
     @IBAction func sendComment(_ sender: Any) {
 
+
         discussionManager.setDiscussionItem(writeComment: writeComment.text, childId: childIdName)
 
         writeComment.text = ""
-
 
     }
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
         //從GroupListTableViewCell傳值過來
         gymLevel.text = gymLevelName
         bossName.text = bossNameName
         gymLocation.text = gymLocationName
-
 
         discussionManager.delegate = self
         discussionManager.getDiscussionItem(childId: childIdName)
@@ -109,7 +100,6 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
         personManager.delegate = self
 
         urlImageManager.delegate = self
-
 
     }
 
@@ -120,7 +110,6 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
 
 }
 
-
 extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -129,18 +118,16 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-
-        switch getItem[indexPath.row].participantId  {
+        switch getItem[indexPath.row].participantId {
 
         case ownerIdName:
 
-
         let ownerCell = tableView.dequeueReusableCell(withIdentifier: "OwnerDiscussionCell", for: indexPath) as! OwnerDiscussionTableViewCell
-
 
         if getPersonInfoDic[getItem[indexPath.row].participantId] == nil {
 
             personManager.getOtherPersonItem(userId: getItem[indexPath.row].participantId)
+
 
         } else {
 
@@ -156,17 +143,18 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
 
                 urlImageManager.getURLImage(imageURL: (getPersonInfoDic[getItem[indexPath.row].participantId]?.headPhoto)!, indexPath: indexPath)
 
+
             } else {
 
                 ownerCell.ownerPhoto.image = getURLImageDic[(getPersonInfoDic[getItem[indexPath.row].participantId]?.headPhoto)!]
+
             }
 
 
         }
 
+
         return ownerCell
-
-
 
         default:
 
@@ -191,11 +179,10 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
                     urlImageManager.getURLImage(imageURL: (getPersonInfoDic[getItem[indexPath.row].participantId]?.headPhoto)!, indexPath: indexPath)
 
                 } else {
-                    
+
                    playerCell.playerPhoto.image = getURLImageDic[(getPersonInfoDic[getItem[indexPath.row].participantId]?.headPhoto)!]
                 }
 
-                
             }
 
             return playerCell

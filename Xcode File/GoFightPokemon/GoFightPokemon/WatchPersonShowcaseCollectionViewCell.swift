@@ -9,6 +9,7 @@
 import UIKit
 
 class WatchPersonShowcaseCollectionViewCell: UICollectionViewCell {
-    
+
+
     @IBOutlet weak var pokemonImage: UIImageView!
 }

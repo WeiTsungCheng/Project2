@@ -10,7 +10,6 @@ import Foundation
 import Foundation
 import Firebase
 
-
 struct UserItem {
 
     var nickName: String
@@ -24,9 +23,13 @@ struct UserItem {
 
     init(snapshot: DataSnapshot) {
 
+
         print("🔰")
+
         print(snapshot)
+
         print("🔰")
+
 
         let snapshotValue: [String: AnyObject] = snapshot.value as![String:AnyObject]
 
@@ -42,4 +45,3 @@ struct UserItem {
 
 }
 }
-

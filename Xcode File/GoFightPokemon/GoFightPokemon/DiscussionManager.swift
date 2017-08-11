@@ -19,18 +19,23 @@ protocol DiscussionDelegate: class {
 
 class DiscussionManager {
 
-    var delegate: DiscussionDelegate? = nil
+    weak var delegate: DiscussionDelegate?
 
-    func setDiscussionItem(writeComment: String, childId: String){
+
+    func setDiscussionItem(writeComment: String, childId: String) {
+
 
         if writeComment == "" {
             return
         }
 
-        let reference : DatabaseReference! =
+
+        let reference: DatabaseReference! =
             Database.database().reference().child("groupComment").child(childId)
 
+
         let childRef = reference.childByAutoId()
+
 
         var discussion: [String: AnyObject] = [String: AnyObject]()
 
@@ -40,35 +45,39 @@ class DiscussionManager {
         discussion["participantId"] = Auth.auth().currentUser?.uid as AnyObject
         discussion["participantComment"] = writeComment as AnyObject
 
+
         let discussionReference = reference.child(childRef.key)
-        discussionReference.updateChildValues(discussion) { (err, ref) in
+        discussionReference.updateChildValues(discussion) { (err, _) in
             if err != nil {
                 print("err \(err!)")
                 return
             }
 
-            print("✳️✳️✳️✳️✳️✳️✳️✳️")
+            print("✳️")
 
             print(reference.description())
             self.delegate?.manager(self, success: true)
-            
-            print("✳️✳️✳️✳️✳️✳️✳️✳️")
+
+            print("✳️")
         }
 
     }
 
-    func getDiscussionItem(childId: String){
+    func getDiscussionItem(childId: String) {
 
         //載入即時更新的comment
+
         let reference = Database.database().reference()
 
-        reference.child("groupComment").child(childId).observe(.value , with: {(snapshot) in
+        reference.child("groupComment").child(childId).observe(.value, with: {(snapshot) in
+
 
             var getItem = [DiscussionItem]()
 
             if snapshot.childrenCount > 0 {
 
                 print(snapshot.childrenCount)
+
 
                 var datalist: [DiscussionItem] = [DiscussionItem]()
 
@@ -85,7 +94,7 @@ class DiscussionManager {
                     print(datalist)
 
                 }
-                
+
                 getItem = datalist
                 self.delegate?.manager(self, groupItem: getItem)
 
@@ -93,8 +102,5 @@ class DiscussionManager {
         })
 
     }
-
-
-
 
 }

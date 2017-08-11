@@ -8,20 +8,18 @@
 
 import UIKit
 
-
-class PlayerShowcaseViewController: UIViewController, ShowcaseDelegate{
+class PlayerShowcaseViewController: UIViewController, ShowcaseDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
 
-    func manager(_ controller: ShowcaseManager, success: Bool){
+    func manager(_ controller: ShowcaseManager, success: Bool) {
 
     }
-    func manager(_ controller: ShowcaseManager, updatePhotoDic: [String:Any]){
+    func manager(_ controller: ShowcaseManager, updatePhotoDic: [String:Any]) {
 
     }
 
     let showcaseManager = ShowcaseManager()
-
 
     //存放用戶存檔前所選的圖片
     var playerPokemonImage: [UIImage] = [UIImage]()
@@ -29,14 +27,11 @@ class PlayerShowcaseViewController: UIViewController, ShowcaseDelegate{
     //deletePokemonAct方法為移除 playerPokemonImage 陣列中特定的值
     @IBAction func deletePokemonAct(_ sender: UIButton) {
 
-
         //sender將button的標籤數字傳過來，即得到當前所取的cell位置
         playerPokemonImage.remove(at: sender.tag)
 
-
         collectionView.reloadData()
     }
-
 
     @IBAction func cancelImg(_ sender: Any) {
         playerPokemonImage = [UIImage]()
@@ -58,7 +53,7 @@ class PlayerShowcaseViewController: UIViewController, ShowcaseDelegate{
 
         // 建立三個 UIAlertAction 的實體
         // 新增 UIAlertAction 在 UIAlertController actionSheet 的 動作 (action) 與標題
-        let imageFromLibAction = UIAlertAction(title: "照片圖庫", style: .default) { (Void) in
+        let imageFromLibAction = UIAlertAction(title: "照片圖庫", style: .default) { (_) in
 
             // 判斷是否可以從照片圖庫取得照片來源
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
@@ -68,7 +63,7 @@ class PlayerShowcaseViewController: UIViewController, ShowcaseDelegate{
                 self.present(imagePickerController, animated: true, completion: nil)
             }
         }
-        let imageFromCameraAction = UIAlertAction(title: "相機", style: .default) { (Void) in
+        let imageFromCameraAction = UIAlertAction(title: "相機", style: .default) { (_) in
 
             // 判斷是否可以從相機取得照片來源
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -80,7 +75,7 @@ class PlayerShowcaseViewController: UIViewController, ShowcaseDelegate{
         }
 
         // 新增一個取消動作，讓使用者可以跳出 UIAlertController
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (Void) in
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (_) in
 
             imagePickerAlertController.dismiss(animated: true, completion: nil)
         }
@@ -101,14 +96,10 @@ class PlayerShowcaseViewController: UIViewController, ShowcaseDelegate{
 
     }
 
-
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         showcaseManager.delegate = self
-
 
     }
 
@@ -116,7 +107,6 @@ class PlayerShowcaseViewController: UIViewController, ShowcaseDelegate{
         super.didReceiveMemoryWarning()
 
     }
-    
 
 }
 
@@ -139,9 +129,7 @@ extension PlayerShowcaseViewController: UIImagePickerControllerDelegate, UINavig
     }
 }
 
-
 extension PlayerShowcaseViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-
 
     //放資料在collectionView上
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -156,9 +144,7 @@ extension PlayerShowcaseViewController: UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PlayerShowcaseCollectionViewCell
 
-
         cell.pokemonImage.image = playerPokemonImage[indexPath.row]
-
 
         //增加一個cell的target,此target為當deletePokemonAct被按時的方法
         //設定button的標籤數字為當前indexPath.row
@@ -166,10 +152,8 @@ extension PlayerShowcaseViewController: UICollectionViewDataSource, UICollection
 
         cell.deletePokemon.addTarget(self, action: #selector(deletePokemonAct(_:)), for: .touchUpInside)
 
-
         return cell
     }
-
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let picDimension = self.view.frame.size.width / 2.2
@@ -178,12 +162,6 @@ extension PlayerShowcaseViewController: UICollectionViewDataSource, UICollection
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let leftRightInset = self.view.frame.size.width / 14.0
-        return UIEdgeInsetsMake(0, leftRightInset, 0, leftRightInset)
+        return UIEdgeInsets(top: 0, left: leftRightInset, bottom: 0, right: leftRightInset)
     }
 }
-
-
-
-
-
-

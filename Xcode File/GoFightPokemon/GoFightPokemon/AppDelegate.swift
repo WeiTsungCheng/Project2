@@ -20,26 +20,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         IQKeyboardManager.sharedManager().enable = true
-        
 
         FirebaseApp.configure()
-
 
         let userDefaults = UserDefaults.standard
 
         // 確認此用戶手機裡 是否存有此帳戶(email 和 password)
         if userDefaults.value(forKey: "getuserEmail") as? String != nil && userDefaults.value(forKey: "getuserPassword") as? String != nil {
 
-
         //驗證此存在的email和密碼是否符合fireBase上資料
 
             Auth.auth().signIn(withEmail: UserDefaults.standard.value(forKey: "getuserEmail") as! String, password:
-                UserDefaults.standard.value(forKey: "getuserPassword") as! String , completion: {(user, error) in
-
+                UserDefaults.standard.value(forKey: "getuserPassword") as! String, completion: {(_, error) in
 
                     if error == nil {
 
@@ -49,9 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         let homeVC = storyBoard.instantiateViewController(withIdentifier: "goHome")
                         self.window?.rootViewController = homeVC
 
-                    }
-
-                    else {
+                    } else {
 
                         print("fireBase don't have this account")
 
@@ -106,11 +99,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          error conditions that could cause the creation of the store to fail.
         */
         let container = NSPersistentContainer(name: "GoFightPokemon")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                 
+
                 /*
                  Typical reasons for an error here include:
                  * The parent directory does not exist, cannot be created, or disallows writing.
@@ -142,4 +135,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-
