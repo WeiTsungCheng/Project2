@@ -19,6 +19,9 @@ protocol ParticipantsDelegate: class {
 
     func manager(_ controller: ParticipantManager, participantsCount: Int)
 
+    func manager(_ controller: ParticipantManager, attendButton: Bool, cancelButton: Bool)
+
+
 }
 
 class ParticipantManager {
@@ -75,6 +78,44 @@ class ParticipantManager {
 
     }
 
+    func checkAttend(childId: String){
+        let query = Database.database().reference().child("participantsMember").child(childId).queryOrdered(byChild: "playerId").queryEqual(toValue: Auth.auth().currentUser?.uid)
+
+        query.observeSingleEvent(of: .value, with: { (snapshot)
+
+            in
+
+            if let data = snapshot.value{
+
+             
+
+            guard
+                let participantsMember = data as? [String: AnyObject],
+                let playerId = participantsMember[(Auth.auth().currentUser?.uid)!]
+
+                else {
+                    print("🅾️")
+                    let attendButton = true
+                    let cancelButton = false
+
+                    self.delegate?.manager(self, attendButton: attendButton, cancelButton: cancelButton)
+                    return
+                }
+
+                print("❌")
+                print(playerId)
+
+                let attendButton = false
+                let cancelButton = true
+                self.delegate?.manager(self, attendButton: attendButton, cancelButton: cancelButton)
+                
+
+            }
+
+
+        })
+
+    }
 }
 
 

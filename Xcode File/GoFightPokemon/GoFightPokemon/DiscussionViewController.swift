@@ -23,6 +23,13 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
     func manager(_ controller: ParticipantManager, participantsCount: Int){
         participantNumbers.text = String(participantsCount)
     }
+    func manager(_ controller: ParticipantManager, attendButton: Bool, cancelButton: Bool){
+
+        attendFight.isEnabled  = attendButton
+        leaveFight.isEnabled = cancelButton
+
+
+    }
 
 
     let participantManager = ParticipantManager()
@@ -42,7 +49,7 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
 
         participantManager.getParticipantsCountItem(childId: childIdName)
 
-        
+
         leaveFight.isEnabled = true
         attendFight.isEnabled  = false
     }
@@ -111,7 +118,7 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
     //設定新變數為了從GroupListTabaleView傳值過來
     var gymLevelName = ""
     var bossNameName = ""
-    var participantNumName = 100
+   
 
     //需要傳入這場團戰的childId才能找到正確的團戰位置
     var childIdName = ""
@@ -147,18 +154,34 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
 
         urlImageManager.delegate = self
 
-        leaveFight.isEnabled = false
-        attendFight.isEnabled  = true
+
 
         participantManager.delegate = self
 
         participantManager.getParticipantsCountItem(childId: childIdName)
+
+
+        //檢查是否已經加入過此團，決定哪一個button可以用
+        participantManager.checkAttend(childId: childIdName)
+
+
+
 
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationController = segue.destination as! ParticipantListViewController
+
+        if segue.identifier == "goToParticipantList" {
+        //傳值到玩家列表
+        destinationController.childIdNameName = childIdName
+
+        }
     }
 
 }

@@ -11,7 +11,6 @@ import Firebase
 
 struct ParticipantsItem {
 
-    var ownerId: String
     var playerId: String
 
     init(snapshot: DataSnapshot) {
@@ -24,7 +23,6 @@ struct ParticipantsItem {
 
     let snapshotValue: [String: AnyObject] = snapshot.value as![String:AnyObject]
 
-    self.ownerId = snapshotValue["ownerId"] as! String
     self.playerId = snapshotValue["playerId"] as! String
 
     }
