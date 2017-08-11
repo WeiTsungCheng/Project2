@@ -10,10 +10,6 @@ import UIKit
 
 class GroupListTableViewController: UITableViewController, GroupDelegate, PersonDelegate {
 
-    let personManager = PersonManager()
-
-    var getUserItemDic: [String : UserItem] = [:]
-
     func manager(_ controller: PersonManager, success: Bool) {
 
     }
@@ -26,10 +22,10 @@ class GroupListTableViewController: UITableViewController, GroupDelegate, Person
 
         self.tableView.reloadData()
     }
+    let personManager = PersonManager()
 
-    let groupsetManager = GroupManager()
+    var getUserItemDic: [String : UserItem] = [:]
 
-    var getItems: [GroupItem] = []
 
     func manager(_ controller: GroupManager, success: Bool) {
 
@@ -41,6 +37,11 @@ class GroupListTableViewController: UITableViewController, GroupDelegate, Person
         self.tableView.reloadData()
 
     }
+
+    let groupsetManager = GroupManager()
+
+    var getItems: [GroupItem] = []
+
 
     @IBAction func goBackFuncList(_ sender: Any) {
 
@@ -58,11 +59,12 @@ class GroupListTableViewController: UITableViewController, GroupDelegate, Person
     }
 
     override func didReceiveMemoryWarning() {
+
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
 
-    // MARK: - Table view data source
+
 
     override func numberOfSections(in tableView: UITableView) -> Int {
 
@@ -70,7 +72,7 @@ class GroupListTableViewController: UITableViewController, GroupDelegate, Person
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+
         return self.getItems.count
 
     }
@@ -109,6 +111,7 @@ class GroupListTableViewController: UITableViewController, GroupDelegate, Person
                 destinationController.ownerIdName = getItems[indexPath.row].ownerId
 
                 destinationController.gymLocationName = getItems[indexPath.row].gymLocation
+
 
             }
         }

@@ -7,13 +7,61 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseAuth
-import FirebaseDatabase
+
 
 var getURLImageDic: [String : UIImage] = [:]
 
-class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDelegate, URLImageDelegate {
+class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDelegate, URLImageDelegate, ParticipantsDelegate{
+
+    func manager(_ controller: ParticipantManager, success: Bool){
+
+    }
+    func manager(_ controller: ParticipantManager, participantsItem: ParticipantsItem){
+
+    }
+
+    func manager(_ controller: ParticipantManager, participantsCount: Int){
+        participantNumbers.text = String(participantsCount)
+    }
+
+
+    let participantManager = ParticipantManager()
+
+
+    @IBOutlet weak var participantNumbers: UILabel!
+
+    @IBOutlet weak var attendFight: UIButton!
+
+    @IBOutlet weak var leaveFight: UIButton!
+
+
+
+    @IBAction func attendFight(_ sender: Any) {
+
+        participantManager.setParticipantItem(childId: childIdName)
+
+        participantManager.getParticipantsCountItem(childId: childIdName)
+
+        
+        leaveFight.isEnabled = true
+        attendFight.isEnabled  = false
+    }
+
+
+    @IBAction func leaveFight(_ sender: Any) {
+
+        participantManager.cancelParticipantItem(childId: childIdName)
+
+        participantManager.getParticipantsCountItem(childId: childIdName)
+
+        attendFight.isEnabled  = true
+        leaveFight.isEnabled = false
+
+    }
+
+
+
+
 
     func manager(_ controller: URLImageManager, imageIndexPath: IndexPath) {
 
@@ -38,9 +86,9 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
     func manager(_ controller: DiscussionManager, success: Bool) {
 
     }
-    func manager(_ controller: DiscussionManager, groupItem: [DiscussionItem]) {
+    func manager(_ controller: DiscussionManager, discussionItem: [DiscussionItem]) {
 
-       getItem = groupItem
+       getItem = discussionItem
 
        self.tableView.reloadData()
 
@@ -51,8 +99,6 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
     let personManager = PersonManager()
 
     let urlImageManager = URLImageManager()
-
-    //let uid = Auth.auth().currentUser?.uid
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -65,6 +111,7 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
     //設定新變數為了從GroupListTabaleView傳值過來
     var gymLevelName = ""
     var bossNameName = ""
+    var participantNumName = 100
 
     //需要傳入這場團戰的childId才能找到正確的團戰位置
     var childIdName = ""
@@ -72,7 +119,6 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
 
     var gymLocationName = ""
 
-    var reference: DatabaseReference?
     var getItem: [DiscussionItem] = []
 
     //設定一個字典裝，uid為key,value為UserItem
@@ -93,13 +139,20 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
         gymLevel.text = gymLevelName
         bossName.text = bossNameName
         gymLocation.text = gymLocationName
-
+    
         discussionManager.delegate = self
         discussionManager.getDiscussionItem(childId: childIdName)
 
         personManager.delegate = self
 
         urlImageManager.delegate = self
+
+        leaveFight.isEnabled = false
+        attendFight.isEnabled  = true
+
+        participantManager.delegate = self
+
+        participantManager.getParticipantsCountItem(childId: childIdName)
 
     }
 
@@ -190,3 +243,9 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
         }
     }
 }
+
+
+
+
+
+
