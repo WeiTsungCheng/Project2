@@ -14,20 +14,21 @@ import FirebaseAuth
 import FirebaseDatabase
 
 protocol ShowcaseDelegate: class {
+
     func manager(_ controller: ShowcaseManager, success: Bool)
-    func manager(_ controller: ShowcaseManager, updatePhotoDic:  [String:Any])
+    func manager(_ controller: ShowcaseManager, updatePhotoDic: [String:Any])
 }
 
 class ShowcaseManager {
 
     let uid = Auth.auth().currentUser?.uid
 
-    var delegate: ShowcaseDelegate? = nil
+    weak var delegate: ShowcaseDelegate?
 
-    func setShowcaseItem(playerPokemonImage: [UIImage]){
+    func setShowcaseItem(playerPokemonImage: [UIImage]) {
 
-        Database.database().reference().child("usersShowcase").child(self.uid!).child("pokemonPhoto").removeValue { (error, ref) in
-            if error != nil{
+        Database.database().reference().child("usersShowcase").child(self.uid!).child("pokemonPhoto").removeValue { (error, _) in
+            if error != nil {
                 print(error!)
                 return
             }
@@ -35,8 +36,7 @@ class ShowcaseManager {
             print("remove data success...")
         }
 
-
-        for image in playerPokemonImage{
+        for image in playerPokemonImage {
 
             let uniqueString = NSUUID().uuidString
 
@@ -50,6 +50,7 @@ class ShowcaseManager {
 
                         print("Error: \(error!.localizedDescription)")
 
+
                         return
                     }
 
@@ -61,14 +62,13 @@ class ShowcaseManager {
 
                         let childRef = dataBaseRef.childByAutoId()
 
-                        childRef.setValue(uploadImageUrl, withCompletionBlock: { (error, data) in
+                        childRef.setValue(uploadImageUrl, withCompletionBlock: { (error, _) in
 
                             if error != nil {
 
                                 print("Database Error: \(error!.localizedDescription)")
-                            }
-                            else {
-                                
+                            } else {
+
                                 print("picture has saved")
                                 self.delegate?.manager(self, success: true)
                             }
@@ -78,15 +78,14 @@ class ShowcaseManager {
                 )}
         }
 
-
     }
 
-    func getShowcaseItem (){
+    func getShowcaseItem () {
 
         //取下之前存在fireBase圖檔的url
         let dataBaseRef = Database.database().reference().child("usersShowcase").child(self.uid!).child("pokemonPhoto")
 
-        var uploadPhotoDic : [String: Any]?
+        var uploadPhotoDic: [String: Any]?
 
         dataBaseRef.observe(.value, with: { [weak self] (snapshot) in
 
@@ -95,13 +94,10 @@ class ShowcaseManager {
                 uploadPhotoDic = uploadDataDic
 
                 self?.delegate?.manager(self!, updatePhotoDic: uploadPhotoDic!)
-                
+
             }
         })
-        
-        
 
     }
-    
 
 }

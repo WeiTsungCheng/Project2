@@ -20,8 +20,6 @@ class GroupListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var gymLocation: UILabel!
 
-
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

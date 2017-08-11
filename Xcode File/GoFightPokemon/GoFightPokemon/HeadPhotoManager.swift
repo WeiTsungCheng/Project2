@@ -16,21 +16,14 @@ protocol HeadPhotoDelegate: class {
     func manager(_ controller: HeadPhotoManager, headPhoto: UIImage)
 }
 
-
-
 class HeadPhotoManager {
 
 
     let uid = Auth.auth().currentUser?.uid
 
-
-    var delegate: HeadPhotoDelegate? = nil
-
-
-
+    weak var delegate: HeadPhotoDelegate?
 
     func setHeadPhoto(headPhoto: UIImage?) {
-
 
         //儲存相簿選擇的照片到fireBase
 
@@ -38,15 +31,11 @@ class HeadPhotoManager {
 
         //判定如果image 為預設原圖不要上傳  icons8-Lion Head Filled-50
 
-
         if headPhoto != #imageLiteral(resourceName: "icons8-Lion Head Filled-50") {
 
-
-            if let selectedPhoto = headPhoto{
-
+            if let selectedPhoto = headPhoto {
 
                 let uniqueString = NSUUID().uuidString
-
 
                 // 設定storage 儲存位置,將圖片上傳
 
@@ -54,15 +43,9 @@ class HeadPhotoManager {
 
                 //接收回傳的資料
 
-
-
-
-
                 if let uploadData = UIImagePNGRepresentation(selectedPhoto) {
 
-
                     storageRef.putData(uploadData, metadata: nil, completion: { (data, error) in
-
 
                         // 若發生錯誤
 
@@ -74,39 +57,29 @@ class HeadPhotoManager {
 
                         }
 
-
                         // 接收回傳的圖片網址位置
 
                         if let uploadImageUrl = data?.downloadURL()?.absoluteString {
 
-
                             print ("photo url: \(uploadImageUrl)")
-
 
                             // 儲存網址到dataBase上
 
                             let dataBaseRef = Database.database().reference().child("users").child(self.uid!).child("headPhoto")
 
-
-                            dataBaseRef.setValue(uploadImageUrl, withCompletionBlock: { (error, data) in
-
+                            dataBaseRef.setValue(uploadImageUrl, withCompletionBlock: { (error, _) in
 
                                 if error != nil {
 
-
                                     print("Database Error: \(error!.localizedDescription)")
 
-                                }
-
-                                else {
-
+                                } else {
 
                                     print("picture has saved")
 
                                     self.delegate?.manager(self, success: true)
 
                                 }
-
 
                             }
 
@@ -116,13 +89,9 @@ class HeadPhotoManager {
 
                     )}
 
-
                 print("didn't pick picture")
-        
 
             }
-    
-
 
         } else {
 
@@ -132,11 +101,7 @@ class HeadPhotoManager {
 
     }
 
-    
-
-
-
-    func getHeadPhoto(){
+    func getHeadPhoto() {
     //如果用戶已存過用戶照片，下載fireBase上的用戶照片的網址
     Database.database().reference().child("users").child(uid!).child("headPhoto").observe(.value, with: { (snapshot) in
 
@@ -149,16 +114,13 @@ class HeadPhotoManager {
 
             if let imageUrl = URL(string: uploaPhoto) {
 
-                URLSession.shared.dataTask(with: imageUrl, completionHandler: { (data, response, error) in
+                URLSession.shared.dataTask(with: imageUrl, completionHandler: { (data, _, error) in
 
                     if error != nil {
 
                         print("Download Image Task Fail: \(error!.localizedDescription)")
 
-                    }
-
-
-                    else if let imageData = data {
+                    } else if let imageData = data {
                         DispatchQueue.main.async {
 
                             headPhoto = UIImage(data: imageData)
@@ -167,17 +129,15 @@ class HeadPhotoManager {
                         }
 
                     }
-                    
+
                 }).resume()
-                
+
             }
         }
-        
+
     })
 
-
     }
-    
 
     func getOtherPersonHeadPhoto(userId: String) {
 
@@ -192,37 +152,29 @@ class HeadPhotoManager {
 
                 if let imageUrl = URL(string: uploaPhoto) {
 
-                    URLSession.shared.dataTask(with: imageUrl, completionHandler: { (data, response, error) in
+                    URLSession.shared.dataTask(with: imageUrl, completionHandler: { (data, _, error) in
 
                         if error != nil {
 
                             print("Download Image Task Fail: \(error!.localizedDescription)")
 
-                        }
-
-
-                        else if let imageData = data {
+                        } else if let imageData = data {
                             DispatchQueue.main.async {
 
                                 headPhoto = UIImage(data: imageData)
                                 self.delegate?.manager(self, headPhoto: headPhoto!)
-                                
+
                             }
-                            
+
                         }
-                        
+
                     }).resume()
-                    
+
                 }
             }
-            
+
         })
 
-
-
-
     }
-
-
 
 }

@@ -8,27 +8,25 @@
 
 import UIKit
 
-
 class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDelegate {
 
-    func manager(_ controller: PersonManager, success: Bool){
+
+    func manager(_ controller: PersonManager, success: Bool) {
 
     }
-    func manager(_ controller: PersonManager){
+    func manager(_ controller: PersonManager) {
 
     }
-    func manager(_ controller: PersonManager, userItem: UserItem){
-
-    }
-
-
-    func manager(_ controller: HeadPhotoManager, success: Bool){
-
-    }
-    func manager(_ controller: HeadPhotoManager, headPhoto: UIImage){
+    func manager(_ controller: PersonManager, userItem: UserItem) {
 
     }
 
+    func manager(_ controller: HeadPhotoManager, success: Bool) {
+
+    }
+    func manager(_ controller: HeadPhotoManager, headPhoto: UIImage) {
+
+    }
 
     let personManager = PersonManager()
     let headPhotoManager = HeadPhotoManager()
@@ -36,11 +34,8 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
     @IBAction func goBackFuncList(_ sender: Any) {
 
          dismiss(animated: true, completion: nil)
-        
+
     }
-
-
-
 
     let gymLevelChoose = UIPickerView()
 
@@ -49,11 +44,11 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
     let teamChoose = UIPickerView()
 
     var teams = ["請選擇隊伍", "急凍鳥隊", "閃電鳥隊", "火焰鳥隊"]
-    
 
     @IBOutlet weak var teamSelect: UITextField!
     @IBOutlet weak var levelSelect: UITextField!
     @IBOutlet weak var gymLevelSelect: UITextField!
+
 
     var fireUpload: String?
 
@@ -61,17 +56,16 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
 
     @IBOutlet weak var headPhoto: UIImageView!
 
-
-
     @IBAction func saveUserData(_ sender: Any) {
 
         //儲存textfield所填資料到firebase
+
         self.personManager.setValuePersonItem(teamSelect: teamSelect.text!, levelSelect: levelSelect.text!, gymLevelSelect: gymLevelSelect.text!)
+
 
         self.headPhotoManager.setHeadPhoto(headPhoto: headPhoto.image)
 
     }
-
 
     @IBAction func getPhotoFromLocal(_ sender: Any) {
 
@@ -88,7 +82,7 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
 
         // 建立三個 UIAlertAction 的實體
         // 新增 UIAlertAction 在 UIAlertController actionSheet 的 動作 (action) 與標題
-        let imageFromLibAction = UIAlertAction(title: "照片圖庫", style: .default) { (Void) in
+        let imageFromLibAction = UIAlertAction(title: "照片圖庫", style: .default) { (_) in
 
             // 判斷是否可以從照片圖庫取得照片來源
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
@@ -98,7 +92,7 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
                 self.present(imagePickerController, animated: true, completion: nil)
             }
         }
-        let imageFromCameraAction = UIAlertAction(title: "相機", style: .default) { (Void) in
+        let imageFromCameraAction = UIAlertAction(title: "相機", style: .default) { (_) in
 
             // 判斷是否可以從相機取得照片來源
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -110,7 +104,7 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
         }
 
         // 新增一個取消動作，讓使用者可以跳出 UIAlertController
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (Void) in
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (_) in
 
             imagePickerAlertController.dismiss(animated: true, completion: nil)
         }
@@ -119,13 +113,10 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
         imagePickerAlertController.addAction(imageFromLibAction)
         imagePickerAlertController.addAction(imageFromCameraAction)
         imagePickerAlertController.addAction(cancelAction)
-        
+
         // 當使用者按下 uploadBtnAction 時會 present 剛剛建立好的三個 UIAlertAction 動作與
         present(imagePickerAlertController, animated: true, completion: nil)
     }
-
-
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,9 +124,7 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
         teamChoose.delegate = self
         teamSelect.inputView = teamChoose
 
-
         levelSelect.delegate = self
-
 
         gymLevelChoose.delegate = self
         gymLevelSelect.inputView = gymLevelChoose
@@ -143,11 +132,7 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
         personManager.delegate = self
         headPhotoManager.delegate = self
 
-
     }
-
-
- 
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -155,7 +140,6 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
     }
 
 }
-
 
 extension PersonalInfoViewController :  UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -168,13 +152,11 @@ extension PersonalInfoViewController :  UIPickerViewDelegate, UIPickerViewDataSo
 
         if pickerView == teamChoose {
 
-
             countthrow = teams.count
         }
 
         return countthrow
     }
-
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
 
@@ -184,15 +166,14 @@ extension PersonalInfoViewController :  UIPickerViewDelegate, UIPickerViewDataSo
 
             return titleRow
 
-        }
-
-        else if pickerView == gymLevelChoose {
+        } else if pickerView == gymLevelChoose {
 
             let titleRow = gymLavels[row]
-            
+
             return titleRow
-            
+
         }
+
 
         return ""
 
@@ -204,9 +185,7 @@ extension PersonalInfoViewController :  UIPickerViewDelegate, UIPickerViewDataSo
 
             if row == 0 {
             teamSelect.text = ""
-            }
-
-            else {
+            } else {
             teamSelect.text = teams[row]
             }
 
@@ -214,22 +193,16 @@ extension PersonalInfoViewController :  UIPickerViewDelegate, UIPickerViewDataSo
 
         if pickerView == gymLevelChoose {
 
-
             if row == 0 {
                 gymLevelSelect.text = ""
-            }
-
-            else {
+            } else {
                 gymLevelSelect.text = gymLavels[row]
             }
 
         }
 
-
-  
     }
 }
-
 
 // 處裡UIPickerView(控制levelSelect 只能填入數字)
 extension PersonalInfoViewController : UITextFieldDelegate {
@@ -239,12 +212,8 @@ extension PersonalInfoViewController : UITextFieldDelegate {
         let characterSet = CharacterSet(charactersIn: string)
         return allowedCharcters.isSuperset(of: characterSet)
     }
-    
-    
+
 }
-
-
-
 
 //處理UIImagePickerControll
 extension PersonalInfoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -263,10 +232,4 @@ extension PersonalInfoViewController: UIImagePickerControllerDelegate, UINavigat
 
     }
 
-
-
-
-
 }
-
-

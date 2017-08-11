@@ -9,7 +9,6 @@
 import Foundation
 import Firebase
 
-
 struct GroupItem {
 
     var ownerId: String
@@ -21,9 +20,9 @@ struct GroupItem {
 
     init(snapshot: DataSnapshot) {
 
-print("🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀")
-        print(snapshot)
-print("🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀")
+print("🌀")
+print(snapshot)
+print("🌀")
         let snapshotValue: [String: AnyObject] = snapshot.value as![String:AnyObject]
 
         self.ownerId = snapshotValue["ownerId"] as! String
@@ -34,6 +33,5 @@ print("🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀🌀")
         self.gymLocation = snapshotValue["gymLocation"] as! String
 
     }
-
 
 }

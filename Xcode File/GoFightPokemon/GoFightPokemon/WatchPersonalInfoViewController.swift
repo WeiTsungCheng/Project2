@@ -10,18 +10,22 @@ import UIKit
 
 class WatchPersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDelegate {
 
+
     let personManager = PersonManager()
+
     let headPhotoManager = HeadPhotoManager()
+
 
     var getItems: UserItem?
 
-    func manager(_ controller: PersonManager, success: Bool){
+
+    func manager(_ controller: PersonManager, success: Bool) {
 
     }
-    func manager(_ controller: PersonManager){
+    func manager(_ controller: PersonManager) {
 
     }
-    func manager(_ controller: PersonManager, userItem: UserItem){
+    func manager(_ controller: PersonManager, userItem: UserItem) {
         getItems = userItem
 
         self.teamSelect.text = getItems?.playerTeam
@@ -33,10 +37,10 @@ class WatchPersonalInfoViewController: UIViewController, PersonDelegate, HeadPho
 
     }
 
-    func manager(_ controller: HeadPhotoManager, success: Bool){
+    func manager(_ controller: HeadPhotoManager, success: Bool) {
 
     }
-    func manager(_ controller: HeadPhotoManager, headPhoto: UIImage){
+    func manager(_ controller: HeadPhotoManager, headPhoto: UIImage) {
 
         DispatchQueue.main.async {
 
@@ -46,9 +50,6 @@ class WatchPersonalInfoViewController: UIViewController, PersonDelegate, HeadPho
         }
 
     }
-
-
-
 
     @IBOutlet weak var nickName: UILabel!
 
@@ -60,9 +61,10 @@ class WatchPersonalInfoViewController: UIViewController, PersonDelegate, HeadPho
 
     @IBOutlet weak var teamBadge: UIImageView!
 
-    func selectTeamBadge(){
+    func selectTeamBadge() {
 
     switch self.teamSelect.text! {
+
 
     case "急凍鳥隊":
     self.teamBadge.image = #imageLiteral(resourceName: "Pokemon_Go-16-128")
@@ -76,7 +78,6 @@ class WatchPersonalInfoViewController: UIViewController, PersonDelegate, HeadPho
 
     }
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -88,16 +89,11 @@ class WatchPersonalInfoViewController: UIViewController, PersonDelegate, HeadPho
 
         headPhotoManager.getHeadPhoto()
 
-
-
     }
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 
     }
-    
-
 
 }

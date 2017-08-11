@@ -8,41 +8,33 @@
 
 import UIKit
 
-
 class GroupListTableViewController: UITableViewController, GroupDelegate, PersonDelegate {
 
     let personManager = PersonManager()
 
     var getUserItemDic: [String : UserItem] = [:]
 
-
-
-    func manager(_ controller: PersonManager, success: Bool){
+    func manager(_ controller: PersonManager, success: Bool) {
 
     }
-    func manager(_ controller: PersonManager){
+    func manager(_ controller: PersonManager) {
 
     }
-    func manager(_ controller: PersonManager, userItem: UserItem){
+    func manager(_ controller: PersonManager, userItem: UserItem) {
 
         getUserItemDic.updateValue(userItem, forKey: userItem.userId)
 
         self.tableView.reloadData()
     }
 
-
-
-
-
     let groupsetManager = GroupManager()
 
     var getItems: [GroupItem] = []
 
-    func manager(_ controller: GroupManager, success: Bool){
+    func manager(_ controller: GroupManager, success: Bool) {
 
     }
-    func manager(_ controller: GroupManager, groupItem: [GroupItem]){
-
+    func manager(_ controller: GroupManager, groupItem: [GroupItem]) {
 
         getItems = groupItem
 
@@ -50,16 +42,13 @@ class GroupListTableViewController: UITableViewController, GroupDelegate, Person
 
     }
 
-
     @IBAction func goBackFuncList(_ sender: Any) {
 
         dismiss(animated: true, completion: nil)
     }
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
 
         groupsetManager.delegate = self
         groupsetManager.getGroupItem()
@@ -67,7 +56,6 @@ class GroupListTableViewController: UITableViewController, GroupDelegate, Person
         personManager.delegate = self
 
     }
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -96,7 +84,7 @@ class GroupListTableViewController: UITableViewController, GroupDelegate, Person
         cell.setTime.text = getItems[indexPath.row].setTime
         cell.gymLocation.text = getItems[indexPath.row].gymLocation
 
-        if getUserItemDic[getItems[indexPath.row].ownerId] == nil{
+        if getUserItemDic[getItems[indexPath.row].ownerId] == nil {
             personManager.getOtherPersonItem(userId: getItems[indexPath.row].ownerId) } else {
 
         cell.ownerNickName.text = getUserItemDic[getItems[indexPath.row].ownerId]?.nickName
@@ -104,8 +92,6 @@ class GroupListTableViewController: UITableViewController, GroupDelegate, Person
             print("🔆")
 
         }
-
-
 
         return cell
     }
@@ -124,13 +110,9 @@ class GroupListTableViewController: UITableViewController, GroupDelegate, Person
 
                 destinationController.gymLocationName = getItems[indexPath.row].gymLocation
 
-
-
             }
         }
-
 
     }
 
 }
-

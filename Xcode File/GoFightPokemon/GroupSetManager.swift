@@ -11,8 +11,6 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-
-
 protocol GroupDelegate: class {
 
     func manager(_ controller: GroupManager, success: Bool)
@@ -21,16 +19,15 @@ protocol GroupDelegate: class {
 
 class GroupManager {
 
-    var delegate: GroupDelegate? = nil
+    weak var delegate: GroupDelegate?
 
     func setGroupItem(gymLevel: String, bossName: String, setTime: String, gymLocation: String) {
-
 
         let reference: DatabaseReference! = Database.database().reference().child("groupFight")
 
         let childRef = reference.childByAutoId()
 
-        var group : [String : AnyObject] = [String : AnyObject]()
+        var group: [String : AnyObject] = [String: AnyObject]()
 
         group["ownerId"] = Auth.auth().currentUser?.uid as AnyObject
 
@@ -44,28 +41,32 @@ class GroupManager {
 
         group["gymLocation"] = gymLocation as AnyObject
 
-
         let groupReference = reference.child(childRef.key)
 
-        groupReference.updateChildValues(group) { (err, ref) in
-            
+        groupReference.updateChildValues(group) { (err, _) in
+
+
             if err == nil {
+
                 self.delegate?.manager(self, success: true)
+
                 return
+
             }
 
 
-    }
-    }
+        }
 
+    }
 
     func getGroupItem() {
 
 
-        Database.database().reference().child("groupFight").observe(.value, with: {(snapshot) in
+        Database.database().reference().child("groupFight").observe(.value, with: {(snapshot)
+            in
+
 
             print(snapshot)
-
 
 
             if snapshot.childrenCount > 0 {
@@ -81,19 +82,11 @@ class GroupManager {
                 }
 
                 self.delegate?.manager(self, groupItem: datalist)
-                
+
             }
-            
+
         })
 
     }
 
-
-
-
-
-
-
-
-    
 }

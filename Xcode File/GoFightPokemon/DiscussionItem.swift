@@ -14,7 +14,6 @@ struct DiscussionItem {
     var childId: String
     var participantId: String
     var participantComment: String
-    
 
     init(snapshot: DataSnapshot) {
 
@@ -25,10 +24,7 @@ struct DiscussionItem {
         self.childId = snapshotValue["childId"] as! String
         self.participantId = snapshotValue["participantId"] as! String
         self.participantComment = snapshotValue["participantComment"] as! String
-        
 
     }
-
-
 
 }
