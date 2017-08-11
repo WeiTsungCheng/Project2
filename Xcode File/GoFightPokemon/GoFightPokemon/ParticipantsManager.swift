@@ -84,21 +84,38 @@ class ParticipantManager {
         query.observeSingleEvent(of: .value, with: { (snapshot)
 
             in
-            if let data = snapshot.value {
-print("💤")
-                print(data)
-print("💤")
+
+            if let data = snapshot.value{
+
+             
+
+            guard
+                let participantsMember = data as? [String: AnyObject],
+                let playerId = participantsMember[(Auth.auth().currentUser?.uid)!]
+
+                else {
+                    print("🅾️")
+                    let attendButton = true
+                    let cancelButton = false
+
+                    self.delegate?.manager(self, attendButton: attendButton, cancelButton: cancelButton)
+                    return
+                }
+
+                print("❌")
+                print(playerId)
+
+                let attendButton = false
+                let cancelButton = true
+                self.delegate?.manager(self, attendButton: attendButton, cancelButton: cancelButton)
+                
+
             }
-print("🆗")
-            print(snapshot)
-print("🆗")
+
 
         })
 
     }
-
-
-
 }
 
 

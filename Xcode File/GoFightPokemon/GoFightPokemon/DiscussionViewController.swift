@@ -25,6 +25,10 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
     }
     func manager(_ controller: ParticipantManager, attendButton: Bool, cancelButton: Bool){
 
+        attendFight.isEnabled  = attendButton
+        leaveFight.isEnabled = cancelButton
+
+
     }
 
 
@@ -150,8 +154,7 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
 
         urlImageManager.delegate = self
 
-        leaveFight.isEnabled = false
-        attendFight.isEnabled  = true
+
 
         participantManager.delegate = self
 
@@ -162,11 +165,23 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
         participantManager.checkAttend(childId: childIdName)
 
 
+
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationController = segue.destination as! ParticipantListViewController
+
+        if segue.identifier == "goToParticipantList" {
+        //傳值到玩家列表
+        destinationController.childIdNameName = childIdName
+
+        }
     }
 
 }
