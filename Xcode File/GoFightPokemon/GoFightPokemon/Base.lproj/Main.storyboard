@@ -879,7 +879,7 @@
                     <value key="contentSizeForViewInPopover" type="size" width="320" height="667"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WYe-BG-omf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="WYe-BG-omf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1328,7 +1328,7 @@
                     <value key="contentSizeForViewInPopover" type="size" width="320" height="667"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wpG-2Y-3IQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wpG-2Y-3IQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1349,7 +1349,7 @@
                     <value key="contentSizeForViewInPopover" type="size" width="375" height="667"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ets-dg-ged">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Ets-dg-ged">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1370,7 +1370,7 @@
                     <value key="contentSizeForViewInPopover" type="size" width="375" height="667"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4lJ-GN-QrM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="4lJ-GN-QrM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
