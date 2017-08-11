@@ -14,7 +14,7 @@ import FirebaseDatabase
 protocol DiscussionDelegate: class {
 
     func manager(_ controller: DiscussionManager, success: Bool)
-    func manager(_ controller: DiscussionManager, groupItem: [DiscussionItem])
+    func manager(_ controller: DiscussionManager, discussionItem: [DiscussionItem])
 }
 
 class DiscussionManager {
@@ -44,6 +44,7 @@ class DiscussionManager {
         discussion["childId"] = childId as AnyObject
         discussion["participantId"] = Auth.auth().currentUser?.uid as AnyObject
         discussion["participantComment"] = writeComment as AnyObject
+       
 
 
         let discussionReference = reference.child(childRef.key)
@@ -96,7 +97,7 @@ class DiscussionManager {
                 }
 
                 getItem = datalist
-                self.delegate?.manager(self, groupItem: getItem)
+                self.delegate?.manager(self, discussionItem: getItem)
 
             }
         })

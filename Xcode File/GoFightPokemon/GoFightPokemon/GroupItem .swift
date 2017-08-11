@@ -32,6 +32,7 @@ print("🌀")
         self.setTime = snapshotValue["setTime"] as! String
         self.gymLocation = snapshotValue["gymLocation"] as! String
 
+
     }
 
 }
