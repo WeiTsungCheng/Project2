@@ -84,10 +84,9 @@ class DiscussionManager {
 
                 for item in snapshot.children {
 
-                    print("----------")
+                    print("🏁")
                     print(snapshot.children)
-
-                    print("----------")
+                    print("🏁")
 
                     let data = DiscussionItem(snapshot: item as! DataSnapshot)
                     datalist.append(data)

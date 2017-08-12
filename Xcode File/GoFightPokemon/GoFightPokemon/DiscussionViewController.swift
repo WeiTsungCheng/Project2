@@ -16,7 +16,7 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
     func manager(_ controller: ParticipantManager, success: Bool){
 
     }
-    func manager(_ controller: ParticipantManager, participantsItem: ParticipantsItem){
+    func manager(_ controller: ParticipantManager, participantsItem: [ParticipantsItem]){
 
     }
 
@@ -48,7 +48,6 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
         participantManager.setParticipantItem(childId: childIdName)
 
         participantManager.getParticipantsCountItem(childId: childIdName)
-
 
         leaveFight.isEnabled = true
         attendFight.isEnabled  = false
