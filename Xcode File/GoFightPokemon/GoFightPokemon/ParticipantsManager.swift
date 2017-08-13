@@ -15,7 +15,7 @@ protocol ParticipantsDelegate: class {
 
     func manager(_ controller: ParticipantManager, success: Bool)
 
-    func manager(_ controller: ParticipantManager, participantsItem: ParticipantsItem)
+    func manager(_ controller: ParticipantManager, participantsItem: [ParticipantsItem])
 
     func manager(_ controller: ParticipantManager, participantsCount: Int)
 
@@ -111,6 +111,39 @@ class ParticipantManager {
                 
 
             }
+
+
+        })
+
+    }
+
+
+    func getParticipantPersonItem(childId: String) {
+        Database.database().reference().child("participantsMember").child(childId).observe(.value, with: {(snapshot) in
+
+            print("🇮🇸")
+            print(snapshot)
+            print("🇮🇸")
+            if snapshot .childrenCount > 0 {
+
+                var dataList: [ParticipantsItem] = [ParticipantsItem]()
+
+                for item in snapshot.children {
+
+                    let data = ParticipantsItem(snapshot: item as! DataSnapshot)
+
+                    dataList.append(data)
+                    print("🇨🇭")
+                    print(dataList)
+                    print("🇨🇭")
+                }
+
+                self.delegate?.manager(self, participantsItem: dataList)
+
+
+            }
+
+
 
 
         })

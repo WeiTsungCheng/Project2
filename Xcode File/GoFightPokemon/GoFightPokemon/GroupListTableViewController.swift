@@ -91,8 +91,6 @@ class GroupListTableViewController: UITableViewController, GroupDelegate, Person
 
         cell.ownerNickName.text = getUserItemDic[getItems[indexPath.row].ownerId]?.nickName
 
-            print("🔆")
-
         }
 
         return cell

@@ -100,4 +100,27 @@ class ShowcaseManager {
 
     }
 
+    func getOtherPlayerShowcaseItem (playerId: String) {
+
+        //取下之前存在fireBase圖檔的url
+        let dataBaseRef = Database.database().reference().child("usersShowcase").child(playerId).child("pokemonPhoto")
+
+        var uploadPhotoDic: [String: Any]?
+
+        dataBaseRef.observe(.value, with: { [weak self] (snapshot) in
+
+            if let uploadDataDic = snapshot.value as? [String:Any] {
+
+                uploadPhotoDic = uploadDataDic
+
+                self?.delegate?.manager(self!, updatePhotoDic: uploadPhotoDic!)
+                
+            }
+        })
+        
+    }
+
+
+
+
 }
