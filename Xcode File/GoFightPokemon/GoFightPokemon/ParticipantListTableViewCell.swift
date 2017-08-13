@@ -14,6 +14,7 @@ class ParticipantListTableViewCell: UITableViewCell {
     @IBOutlet weak var playerTeam: UILabel!
     @IBOutlet weak var playerLevel: UILabel!
 
+    @IBOutlet weak var showcaseBtn: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()

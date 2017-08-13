@@ -20,7 +20,7 @@ class ParticipantListViewController: UIViewController, ParticipantsDelegate, Per
 
     func manager(_ controller: PersonManager, userItem: UserItem){
 
-        getParticpantInfoDic.updateValue(userItem, forKey: playerId)
+        getParticpantInfoDic.updateValue(userItem, forKey: userItem.userId)
 
         self.tableView.reloadData()
 
@@ -40,8 +40,9 @@ class ParticipantListViewController: UIViewController, ParticipantsDelegate, Per
         getItems = participantsItem
 
         for item in getItems {
+
             personManager.getOtherPersonItem(userId: item.playerId)
-            playerId = item.playerId
+            
         }
         self.tableView.reloadData()
 
@@ -69,9 +70,7 @@ class ParticipantListViewController: UIViewController, ParticipantsDelegate, Per
 
     var getParticpantInfoDic: [String : UserItem] = [:]
 
-    var playerId: String = ""
-    
-
+ 
 
 
     override func viewDidLoad() {
@@ -79,6 +78,7 @@ class ParticipantListViewController: UIViewController, ParticipantsDelegate, Per
 
         print("🇹🇼🇹🇼🇹🇼🇹🇼🇹🇼🇹🇼🇹🇼🇹🇼🇹🇼")
         print(childIdNameName)
+
 
 
         participantManager.delegate = self
@@ -94,13 +94,40 @@ class ParticipantListViewController: UIViewController, ParticipantsDelegate, Per
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
             }
+
+
+    //傳個別cell所帶的userId到下一頁
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+
+        let destinationController = segue.destination as! OtherShowcaseViewController
+
+        if let button = sender as? UIButton {
+
+            let index = button.tag
+
+            print("🍯")
+
+            print(index)
+            print("🍯")
+
+
+            if let userId = getParticpantInfoDic[getItems[index].playerId]?.userId {
+                destinationController.userIdName = userId
+            }
+
+            if let nickName = getParticpantInfoDic[getItems[index].playerId]?.nickName {
+
+                destinationController.nickNameName = nickName
+            }
+        }
+
+    }
+
 }
 
-
-
 extension ParticipantListViewController: UITableViewDelegate, UITableViewDataSource {
-
-    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
@@ -109,15 +136,19 @@ extension ParticipantListViewController: UITableViewDelegate, UITableViewDataSou
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let Cell = tableView.dequeueReusableCell(withIdentifier: "PartivipantListCell", for: indexPath) as! ParticipantListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PartivipantListCell", for: indexPath) as! ParticipantListTableViewCell
 
 
-        Cell.nickName.text =  getParticpantInfoDic[getItems[indexPath.row].playerId]?.nickName
-        Cell.playerTeam.text =  getParticpantInfoDic[getItems[indexPath.row].playerId]?.playerTeam
-        Cell.playerLevel.text =  getParticpantInfoDic[getItems[indexPath.row].playerId]?.playerLevel
+
+        cell.nickName.text =  getParticpantInfoDic[getItems[indexPath.row].playerId]?.nickName
+        cell.playerTeam.text =  getParticpantInfoDic[getItems[indexPath.row].playerId]?.playerTeam
+        cell.playerLevel.text =  getParticpantInfoDic[getItems[indexPath.row].playerId]?.playerLevel
 
 
-        return Cell
+        cell.showcaseBtn.tag = indexPath.row
+
+
+        return cell
 
     }
 }
