@@ -18,6 +18,9 @@ struct GroupItem {
     var setTime: String
     var gymLocation: String
 
+    var latitude: Double
+    var longitude: Double
+
     init(snapshot: DataSnapshot) {
 
 print("🌀")
@@ -31,6 +34,9 @@ print("🌀")
         self.childId = snapshotValue["childId"] as! String
         self.setTime = snapshotValue["setTime"] as! String
         self.gymLocation = snapshotValue["gymLocation"] as! String
+
+        self.latitude = snapshotValue["latitude"] as! Double
+        self.longitude = snapshotValue["longitude"] as! Double
 
 
     }

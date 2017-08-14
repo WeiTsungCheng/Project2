@@ -20,6 +20,11 @@ enum Location{
 
 class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
 
+    var latitudeNameName = 0.00
+    var longitudeNameName = 0.00
+
+
+
     @IBOutlet weak var googleMaps: GMSMapView!
 
     @IBOutlet weak var startLocation: UITextField!
@@ -45,12 +50,25 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startMonitoringSignificantLocationChanges()
 
-        //初始化地圖 (設置地圖位置在台北101)
-        let camera = GMSMutableCameraPosition.camera(withLatitude: 25.024035, longitude: 121.528761, zoom: 16)
-        self.googleMaps.camera = camera
+//        //初始化地圖 (設置地圖位置在台北101)
+//        let camera = GMSMutableCameraPosition.camera(withLatitude: 25.033493, longitude: 121.564101, zoom: 16)
+//        self.googleMaps.camera = camera
+
         self.googleMaps.delegate = self
         self.googleMaps.isMyLocationEnabled = true
+        self.googleMaps.settings.myLocationButton = true
+        self.googleMaps.settings.zoomGestures = true
         self.googleMaps.settings.compassButton = true
+
+
+
+        let camera = GMSCameraPosition.camera(withLatitude: latitudeNameName, longitude: longitudeNameName, zoom: 16)
+        //設定Gymlocation 的預設值
+        destinatoionLocation.text = "\(latitudeNameName), \(longitudeNameName)"
+        locationEnd = CLLocation(latitude: latitudeNameName, longitude: longitudeNameName)
+        createMarker(titleMarker: "終點站", iconMarker: #imageLiteral(resourceName: "Pokemon_Go-11-128"), latitude: latitudeNameName, longitude: longitudeNameName)
+        self.googleMaps.camera = camera
+
 
     }
 
@@ -171,6 +189,7 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
         self.present(autoCompleteController, animated: true, completion: nil)
     }
 
+    //搜尋到達位置
     @IBAction func openDestinationLocation(_ sender: UIButton) {
 
         let autoCompleteController = GMSAutocompleteViewController()
@@ -255,6 +274,16 @@ public extension UISearchBar {
     }
 }
 
+//從GroupManager 取得gym的經緯度
+extension GymDirectionViewController: GroupDelegate{
+
+    func manager(_ controller: GroupManager, success: Bool){
+
+    }
+    func manager(_ controller: GroupManager, groupItem: [GroupItem]){
+
+    }
+}
 
 
 

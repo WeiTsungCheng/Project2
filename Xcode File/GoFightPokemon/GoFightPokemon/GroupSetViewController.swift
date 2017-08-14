@@ -39,8 +39,7 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
     @IBAction func groupSet(_ sender: UIButton) {
 
-
-        setGroupManager.setGroupItem(gymLevel: gymLevel.text!, bossName: bossName.text!, setTime: setTime.text!, gymLocation: gymLocation.text!)
+        setGroupManager.setGroupItem(gymLevel: gymLevel.text!, bossName: bossName.text!, setTime: setTime.text!, gymLocation: gymLocation.text!, latitude: gymLatitude!, longitude: gymLongitude!)
 
 
         self.navigationController?.popViewController(animated: true)
@@ -64,16 +63,14 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
- //   var resultView: UITextView?
 
-
-    var latitude: CLLocationDegrees?
-    var longitude: CLLocationDegrees?
+    var gymLatitude: CLLocationDegrees?
+    var gymLongitude: CLLocationDegrees?
 
 
     func getMapPosition() {
 
-        let camera = GMSCameraPosition.camera(withLatitude: latitude!, longitude: longitude!, zoom: 16.0)
+        let camera = GMSCameraPosition.camera(withLatitude: gymLatitude!, longitude: gymLongitude!, zoom: 16.0)
 
         let mapView = GMSMapView.map(withFrame: CGRect(x: 16, y: 182, width: 343, height: 252), camera: camera)
         mapView.isMyLocationEnabled = true
@@ -83,7 +80,7 @@ class GroupSetViewController: UIViewController, GroupDelegate {
         let gmsMarket = GMSMarker()
 
 
-        gmsMarket.position = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+        gmsMarket.position = CLLocationCoordinate2D(latitude: gymLatitude!, longitude: gymLongitude!)
 
         gmsMarket.map = mapView
 
@@ -175,9 +172,9 @@ extension GroupSetViewController: GMSAutocompleteResultsViewControllerDelegate {
     searchController?.isActive = false
 
 
-        latitude = place.coordinate.latitude
+        gymLatitude = place.coordinate.latitude
 
-        longitude = place.coordinate.longitude
+        gymLongitude = place.coordinate.longitude
 
     // Do something with the selected place.
     print("Place name: \(place.name)")

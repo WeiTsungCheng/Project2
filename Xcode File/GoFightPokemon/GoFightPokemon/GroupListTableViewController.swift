@@ -110,6 +110,11 @@ class GroupListTableViewController: UITableViewController, GroupDelegate, Person
 
                 destinationController.gymLocationName = getItems[indexPath.row].gymLocation
 
+                destinationController.latitudeName = getItems[indexPath.row].latitude
+
+                destinationController.longitudeName =
+                getItems[indexPath.row].longitude
+
 
             }
         }
