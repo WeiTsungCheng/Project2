@@ -117,13 +117,14 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
     //設定新變數為了從GroupListTabaleView傳值過來
     var gymLevelName = ""
     var bossNameName = ""
-   
+    var gymLocationName = ""
 
     //需要傳入這場團戰的childId才能找到正確的團戰位置
     var childIdName = ""
     var ownerIdName = ""
 
-    var gymLocationName = ""
+    var latitudeName = 0.00
+    var longitudeName = 0.00
 
     var getItem: [DiscussionItem] = []
 
@@ -176,11 +177,27 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
 
+
         if segue.identifier == "goToParticipantList" {
-        let destinationController = segue.destination as! ParticipantListViewController
-        //傳值到玩家列表
-        destinationController.childIdNameName = childIdName
+            let destinationController = segue.destination
+                as! ParticipantListViewController
+            //傳值到玩家列表
+            destinationController.childIdNameName = childIdName
+        } else {
+            if segue.identifier == "goToGymDirection" {
+
+                let destinationController = segue.destination
+                    as! GymDirectionViewController
+                //傳值到玩家列表
+                destinationController.latitudeNameName = latitudeName
+                destinationController.longitudeNameName = longitudeName
+
+
+
+            }
+
         }
+
     }
 
 }
