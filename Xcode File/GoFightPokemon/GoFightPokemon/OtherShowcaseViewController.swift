@@ -19,9 +19,7 @@ class OtherShowcaseViewController: UIViewController, ShowcaseDelegate {
     func manager(_ controller: ShowcaseManager, updatePhotoDic: [String:Any]){
         photoDic = updatePhotoDic
 
-        print("🍋")
-        print(photoDic)
-        print("🍋")
+        
 
         collectoinView.reloadData()
     }
