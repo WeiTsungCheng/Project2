@@ -64,7 +64,7 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
-    var resultView: UITextView?
+ //   var resultView: UITextView?
 
 
     var latitude: CLLocationDegrees?
@@ -119,11 +119,8 @@ class GroupSetViewController: UIViewController, GroupDelegate {
         searchController?.searchBar.sizeToFit()
         searchController?.hidesNavigationBarDuringPresentation = false
 
-        // When UISearchController presents the results view, present it in
-        // this view controller, not one further up the chain.
         definesPresentationContext = true
 
-        // Do any additional setup after loading the view.
 
 
     }

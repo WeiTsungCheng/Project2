@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+    GMSServices.provideAPIKey("AIzaSyDmf89vsA08hDiQ6ENi2GFhrU0cXf9ZOqA")
+    GMSPlacesClient.provideAPIKey("AIzaSyDmf89vsA08hDiQ6ENi2GFhrU0cXf9ZOqA")
+
         IQKeyboardManager.sharedManager().enable = true
 
         FirebaseApp.configure()
@@ -56,10 +59,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("no exsist account data in users phone")
 
         }
-
-        GMSServices.provideAPIKey("AIzaSyA4lClSORaEMt9a_acM4HvS6WtK3QkPs7c")
-
-        GMSPlacesClient.provideAPIKey("AIzaSyDOicPhgoalgN5h9b6WnpiIHVBEWx24VDc")
 
         // Override point for customization after application launch.
         return true

@@ -174,12 +174,12 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationController = segue.destination as! ParticipantListViewController
+
 
         if segue.identifier == "goToParticipantList" {
+        let destinationController = segue.destination as! ParticipantListViewController
         //傳值到玩家列表
         destinationController.childIdNameName = childIdName
-
         }
     }
 
