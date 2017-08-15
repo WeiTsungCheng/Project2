@@ -26,11 +26,13 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
 //    var placesClient: GMSPlacesClient!
 
 
+    var gymLocationNameName = ""
     var latitudeNameName = 0.00
     var longitudeNameName = 0.00
 
     var currentLatitude = 0.00
     var currentLongitude = 0.00
+
 
 
 
@@ -78,9 +80,8 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
         let camera = GMSCameraPosition.camera(withLatitude: latitudeNameName, longitude: longitudeNameName, zoom: 16)
 
         //設定Gymlocation 的預設值
-        destinatoionLocation.text = "\(latitudeNameName), \(longitudeNameName)"
+        destinatoionLocation.text = gymLocationNameName
         locationEnd = CLLocation(latitude: latitudeNameName, longitude: longitudeNameName)
-
 
 
         endMarker.map = nil
@@ -98,17 +99,6 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
 
     }
 
-//    //客製化地圖圖釘的方法
-//    func createMarker(titleMarker: String, iconMarker: UIImage, latitude: CLLocationDegrees, longitude: CLLocationDegrees){
-//
-//        let marker = GMSMarker()
-//
-//        marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-//        marker.title = titleMarker
-//        marker.icon = iconMarker
-//
-//        marker.map = googleMaps
-//    }
 
     //實作CLLocation manager的方法
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -123,8 +113,8 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
         if let location = locations.last {
 
 
-            currentLatitude = (location.coordinate.latitude)
-            currentLongitude = (location.coordinate.longitude)
+            currentLatitude = location.coordinate.latitude
+            currentLongitude = location.coordinate.longitude
 
             myMarker.position = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             myMarker.title = "我的位置"
@@ -223,7 +213,7 @@ print("🎾🎾🎾")
 
           self.locationStart = CLLocation(latitude: currentLatitude, longitude: currentLongitude)
 
-          self.startLocation.text = "\(currentLatitude), \(currentLongitude)"
+          self.startLocation.text = "緯度：\(currentLatitude), 經度：\(currentLongitude)"
 
           self.googleMaps.camera = camera
 
@@ -288,7 +278,7 @@ extension GymDirectionViewController: GMSAutocompleteViewControllerDelegate{
 
         if locationSelected == Location.startLocation {
 
-            startLocation.text = "\(place.coordinate.latitude), \(place.coordinate.longitude)"
+            startLocation.text = place.formattedAddress
 
             locationStart = CLLocation(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
 
@@ -303,7 +293,7 @@ extension GymDirectionViewController: GMSAutocompleteViewControllerDelegate{
 
         } else {
 
-            destinatoionLocation.text = "\(place.coordinate.latitude), \(place.coordinate.longitude)"
+            destinatoionLocation.text = place.formattedAddress
 
             locationEnd = CLLocation(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
 

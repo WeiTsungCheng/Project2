@@ -188,7 +188,9 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
 
                 let destinationController = segue.destination
                     as! GymDirectionViewController
-                //傳值到玩家列表
+
+                //傳值到GymDirection
+                destinationController.gymLocationNameName = gymLocationName
                 destinationController.latitudeNameName = latitudeName
                 destinationController.longitudeNameName = longitudeName
 

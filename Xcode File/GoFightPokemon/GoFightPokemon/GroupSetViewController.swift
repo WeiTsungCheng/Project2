@@ -129,7 +129,7 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
 }
 
-extension GroupSetViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+extension GroupSetViewController: UIPickerViewDelegate{
 
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
