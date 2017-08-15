@@ -20,8 +20,17 @@ enum Location{
 
 class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
 
+
+//
+//    //設置當前位置
+//    var placesClient: GMSPlacesClient!
+
+
     var latitudeNameName = 0.00
     var longitudeNameName = 0.00
+
+    var currentLatitude = 0.00
+    var currentLongitude = 0.00
 
 
 
@@ -32,12 +41,17 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
     @IBOutlet weak var destinatoionLocation: UITextField!
 
 
-    //產生一個CLLocationManager實體
     var locationManager = CLLocationManager()
     var locationSelected = Location.startLocation
 
     var locationStart = CLLocation()
     var locationEnd = CLLocation()
+
+    var myMarker = GMSMarker()
+    var startMarker = GMSMarker()
+    var endMarker = GMSMarker()
+    var myPolyline = GMSPolyline()
+
 
 
     override func viewDidLoad() {
@@ -50,9 +64,8 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startMonitoringSignificantLocationChanges()
 
-//        //初始化地圖 (設置地圖位置在台北101)
-//        let camera = GMSMutableCameraPosition.camera(withLatitude: 25.033493, longitude: 121.564101, zoom: 16)
-//        self.googleMaps.camera = camera
+
+
 
         self.googleMaps.delegate = self
         self.googleMaps.isMyLocationEnabled = true
@@ -61,14 +74,22 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
         self.googleMaps.settings.compassButton = true
 
 
-
+        //初始化地圖 (設置地圖位置在道館位置)
         let camera = GMSCameraPosition.camera(withLatitude: latitudeNameName, longitude: longitudeNameName, zoom: 16)
+
         //設定Gymlocation 的預設值
         destinatoionLocation.text = "\(latitudeNameName), \(longitudeNameName)"
         locationEnd = CLLocation(latitude: latitudeNameName, longitude: longitudeNameName)
-        createMarker(titleMarker: "終點站", iconMarker: #imageLiteral(resourceName: "Pokemon_Go-11-128"), latitude: latitudeNameName, longitude: longitudeNameName)
-        self.googleMaps.camera = camera
 
+
+
+        endMarker.map = nil
+        endMarker.position = CLLocationCoordinate2D(latitude: latitudeNameName, longitude: longitudeNameName)
+        endMarker.title = "終點站"
+        endMarker.icon = #imageLiteral(resourceName: "Pokemon_Go-11-128")
+        endMarker.map = googleMaps
+
+        self.googleMaps.camera = camera
 
     }
 
@@ -77,28 +98,46 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
 
     }
 
-    //客製化地圖圖釘的方法
-    func createMarker(titleMarker: String, iconMarker: UIImage, latitude: CLLocationDegrees, longitude: CLLocationDegrees){
-
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        marker.title = titleMarker
-        marker.icon = iconMarker
-        marker.map = googleMaps
-    }
+//    //客製化地圖圖釘的方法
+//    func createMarker(titleMarker: String, iconMarker: UIImage, latitude: CLLocationDegrees, longitude: CLLocationDegrees){
+//
+//        let marker = GMSMarker()
+//
+//        marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+//        marker.title = titleMarker
+//        marker.icon = iconMarker
+//
+//        marker.map = googleMaps
+//    }
 
     //實作CLLocation manager的方法
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error to get location:  \(error)")
+
     }
+   
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //只取最後一個抓到的地址
-        let location = locations.last
 
-        createMarker(titleMarker: "我的位置", iconMarker: #imageLiteral(resourceName: "Pokemon_Go-01-128"), latitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!)
+        if let location = locations.last {
 
-        //停止抓取用戶裝置位置
-        self.locationManager.stopUpdatingLocation()
+
+            currentLatitude = (location.coordinate.latitude)
+            currentLongitude = (location.coordinate.longitude)
+
+            myMarker.position = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            myMarker.title = "我的位置"
+            myMarker.icon = #imageLiteral(resourceName: "_Location-128")
+            myMarker.map = googleMaps
+
+print("⚽️⚽️⚽️")
+            //停止抓取用戶裝置位置
+            self.locationManager.stopUpdatingLocation()
+
+        }
+
+print("🎾🎾🎾")
 
     }
 
@@ -128,6 +167,7 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
     }
 
     func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
+
         googleMaps.isMyLocationEnabled = true
         googleMaps.selectedMarker = nil
         return false
@@ -162,17 +202,32 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
                 let points = routeOverviewPolyline?["points"]?.stringValue
                 let path = GMSPath.init(fromEncodedPath: points!)
                 //點與點之間的線
-                let polyline = GMSPolyline.init(path: path)
 
-                polyline.strokeWidth = 5
-                polyline.strokeColor = UIColor.blue
-                polyline.map = self.googleMaps
+                self.myPolyline.map = nil
+
+                self.myPolyline = GMSPolyline.init(path: path)
+
+                self.myPolyline.strokeWidth = 5
+                self.myPolyline.strokeColor = UIColor.blue
+
+
+                self.myPolyline.map = self.googleMaps
             }
         }
     }
 
+    //以當前位置作為起始點
+    @IBAction func currentAsStartLocatoin(_ sender: UIButton) {
 
+          let camera = GMSCameraPosition.camera(withLatitude: currentLatitude, longitude: currentLongitude, zoom: 16)
 
+          self.locationStart = CLLocation(latitude: currentLatitude, longitude: currentLongitude)
+
+          self.startLocation.text = "\(currentLatitude), \(currentLongitude)"
+
+          self.googleMaps.camera = camera
+
+    }
 
 
     //搜尋起始位置
@@ -184,6 +239,7 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
         //選擇地點
         locationSelected = Location.startLocation
         UISearchBar.appearance().setTextColor(color: UIColor.brown)
+
         self.locationManager.stopUpdatingLocation()
 
         self.present(autoCompleteController, animated: true, completion: nil)
@@ -197,7 +253,8 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
 
         //選擇地點
         locationSelected = Location.destinaitonLocation
-        UISearchBar.appearance().setTextColor(color: UIColor.gray)
+        UISearchBar.appearance().setTextColor(color: UIColor.brown)
+
         self.locationManager.stopUpdatingLocation()
 
         self.present(autoCompleteController, animated: true, completion: nil)
@@ -217,7 +274,6 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
 }
 
 
-
 extension GymDirectionViewController: GMSAutocompleteViewControllerDelegate{
 
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
@@ -233,14 +289,30 @@ extension GymDirectionViewController: GMSAutocompleteViewControllerDelegate{
         if locationSelected == Location.startLocation {
 
             startLocation.text = "\(place.coordinate.latitude), \(place.coordinate.longitude)"
+
             locationStart = CLLocation(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
-            createMarker(titleMarker: "起始站", iconMarker: #imageLiteral(resourceName: "014-_Pokestop_-_PokeBall_-_Game_-_Pokemon_-_Pokemongo-128"), latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+
+            startMarker.map = nil
+            startMarker.position = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+            startMarker.title = "起始站"
+            startMarker.icon = #imageLiteral(resourceName: "014-_Pokestop_-_PokeBall_-_Game_-_Pokemon_-_Pokemongo-128")
+            startMarker.map = googleMaps
+
+            print("🍿")
+
+
         } else {
 
             destinatoionLocation.text = "\(place.coordinate.latitude), \(place.coordinate.longitude)"
 
             locationEnd = CLLocation(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
-            createMarker(titleMarker: "終點站", iconMarker: #imageLiteral(resourceName: "Pokemon_Go-11-128"), latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+
+            endMarker.map = nil
+            endMarker.position = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+            endMarker.title = "終點站"
+            endMarker.icon = #imageLiteral(resourceName: "Pokemon_Go-11-128")
+            endMarker.map = googleMaps
+
         }
 
         self.googleMaps.camera = camera
@@ -274,16 +346,6 @@ public extension UISearchBar {
     }
 }
 
-//從GroupManager 取得gym的經緯度
-extension GymDirectionViewController: GroupDelegate{
-
-    func manager(_ controller: GroupManager, success: Bool){
-
-    }
-    func manager(_ controller: GroupManager, groupItem: [GroupItem]){
-
-    }
-}
 
 
 

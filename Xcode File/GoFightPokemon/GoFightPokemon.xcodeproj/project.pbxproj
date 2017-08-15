@@ -32,7 +32,6 @@
 		C55071901F3D582600CCF51D /* ParticipantListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550718F1F3D582600CCF51D /* ParticipantListTableViewCell.swift */; };
 		C55071961F3D877800CCF51D /* ParticipantsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55071951F3D877800CCF51D /* ParticipantsItem.swift */; };
 		C55071981F3D8AC800CCF51D /* ParticipantsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55071971F3D8AC800CCF51D /* ParticipantsManager.swift */; };
-		C585E37D1F42142B0053A9F5 /* GoFightPokemon.xcworkspace in Resources */ = {isa = PBXBuildFile; fileRef = C585E37C1F42142B0053A9F5 /* GoFightPokemon.xcworkspace */; };
 		C585E37F1F42144C0053A9F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C585E37E1F42144C0053A9F5 /* GoogleService-Info.plist */; };
 		C5F2C81D1F3622CF009D636B /* UserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F2C81C1F3622CF009D636B /* UserItem.swift */; };
 		C5F2C81F1F362694009D636B /* PersonInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F2C81E1F362694009D636B /* PersonInfoManager.swift */; };
@@ -80,7 +79,6 @@
 		C550718F1F3D582600CCF51D /* ParticipantListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantListTableViewCell.swift; sourceTree = "<group>"; };
 		C55071951F3D877800CCF51D /* ParticipantsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantsItem.swift; sourceTree = "<group>"; };
 		C55071971F3D8AC800CCF51D /* ParticipantsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantsManager.swift; sourceTree = "<group>"; };
-		C585E37C1F42142B0053A9F5 /* GoFightPokemon.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = GoFightPokemon.xcworkspace; sourceTree = "<group>"; };
 		C585E37E1F42144C0053A9F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C5F2C81C1F3622CF009D636B /* UserItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserItem.swift; sourceTree = "<group>"; };
 		C5F2C81E1F362694009D636B /* PersonInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonInfoManager.swift; sourceTree = "<group>"; };
@@ -154,7 +152,6 @@
 				C50034581F28625A00DC51A8 /* LaunchScreen.storyboard */,
 				C500345B1F28625A00DC51A8 /* Info.plist */,
 				C50034531F28625A00DC51A8 /* GoFightPokemon.xcdatamodeld */,
-				C585E37C1F42142B0053A9F5 /* GoFightPokemon.xcworkspace */,
 				C585E37E1F42144C0053A9F5 /* GoogleService-Info.plist */,
 				C50034691F286A2100DC51A8 /* LogIn */,
 				C55F1BC91F334252000E4AAC /* PlayerInfo */,
@@ -336,7 +333,6 @@
 				C50034571F28625A00DC51A8 /* Assets.xcassets in Resources */,
 				C585E37F1F42144C0053A9F5 /* GoogleService-Info.plist in Resources */,
 				C50034521F28625A00DC51A8 /* Main.storyboard in Resources */,
-				C585E37D1F42142B0053A9F5 /* GoFightPokemon.xcworkspace in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
