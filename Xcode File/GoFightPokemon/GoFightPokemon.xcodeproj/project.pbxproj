@@ -23,6 +23,7 @@
 		C5011D5F1F2F56490006AE24 /* PlayerShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5011D5E1F2F56490006AE24 /* PlayerShowcaseViewController.swift */; };
 		C5011D611F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5011D601F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift */; };
 		C501F37C1F3967C600ABE8D8 /* URLPhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C501F37B1F3967C600ABE8D8 /* URLPhotoManager.swift */; };
+		C50356AB1F4435A9005EC625 /* UIColor & UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50356AA1F4435A9005EC625 /* UIColor & UIFont.swift */; };
 		C503DF901F3725C500FF7A97 /* HeadPhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C503DF8F1F3725C500FF7A97 /* HeadPhotoManager.swift */; };
 		C503DF921F37395500FF7A97 /* ShowcaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C503DF911F37395500FF7A97 /* ShowcaseManager.swift */; };
 		C503DF941F3749D700FF7A97 /* DiscussionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C503DF931F3749D700FF7A97 /* DiscussionManager.swift */; };
@@ -70,6 +71,7 @@
 		C5011D5E1F2F56490006AE24 /* PlayerShowcaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerShowcaseViewController.swift; sourceTree = "<group>"; };
 		C5011D601F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerShowcaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		C501F37B1F3967C600ABE8D8 /* URLPhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLPhotoManager.swift; path = GoFightPokemon/URLPhotoManager.swift; sourceTree = "<group>"; };
+		C50356AA1F4435A9005EC625 /* UIColor & UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor & UIFont.swift"; sourceTree = "<group>"; };
 		C503DF8F1F3725C500FF7A97 /* HeadPhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadPhotoManager.swift; sourceTree = "<group>"; };
 		C503DF911F37395500FF7A97 /* ShowcaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowcaseManager.swift; sourceTree = "<group>"; };
 		C503DF931F3749D700FF7A97 /* DiscussionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscussionManager.swift; path = GoFightPokemon/DiscussionManager.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			children = (
 				C500344C1F28625A00DC51A8 /* AppDelegate.swift */,
 				C50034501F28625A00DC51A8 /* Main.storyboard */,
+				C50356AA1F4435A9005EC625 /* UIColor & UIFont.swift */,
 				C50034561F28625A00DC51A8 /* Assets.xcassets */,
 				C50034581F28625A00DC51A8 /* LaunchScreen.storyboard */,
 				C500345B1F28625A00DC51A8 /* Info.plist */,
@@ -432,6 +435,7 @@
 				C500344F1F28625A00DC51A8 /* ViewController.swift in Sources */,
 				C5F6C1831F30A463007B6E12 /* WatchPersonShowcaseCollectionViewCell.swift in Sources */,
 				C500346B1F286D3B00DC51A8 /* LoginViewController:.swift in Sources */,
+				C50356AB1F4435A9005EC625 /* UIColor & UIFont.swift in Sources */,
 				C527C75D1F297E310099C2DB /* PersonalInfoViewController.swift in Sources */,
 				C501F37C1F3967C600ABE8D8 /* URLPhotoManager.swift in Sources */,
 				C5FB6E1A1F35961E00248D0F /* OwnerDiscussionTableViewCell.swift in Sources */,

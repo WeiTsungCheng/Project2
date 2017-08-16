@@ -229,7 +229,9 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
 
             ownerCell.ownerNickName.text = getPersonInfoDic[getItem[indexPath.row].participantId]?.nickName
 
-            ownerCell.ownerLevel.text = getPersonInfoDic[getItem[indexPath.row].participantId]?.playerLevel
+            if let thePlayerLevel = getPersonInfoDic[getItem[indexPath.row].participantId]?.playerLevel {
+            ownerCell.ownerLevel.text = String(describing: thePlayerLevel)
+            }
 
             ownerCell.ownerTeam.text = getPersonInfoDic[getItem[indexPath.row].participantId]?.playerTeam
 
@@ -264,7 +266,9 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
 
                 playerCell.playerNickName.text = getPersonInfoDic[getItem[indexPath.row].participantId]?.nickName
 
-                playerCell.playerLevel.text = getPersonInfoDic[getItem[indexPath.row].participantId]?.playerLevel
+                if let thePlayerLevel = getPersonInfoDic[getItem[indexPath.row].participantId]?.playerLevel{
+                playerCell.playerLevel.text = String(describing: thePlayerLevel)
+                }
 
                 playerCell.playerTeam.text = getPersonInfoDic[getItem[indexPath.row].participantId]?.playerTeam
 

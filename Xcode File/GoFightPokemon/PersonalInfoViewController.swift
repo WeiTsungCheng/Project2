@@ -60,7 +60,7 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
 
         //儲存textfield所填資料到firebase
 
-        self.personManager.setValuePersonItem(teamSelect: teamSelect.text!, levelSelect: levelSelect.text!, gymLevelSelect: gymLevelSelect.text!)
+        self.personManager.setValuePersonItem(teamSelect: teamSelect.text!, levelSelect: Int(levelSelect.text!)!, gymLevelSelect: gymLevelSelect.text!)
 
 
         self.headPhotoManager.setHeadPhoto(headPhoto: headPhoto.image)

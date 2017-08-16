@@ -16,7 +16,7 @@ class WatchPersonalInfoViewController: UIViewController, PersonDelegate, HeadPho
     let headPhotoManager = HeadPhotoManager()
 
 
-    var getItems: UserItem?
+    var getItems : UserItem?
 
 
     func manager(_ controller: PersonManager, success: Bool) {
@@ -26,12 +26,16 @@ class WatchPersonalInfoViewController: UIViewController, PersonDelegate, HeadPho
 
     }
     func manager(_ controller: PersonManager, userItem: UserItem) {
+
         getItems = userItem
 
         self.teamSelect.text = getItems?.playerTeam
         self.nickName.text = getItems?.nickName
         self.gymLevelSelect.text = getItems?.gymLevel
-        self.levelSelect.text = getItems?.playerLevel
+
+        if let thePlayerLevel = getItems?.playerLevel  {
+             self.levelSelect.text = String(describing: thePlayerLevel)
+        }
 
         selectTeamBadge()
 

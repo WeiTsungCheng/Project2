@@ -14,7 +14,7 @@ struct UserItem {
 
     var nickName: String
     var playerTeam: String
-    var playerLevel: String
+    var playerLevel: Int
     var gymLevel: String
     var headPhoto: String
 
@@ -35,7 +35,7 @@ struct UserItem {
 
         self.nickName = snapshotValue["nickName"] as! String
         self.playerTeam = snapshotValue["playerTeam"] as! String
-        self.playerLevel = snapshotValue["playerLevel"] as! String
+        self.playerLevel = snapshotValue["playerLevel"] as! Int
         self.gymLevel = snapshotValue["gymLevel"] as! String
 
         self.headPhoto = snapshotValue["headPhoto"] as! String

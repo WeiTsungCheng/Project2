@@ -142,7 +142,7 @@ extension ParticipantListViewController: UITableViewDelegate, UITableViewDataSou
 
         cell.nickName.text =  getParticpantInfoDic[getItems[indexPath.row].playerId]?.nickName
         cell.playerTeam.text =  getParticpantInfoDic[getItems[indexPath.row].playerId]?.playerTeam
-        cell.playerLevel.text =  getParticpantInfoDic[getItems[indexPath.row].playerId]?.playerLevel
+        cell.playerLevel.text =  String(describing: getParticpantInfoDic[getItems[indexPath.row].playerId]?.playerLevel)
 
 
         cell.showcaseBtn.tag = indexPath.row
