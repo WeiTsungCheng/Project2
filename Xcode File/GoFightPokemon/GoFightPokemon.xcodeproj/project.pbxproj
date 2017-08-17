@@ -23,7 +23,6 @@
 		C5011D5F1F2F56490006AE24 /* PlayerShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5011D5E1F2F56490006AE24 /* PlayerShowcaseViewController.swift */; };
 		C5011D611F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5011D601F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift */; };
 		C501F37C1F3967C600ABE8D8 /* URLPhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C501F37B1F3967C600ABE8D8 /* URLPhotoManager.swift */; };
-		C50356AB1F4435A9005EC625 /* UIColor & UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50356AA1F4435A9005EC625 /* UIColor & UIFont.swift */; };
 		C503DF901F3725C500FF7A97 /* HeadPhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C503DF8F1F3725C500FF7A97 /* HeadPhotoManager.swift */; };
 		C503DF921F37395500FF7A97 /* ShowcaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C503DF911F37395500FF7A97 /* ShowcaseManager.swift */; };
 		C503DF941F3749D700FF7A97 /* DiscussionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C503DF931F3749D700FF7A97 /* DiscussionManager.swift */; };
@@ -34,6 +33,7 @@
 		C55071961F3D877800CCF51D /* ParticipantsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55071951F3D877800CCF51D /* ParticipantsItem.swift */; };
 		C55071981F3D8AC800CCF51D /* ParticipantsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55071971F3D8AC800CCF51D /* ParticipantsManager.swift */; };
 		C585E37F1F42144C0053A9F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C585E37E1F42144C0053A9F5 /* GoogleService-Info.plist */; };
+		C59D104E1F445D5300ED3B80 /* ColorFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D104D1F445D5300ED3B80 /* ColorFontExtension.swift */; };
 		C5F2C81D1F3622CF009D636B /* UserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F2C81C1F3622CF009D636B /* UserItem.swift */; };
 		C5F2C81F1F362694009D636B /* PersonInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F2C81E1F362694009D636B /* PersonInfoManager.swift */; };
 		C5F6C1811F30A42C007B6E12 /* WatchPersonShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F6C1801F30A42C007B6E12 /* WatchPersonShowcaseViewController.swift */; };
@@ -71,7 +71,6 @@
 		C5011D5E1F2F56490006AE24 /* PlayerShowcaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerShowcaseViewController.swift; sourceTree = "<group>"; };
 		C5011D601F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerShowcaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		C501F37B1F3967C600ABE8D8 /* URLPhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLPhotoManager.swift; path = GoFightPokemon/URLPhotoManager.swift; sourceTree = "<group>"; };
-		C50356AA1F4435A9005EC625 /* UIColor & UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor & UIFont.swift"; sourceTree = "<group>"; };
 		C503DF8F1F3725C500FF7A97 /* HeadPhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadPhotoManager.swift; sourceTree = "<group>"; };
 		C503DF911F37395500FF7A97 /* ShowcaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowcaseManager.swift; sourceTree = "<group>"; };
 		C503DF931F3749D700FF7A97 /* DiscussionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscussionManager.swift; path = GoFightPokemon/DiscussionManager.swift; sourceTree = "<group>"; };
@@ -82,6 +81,7 @@
 		C55071951F3D877800CCF51D /* ParticipantsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantsItem.swift; sourceTree = "<group>"; };
 		C55071971F3D8AC800CCF51D /* ParticipantsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantsManager.swift; sourceTree = "<group>"; };
 		C585E37E1F42144C0053A9F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C59D104D1F445D5300ED3B80 /* ColorFontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorFontExtension.swift; sourceTree = "<group>"; };
 		C5F2C81C1F3622CF009D636B /* UserItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserItem.swift; sourceTree = "<group>"; };
 		C5F2C81E1F362694009D636B /* PersonInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonInfoManager.swift; sourceTree = "<group>"; };
 		C5F6C1801F30A42C007B6E12 /* WatchPersonShowcaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchPersonShowcaseViewController.swift; sourceTree = "<group>"; };
@@ -149,8 +149,8 @@
 			isa = PBXGroup;
 			children = (
 				C500344C1F28625A00DC51A8 /* AppDelegate.swift */,
+				C59D104D1F445D5300ED3B80 /* ColorFontExtension.swift */,
 				C50034501F28625A00DC51A8 /* Main.storyboard */,
-				C50356AA1F4435A9005EC625 /* UIColor & UIFont.swift */,
 				C50034561F28625A00DC51A8 /* Assets.xcassets */,
 				C50034581F28625A00DC51A8 /* LaunchScreen.storyboard */,
 				C500345B1F28625A00DC51A8 /* Info.plist */,
@@ -435,7 +435,6 @@
 				C500344F1F28625A00DC51A8 /* ViewController.swift in Sources */,
 				C5F6C1831F30A463007B6E12 /* WatchPersonShowcaseCollectionViewCell.swift in Sources */,
 				C500346B1F286D3B00DC51A8 /* LoginViewController:.swift in Sources */,
-				C50356AB1F4435A9005EC625 /* UIColor & UIFont.swift in Sources */,
 				C527C75D1F297E310099C2DB /* PersonalInfoViewController.swift in Sources */,
 				C501F37C1F3967C600ABE8D8 /* URLPhotoManager.swift in Sources */,
 				C5FB6E1A1F35961E00248D0F /* OwnerDiscussionTableViewCell.swift in Sources */,
@@ -453,6 +452,7 @@
 				C5F9854C1F3203420022295A /* DiscussionTableViewCell.swift in Sources */,
 				C5011D611F2F56F00006AE24 /* PlayerShowcaseCollectionViewCell.swift in Sources */,
 				C5FB6E281F35C87A00248D0F /* GroupSetManager.swift in Sources */,
+				C59D104E1F445D5300ED3B80 /* ColorFontExtension.swift in Sources */,
 				C55071901F3D582600CCF51D /* ParticipantListTableViewCell.swift in Sources */,
 				C5F985421F31A9A10022295A /* GroupSetViewController.swift in Sources */,
 				C500344D1F28625A00DC51A8 /* AppDelegate.swift in Sources */,

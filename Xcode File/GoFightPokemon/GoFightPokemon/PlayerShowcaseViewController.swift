@@ -10,6 +10,13 @@ import UIKit
 
 class PlayerShowcaseViewController: UIViewController, ShowcaseDelegate {
 
+    @IBOutlet weak var uploadPokemon: UIButton!
+
+    @IBOutlet weak var cancelPokemon: UIButton!
+
+    @IBOutlet weak var savePokemon: UIButton!
+
+
     @IBOutlet weak var collectionView: UICollectionView!
 
     func manager(_ controller: ShowcaseManager, success: Bool) {
@@ -101,6 +108,23 @@ class PlayerShowcaseViewController: UIViewController, ShowcaseDelegate {
 
         showcaseManager.delegate = self
 
+        uploadPokemon.backgroundColor = UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1)
+        uploadPokemon.setTitleColor(UIColor.white, for: .normal)
+
+        cancelPokemon.backgroundColor = UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1)
+        cancelPokemon.setTitleColor(UIColor.white, for: .normal)
+
+
+        savePokemon.layer.borderWidth = 2.5
+        savePokemon.layer.borderColor = UIColor.brown.cgColor
+        savePokemon.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
+        savePokemon.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
+            , for: .normal)
+        savePokemon.layer.cornerRadius = 10
+
+
+        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -145,6 +169,7 @@ extension PlayerShowcaseViewController: UICollectionViewDataSource, UICollection
         let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PlayerShowcaseCollectionViewCell
 
         cell.pokemonImage.image = playerPokemonImage[indexPath.row]
+        cell.pokemonImage.contentMode = .scaleAspectFill
 
         //增加一個cell的target,此target為當deletePokemonAct被按時的方法
         //設定button的標籤數字為當前indexPath.row
@@ -152,16 +177,40 @@ extension PlayerShowcaseViewController: UICollectionViewDataSource, UICollection
 
         cell.deletePokemon.addTarget(self, action: #selector(deletePokemonAct(_:)), for: .touchUpInside)
 
+        cell.deletePokemon.backgroundColor = UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1)
+        cell.deletePokemon.setTitleColor(UIColor.white, for: .normal)
+
         return cell
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let picDimension = self.view.frame.size.width / 2.2
-        return CGSize(width: picDimension, height: picDimension)
+
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        return CGSize(width: 131, height: 158)
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let leftRightInset = self.view.frame.size.width / 14.0
-        return UIEdgeInsets(top: 0, left: leftRightInset, bottom: 0, right: leftRightInset)
+    //3
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+
+        let sectionInsets = UIEdgeInsetsMake(12, 20, 12, 20)
+
+        return sectionInsets
     }
+
+    // 4
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 15
+    }
+
+
+
+
+
 }

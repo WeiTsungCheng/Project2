@@ -31,6 +31,12 @@ class SignUpViewController: UIViewController, PersonDelegate {
 
     @IBOutlet weak var signUpNickName: UITextField!
 
+    @IBOutlet weak var signup: UIButton!
+    @IBOutlet weak var loginPage: UIButton!
+    @IBOutlet weak var resetPage: UIButton!
+
+    
+
     @IBAction func signUp(_ sender: AnyObject) {
 
 
@@ -105,6 +111,26 @@ class SignUpViewController: UIViewController, PersonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         personmanager.delegate = self
+
+        loginPage.setTitleShadowColor(UIColor.black, for: .normal)
+
+        loginPage.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1), for: .normal)
+        loginPage.titleLabel?.shadowOffset = CGSize(width: 0, height: 2)
+
+
+        signup.setTitleColor(UIColor.prjSunYellow, for: .normal)
+
+
+        resetPage.setTitleShadowColor(UIColor.black, for: .normal)
+
+        resetPage.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1), for: .normal)
+        resetPage.titleLabel?.shadowOffset = CGSize(width: 0, height: 2)
+
+
+
+        signUpEmail.layer.cornerRadius = 16
+        signUpNickName.layer.cornerRadius = 16
+        signUpPassword.layer.cornerRadius = 16
 
     }
 

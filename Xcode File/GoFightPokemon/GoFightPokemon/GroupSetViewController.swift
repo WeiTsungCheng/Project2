@@ -16,6 +16,10 @@ import GooglePlaces
 
 class GroupSetViewController: UIViewController, GroupDelegate {
 
+
+    @IBOutlet weak var myMapImage: GMSMapView!
+
+
     func manager(_ controller: GroupManager, success: Bool) {
 
     }
@@ -72,7 +76,14 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
         let camera = GMSCameraPosition.camera(withLatitude: gymLatitude!, longitude: gymLongitude!, zoom: 16.0)
 
-        let mapView = GMSMapView.map(withFrame: CGRect(x: 16, y: 182, width: 343, height: 252), camera: camera)
+         let mapView = GMSMapView.map(withFrame: myMapImage.frame, camera: camera)
+
+//       let mapView = GMSMapView.map(withFrame: CGRect(x: 16, y: 182, width: 343, height: 252), camera: camera)
+
+
+//        let mapView = GMSMapView.map(withFrame: CGRect(x: 16, y: 182, width: 343, height: 252), camera: camera)
+
+
         mapView.isMyLocationEnabled = true
 
         view.addSubview(mapView)
@@ -90,6 +101,7 @@ class GroupSetViewController: UIViewController, GroupDelegate {
         super.viewDidLoad()
 
 
+        gymLocation.isEnabled = false
         gymLevelChoose.delegate = self
         gymLevel.inputView = gymLevelChoose
 

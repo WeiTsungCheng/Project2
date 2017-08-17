@@ -12,6 +12,10 @@ import FirebaseAuth
 
 class LoginViewController_: UIViewController {
 
+    @IBOutlet weak var login: UIButton!
+    @IBOutlet weak var signupPage: UIButton!
+    @IBOutlet weak var resetPage: UIButton!
+
     @IBOutlet weak var loginEmail: UITextField!
     @IBOutlet weak var loginPassword: UITextField!
 
@@ -70,6 +74,27 @@ class LoginViewController_: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+
+    
+        login.setTitleColor(UIColor.prjDarkSkyBlue, for: .normal)
+
+
+        signupPage.setTitleShadowColor(UIColor.black, for: .normal)
+
+        signupPage.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1), for: .normal)
+        signupPage.titleLabel?.shadowOffset = CGSize(width: 0, height: 2)
+
+
+        resetPage.setTitleShadowColor(UIColor.black, for: .normal)
+
+        resetPage.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1), for: .normal)
+        resetPage.titleLabel?.shadowOffset = CGSize(width: 0, height: 2)
+
+
+
+        loginEmail.layer.cornerRadius = 16
+        loginPassword.layer.cornerRadius = 16
 
     }
 
