@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UIColor {
-    class var prjSunYellow: UIColor {
+     @nonobjc class var prjSunYellow: UIColor {
         return UIColor(red: 248.0 / 255.0, green: 231.0 / 255.0, blue: 28.0 / 255.0, alpha: 1.0)
     }
 
@@ -42,7 +42,7 @@ extension UIColor {
 // Text styles
 
 extension UIFont {
-    class func prjTextStyle5Font() -> UIFont? {
+     @nonobjc class func prjTextStyle5Font() -> UIFont? {
         return UIFont(name: "Chalkduster", size: 12.0)
     }
 
