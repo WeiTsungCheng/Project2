@@ -10,6 +10,8 @@ import UIKit
 
 class DiscussionTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var playerPhotoBase: UIView!
+
     @IBOutlet weak var putComment: UITextView!
 
     @IBOutlet weak var playerNickName: UILabel!
