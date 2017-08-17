@@ -18,6 +18,9 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
 
     @IBOutlet weak var myMapImage: GMSMapView!
+    @IBOutlet weak var mySearchBarView: UIView!
+
+    var mapView = GMSMapView()
 
 
     func manager(_ controller: GroupManager, success: Bool) {
@@ -52,6 +55,7 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
     @IBOutlet weak var setTime: UITextField!
 
+    @IBOutlet weak var comfirmFight: UIButton!
 
     func datePickerValueChanged(sender: UIDatePicker) {
 
@@ -72,17 +76,13 @@ class GroupSetViewController: UIViewController, GroupDelegate {
     var gymLongitude: CLLocationDegrees?
 
 
+
     func getMapPosition() {
+
 
         let camera = GMSCameraPosition.camera(withLatitude: gymLatitude!, longitude: gymLongitude!, zoom: 16.0)
 
-         let mapView = GMSMapView.map(withFrame: myMapImage.frame, camera: camera)
-
-//       let mapView = GMSMapView.map(withFrame: CGRect(x: 16, y: 182, width: 343, height: 252), camera: camera)
-
-
-//        let mapView = GMSMapView.map(withFrame: CGRect(x: 16, y: 182, width: 343, height: 252), camera: camera)
-
+        mapView = GMSMapView.map(withFrame: myMapImage.frame, camera: camera)
 
         mapView.isMyLocationEnabled = true
 
@@ -120,15 +120,32 @@ class GroupSetViewController: UIViewController, GroupDelegate {
         searchController = UISearchController(searchResultsController: resultsViewController)
         searchController?.searchResultsUpdater = resultsViewController
 
+        mySearchBarView.tintColor = UIColor.blue
 
-        let subView = UIView(frame: CGRect(x: 16, y: 130.0, width: 342, height: 45.0))
-
-        subView.addSubview((searchController?.searchBar)!)
-        view.addSubview(subView)
+        mySearchBarView.addSubview((searchController?.searchBar)!)
+        view.addSubview(mySearchBarView)
         searchController?.searchBar.sizeToFit()
         searchController?.hidesNavigationBarDuringPresentation = false
 
         definesPresentationContext = true
+
+
+
+        // 設定地圖初始位置
+        let camera = GMSCameraPosition.camera(withLatitude: 25.0444805, longitude: 121.5216595, zoom: 12)
+
+        myMapImage.camera = camera
+
+
+
+        comfirmFight.layer.borderWidth = 2.5
+        comfirmFight.layer.borderColor = UIColor.brown.cgColor
+        comfirmFight.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
+        comfirmFight.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
+            , for: .normal)
+        comfirmFight.layer.cornerRadius = 10
+
+
 
 
 
