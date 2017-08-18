@@ -26,6 +26,7 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
 //    var placesClient: GMSPlacesClient!
 
 
+
     var gymLocationNameName = ""
     var latitudeNameName = 0.00
     var longitudeNameName = 0.00
@@ -33,7 +34,9 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
     var currentLatitude = 0.00
     var currentLongitude = 0.00
 
+    @IBOutlet weak var currentLocation: UIButton!
 
+    @IBOutlet weak var gymLocation: UIButton!
 
 
     @IBOutlet weak var googleMaps: GMSMapView!
@@ -42,6 +45,7 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
 
     @IBOutlet weak var destinatoionLocation: UITextField!
 
+ @IBOutlet weak var getDriveRoute: UIButton!
 
     var locationManager = CLLocationManager()
     var locationSelected = Location.startLocation
@@ -86,11 +90,28 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
 
         endMarker.map = nil
         endMarker.position = CLLocationCoordinate2D(latitude: latitudeNameName, longitude: longitudeNameName)
-        endMarker.title = "終點站"
+        endMarker.title = "道館位置"
         endMarker.icon = #imageLiteral(resourceName: "Pokemon_Go-11-128")
         endMarker.map = googleMaps
 
         self.googleMaps.camera = camera
+
+        destinatoionLocation.isEnabled = false
+
+        getDriveRoute.layer.borderWidth = 2.5
+        getDriveRoute.layer.borderColor = UIColor.brown.cgColor
+        getDriveRoute.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
+        getDriveRoute.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
+            , for: .normal)
+        getDriveRoute.layer.cornerRadius = 10
+
+
+        gymLocation.backgroundColor = UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1)
+        gymLocation.setTitleColor(UIColor.white, for: .normal)
+
+
+        currentLocation.backgroundColor = UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1)
+        currentLocation.setTitleColor(UIColor.white, for: .normal)
 
     }
 
@@ -284,7 +305,7 @@ extension GymDirectionViewController: GMSAutocompleteViewControllerDelegate{
 
             startMarker.map = nil
             startMarker.position = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
-            startMarker.title = "起始站"
+            startMarker.title = "出發位置"
             startMarker.icon = #imageLiteral(resourceName: "014-_Pokestop_-_PokeBall_-_Game_-_Pokemon_-_Pokemongo-128")
             startMarker.map = googleMaps
 
@@ -299,7 +320,7 @@ extension GymDirectionViewController: GMSAutocompleteViewControllerDelegate{
 
             endMarker.map = nil
             endMarker.position = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
-            endMarker.title = "終點站"
+            endMarker.title = "道館位置"
             endMarker.icon = #imageLiteral(resourceName: "Pokemon_Go-11-128")
             endMarker.map = googleMaps
 

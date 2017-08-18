@@ -52,7 +52,7 @@ class PersonManager {
         }
     }
 
-    func setValuePersonItem(teamSelect: String, levelSelect: String, gymLevelSelect: String ) {
+    func setValuePersonItem(teamSelect: String, levelSelect: Int, gymLevelSelect: String ) {
 
         let dataBaseRef = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!)
 

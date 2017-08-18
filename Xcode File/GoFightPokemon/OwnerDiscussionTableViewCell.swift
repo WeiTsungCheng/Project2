@@ -11,6 +11,7 @@ import UIKit
 class OwnerDiscussionTableViewCell: UITableViewCell {
 
 
+    @IBOutlet weak var ownerPhotoBase: UIView!
     @IBOutlet weak var ownerPhoto: UIImageView!
     @IBOutlet weak var putComment: UITextView!
 

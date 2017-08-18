@@ -86,6 +86,9 @@ class GroupListTableViewController: UITableViewController, GroupDelegate, Person
         cell.setTime.text = getItems[indexPath.row].setTime
         cell.gymLocation.text = getItems[indexPath.row].gymLocation
 
+        cell.gymLocation.lineBreakMode = .byWordWrapping
+        cell.gymLocation.numberOfLines = 0
+
         if getUserItemDic[getItems[indexPath.row].ownerId] == nil {
             personManager.getOtherPersonItem(userId: getItems[indexPath.row].ownerId) } else {
 

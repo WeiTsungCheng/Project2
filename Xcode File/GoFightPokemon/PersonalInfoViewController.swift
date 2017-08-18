@@ -49,18 +49,18 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
     @IBOutlet weak var levelSelect: UITextField!
     @IBOutlet weak var gymLevelSelect: UITextField!
 
+    @IBOutlet weak var upLoadPhoto: UIButton!
+    @IBOutlet weak var saveHeadPhoto: UIButton!
+    @IBOutlet weak var userShowcase: UIButton!
 
-    var fireUpload: String?
-
-    @IBOutlet weak var nickName: UILabel!
 
     @IBOutlet weak var headPhoto: UIImageView!
-
+  
     @IBAction func saveUserData(_ sender: Any) {
 
         //儲存textfield所填資料到firebase
 
-        self.personManager.setValuePersonItem(teamSelect: teamSelect.text!, levelSelect: levelSelect.text!, gymLevelSelect: gymLevelSelect.text!)
+        self.personManager.setValuePersonItem(teamSelect: teamSelect.text!, levelSelect: Int(levelSelect.text!)!, gymLevelSelect: gymLevelSelect.text!)
 
 
         self.headPhotoManager.setHeadPhoto(headPhoto: headPhoto.image)
@@ -90,6 +90,8 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
                 // 如果可以，指定 UIImagePickerController 的照片來源為 照片圖庫 (.photoLibrary)，並 present UIImagePickerController
                 imagePickerController.sourceType = .photoLibrary
                 self.present(imagePickerController, animated: true, completion: nil)
+
+
             }
         }
         let imageFromCameraAction = UIAlertAction(title: "相機", style: .default) { (_) in
@@ -100,6 +102,8 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
                 // 如果可以，指定 UIImagePickerController 的照片來源為 照片圖庫 (.camera)，並 present UIImagePickerController
                 imagePickerController.sourceType = .camera
                 self.present(imagePickerController, animated: true, completion: nil)
+
+
             }
         }
 
@@ -116,6 +120,7 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
 
         // 當使用者按下 uploadBtnAction 時會 present 剛剛建立好的三個 UIAlertAction 動作與
         present(imagePickerAlertController, animated: true, completion: nil)
+
     }
 
     override func viewDidLoad() {
@@ -131,6 +136,30 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
 
         personManager.delegate = self
         headPhotoManager.delegate = self
+
+        headPhoto.layer.borderWidth = 1.5
+        headPhoto.layer.borderColor = UIColor(red: 65/255, green: 117/255, blue: 5/255, alpha: 1).cgColor
+
+
+        upLoadPhoto.backgroundColor = UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1)
+        upLoadPhoto.setTitleColor(UIColor.white, for: .normal)
+        upLoadPhoto.setTitle("上傳圖片", for: .normal)
+
+        saveHeadPhoto.layer.borderWidth = 2.5
+        saveHeadPhoto.layer.borderColor = UIColor.brown.cgColor
+        saveHeadPhoto.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
+        saveHeadPhoto.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
+, for: .normal)
+        saveHeadPhoto.layer.cornerRadius = 10
+
+        userShowcase.layer.borderWidth = 2.5
+        userShowcase.layer.borderColor = UIColor.brown.cgColor
+        userShowcase.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
+        userShowcase.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
+            , for: .normal)
+        userShowcase.layer.cornerRadius = 10
+
+
 
     }
 
@@ -221,15 +250,21 @@ extension PersonalInfoViewController: UIImagePickerControllerDelegate, UINavigat
     // 儲存相片圖庫取得的照片
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
 
+
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            headPhoto.image = image
+
+
+           headPhoto.contentMode = UIViewContentMode.scaleAspectFill
+           headPhoto.image = image
+           headPhoto.clipsToBounds = true
+
+            self.upLoadPhoto.setTitle("重新上傳", for: .normal)
+
         } else {
             print("Something went wrong")
         }
         self.dismiss(animated: true, completion: nil)
-
-        headPhoto.contentMode = UIViewContentMode.scaleAspectFit
-
+ //headPhoto.contentMode = UIViewContentMode.scaleAspectFill
     }
 
 }

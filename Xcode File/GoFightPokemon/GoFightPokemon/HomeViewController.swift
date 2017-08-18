@@ -12,6 +12,10 @@ import FirebaseAuth
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var setUserInfo: UIButton!
+    @IBOutlet weak var groupList: UIButton!
+    @IBOutlet weak var logout: UIButton!
+
 
     @IBAction func logOut(_ sender: Any) {
 
@@ -50,6 +54,61 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.black
+
+        self.navigationController?.navigationBar.barTintColor = UIColor.black
+
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+
+
+        self.logout.setTitle("離開", for: .highlighted)
+
+
+        self.setUserInfo.layer.cornerRadius = 12
+
+        self.setUserInfo.setTitleColor(UIColor.white, for: .normal)
+
+
+
+        // 製造lsetUserInfo的漸層
+        let setUserInfoGradient = CAGradientLayer()
+
+        setUserInfoGradient.frame = setUserInfo.bounds
+        setUserInfoGradient.colors = [UIColor.purple.cgColor, UIColor(red: 80/255, green: 227/255, blue: 194/255, alpha: 1).cgColor]
+        setUserInfoGradient.opacity = 0.85
+
+        setUserInfoGradient.startPoint = CGPoint(x: 0, y: 0)
+        setUserInfoGradient.endPoint = CGPoint(x: 1, y: 1)
+
+        setUserInfoGradient.cornerRadius = 12
+
+        self.setUserInfo.layer.insertSublayer(setUserInfoGradient, at: 0)
+
+        logout.tintColor = UIColor.gray
+
+
+        self.groupList.layer.cornerRadius = 12
+
+
+        self.groupList.setTitleColor(UIColor.white, for: .normal)
+
+        // 製造loginView的漸層
+        let groupListGradient = CAGradientLayer()
+
+        groupListGradient.frame = setUserInfo.bounds
+        groupListGradient.colors = [UIColor.purple.cgColor, UIColor(red: 80/255, green: 227/255, blue: 194/255, alpha: 1).cgColor]
+        groupListGradient.opacity = 0.85
+
+        groupListGradient.startPoint = CGPoint(x: 0, y: 0)
+        groupListGradient.endPoint = CGPoint(x: 1, y: 1)
+
+        groupListGradient.cornerRadius = 12
+
+        self.groupList.layer.insertSublayer(groupListGradient, at: 0)
+        
+        logout.tintColor = UIColor.gray
+
 
     }
 

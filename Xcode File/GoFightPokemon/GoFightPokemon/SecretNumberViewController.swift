@@ -12,6 +12,10 @@ import FirebaseAuth
 
 class SecretNumberViewController: UIViewController {
 
+    @IBOutlet weak var loginPage: UIButton!
+    @IBOutlet weak var signupPage: UIButton!
+
+    @IBOutlet weak var resetNo: UIButton!
 
     @IBOutlet weak var resetEmail: UITextField!
 
@@ -58,6 +62,26 @@ class SecretNumberViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        loginPage.setTitleShadowColor(UIColor.black, for: .normal)
+
+        loginPage.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1), for: .normal)
+        loginPage.titleLabel?.shadowOffset = CGSize(width: 0, height: 2)
+
+
+
+        signupPage.setTitleShadowColor(UIColor.black, for: .normal)
+
+        signupPage.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1), for: .normal)
+        signupPage.titleLabel?.shadowOffset = CGSize(width: 0, height: 2)
+
+
+    
+        resetNo.setTitleColor(UIColor.prjOrangeRed, for: .normal)
+
+
+        resetEmail.layer.cornerRadius = 16
+
 
     }
 

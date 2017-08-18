@@ -11,12 +11,15 @@ import UIKit
 class WatchPersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDelegate {
 
 
+    @IBOutlet weak var userHeadPhotoBase: UIView!
+    @IBOutlet weak var userShowcase: UIButton!
+
     let personManager = PersonManager()
 
     let headPhotoManager = HeadPhotoManager()
 
 
-    var getItems: UserItem?
+    var getItems : UserItem?
 
 
     func manager(_ controller: PersonManager, success: Bool) {
@@ -26,12 +29,16 @@ class WatchPersonalInfoViewController: UIViewController, PersonDelegate, HeadPho
 
     }
     func manager(_ controller: PersonManager, userItem: UserItem) {
+
         getItems = userItem
 
         self.teamSelect.text = getItems?.playerTeam
         self.nickName.text = getItems?.nickName
         self.gymLevelSelect.text = getItems?.gymLevel
-        self.levelSelect.text = getItems?.playerLevel
+
+        if let thePlayerLevel = getItems?.playerLevel  {
+             self.levelSelect.text = String(describing: thePlayerLevel)
+        }
 
         selectTeamBadge()
 
@@ -44,8 +51,13 @@ class WatchPersonalInfoViewController: UIViewController, PersonDelegate, HeadPho
 
         DispatchQueue.main.async {
 
+            self.headPhoto.layer.borderWidth = 1.5
+            self.headPhoto.layer.borderColor = UIColor(red: 65/255, green: 117/255, blue: 5/255, alpha: 1).cgColor
             self.headPhoto.image = headPhoto
-            self.headPhoto.contentMode = UIViewContentMode.scaleAspectFit
+            self.userHeadPhotoBase.layer.cornerRadius = 62.5
+            self.headPhoto.layer.cornerRadius = 62.5
+            self.headPhoto.contentMode = UIViewContentMode.scaleAspectFill
+            self.headPhoto.clipsToBounds = true
 
         }
 
@@ -67,13 +79,15 @@ class WatchPersonalInfoViewController: UIViewController, PersonDelegate, HeadPho
 
 
     case "急凍鳥隊":
-    self.teamBadge.image = #imageLiteral(resourceName: "Pokemon_Go-16-128")
+    self.teamBadge.image = #imageLiteral(resourceName: "if_Pokemon_Go-16_1320025")
     case "火焰鳥隊":
-    self.teamBadge.image = #imageLiteral(resourceName: "Pokemon_Go-15-128")
+    self.teamBadge.image = #imageLiteral(resourceName: "if_Pokemon_Go-15_1320026")
     case "閃電鳥隊":
-    self.teamBadge.image = #imageLiteral(resourceName: "Pokemon_Go-11-128")
+    self.teamBadge.image = #imageLiteral(resourceName: "if_Pokemon_Go-11_1320030")
     default:
-    self.teamBadge.image = #imageLiteral(resourceName: "Pokemon_Go-01-128")
+    self.teamBadge.image = #imageLiteral(resourceName: "if__Pokeballs_1337535")
+
+        teamBadge.contentMode = .scaleAspectFill
     }
 
     }
@@ -88,6 +102,14 @@ class WatchPersonalInfoViewController: UIViewController, PersonDelegate, HeadPho
         headPhotoManager.delegate = self
 
         headPhotoManager.getHeadPhoto()
+
+        userShowcase.layer.borderWidth = 2.5
+        userShowcase.layer.borderColor = UIColor.brown.cgColor
+        userShowcase.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
+        userShowcase.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
+            , for: .normal)
+        userShowcase.layer.cornerRadius = 10
+
 
     }
 
