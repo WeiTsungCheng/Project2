@@ -41,7 +41,9 @@ class OtherShowcaseViewController: UIViewController, ShowcaseDelegate {
         showcaseManager.delegate = self
         showcaseManager.getOtherPlayerShowcaseItem(playerId: userIdName)
 
-        OtherPlayerNickName.text = nickNameName + "的展覽室"
+        OtherPlayerNickName.text = nickNameName + "的展示間:"
+
+ 
 
 
     }

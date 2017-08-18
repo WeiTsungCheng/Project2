@@ -123,7 +123,12 @@ class PlayerShowcaseViewController: UIViewController, ShowcaseDelegate {
         savePokemon.layer.cornerRadius = 10
 
 
-        
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 129, height: 183)
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 7, right: 7)
+        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 20
+        collectionView!.collectionViewLayout = layout
 
     }
 
@@ -185,32 +190,36 @@ extension PlayerShowcaseViewController: UICollectionViewDataSource, UICollection
 
 
 
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        return CGSize(width: 131, height: 158)
+//    func collectionView(_ collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+//
+//        return CGSize(width: 129, height: 183)
+//    }
+//
+//
+//    func collectionView(_ collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                        insetForSectionAt section: Int) -> UIEdgeInsets {
+//
+//        let sectionInsets = UIEdgeInsets(top:20, left: 20, bottom: 0, right: 5)
+//
+//        return sectionInsets
+//    }
+//
+//
+//    func collectionView(_ collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return 15
+
+//    func collectionView(<#T##collectionView: UICollectionView##UICollectionView#>, layout: <#T##UICollectionViewLayout#>, minimumLineSpacingForSectionAt: <#T##Int#>)
+//    func collectionView(<#T##collectionView: UICollectionView##UICollectionView#>, layout: <#T##UICollectionViewLayout#>, minimumInteritemSpacingForSectionAt: <#T##Int#>)
+
+
+
+
+
     }
 
-    //3
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
-
-        let sectionInsets = UIEdgeInsetsMake(12, 20, 12, 20)
-
-        return sectionInsets
-    }
-
-    // 4
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 15
-    }
-
-
-
-
-
-}

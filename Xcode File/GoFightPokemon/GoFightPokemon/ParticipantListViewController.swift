@@ -10,6 +10,7 @@ import UIKit
 
 class ParticipantListViewController: UIViewController, ParticipantsDelegate, PersonDelegate {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var otherPlayerShowcase: UIButton!
 
     func manager(_ controller: PersonManager, success: Bool){
 
@@ -89,6 +90,8 @@ class ParticipantListViewController: UIViewController, ParticipantsDelegate, Per
 
 
 
+
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -145,6 +148,14 @@ extension ParticipantListViewController: UITableViewDelegate, UITableViewDataSou
         cell.playerLevel.text =  String(describing: getParticpantInfoDic[getItems[indexPath.row].playerId]?.playerLevel)
 
 
+
+        cell.showcaseBtn.layer.borderWidth = 2.5
+        cell.showcaseBtn.layer.borderColor = UIColor.brown.cgColor
+        cell.showcaseBtn.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
+        cell.showcaseBtn.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
+            , for: .normal)
+        cell.showcaseBtn.layer.cornerRadius = 10
+        
         cell.showcaseBtn.tag = indexPath.row
 
 
