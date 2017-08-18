@@ -122,13 +122,25 @@ class PlayerShowcaseViewController: UIViewController, ShowcaseDelegate {
             , for: .normal)
         savePokemon.layer.cornerRadius = 10
 
-
+//////////////////////////////////////////////////////////////////////
         let layout = UICollectionViewFlowLayout()
+
+        let lowerFrameHeight = self.collectionView.frame.height
+
         layout.itemSize = CGSize(width: 129, height: 183)
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 7, right: 7)
-        layout.minimumInteritemSpacing = 10
-        layout.minimumLineSpacing = 20
+
+print(lowerFrameHeight)
+
+        let separatorSpace = (lowerFrameHeight - 183 * 2 - 10)/2
+
+        print(separatorSpace)
+
+        layout.sectionInset = UIEdgeInsets(top: separatorSpace, left: 20, bottom: separatorSpace, right: 7)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        layout.scrollDirection = .horizontal
         collectionView!.collectionViewLayout = layout
+///////////////////////////////////////////////////////////////////////
 
     }
 

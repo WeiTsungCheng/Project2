@@ -34,6 +34,16 @@ class WatchPersonShowcaseViewController: UIViewController, ShowcaseDelegate {
         showcaseＭanager.delegate = self
         showcaseＭanager.getShowcaseItem()
 
+
+        //////////////////////////////////////////////////////////////////////
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 129, height: 183)
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 7, right: 7)
+        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 20
+        collectionView!.collectionViewLayout = layout
+        ///////////////////////////////////////////////////////////////////////
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,6 +92,7 @@ extension WatchPersonShowcaseViewController: UICollectionViewDataSource, UIColle
                             DispatchQueue.main.async {
 
                                 cell.pokemonImage.image = UIImage(data: imageData)
+                                cell.pokemonImage.contentMode = .scaleAspectFill
 
                             }
 

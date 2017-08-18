@@ -91,7 +91,7 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
         endMarker.map = nil
         endMarker.position = CLLocationCoordinate2D(latitude: latitudeNameName, longitude: longitudeNameName)
         endMarker.title = "道館位置"
-        endMarker.icon = #imageLiteral(resourceName: "Pokemon_Go-11-128")
+        endMarker.icon = #imageLiteral(resourceName: "endLocation")
         endMarker.map = googleMaps
 
         self.googleMaps.camera = camera
@@ -139,7 +139,7 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
 
             myMarker.position = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             myMarker.title = "我的位置"
-            myMarker.icon = #imageLiteral(resourceName: "_Location-128")
+            myMarker.icon = #imageLiteral(resourceName: "myLocation")
             myMarker.map = googleMaps
 
 print("⚽️⚽️⚽️")
@@ -306,7 +306,7 @@ extension GymDirectionViewController: GMSAutocompleteViewControllerDelegate{
             startMarker.map = nil
             startMarker.position = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
             startMarker.title = "出發位置"
-            startMarker.icon = #imageLiteral(resourceName: "014-_Pokestop_-_PokeBall_-_Game_-_Pokemon_-_Pokemongo-128")
+            startMarker.icon = #imageLiteral(resourceName: "startLocation")
             startMarker.map = googleMaps
 
             print("🍿")
@@ -321,7 +321,7 @@ extension GymDirectionViewController: GMSAutocompleteViewControllerDelegate{
             endMarker.map = nil
             endMarker.position = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
             endMarker.title = "道館位置"
-            endMarker.icon = #imageLiteral(resourceName: "Pokemon_Go-11-128")
+            endMarker.icon = #imageLiteral(resourceName: "endLocation")
             endMarker.map = googleMaps
 
         }

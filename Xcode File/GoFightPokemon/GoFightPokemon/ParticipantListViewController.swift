@@ -118,11 +118,23 @@ class ParticipantListViewController: UIViewController, ParticipantsDelegate, Per
 
             if let userId = getParticpantInfoDic[getItems[index].playerId]?.userId {
                 destinationController.userIdName = userId
+
+                print("🎱")
+
+                print(userId)
+
+                print("🎱")
             }
 
             if let nickName = getParticpantInfoDic[getItems[index].playerId]?.nickName {
 
                 destinationController.nickNameName = nickName
+
+                print("🎱")
+
+                print(nickName)
+
+                print("🎱")
             }
         }
 
