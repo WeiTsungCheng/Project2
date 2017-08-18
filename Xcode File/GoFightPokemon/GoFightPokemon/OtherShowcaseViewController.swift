@@ -10,9 +10,8 @@ import UIKit
 
 class OtherShowcaseViewController: UIViewController, ShowcaseDelegate {
     @IBOutlet weak var OtherPlayerNickName: UILabel!
-
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var collectoinView: UICollectionView!
+
     func manager(_ controller: ShowcaseManager, success: Bool){
 
     }
@@ -22,7 +21,7 @@ class OtherShowcaseViewController: UIViewController, ShowcaseDelegate {
 
         
 
-        collectoinView.reloadData()
+        collectionView.reloadData()
     }
 
     let showcaseManager = ShowcaseManager()
@@ -44,16 +43,25 @@ class OtherShowcaseViewController: UIViewController, ShowcaseDelegate {
 
         OtherPlayerNickName.text = nickNameName + "的展示間:"
 
+/////////////////////////////////////////////////////
+        let layout = UICollectionViewFlowLayout()
 
-        //////////////////////////////////////////////////////////////////////
-//        let layout = UICollectionViewFlowLayout()
-//        layout.itemSize = CGSize(width: 129, height: 183)
-//        layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 7, right: 7)
-//        layout.minimumInteritemSpacing = 10
-//        layout.minimumLineSpacing = 20
-//        collectionView!.collectionViewLayout = layout
-        ///////////////////////////////////////////////////////////////////////
+        let lowerFrameHeight = self.collectionView.frame.height
 
+        layout.itemSize = CGSize(width: 129, height: 183)
+
+        print(lowerFrameHeight)
+
+        let separatorSpace = (lowerFrameHeight - 183 * 2 - 10)/2
+
+        print(separatorSpace)
+
+        layout.sectionInset = UIEdgeInsets(top: separatorSpace, left: 20, bottom: separatorSpace, right: 7)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        layout.scrollDirection = .horizontal
+        collectionView!.collectionViewLayout = layout
+/////////////////////////////////////////////////////
 
     }
 
@@ -62,7 +70,7 @@ class OtherShowcaseViewController: UIViewController, ShowcaseDelegate {
 
     }
 }
-    extension OtherShowcaseViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    extension OtherShowcaseViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
 
 

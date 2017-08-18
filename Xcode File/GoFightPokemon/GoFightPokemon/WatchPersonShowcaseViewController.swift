@@ -37,10 +37,21 @@ class WatchPersonShowcaseViewController: UIViewController, ShowcaseDelegate {
 
         //////////////////////////////////////////////////////////////////////
         let layout = UICollectionViewFlowLayout()
+
+        let lowerFrameHeight = self.collectionView.frame.height
+
         layout.itemSize = CGSize(width: 129, height: 183)
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 7, right: 7)
-        layout.minimumInteritemSpacing = 10
-        layout.minimumLineSpacing = 20
+
+        print(lowerFrameHeight)
+
+        let separatorSpace = (lowerFrameHeight - 183 * 2 - 10)/2
+
+        print(separatorSpace)
+
+        layout.sectionInset = UIEdgeInsets(top: separatorSpace, left: 20, bottom: separatorSpace, right: 7)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        layout.scrollDirection = .horizontal
         collectionView!.collectionViewLayout = layout
         ///////////////////////////////////////////////////////////////////////
 
@@ -107,13 +118,13 @@ extension WatchPersonShowcaseViewController: UICollectionViewDataSource, UIColle
         return cell
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let picDimension = self.view.frame.size.width / 2.2
-        return CGSize(width: picDimension, height: picDimension)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let leftRightInset = self.view.frame.size.width / 14.0
-        return UIEdgeInsets(top: 0, left: leftRightInset, bottom: 0, right: leftRightInset)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let picDimension = self.view.frame.size.width / 2.2
+//        return CGSize(width: picDimension, height: picDimension)
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        let leftRightInset = self.view.frame.size.width / 14.0
+//        return UIEdgeInsets(top: 0, left: leftRightInset, bottom: 0, right: leftRightInset)
+//    }
 }
