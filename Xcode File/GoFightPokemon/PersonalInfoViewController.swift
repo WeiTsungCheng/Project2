@@ -63,7 +63,7 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
 
         if teamSelect.text == "" {
 
-            print("kkkkkkkkkkkkkkkkkkkkkkkkkk")
+
             let alertController = UIAlertController(title: "錯誤", message: "隊伍不可留白", preferredStyle: .alert)
 
             let alertAction = UIAlertAction(title: "確認", style: .default)
@@ -217,6 +217,17 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
 
 
 
+
+        self.headPhoto.layer.borderWidth = 1.5
+        self.headPhoto.layer.borderColor = UIColor(red: 65/255, green: 117/255, blue: 5/255, alpha: 1).cgColor
+//    self.userHeadPhotoBase.layer.cornerRadius = 62.5
+        self.headPhoto.layer.cornerRadius = 62.5
+
+        self.headPhoto.clipsToBounds = true
+
+
+
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -312,7 +323,7 @@ extension PersonalInfoViewController: UIImagePickerControllerDelegate, UINavigat
 
            headPhoto.contentMode = UIViewContentMode.scaleAspectFill
            headPhoto.image = image
-           headPhoto.clipsToBounds = true
+          // headPhoto.clipsToBounds = true
 
             self.upLoadPhoto.setTitle("重新上傳", for: .normal)
 

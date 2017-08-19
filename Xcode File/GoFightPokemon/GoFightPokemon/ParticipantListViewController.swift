@@ -12,6 +12,8 @@ class ParticipantListViewController: UIViewController, ParticipantsDelegate, Per
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var otherPlayerShowcase: UIButton!
 
+    var playerTeamBlue = 0
+
     func manager(_ controller: PersonManager, success: Bool){
 
     }
@@ -23,6 +25,22 @@ class ParticipantListViewController: UIViewController, ParticipantsDelegate, Per
 
         getParticpantInfoDic.updateValue(userItem, forKey: userItem.userId)
 
+
+
+        if userItem.playerTeam == "急凍鳥隊" {
+
+            playerTeamBlue += 1
+
+
+            print("🏓")
+
+            print(playerTeamBlue)
+            
+            print("🏓")
+
+        }
+
+
         self.tableView.reloadData()
 
     }
@@ -33,6 +51,7 @@ class ParticipantListViewController: UIViewController, ParticipantsDelegate, Per
     func manager(_ controller: ParticipantManager, success: Bool){
 
     }
+
 
 
     
