@@ -65,6 +65,15 @@ class HomeViewController: UIViewController {
         self.logout.setTitle("離開", for: .highlighted)
 
 
+        
+        logout.tintColor = UIColor.gray
+
+
+    }
+
+    //autoLayout會發生在viewdidload 之後 ,所以會改變size 的button 要放入CAGradientLayer，必須在viewDidLayoutSubviews()做
+    override func viewDidLayoutSubviews() {
+
         self.setUserInfo.layer.cornerRadius = 12
 
         self.setUserInfo.setTitleColor(UIColor.white, for: .normal)
@@ -96,7 +105,8 @@ class HomeViewController: UIViewController {
         // 製造loginView的漸層
         let groupListGradient = CAGradientLayer()
 
-        groupListGradient.frame = setUserInfo.bounds
+        groupListGradient.frame = self.groupList.bounds
+
         groupListGradient.colors = [UIColor.purple.cgColor, UIColor(red: 80/255, green: 227/255, blue: 194/255, alpha: 1).cgColor]
         groupListGradient.opacity = 0.85
 
@@ -106,10 +116,6 @@ class HomeViewController: UIViewController {
         groupListGradient.cornerRadius = 12
 
         self.groupList.layer.insertSublayer(groupListGradient, at: 0)
-        
-        logout.tintColor = UIColor.gray
-
-
     }
 
     override func didReceiveMemoryWarning() {
