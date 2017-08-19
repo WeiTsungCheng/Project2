@@ -46,7 +46,98 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
     @IBAction func groupSet(_ sender: UIButton) {
 
-        setGroupManager.setGroupItem(gymLevel: gymLevel.text!, bossName: bossName.text!, setTime: setTime.text!, gymLocation: gymLocation.text!, latitude: gymLatitude!, longitude: gymLongitude!)
+
+        guard let gymLatitude = gymLatitude else {
+
+            return
+            
+        }
+
+        guard let gymLongitude = gymLongitude else {
+
+            return
+            
+        }
+
+
+
+
+        guard let location = gymLocation.text else {
+
+            return
+
+        }
+
+        if location == "" {
+
+            let alertController = UIAlertController(title: "錯誤", message: "道館地點不可留白", preferredStyle: .alert)
+
+            let alertAction = UIAlertAction(title: "確認", style: .default)
+
+            alertController.addAction(alertAction)
+
+            present(alertController, animated: true, completion: nil)
+            
+            return
+
+
+        }
+
+        guard let setTime = setTime.text else {
+            return
+        }
+
+        if setTime == "" {
+
+            let alertController = UIAlertController(title: "錯誤", message: "發團時間不可留白", preferredStyle: .alert)
+
+            let alertAction = UIAlertAction(title: "確認", style: .default)
+
+            alertController.addAction(alertAction)
+
+            present(alertController, animated: true, completion: nil)
+            
+            return
+        }
+
+
+        guard let gymLevel = gymLevel.text else {
+            return
+        }
+        if gymLevel == "" {
+
+            let alertController = UIAlertController(title: "錯誤", message: "道館等級不可留白", preferredStyle: .alert)
+
+            let alertAction = UIAlertAction(title: "確認", style: .default)
+
+            alertController.addAction(alertAction)
+
+            present(alertController, animated: true, completion: nil)
+
+            return
+        }
+
+
+        guard let bossName = bossName.text else {
+            return
+        }
+
+        if bossName == "" {
+
+            let alertController = UIAlertController(title: "錯誤", message: "魔王名稱不可留白", preferredStyle: .alert)
+
+            let alertAction = UIAlertAction(title: "確認", style: .default)
+
+            alertController.addAction(alertAction)
+
+            present(alertController, animated: true, completion: nil)
+            
+            return
+        }
+
+
+
+        setGroupManager.setGroupItem(gymLevel: gymLevel, bossName: bossName, setTime: setTime, gymLocation: location, latitude: gymLatitude, longitude: gymLongitude)
 
 
         self.navigationController?.popViewController(animated: true)
@@ -211,6 +302,7 @@ extension GroupSetViewController: GMSAutocompleteResultsViewControllerDelegate {
     print("Place attributions: \(String(describing: place.attributions))")
 
     gymLocation.text = place.formattedAddress
+
     getMapPosition()
 
     }

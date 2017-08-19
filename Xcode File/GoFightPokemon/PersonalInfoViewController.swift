@@ -58,9 +58,65 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
   
     @IBAction func saveUserData(_ sender: Any) {
 
-        //儲存textfield所填資料到firebase
 
-        self.personManager.setValuePersonItem(teamSelect: teamSelect.text!, levelSelect: Int(levelSelect.text!)!, gymLevelSelect: gymLevelSelect.text!)
+      //  儲存textfield所填資料到firebase
+
+        if teamSelect.text == "" {
+
+            print("kkkkkkkkkkkkkkkkkkkkkkkkkk")
+            let alertController = UIAlertController(title: "錯誤", message: "隊伍不可留白", preferredStyle: .alert)
+
+            let alertAction = UIAlertAction(title: "確認", style: .default)
+
+            alertController.addAction(alertAction)
+
+            present(alertController, animated: true, completion: nil)
+
+            return
+        }
+
+        guard let teamSelect = teamSelect.text else {
+            return
+        }
+
+        if gymLevelSelect.text == "" {
+
+            let alertController = UIAlertController(title: "錯誤", message: "挑戰難度不可留白", preferredStyle: .alert)
+
+            let alertAction = UIAlertAction(title: "確認", style: .default)
+
+            alertController.addAction(alertAction)
+
+            present(alertController, animated: true, completion: nil)
+            return
+        }
+
+        guard let gymLevel = gymLevelSelect.text else {
+            return
+        }
+
+        guard let level = levelSelect.text else {
+
+            return
+        }
+
+        guard Int(level) != nil else {
+
+            let alertController = UIAlertController(title: "錯誤", message: "等級不可留白", preferredStyle: .alert)
+
+            let alertAction = UIAlertAction(title: "確認", style: .default)
+
+            alertController.addAction(alertAction)
+
+            present(alertController, animated: true, completion: nil)
+            return
+
+        }
+
+
+
+
+        self.personManager.setValuePersonItem(teamSelect: teamSelect, levelSelect: Int(level)!, gymLevelSelect: gymLevel)
 
 
         self.headPhotoManager.setHeadPhoto(headPhoto: headPhoto.image)
