@@ -51,13 +51,8 @@ class WatchPersonalInfoViewController: UIViewController, PersonDelegate, HeadPho
 
         DispatchQueue.main.async {
 
-            self.headPhoto.layer.borderWidth = 1.5
-            self.headPhoto.layer.borderColor = UIColor(red: 65/255, green: 117/255, blue: 5/255, alpha: 1).cgColor
             self.headPhoto.image = headPhoto
-            self.userHeadPhotoBase.layer.cornerRadius = 62.5
-            self.headPhoto.layer.cornerRadius = 62.5
             self.headPhoto.contentMode = UIViewContentMode.scaleAspectFill
-            self.headPhoto.clipsToBounds = true
 
         }
 
@@ -109,6 +104,16 @@ class WatchPersonalInfoViewController: UIViewController, PersonDelegate, HeadPho
         userShowcase.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
             , for: .normal)
         userShowcase.layer.cornerRadius = 10
+
+
+
+        self.headPhoto.layer.borderWidth = 1.5
+        self.headPhoto.layer.borderColor = UIColor(red: 65/255, green: 117/255, blue: 5/255, alpha: 1).cgColor
+        self.userHeadPhotoBase.layer.cornerRadius = 62.5
+        self.headPhoto.layer.cornerRadius = 62.5
+
+        self.headPhoto.clipsToBounds = true
+
 
 
     }

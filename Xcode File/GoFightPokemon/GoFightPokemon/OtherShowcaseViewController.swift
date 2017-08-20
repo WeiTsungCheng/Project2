@@ -10,8 +10,8 @@ import UIKit
 
 class OtherShowcaseViewController: UIViewController, ShowcaseDelegate {
     @IBOutlet weak var OtherPlayerNickName: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
 
-    @IBOutlet weak var collectoinView: UICollectionView!
     func manager(_ controller: ShowcaseManager, success: Bool){
 
     }
@@ -21,7 +21,7 @@ class OtherShowcaseViewController: UIViewController, ShowcaseDelegate {
 
         
 
-        collectoinView.reloadData()
+        collectionView.reloadData()
     }
 
     let showcaseManager = ShowcaseManager()
@@ -43,8 +43,25 @@ class OtherShowcaseViewController: UIViewController, ShowcaseDelegate {
 
         OtherPlayerNickName.text = nickNameName + "的展示間:"
 
- 
+/////////////////////////////////////////////////////
+        let layout = UICollectionViewFlowLayout()
 
+        let lowerFrameHeight = self.collectionView.frame.height
+
+        layout.itemSize = CGSize(width: 129, height: 183)
+
+        print(lowerFrameHeight)
+
+        let separatorSpace = (lowerFrameHeight - 183 * 2 - 10)/2
+
+        print(separatorSpace)
+
+        layout.sectionInset = UIEdgeInsets(top: separatorSpace, left: 20, bottom: separatorSpace, right: 7)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        layout.scrollDirection = .horizontal
+        collectionView!.collectionViewLayout = layout
+/////////////////////////////////////////////////////
 
     }
 
@@ -53,7 +70,7 @@ class OtherShowcaseViewController: UIViewController, ShowcaseDelegate {
 
     }
 }
-    extension OtherShowcaseViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    extension OtherShowcaseViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
 
 
@@ -92,6 +109,7 @@ class OtherShowcaseViewController: UIViewController, ShowcaseDelegate {
                                 DispatchQueue.main.async {
 
                                     cell.pokemonImage.image = UIImage(data: imageData)
+                                    cell.pokemonImage.contentMode = .scaleAspectFill
                                     
                                 }
                                 

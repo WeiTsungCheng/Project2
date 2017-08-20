@@ -78,6 +78,8 @@ class ParticipantManager {
 
     }
 
+
+
     func checkAttend(childId: String){
         let query = Database.database().reference().child("participantsMember").child(childId).queryOrdered(byChild: "playerId").queryEqual(toValue: Auth.auth().currentUser?.uid)
 

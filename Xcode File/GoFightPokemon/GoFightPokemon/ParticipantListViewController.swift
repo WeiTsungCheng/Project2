@@ -10,7 +10,18 @@ import UIKit
 
 class ParticipantListViewController: UIViewController, ParticipantsDelegate, PersonDelegate {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var otherPlayerShowcase: UIButton!
+
+    @IBOutlet weak var blueTeamNumber: UILabel!
+    @IBOutlet weak var redTeamNumber: UILabel!
+    @IBOutlet weak var yellowTeamNumber: UILabel!
+    @IBOutlet weak var averagePlayerLevel: UILabel!
+
+    var playerTeamBlue = 0
+    var playerTeamRed = 0
+    var playerTeamYellow = 0
+
+    var totoalLevel = 0
+    var averageLevel = 0
 
     func manager(_ controller: PersonManager, success: Bool){
 
@@ -23,9 +34,56 @@ class ParticipantListViewController: UIViewController, ParticipantsDelegate, Per
 
         getParticpantInfoDic.updateValue(userItem, forKey: userItem.userId)
 
+        totoalLevel += userItem.playerLevel
+
+
+        if userItem.playerTeam == "急凍鳥隊" {
+
+            playerTeamBlue += 1
+
+
+            print("🏓")
+
+          //   blueTeamNumber.text = "\(playerTeamBlue)" + "人"
+        }
+
+        if userItem.playerTeam == "火焰鳥隊" {
+
+            playerTeamRed += 1
+
+            print("🏓🏓")
+            print(playerTeamRed)
+
+          //  redTeamNumber.text = "\(playerTeamRed)" + "人"
+        }
+
+        if userItem.playerTeam == "閃電鳥隊" {
+
+            playerTeamYellow += 1
+
+            print("🏓🏓🏓")
+
+         //   yellowTeamNumber.text = "\(playerTeamYellow)" + "人"
+        }
+
+
+        blueTeamNumber.text = "\(playerTeamBlue)" + "人"
+        redTeamNumber.text = "\(playerTeamRed)" + "人"
+        yellowTeamNumber.text = "\(playerTeamYellow)" + "人"
+
+
+        averageLevel = totoalLevel / getParticpantInfoDic.count
+        print("🍝")
+        averagePlayerLevel.text = "\(averageLevel)"
+        print("🍝")
+
         self.tableView.reloadData()
 
     }
+
+
+
+
 
 
     let personManager = PersonManager()
@@ -33,6 +91,7 @@ class ParticipantListViewController: UIViewController, ParticipantsDelegate, Per
     func manager(_ controller: ParticipantManager, success: Bool){
 
     }
+
 
 
     
@@ -118,11 +177,23 @@ class ParticipantListViewController: UIViewController, ParticipantsDelegate, Per
 
             if let userId = getParticpantInfoDic[getItems[index].playerId]?.userId {
                 destinationController.userIdName = userId
+
+                print("🎱")
+
+                print(userId)
+
+                print("🎱")
             }
 
             if let nickName = getParticpantInfoDic[getItems[index].playerId]?.nickName {
 
                 destinationController.nickNameName = nickName
+
+                print("🎱")
+
+                print(nickName)
+
+                print("🎱")
             }
         }
 
@@ -145,9 +216,12 @@ extension ParticipantListViewController: UITableViewDelegate, UITableViewDataSou
 
         cell.nickName.text =  getParticpantInfoDic[getItems[indexPath.row].playerId]?.nickName
         cell.playerTeam.text =  getParticpantInfoDic[getItems[indexPath.row].playerId]?.playerTeam
-        cell.playerLevel.text =  String(describing: getParticpantInfoDic[getItems[indexPath.row].playerId]?.playerLevel)
 
 
+        //處裡顯示文字有optional 的問題
+        if let thePlayerLevel = getParticpantInfoDic[getItems[indexPath.row].playerId]?.playerLevel{
+            cell.playerLevel.text = String(describing: thePlayerLevel)
+        }
 
         cell.showcaseBtn.layer.borderWidth = 2.5
         cell.showcaseBtn.layer.borderColor = UIColor.brown.cgColor

@@ -22,7 +22,7 @@ class PersonManager {
    // let uid = Auth.auth().currentUser?.uid
     weak var delegate: PersonDelegate?
 
-    func setPersonItem(nickName: String, playerTeam: String, playerLevel: String, gymLevel: String, headPhoto: String, userId: String, userEmail: String) {
+    func setPersonItem(nickName: String, playerTeam: String, playerLevel: Int, gymLevel: String, headPhoto: String, userId: String, userEmail: String) {
 
         let reference = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!)
 
@@ -116,6 +116,30 @@ class PersonManager {
         })
 
     }
+//////////////////////////////////////////////
+
+
+
+    
+//    func getBlueTeamNumber(palyerId: String){
+//
+//        let query = Database.database().reference().child("users").child(palyerId).queryOrdered(byChild: "playerTeam").queryEqual(toValue: "急凍鳥隊")
+//        query.observeSingleEvent(of: .value, with: {(snapshot) in
+//
+//
+//
+//            print(snapshot)
+//
+//
+//        })
+//
+//    }
+
+
+
+
+
+
 
 
 

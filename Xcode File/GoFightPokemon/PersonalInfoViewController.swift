@@ -10,6 +10,7 @@ import UIKit
 
 class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDelegate {
 
+    @IBOutlet weak var headPhotoBase: UIView!
 
     func manager(_ controller: PersonManager, success: Bool) {
 
@@ -58,9 +59,65 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
   
     @IBAction func saveUserData(_ sender: Any) {
 
-        //儲存textfield所填資料到firebase
 
-        self.personManager.setValuePersonItem(teamSelect: teamSelect.text!, levelSelect: Int(levelSelect.text!)!, gymLevelSelect: gymLevelSelect.text!)
+      //  儲存textfield所填資料到firebase
+
+        if teamSelect.text == "" {
+
+
+            let alertController = UIAlertController(title: "錯誤", message: "隊伍不可留白", preferredStyle: .alert)
+
+            let alertAction = UIAlertAction(title: "確認", style: .default)
+
+            alertController.addAction(alertAction)
+
+            present(alertController, animated: true, completion: nil)
+
+            return
+        }
+
+        guard let teamSelect = teamSelect.text else {
+            return
+        }
+
+        if gymLevelSelect.text == "" {
+
+            let alertController = UIAlertController(title: "錯誤", message: "挑戰難度不可留白", preferredStyle: .alert)
+
+            let alertAction = UIAlertAction(title: "確認", style: .default)
+
+            alertController.addAction(alertAction)
+
+            present(alertController, animated: true, completion: nil)
+            return
+        }
+
+        guard let gymLevel = gymLevelSelect.text else {
+            return
+        }
+
+        guard let level = levelSelect.text else {
+
+            return
+        }
+
+        guard Int(level) != nil else {
+
+            let alertController = UIAlertController(title: "錯誤", message: "等級不可留白", preferredStyle: .alert)
+
+            let alertAction = UIAlertAction(title: "確認", style: .default)
+
+            alertController.addAction(alertAction)
+
+            present(alertController, animated: true, completion: nil)
+            return
+
+        }
+
+
+
+
+        self.personManager.setValuePersonItem(teamSelect: teamSelect, levelSelect: Int(level)!, gymLevelSelect: gymLevel)
 
 
         self.headPhotoManager.setHeadPhoto(headPhoto: headPhoto.image)
@@ -137,8 +194,14 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
         personManager.delegate = self
         headPhotoManager.delegate = self
 
+
+
         headPhoto.layer.borderWidth = 1.5
         headPhoto.layer.borderColor = UIColor(red: 65/255, green: 117/255, blue: 5/255, alpha: 1).cgColor
+        headPhoto.clipsToBounds = true
+        headPhoto.layer.cornerRadius = 62.5
+
+        headPhotoBase.layer.cornerRadius = 62.5
 
 
         upLoadPhoto.backgroundColor = UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1)
@@ -158,6 +221,8 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
         userShowcase.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
             , for: .normal)
         userShowcase.layer.cornerRadius = 10
+
+
 
 
 
@@ -256,7 +321,7 @@ extension PersonalInfoViewController: UIImagePickerControllerDelegate, UINavigat
 
            headPhoto.contentMode = UIViewContentMode.scaleAspectFill
            headPhoto.image = image
-           headPhoto.clipsToBounds = true
+          // headPhoto.clipsToBounds = true
 
             self.upLoadPhoto.setTitle("重新上傳", for: .normal)
 
