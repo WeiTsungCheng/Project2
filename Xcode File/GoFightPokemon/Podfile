@@ -17,4 +17,7 @@ target 'GoFightPokemon' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
 
+  pod 'Fabric'
+  pod 'Crashlytics'
+
 end

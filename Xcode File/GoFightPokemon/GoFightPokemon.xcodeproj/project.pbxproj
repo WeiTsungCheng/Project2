@@ -281,7 +281,7 @@
 				C50034471F28625A00DC51A8 /* Resources */,
 				D05C489853E36677CEF51CC0 /* [CP] Embed Pods Frameworks */,
 				1BD539534082F80D99866B38 /* [CP] Copy Pods Resources */,
-				C550718B1F3D469600CCF51D /* Run Script */,
+				C50F58CA1F499302008CA2C7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -379,19 +379,18 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C550718B1F3D469600CCF51D /* Run Script */ = {
+		C50F58CA1F499302008CA2C7 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" dbc39d87e53c09f751edbdad57720097019fd9d3 33b4718d5e388d9f2f27d4e7ad9806583e5e42cc512aedfbba891b7481cf7242";
 		};
 		D05C489853E36677CEF51CC0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -586,6 +585,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = EEYLEC2NZB;
 				INFOPLIST_FILE = GoFightPokemon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
