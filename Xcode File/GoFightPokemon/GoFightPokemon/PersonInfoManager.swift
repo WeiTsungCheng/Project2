@@ -22,7 +22,7 @@ class PersonManager {
    // let uid = Auth.auth().currentUser?.uid
     weak var delegate: PersonDelegate?
 
-    func setPersonItem(nickName: String, playerTeam: String, playerLevel: String, gymLevel: String, headPhoto: String, userId: String, userEmail: String) {
+    func setPersonItem(nickName: String, playerTeam: String, playerLevel: Int, gymLevel: String, headPhoto: String, userId: String, userEmail: String) {
 
         let reference = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!)
 

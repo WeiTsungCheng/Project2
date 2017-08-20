@@ -10,6 +10,7 @@ import UIKit
 
 class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDelegate {
 
+    @IBOutlet weak var headPhotoBase: UIView!
 
     func manager(_ controller: PersonManager, success: Bool) {
 
@@ -193,8 +194,14 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
         personManager.delegate = self
         headPhotoManager.delegate = self
 
+
+
         headPhoto.layer.borderWidth = 1.5
         headPhoto.layer.borderColor = UIColor(red: 65/255, green: 117/255, blue: 5/255, alpha: 1).cgColor
+        headPhoto.clipsToBounds = true
+        headPhoto.layer.cornerRadius = 62.5
+
+        headPhotoBase.layer.cornerRadius = 62.5
 
 
         upLoadPhoto.backgroundColor = UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1)
@@ -215,15 +222,6 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
             , for: .normal)
         userShowcase.layer.cornerRadius = 10
 
-
-
-
-        self.headPhoto.layer.borderWidth = 1.5
-        self.headPhoto.layer.borderColor = UIColor(red: 65/255, green: 117/255, blue: 5/255, alpha: 1).cgColor
-//    self.userHeadPhotoBase.layer.cornerRadius = 62.5
-        self.headPhoto.layer.cornerRadius = 62.5
-
-        self.headPhoto.clipsToBounds = true
 
 
 
