@@ -10,15 +10,52 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
+import Crashlytics
+
+
 class HomeViewController: UIViewController {
+
+    @IBAction func clickButton1(_ sender: Any) {
+
+        print("click Btn1")
+
+        Analytics.logEvent("click_btn1", parameters: nil)
+    }
+
+    @IBAction func clickButton2(_ sender: Any) {
+
+        print("click Btn2")
+
+        Analytics.logEvent("click_btn2", parameters: nil)
+
+    }
+
+    @IBAction func clickButton3(_ sender: Any) {
+
+        print("click Btn3")
+
+        Analytics.logEvent("click_btn3", parameters: nil)
+    }
+
 
     @IBOutlet weak var setUserInfo: UIButton!
     @IBOutlet weak var groupList: UIButton!
     @IBOutlet weak var logout: UIButton!
 
+    @IBAction func setUserInformaiton(_ sender: Any) {
+          Analytics.logEvent("setUserInformaiton", parameters: nil)
+    }
+
+    @IBAction func goGroupList(_ sender: Any) {
+          Analytics.logEvent("goGroupList", parameters: nil)
+    }
+
+
 
     @IBAction func logOut(_ sender: Any) {
 
+
+        Analytics.logEvent("logOut", parameters: nil)
 
         if Auth.auth().currentUser != nil {
 
@@ -55,6 +92,12 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
+
+
+
+
+
         self.navigationController?.navigationBar.barStyle = UIBarStyle.black
 
         self.navigationController?.navigationBar.barTintColor = UIColor.black
@@ -68,11 +111,26 @@ class HomeViewController: UIViewController {
         
         logout.tintColor = UIColor.gray
 
+        //Crashlytics 測試Crash
+        let button = UIButton(type: .roundedRect)
+        button.frame = CGRect(x: 20, y: 50, width: 100, height: 30)
+        button.setTitle("Crash", for: [])
+        button.addTarget(self, action: #selector(self.crashButtonTapped(_:)), for: .touchUpInside)
+        view.addSubview(button)
 
+
+
+    }
+
+    //Crashlytics 測試Crash
+    @IBAction func crashButtonTapped(_ sender: AnyObject) {
+        Crashlytics.sharedInstance().crash()
     }
 
     //autoLayout會發生在viewdidload 之後 ,所以會改變size 的button 要放入CAGradientLayer，必須在viewDidLayoutSubviews()做
     override func viewDidLayoutSubviews() {
+
+
 
         self.setUserInfo.layer.cornerRadius = 12
 
