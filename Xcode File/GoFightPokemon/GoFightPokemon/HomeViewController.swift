@@ -10,7 +10,6 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-//import Crashlytics
 
 class HomeViewController: UIViewController {
 
@@ -33,35 +32,51 @@ class HomeViewController: UIViewController {
 
         Analytics.logEvent("logOut", parameters: nil)
 
-        if Auth.auth().currentUser != nil {
+        let alertController = UIAlertController(title: "提醒", message: "真的要離開GoFightPokemon?", preferredStyle: .alert)
+
+        let comfirmAlertAction = UIAlertAction(title: "確認", style: .default, handler: { (action: UIAlertAction) -> () in
+
+            if Auth.auth().currentUser != nil {
+
+                do {
+
+                    try Auth.auth().signOut()
+
+                    //登出刪除已存入的userDefault
+                    let userDefauls = UserDefaults.standard
+
+                    userDefauls.removeObject(forKey: "getuserEmail")
+
+                    userDefauls.removeObject(forKey: "getuserPassword")
+
+                    userDefauls.synchronize()
 
 
-            do {
-
-                try Auth.auth().signOut()
-
-                //登出刪除已存入的userDefault
-                let userDefauls = UserDefaults.standard
-
-                userDefauls.removeObject(forKey: "getuserEmail")
-
-                userDefauls.removeObject(forKey: "getuserPassword")
-
-                userDefauls.synchronize()
-
-
-                let entreeVC = self.storyboard?.instantiateViewController(withIdentifier: "entree")
-
-
-                self.present(entreeVC!, animated: true, completion: nil)
-
-
-            } catch let error as NSError {
-                print(error)
-
+                    let entreeVC = self.storyboard?.instantiateViewController(withIdentifier: "entree")
+                    
+                    
+                    self.present(entreeVC!, animated: true, completion: nil)
+                    
+                    
+                } catch let error as NSError {
+                    print(error)
+                    
+                }
+                
             }
 
-        }
+        })
+
+        let cancelAlertAction = UIAlertAction(title: "取消", style: .default, handler: { (action: UIAlertAction) -> () in
+        alertController.dismiss(animated: true, completion: nil)
+        })
+
+
+        alertController.addAction(comfirmAlertAction)
+        alertController.addAction(cancelAlertAction)
+
+        self.present(alertController, animated: true, completion: nil)
+
 
     }
 

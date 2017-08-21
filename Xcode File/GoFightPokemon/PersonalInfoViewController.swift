@@ -93,6 +93,7 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
         }
 
         guard let gymLevel = gymLevelSelect.text else {
+
             return
         }
 
@@ -110,17 +111,37 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
             alertController.addAction(alertAction)
 
             present(alertController, animated: true, completion: nil)
-            return
 
+            return
         }
 
 
+        let alertController = UIAlertController(title: "確認", message: "確認存檔", preferredStyle: .alert)
 
 
-        self.personManager.setValuePersonItem(teamSelect: teamSelect, levelSelect: Int(level)!, gymLevelSelect: gymLevel)
+        let comfirmAlertAction = UIAlertAction(title: "確認", style: .default, handler: { (action: UIAlertAction) -> () in
+
+            self.personManager.setValuePersonItem(teamSelect: teamSelect, levelSelect: Int(level)!, gymLevelSelect: gymLevel)
+            self.headPhotoManager.setHeadPhoto(headPhoto: self.headPhoto.image)
+
+        })
+
+        let cancelAction = UIAlertAction(title: "取消", style: .default, handler: { (action: UIAlertAction) -> () in
+
+            alertController.dismiss(animated: true, completion: nil)
+        })
 
 
-        self.headPhotoManager.setHeadPhoto(headPhoto: headPhoto.image)
+
+        alertController.addAction(comfirmAlertAction)
+        alertController.addAction(cancelAction)
+
+        present(alertController, animated: true, completion: nil)
+
+
+
+
+
 
     }
 

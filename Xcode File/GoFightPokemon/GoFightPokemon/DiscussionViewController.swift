@@ -186,6 +186,8 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
         leaveFight.backgroundColor = UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1)
         leaveFight.setTitleColor(UIColor.white, for: .normal)
 
+        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -246,6 +248,8 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
 
             ownerCell.putComment.text = getItem[indexPath.row].participantComment
 
+            ownerCell.putComment.isUserInteractionEnabled = false
+
             ownerCell.ownerNickName.text = getPersonInfoDic[getItem[indexPath.row].participantId]?.nickName
 
             if let thePlayerLevel = getPersonInfoDic[getItem[indexPath.row].participantId]?.playerLevel {
@@ -290,6 +294,8 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
             } else {
 
                 playerCell.putComment.text = getItem[indexPath.row].participantComment
+
+                playerCell.putComment.isUserInteractionEnabled = false
 
                 playerCell.playerNickName.text = getPersonInfoDic[getItem[indexPath.row].participantId]?.nickName
 

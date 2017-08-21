@@ -99,7 +99,30 @@ class PlayerShowcaseViewController: UIViewController, ShowcaseDelegate {
 
     @IBAction func saveUserPokemon(_ sender: Any) {
 
-         showcaseManager.setShowcaseItem(playerPokemonImage: playerPokemonImage)
+
+        let alertController = UIAlertController(title: "確認", message: "確認更新你的展示間？", preferredStyle: .alert)
+
+
+        let comfirmAlertAction = UIAlertAction(title: "確認", style: .default, handler: { (action: UIAlertAction) -> () in
+
+               self.showcaseManager.setShowcaseItem(playerPokemonImage: self.playerPokemonImage)
+
+        })
+
+        let cancelAction = UIAlertAction(title: "取消", style: .default, handler: { (action: UIAlertAction) -> () in
+
+            alertController.dismiss(animated: true, completion: nil)
+        })
+
+
+
+        alertController.addAction(comfirmAlertAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+
+
+
 
     }
 
