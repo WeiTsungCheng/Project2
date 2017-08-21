@@ -61,7 +61,6 @@ class SignUpViewController: UIViewController, PersonDelegate {
 
 
                         //呼叫personmanager建立資料
-
                         self.personmanager.setPersonItem(nickName: self.signUpNickName.text!, playerTeam: "尚未決定", playerLevel: 0, gymLevel: "未決定", headPhoto: "", userId: (Auth.auth().currentUser?.uid)!, userEmail: (Auth.auth().currentUser?.email)!)
 
 
