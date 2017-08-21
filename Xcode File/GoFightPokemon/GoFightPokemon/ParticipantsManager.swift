@@ -68,9 +68,7 @@ class ParticipantManager {
             let participantsCount = snapshot.childrenCount
 
             print(snapshot)
-            print("❇️❇️")
             print(snapshot.childrenCount)
-            print("❇️")
 
             self.delegate?.manager(self, participantsCount: Int(participantsCount))
 
@@ -96,7 +94,7 @@ class ParticipantManager {
                 let playerId = participantsMember[(Auth.auth().currentUser?.uid)!]
 
                 else {
-                    print("🅾️")
+
                     let attendButton = true
                     let cancelButton = false
 
@@ -104,28 +102,24 @@ class ParticipantManager {
                     return
                 }
 
-                print("❌")
                 print(playerId)
 
                 let attendButton = false
                 let cancelButton = true
                 self.delegate?.manager(self, attendButton: attendButton, cancelButton: cancelButton)
-                
 
             }
-
 
         })
 
     }
 
-
     func getParticipantPersonItem(childId: String) {
         Database.database().reference().child("participantsMember").child(childId).observe(.value, with: {(snapshot) in
 
-            print("🇮🇸")
+
             print(snapshot)
-            print("🇮🇸")
+
             if snapshot .childrenCount > 0 {
 
                 var dataList: [ParticipantsItem] = [ParticipantsItem]()
@@ -135,21 +129,13 @@ class ParticipantManager {
                     let data = ParticipantsItem(snapshot: item as! DataSnapshot)
 
                     dataList.append(data)
-                    print("🇨🇭")
                     print(dataList)
-                    print("🇨🇭")
+
                 }
 
                 self.delegate?.manager(self, participantsItem: dataList)
-
-
             }
-
-
-
-
         })
-
     }
 }
 

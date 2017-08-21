@@ -44,8 +44,6 @@ class DiscussionManager {
         discussion["childId"] = childId as AnyObject
         discussion["participantId"] = Auth.auth().currentUser?.uid as AnyObject
         discussion["participantComment"] = writeComment as AnyObject
-       
-
 
         let discussionReference = reference.child(childRef.key)
         discussionReference.updateChildValues(discussion) { (err, _) in
@@ -53,13 +51,10 @@ class DiscussionManager {
                 print("err \(err!)")
                 return
             }
-
-            print("✳️")
-
             print(reference.description())
+
             self.delegate?.manager(self, success: true)
 
-            print("✳️")
         }
 
     }
@@ -67,7 +62,6 @@ class DiscussionManager {
     func getDiscussionItem(childId: String) {
 
         //載入即時更新的comment
-
         let reference = Database.database().reference()
 
         reference.child("groupComment").child(childId).observe(.value, with: {(snapshot) in

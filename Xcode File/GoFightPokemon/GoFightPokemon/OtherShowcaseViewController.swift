@@ -19,8 +19,6 @@ class OtherShowcaseViewController: UIViewController, ShowcaseDelegate {
     func manager(_ controller: ShowcaseManager, updatePhotoDic: [String:Any]){
         photoDic = updatePhotoDic
 
-        
-
         collectionView.reloadData()
     }
 
@@ -31,10 +29,6 @@ class OtherShowcaseViewController: UIViewController, ShowcaseDelegate {
     var userIdName = ""
     var nickNameName = ""
 
-
-
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,7 +37,6 @@ class OtherShowcaseViewController: UIViewController, ShowcaseDelegate {
 
         OtherPlayerNickName.text = nickNameName + "的展示間:"
 
-/////////////////////////////////////////////////////
         let layout = UICollectionViewFlowLayout()
 
         let lowerFrameHeight = self.collectionView.frame.height
@@ -61,7 +54,6 @@ class OtherShowcaseViewController: UIViewController, ShowcaseDelegate {
         layout.minimumLineSpacing = 0
         layout.scrollDirection = .horizontal
         collectionView!.collectionViewLayout = layout
-/////////////////////////////////////////////////////
 
     }
 
@@ -77,7 +69,6 @@ class OtherShowcaseViewController: UIViewController, ShowcaseDelegate {
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
             if let dataDic = photoDic {
-                print("🍔🍔🍔🍔🍔🍔🍔🍔🍔🍔🍔🍔🍔")
 
                 return dataDic.count
             }
@@ -91,7 +82,6 @@ class OtherShowcaseViewController: UIViewController, ShowcaseDelegate {
 
             if let dataDic = photoDic {
 
-                print("🍔🍔🍔🍔🍔")
                 let keyArray = Array(dataDic.keys)
 
                 if let imageUrlString = dataDic[keyArray[indexPath.row]] as? String {
@@ -125,11 +115,6 @@ class OtherShowcaseViewController: UIViewController, ShowcaseDelegate {
 
         }
         
-
-
-
-
-
     }
 
 

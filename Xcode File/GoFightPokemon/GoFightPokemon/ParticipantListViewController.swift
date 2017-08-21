@@ -175,31 +175,21 @@ class ParticipantListViewController: UIViewController, ParticipantsDelegate, Per
 
             let index = button.tag
 
-            print("🍯")
-
             print(index)
-            print("🍯")
-
 
             if let userId = getParticpantInfoDic[getItems[index].playerId]?.userId {
                 destinationController.userIdName = userId
 
-                print("🎱")
-
                 print(userId)
 
-                print("🎱")
             }
 
             if let nickName = getParticpantInfoDic[getItems[index].playerId]?.nickName {
 
                 destinationController.nickNameName = nickName
 
-                print("🎱")
-
                 print(nickName)
 
-                print("🎱")
             }
         }
 
@@ -218,8 +208,6 @@ extension ParticipantListViewController: UITableViewDelegate, UITableViewDataSou
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "PartivipantListCell", for: indexPath) as! ParticipantListTableViewCell
 
-
-
         cell.nickName.text =  getParticpantInfoDic[getItems[indexPath.row].playerId]?.nickName
         cell.playerTeam.text =  getParticpantInfoDic[getItems[indexPath.row].playerId]?.playerTeam
 
@@ -237,7 +225,6 @@ extension ParticipantListViewController: UITableViewDelegate, UITableViewDataSou
         cell.showcaseBtn.layer.cornerRadius = 10
         
         cell.showcaseBtn.tag = indexPath.row
-
 
         return cell
 

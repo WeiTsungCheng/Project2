@@ -105,16 +105,12 @@ class WatchPersonalInfoViewController: UIViewController, PersonDelegate, HeadPho
             , for: .normal)
         userShowcase.layer.cornerRadius = 10
 
-
-
         self.headPhoto.layer.borderWidth = 1.5
         self.headPhoto.layer.borderColor = UIColor(red: 65/255, green: 117/255, blue: 5/255, alpha: 1).cgColor
         self.userHeadPhotoBase.layer.cornerRadius = 62.5
         self.headPhoto.layer.cornerRadius = 62.5
 
         self.headPhoto.clipsToBounds = true
-
-
 
     }
 

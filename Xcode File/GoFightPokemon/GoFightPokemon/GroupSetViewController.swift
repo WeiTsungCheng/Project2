@@ -190,6 +190,7 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
     }
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -206,6 +207,23 @@ class GroupSetViewController: UIViewController, GroupDelegate {
         gymTimePicker.addTarget(self, action: #selector(self.datePickerValueChanged(sender:)), for: UIControlEvents.valueChanged)
         setTime.inputView = gymTimePicker
 
+        // 設定地圖初始位置
+        let camera = GMSCameraPosition.camera(withLatitude: 25.0444805, longitude: 121.5216595, zoom: 12)
+
+        myMapImage.camera = camera
+
+        comfirmFight.layer.borderWidth = 2.5
+        comfirmFight.layer.borderColor = UIColor.brown.cgColor
+        comfirmFight.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
+        comfirmFight.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
+            , for: .normal)
+        comfirmFight.layer.cornerRadius = 10
+
+
+    }
+
+    override func viewDidLayoutSubviews() {
+        
         //建立地圖搜尋控制器
         resultsViewController = GMSAutocompleteResultsViewController()
         resultsViewController?.delegate = self
@@ -222,26 +240,6 @@ class GroupSetViewController: UIViewController, GroupDelegate {
         searchController?.hidesNavigationBarDuringPresentation = false
 
         definesPresentationContext = true
-
-
-
-        // 設定地圖初始位置
-        let camera = GMSCameraPosition.camera(withLatitude: 25.0444805, longitude: 121.5216595, zoom: 12)
-
-        myMapImage.camera = camera
-
-
-
-        comfirmFight.layer.borderWidth = 2.5
-        comfirmFight.layer.borderColor = UIColor.brown.cgColor
-        comfirmFight.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
-        comfirmFight.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
-            , for: .normal)
-        comfirmFight.layer.cornerRadius = 10
-
-
-
-
 
     }
 

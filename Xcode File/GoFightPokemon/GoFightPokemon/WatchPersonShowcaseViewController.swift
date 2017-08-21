@@ -118,13 +118,4 @@ extension WatchPersonShowcaseViewController: UICollectionViewDataSource, UIColle
         return cell
     }
 
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let picDimension = self.view.frame.size.width / 2.2
-//        return CGSize(width: picDimension, height: picDimension)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        let leftRightInset = self.view.frame.size.width / 14.0
-//        return UIEdgeInsets(top: 0, left: leftRightInset, bottom: 0, right: leftRightInset)
-//    }
 }

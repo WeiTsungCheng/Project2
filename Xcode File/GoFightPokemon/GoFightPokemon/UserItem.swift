@@ -23,13 +23,7 @@ struct UserItem {
 
     init(snapshot: DataSnapshot) {
 
-
-        print("🔰")
-
         print(snapshot)
-
-        print("🔰")
-
 
         let snapshotValue: [String: AnyObject] = snapshot.value as![String:AnyObject]
 

@@ -226,35 +226,7 @@ extension PlayerShowcaseViewController: UICollectionViewDataSource, UICollection
 
 
 
-//    func collectionView(_ collectionView: UICollectionView,
-//                        layout collectionViewLayout: UICollectionViewLayout,
-//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//        return CGSize(width: 129, height: 183)
-//    }
-//
-//
-//    func collectionView(_ collectionView: UICollectionView,
-//                        layout collectionViewLayout: UICollectionViewLayout,
-//                        insetForSectionAt section: Int) -> UIEdgeInsets {
-//
-//        let sectionInsets = UIEdgeInsets(top:20, left: 20, bottom: 0, right: 5)
-//
-//        return sectionInsets
-//    }
-//
-//
-//    func collectionView(_ collectionView: UICollectionView,
-//                        layout collectionViewLayout: UICollectionViewLayout,
-//                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 15
-
-//    func collectionView(<#T##collectionView: UICollectionView##UICollectionView#>, layout: <#T##UICollectionViewLayout#>, minimumLineSpacingForSectionAt: <#T##Int#>)
-//    func collectionView(<#T##collectionView: UICollectionView##UICollectionView#>, layout: <#T##UICollectionViewLayout#>, minimumInteritemSpacingForSectionAt: <#T##Int#>)
 
 
-
-
-
-    }
+}
 
