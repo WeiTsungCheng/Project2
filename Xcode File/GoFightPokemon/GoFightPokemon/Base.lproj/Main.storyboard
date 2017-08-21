@@ -469,7 +469,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="124"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RFR-53-Wby" id="fBg-v9-q3e">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="124"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="123.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="道館等級:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mqa-n4-3Rg">
@@ -592,6 +592,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="2yF-UR-YOY">
                             <connections>
+                                <action selector="ceateGroup:" destination="E1O-Ey-YVe" id="Exp-1E-Aig"/>
                                 <segue destination="9Ql-Gn-tt4" kind="show" id="vKC-8a-cZy"/>
                             </connections>
                         </barButtonItem>
@@ -672,7 +673,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s9O-3R-OwW" id="5Cm-1d-r1I">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wfl-DE-w5a">
@@ -743,6 +744,7 @@
                                                     </constraints>
                                                     <state key="normal" title="展示間"/>
                                                     <connections>
+                                                        <action selector="goOthersShowcase:" destination="l0g-pz-Frr" eventType="touchUpInside" id="Bya-bK-9Es"/>
                                                         <segue destination="sE3-ac-v3E" kind="show" id="dpf-F9-yHo"/>
                                                     </connections>
                                                 </button>
@@ -1015,6 +1017,9 @@
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ydn-d7-zLo">
                                 <rect key="frame" x="20" y="498" width="284" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="1ku-sb-r4B"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -1049,8 +1054,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZFH-0L-4aZ">
-                                <rect key="frame" x="106" y="534" width="109" height="29"/>
+                                <rect key="frame" x="119" y="534" width="86" height="29"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="TAw-lJ-rGs"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="產生行車路徑"/>
                                 <connections>
@@ -1063,8 +1071,8 @@
                             <constraint firstItem="2PQ-db-46a" firstAttribute="top" secondItem="oEY-Wg-x7s" secondAttribute="bottom" constant="11" id="0bQ-bI-pNN"/>
                             <constraint firstAttribute="trailing" secondItem="oEY-Wg-x7s" secondAttribute="trailing" id="2rH-0W-aFJ"/>
                             <constraint firstItem="0fI-Fl-kCi" firstAttribute="top" secondItem="Sgn-MV-4Za" secondAttribute="bottom" id="36u-Mb-cWd"/>
-                            <constraint firstAttribute="trailing" secondItem="ZFH-0L-4aZ" secondAttribute="trailing" constant="105" id="3tw-Cb-oVg"/>
                             <constraint firstItem="oEY-Wg-x7s" firstAttribute="top" secondItem="1jU-yc-TFR" secondAttribute="bottom" id="8Rf-Xs-jfE"/>
+                            <constraint firstItem="ZFH-0L-4aZ" firstAttribute="centerX" secondItem="ydn-d7-zLo" secondAttribute="centerX" id="8dl-Hg-2SD"/>
                             <constraint firstAttribute="trailing" secondItem="Sgn-MV-4Za" secondAttribute="trailing" id="91d-QK-aMR"/>
                             <constraint firstItem="Sgn-MV-4Za" firstAttribute="leading" secondItem="xlT-n6-LGg" secondAttribute="leading" id="BHi-vp-5eK"/>
                             <constraint firstItem="NhO-dL-eJ8" firstAttribute="top" secondItem="are-0a-sLU" secondAttribute="bottom" constant="6" id="CJG-TC-Uqg"/>
@@ -1075,22 +1083,22 @@
                             <constraint firstItem="gtR-qC-J9M" firstAttribute="top" secondItem="ySX-Ld-ErG" secondAttribute="bottom" constant="10" id="Pvm-KC-GRP"/>
                             <constraint firstAttribute="trailing" secondItem="NhO-dL-eJ8" secondAttribute="trailing" constant="16" id="QRR-WB-sEs"/>
                             <constraint firstItem="2PQ-db-46a" firstAttribute="leading" secondItem="xlT-n6-LGg" secondAttribute="leading" constant="5" id="SKj-TU-kf1"/>
-                            <constraint firstItem="ZFH-0L-4aZ" firstAttribute="leading" secondItem="xlT-n6-LGg" secondAttribute="leading" constant="106" id="UTH-2i-6SY"/>
+                            <constraint firstItem="ZFH-0L-4aZ" firstAttribute="top" secondItem="ydn-d7-zLo" secondAttribute="bottom" constant="6" id="UV2-Tp-RsB"/>
                             <constraint firstAttribute="trailing" secondItem="ydn-d7-zLo" secondAttribute="trailing" constant="16" id="V5N-v6-ptb"/>
                             <constraint firstItem="gtR-qC-J9M" firstAttribute="leading" secondItem="xlT-n6-LGg" secondAttribute="leading" constant="6" id="VOA-g4-Vzv"/>
                             <constraint firstItem="gtR-qC-J9M" firstAttribute="top" secondItem="NhO-dL-eJ8" secondAttribute="bottom" constant="11" id="VTo-Pp-Y8O"/>
                             <constraint firstItem="v2G-FJ-AXL" firstAttribute="leading" secondItem="gtR-qC-J9M" secondAttribute="trailing" constant="16" id="Wds-rF-2XM"/>
                             <constraint firstItem="ydn-d7-zLo" firstAttribute="leading" secondItem="xlT-n6-LGg" secondAttribute="leading" constant="20" id="aGo-eF-nhB"/>
                             <constraint firstItem="Sgn-MV-4Za" firstAttribute="top" secondItem="xlT-n6-LGg" secondAttribute="top" id="aHG-px-ybw"/>
-                            <constraint firstItem="ZFH-0L-4aZ" firstAttribute="top" secondItem="ydn-d7-zLo" secondAttribute="bottom" constant="6" id="boI-wn-YZn"/>
                             <constraint firstItem="ySX-Ld-ErG" firstAttribute="top" secondItem="are-0a-sLU" secondAttribute="bottom" constant="6" id="geE-TB-QOd"/>
+                            <constraint firstAttribute="trailing" secondItem="ZFH-0L-4aZ" secondAttribute="trailing" constant="115" id="i4b-q1-qdu"/>
                             <constraint firstItem="v2G-FJ-AXL" firstAttribute="top" secondItem="ySX-Ld-ErG" secondAttribute="bottom" constant="6" id="lbv-KG-OQ6"/>
                             <constraint firstItem="are-0a-sLU" firstAttribute="top" secondItem="oEY-Wg-x7s" secondAttribute="bottom" constant="8" id="lsb-eX-jbj"/>
+                            <constraint firstItem="ZFH-0L-4aZ" firstAttribute="leading" secondItem="xlT-n6-LGg" secondAttribute="leading" constant="119" id="mhw-yR-huF"/>
                             <constraint firstItem="ydn-d7-zLo" firstAttribute="top" secondItem="v2G-FJ-AXL" secondAttribute="bottom" constant="4" id="miu-AX-iOg"/>
                             <constraint firstItem="ySX-Ld-ErG" firstAttribute="leading" secondItem="xlT-n6-LGg" secondAttribute="leading" constant="20" id="nOF-Ng-IJ9"/>
                             <constraint firstItem="ydn-d7-zLo" firstAttribute="top" secondItem="gtR-qC-J9M" secondAttribute="bottom" constant="11" id="rmI-Jx-bQ6"/>
                             <constraint firstAttribute="trailing" secondItem="v2G-FJ-AXL" secondAttribute="trailing" constant="30" id="rrU-qI-1ri"/>
-                            <constraint firstItem="0fI-Fl-kCi" firstAttribute="top" secondItem="ZFH-0L-4aZ" secondAttribute="bottom" constant="5" id="rsj-hG-GiI"/>
                             <constraint firstItem="NhO-dL-eJ8" firstAttribute="leading" secondItem="xlT-n6-LGg" secondAttribute="leading" constant="20" id="vcl-53-Mjg"/>
                             <constraint firstItem="NhO-dL-eJ8" firstAttribute="top" secondItem="2PQ-db-46a" secondAttribute="bottom" constant="12.5" id="xCg-Mw-5jc"/>
                         </constraints>
@@ -1131,7 +1139,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YfT-kL-1mA" id="hQC-yn-t8U">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="67.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sgi-tx-mmx">
@@ -1212,7 +1220,7 @@
                                         <rect key="frame" x="0.0" y="96" width="320" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0dh-ed-aA6" id="kqX-dV-fgN">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="67.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="WGf-RW-0mA">
@@ -1416,6 +1424,7 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="如何去"/>
                                 <connections>
+                                    <action selector="gymHowToGo:" destination="V5v-Vl-BxM" eventType="touchUpInside" id="i0e-ad-mHJ"/>
                                     <segue destination="OQk-Rw-JkO" kind="show" identifier="goToGymDirection" id="Ka6-7k-hkE"/>
                                 </connections>
                             </button>
@@ -1461,6 +1470,7 @@
                     <navigationItem key="navigationItem" title="討論版" id="AAz-MD-WLF">
                         <barButtonItem key="rightBarButtonItem" title="參加者名單" id="YkI-tI-RxW">
                             <connections>
+                                <action selector="participantList:" destination="V5v-Vl-BxM" id="Nhy-Lk-sfT"/>
                                 <segue destination="l0g-pz-Frr" kind="show" identifier="goToParticipantList" id="RjP-oc-ZPj"/>
                             </connections>
                         </barButtonItem>

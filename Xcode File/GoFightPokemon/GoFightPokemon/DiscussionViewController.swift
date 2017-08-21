@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 
 var getURLImageDic: [String : UIImage] = [:]
@@ -44,6 +46,16 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
     @IBOutlet weak var giveComment: UIButton!
 
     @IBOutlet weak var howToGo: UIButton!
+
+    
+    @IBAction func gymHowToGo(_ sender: Any) {
+         Analytics.logEvent("gymHowToGo", parameters: nil)
+    }
+
+    @IBAction func participantList(_ sender: Any) {
+         Analytics.logEvent("participantList", parameters: nil)
+    }
+
 
     @IBAction func attendFight(_ sender: Any) {
 

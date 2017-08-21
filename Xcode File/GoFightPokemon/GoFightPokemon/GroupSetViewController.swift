@@ -216,6 +216,7 @@ class GroupSetViewController: UIViewController, GroupDelegate {
         mySearchBarView.tintColor = UIColor.blue
 
         mySearchBarView.addSubview((searchController?.searchBar)!)
+
         view.addSubview(mySearchBarView)
         searchController?.searchBar.sizeToFit()
         searchController?.hidesNavigationBarDuringPresentation = false

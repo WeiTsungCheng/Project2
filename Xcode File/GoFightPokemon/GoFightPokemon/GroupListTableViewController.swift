@@ -7,8 +7,15 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+
 
 class GroupListTableViewController: UITableViewController, GroupDelegate, PersonDelegate {
+
+    @IBAction func ceateGroup(_ sender: Any) {
+        Analytics.logEvent("ceateGroup", parameters: nil)
+    }
 
     func manager(_ controller: PersonManager, success: Bool) {
 
