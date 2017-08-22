@@ -21,6 +21,14 @@ class WatchPersonShowcaseViewController: UIViewController, ShowcaseDelegate {
     }
     let showcaseＭanager = ShowcaseManager()
 
+    @IBAction func editUserShowcase(_ sender: Any) {
+
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let nextVC = storyBoard.instantiateViewController(withIdentifier: "PersonShowcaseViewController")
+        present(nextVC, animated: true, completion: nil)
+    }
+
+
 
     @IBOutlet weak var collectionView: UICollectionView!
 

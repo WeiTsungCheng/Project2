@@ -12,6 +12,17 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
 
     @IBOutlet weak var headPhotoBase: UIView!
 
+
+
+    @IBAction func backWatchPersonInfo(_ sender: Any) {
+
+        dismiss(animated: true, completion: nil)
+    }
+
+    @IBOutlet weak var backPersonInfo: UIButton!
+
+
+
     func manager(_ controller: PersonManager, success: Bool) {
 
     }
@@ -32,11 +43,11 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
     let personManager = PersonManager()
     let headPhotoManager = HeadPhotoManager()
 
-    @IBAction func goBackFuncList(_ sender: Any) {
-
-         dismiss(animated: true, completion: nil)
-
-    }
+//    @IBAction func goBackFuncList(_ sender: Any) {
+//
+//         dismiss(animated: true, completion: nil)
+//
+//    }
 
     let gymLevelChoose = UIPickerView()
 
@@ -52,7 +63,7 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
 
     @IBOutlet weak var upLoadPhoto: UIButton!
     @IBOutlet weak var saveHeadPhoto: UIButton!
-    @IBOutlet weak var userShowcase: UIButton!
+
 
 
     @IBOutlet weak var headPhoto: UIImageView!
@@ -236,14 +247,12 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
 , for: .normal)
         saveHeadPhoto.layer.cornerRadius = 10
 
-        userShowcase.layer.borderWidth = 2.5
-        userShowcase.layer.borderColor = UIColor.brown.cgColor
-        userShowcase.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
-        userShowcase.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
+        backPersonInfo.layer.borderWidth = 2.5
+        backPersonInfo.layer.borderColor = UIColor.brown.cgColor
+        backPersonInfo.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
+        backPersonInfo.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
             , for: .normal)
-        userShowcase.layer.cornerRadius = 10
-
-
+        backPersonInfo.layer.cornerRadius = 10
 
 
 

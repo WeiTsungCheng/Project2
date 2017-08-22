@@ -14,6 +14,15 @@ class WatchPersonalInfoViewController: UIViewController, PersonDelegate, HeadPho
     @IBOutlet weak var userHeadPhotoBase: UIView!
     @IBOutlet weak var userShowcase: UIButton!
 
+    @IBAction func editUserInfo(_ sender: Any) {
+
+    let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+    let nextVC = storyBoard.instantiateViewController(withIdentifier: "PersonInfoViewController")
+        present(nextVC, animated: true, completion: nil)
+
+    }
+
+
     let personManager = PersonManager()
 
     let headPhotoManager = HeadPhotoManager()

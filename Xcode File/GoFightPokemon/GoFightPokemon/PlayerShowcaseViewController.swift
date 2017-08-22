@@ -16,6 +16,13 @@ class PlayerShowcaseViewController: UIViewController, ShowcaseDelegate {
 
     @IBOutlet weak var savePokemon: UIButton!
 
+    @IBAction func backUserShowcase(_ sender: Any) {
+
+        dismiss(animated: true, completion: nil)
+
+    }
+    @IBOutlet weak var backShowcase: UIButton!
+
 
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -144,6 +151,14 @@ class PlayerShowcaseViewController: UIViewController, ShowcaseDelegate {
         savePokemon.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
             , for: .normal)
         savePokemon.layer.cornerRadius = 10
+
+
+        backShowcase.layer.borderWidth = 2.5
+        backShowcase.layer.borderColor = UIColor.brown.cgColor
+        backShowcase.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
+        backShowcase.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
+            , for: .normal)
+        backShowcase.layer.cornerRadius = 10
 
 //////////////////////////////////////////////////////////////////////
         let layout = UICollectionViewFlowLayout()
