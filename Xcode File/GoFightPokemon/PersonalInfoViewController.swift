@@ -134,6 +134,8 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
 
             self.personManager.setValuePersonItem(teamSelect: teamSelect, levelSelect: Int(level)!, gymLevelSelect: gymLevel)
             self.headPhotoManager.setHeadPhoto(headPhoto: self.headPhoto.image)
+/////
+            self.dismiss(animated: true, completion: nil)
 
         })
 

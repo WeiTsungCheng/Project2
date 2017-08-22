@@ -114,6 +114,8 @@ class PlayerShowcaseViewController: UIViewController, ShowcaseDelegate {
 
                self.showcaseManager.setShowcaseItem(playerPokemonImage: self.playerPokemonImage)
 
+            self.dismiss(animated: true, completion: nil)
+
         })
 
         let cancelAction = UIAlertAction(title: "取消", style: .default, handler: { (action: UIAlertAction) -> () in

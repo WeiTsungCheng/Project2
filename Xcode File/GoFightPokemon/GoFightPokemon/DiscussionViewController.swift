@@ -64,7 +64,9 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
         participantManager.getParticipantsCountItem(childId: childIdName)
 
         leaveFight.isEnabled = true
+        leaveFight.backgroundColor = UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1)
         attendFight.isEnabled  = false
+        attendFight.backgroundColor = UIColor.gray
     }
 
 
@@ -75,7 +77,9 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
         participantManager.getParticipantsCountItem(childId: childIdName)
 
         attendFight.isEnabled  = true
+        attendFight.backgroundColor = UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1)
         leaveFight.isEnabled = false
+        leaveFight.backgroundColor = UIColor.gray
 
     }
 
