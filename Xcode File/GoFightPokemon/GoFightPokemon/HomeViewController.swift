@@ -52,10 +52,10 @@ class HomeViewController: UIViewController {
                     userDefauls.synchronize()
 
 
-                    let entreeVC = self.storyboard?.instantiateViewController(withIdentifier: "entree")
-                    
-                    
-                    self.present(entreeVC!, animated: true, completion: nil)
+                    let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                    let nextVC = storyBoard.instantiateViewController(withIdentifier: "entree")
+                    let applicationDelegation = UIApplication.shared.delegate as? AppDelegate
+                    applicationDelegation?.window?.rootViewController = nextVC
                     
                     
                 } catch let error as NSError {

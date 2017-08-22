@@ -14,6 +14,26 @@ class ViewController: UIViewController {
     @IBOutlet weak var loginPage: UIButton!
     @IBOutlet weak var signupPage: UIButton!
 
+    @IBAction func goSignupPage(_ sender: Any) {
+
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let nextVC = storyBoard.instantiateViewController(withIdentifier: "SignupViewController")
+        let applicationDelegation = UIApplication.shared.delegate as? AppDelegate
+        applicationDelegation?.window?.rootViewController = nextVC
+    }
+
+    @IBAction func goLoginPage(_ sender: Any) {
+
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let nextVC = storyBoard.instantiateViewController(withIdentifier: "LoginViewController")
+        let applicationDelegation = UIApplication.shared.delegate as? AppDelegate
+        applicationDelegation?.window?.rootViewController = nextVC
+        
+        
+        
+    }
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

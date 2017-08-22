@@ -19,6 +19,23 @@ class LoginViewController_: UIViewController {
     @IBOutlet weak var loginEmail: UITextField!
     @IBOutlet weak var loginPassword: UITextField!
 
+    @IBAction func goSignupPage(_ sender: Any) {
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let nextVC = storyboard.instantiateViewController(withIdentifier: "SignupViewController")
+        let applicationDelegation = UIApplication.shared.delegate as? AppDelegate
+        applicationDelegation?.window?.rootViewController = nextVC
+    }
+
+    @IBAction func goResetPage(_ sender: Any) {
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let nextVC = storyboard.instantiateViewController(withIdentifier: "ResetViewController")
+        let applicationDelegation = UIApplication.shared.delegate as? AppDelegate
+        applicationDelegation?.window?.rootViewController = nextVC
+
+    }
+
     @IBAction func login(_ sender: AnyObject) {
         if loginEmail.text == "" || loginPassword.text == "" {
             let alertController = UIAlertController(title: "錯誤", message: "請輸入信箱和密碼", preferredStyle: UIAlertControllerStyle.alert)
@@ -47,9 +64,12 @@ class LoginViewController_: UIViewController {
                     userDefauls.set(userPassword, forKey: "getuserPassword")
                     userDefauls.synchronize()
 
-                    let goHomeVC = self.storyboard?.instantiateViewController(withIdentifier: "goHome")
+                    let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                    let nextVC = storyBoard.instantiateViewController(withIdentifier: "goHome")
+                    let applicationDelegation = UIApplication.shared.delegate as? AppDelegate
+                    applicationDelegation?.window?.rootViewController = nextVC
 
-                    self.present(goHomeVC!, animated: true, completion: nil)
+
                 } else {
 
                     let alertController = UIAlertController(title: "錯誤", message: "錯誤的信箱或密碼", preferredStyle: UIAlertControllerStyle.alert)

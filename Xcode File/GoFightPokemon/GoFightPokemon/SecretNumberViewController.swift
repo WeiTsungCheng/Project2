@@ -19,6 +19,23 @@ class SecretNumberViewController: UIViewController {
 
     @IBOutlet weak var resetEmail: UITextField!
 
+    @IBAction func goSignupPage(_ sender: Any) {
+
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let nextVC = storyBoard.instantiateViewController(withIdentifier: "SignupViewController")
+        let applicationDelegation = UIApplication.shared.delegate as? AppDelegate
+        applicationDelegation?.window?.rootViewController = nextVC
+    }
+    @IBAction func goLoginPage(_ sender: Any) {
+
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let nextVC = storyBoard.instantiateViewController(withIdentifier: "LoginViewController")
+        let applicationDelegation = UIApplication.shared.delegate as? AppDelegate
+        applicationDelegation?.window?.rootViewController = nextVC
+
+
+
+    }
 
     @IBAction func resetPassword(_ sender: AnyObject) {
 

@@ -33,7 +33,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Qqz-3N-TeO" kind="presentation" id="0vS-mh-kq7"/>
+                                    <action selector="goSignupPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xd3-9I-lMv"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go! Fight! Pokemon!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8SL-Vh-XDG">
@@ -48,7 +48,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="g8s-vQ-kBa" kind="presentation" id="9Fy-z7-rUZ"/>
+                                    <action selector="goLoginPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TZj-39-tEf"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -82,7 +82,7 @@
         <!--Login View Controller-->
         <scene sceneID="hb2-65-qU4">
             <objects>
-                <viewController id="Qqz-3N-TeO" customClass="LoginViewController_" customModule="GoFightPokemon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="Qqz-3N-TeO" customClass="LoginViewController_" customModule="GoFightPokemon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Nxd-mR-6J8"/>
                         <viewControllerLayoutGuide type="bottom" id="zEs-5H-4Yh"/>
@@ -98,7 +98,7 @@
                                 <rect key="frame" x="129" y="424" width="62" height="30"/>
                                 <state key="normal" title="註冊頁面"/>
                                 <connections>
-                                    <segue destination="g8s-vQ-kBa" kind="presentation" id="JSO-ho-s1I"/>
+                                    <action selector="goSignupPage:" destination="Qqz-3N-TeO" eventType="touchUpInside" id="F0a-hf-FBx"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入帳號密碼" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e6v-6b-yF4">
@@ -117,7 +117,7 @@
                                 <rect key="frame" x="129" y="474" width="62" height="30"/>
                                 <state key="normal" title="重設密碼"/>
                                 <connections>
-                                    <segue destination="8NX-55-M6S" kind="presentation" id="X8v-Rn-Has"/>
+                                    <action selector="goResetPage:" destination="Qqz-3N-TeO" eventType="touchUpInside" id="ie0-Vs-0vZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RRg-2E-qnK">
@@ -167,7 +167,7 @@
         <!--Secret Number View Controller-->
         <scene sceneID="g0y-Ib-aYv">
             <objects>
-                <viewController id="8NX-55-M6S" customClass="SecretNumberViewController" customModule="GoFightPokemon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResetViewController" id="8NX-55-M6S" customClass="SecretNumberViewController" customModule="GoFightPokemon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c4a-ro-BTq"/>
                         <viewControllerLayoutGuide type="bottom" id="HJu-ls-pv4"/>
@@ -183,14 +183,14 @@
                                 <rect key="frame" x="137" y="424" width="62" height="30"/>
                                 <state key="normal" title="登入頁面"/>
                                 <connections>
-                                    <segue destination="Qqz-3N-TeO" kind="presentation" id="syq-TO-VEE"/>
+                                    <action selector="goLoginPage:" destination="8NX-55-M6S" eventType="touchUpInside" id="v2Z-q7-l2U"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89Q-uq-Ran">
                                 <rect key="frame" x="137" y="474" width="62" height="30"/>
                                 <state key="normal" title="註冊頁面"/>
                                 <connections>
-                                    <segue destination="g8s-vQ-kBa" kind="presentation" id="njk-XL-VXI"/>
+                                    <action selector="goSignupPage:" destination="8NX-55-M6S" eventType="touchUpInside" id="XSG-Ff-SMi"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請提供您的帳號信箱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s1i-0e-N7i">
@@ -1494,7 +1494,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="50l-av-0JB">
             <objects>
-                <viewController id="g8s-vQ-kBa" customClass="SignUpViewController" customModule="GoFightPokemon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignupViewController" id="g8s-vQ-kBa" customClass="SignUpViewController" customModule="GoFightPokemon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vVh-3J-HzK"/>
                         <viewControllerLayoutGuide type="bottom" id="lNf-YB-njU"/>
@@ -1528,14 +1528,14 @@
                                 <rect key="frame" x="129" y="474" width="62" height="30"/>
                                 <state key="normal" title="重設密碼"/>
                                 <connections>
-                                    <segue destination="8NX-55-M6S" kind="presentation" id="BGw-1i-r3n"/>
+                                    <action selector="goResetPage:" destination="g8s-vQ-kBa" eventType="touchUpInside" id="ISG-Gt-9nr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ewn-xM-KZn">
                                 <rect key="frame" x="129" y="424" width="62" height="30"/>
                                 <state key="normal" title="登入頁面"/>
                                 <connections>
-                                    <segue destination="Qqz-3N-TeO" kind="presentation" id="mMU-L9-isP"/>
+                                    <action selector="goLoginPage:" destination="g8s-vQ-kBa" eventType="touchUpInside" id="lDv-JL-7TO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJQ-RG-K53">
@@ -2292,9 +2292,4 @@
         <image name="vincent-guth-183404" width="7360" height="4912"/>
         <image name="wil-stewart-18242" width="6000" height="4000"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="X8v-Rn-Has"/>
-        <segue reference="mMU-L9-isP"/>
-        <segue reference="JSO-ho-s1I"/>
-    </inferredMetricsTieBreakers>
 </document>

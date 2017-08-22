@@ -35,7 +35,25 @@ class SignUpViewController: UIViewController, PersonDelegate {
     @IBOutlet weak var loginPage: UIButton!
     @IBOutlet weak var resetPage: UIButton!
 
+    @IBAction func goLoginPage(_ sender: Any) {
+
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let nextVC = storyBoard.instantiateViewController(withIdentifier: "LoginViewController")
+        let applicationDelegation = UIApplication.shared.delegate as? AppDelegate
+        applicationDelegation?.window?.rootViewController = nextVC
+
+    }
     
+    @IBAction func goResetPage(_ sender: Any) {
+
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let nextVC = storyBoard.instantiateViewController(withIdentifier: "ResetViewController")
+        let applicationDelegation = UIApplication.shared.delegate as? AppDelegate
+        applicationDelegation?.window?.rootViewController = nextVC
+
+
+    }
+
 
     @IBAction func signUp(_ sender: AnyObject) {
 
@@ -83,7 +101,8 @@ class SignUpViewController: UIViewController, PersonDelegate {
 
                         let alertController = UIAlertController(title: "恭喜", message: "成功創建帳號", preferredStyle: UIAlertControllerStyle.alert)
 
-                        let defaultAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil )
+                        let defaultAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+
 
                         alertController.addAction(defaultAction)
                         self.present(alertController, animated: true, completion: nil)
