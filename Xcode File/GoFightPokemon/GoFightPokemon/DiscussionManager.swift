@@ -64,15 +64,18 @@ class DiscussionManager {
         //載入即時更新的comment
         let reference = Database.database().reference()
 
-        reference.child("groupComment").child(childId).observe(.value, with: {(snapshot) in
+        reference.child("groupComment").child(childId).queryLimited(toLast: 100).observe(.value, with:
+
+            {(snapshot) in
 
 
             var getItem = [DiscussionItem]()
 
             if snapshot.childrenCount > 0 {
 
+print("⚾️")
                 print(snapshot.childrenCount)
-
+print("⚾️")
 
                 var datalist: [DiscussionItem] = [DiscussionItem]()
 
@@ -90,6 +93,8 @@ class DiscussionManager {
                 }
 
                 getItem = datalist
+
+                getItem = getItem.reversed()
                 self.delegate?.manager(self, discussionItem: getItem)
 
             }

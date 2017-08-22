@@ -243,6 +243,20 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
 
 extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource {
 
+//    func updateTableContentInset() {
+//        let numRows = tableView(tableView, numberOfRowsInSection: 0)
+//        var contentInsetTop = self.tableView.bounds.size.height
+//        for i in 0..<numRows {
+//            contentInsetTop -= tableView(tableView, heightForRowAt: IndexPath(item: i, section: 0))
+//            if contentInsetTop <= 0 {
+//                contentInsetTop = 0
+//            }
+//        }
+//        tableView.contentInset = UIEdgeInsetsMake(contentInsetTop, 0, 0, 0)
+//    }
+
+
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.getItem.count
     }
