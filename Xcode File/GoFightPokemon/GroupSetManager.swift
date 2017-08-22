@@ -64,17 +64,12 @@ class GroupManager {
 
     }
 
-
-
     func getGroupItem() {
 
 
-        Database.database().reference().child("groupFight").observe(.value, with: {(snapshot)
-            in
-
+        Database.database().reference().child("groupFight").observe(.value, with: {(snapshot) in
 
             print(snapshot)
-
 
             if snapshot.childrenCount > 0 {
 

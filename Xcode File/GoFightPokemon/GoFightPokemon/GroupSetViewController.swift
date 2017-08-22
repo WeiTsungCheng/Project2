@@ -38,6 +38,10 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
     @IBOutlet weak var bossName: UITextField!
 
+    @IBOutlet weak var setTime: UITextField!
+
+    @IBOutlet weak var comfirmFight: UIButton!
+
 
     var gymLavels = ["請選擇難度", "簡單", "普通", "困難", "極困難", "傳說"]
 
@@ -47,28 +51,9 @@ class GroupSetViewController: UIViewController, GroupDelegate {
     @IBAction func groupSet(_ sender: UIButton) {
 
 
-        guard let gymLatitude = gymLatitude else {
-
-            return
-            
-        }
-
-        guard let gymLongitude = gymLongitude else {
-
-            return
-            
-        }
 
 
-
-
-        guard let location = gymLocation.text else {
-
-            return
-
-        }
-
-        if location == "" {
+        if gymLocation.text == "" {
 
             let alertController = UIAlertController(title: "錯誤", message: "道館地點不可留白", preferredStyle: .alert)
 
@@ -83,11 +68,25 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
         }
 
-        guard let setTime = setTime.text else {
+        guard let location = gymLocation.text else {
+
             return
+            
         }
 
-        if setTime == "" {
+        guard let gymLatitude = gymLatitude else {
+
+            return
+
+        }
+
+        guard let gymLongitude = gymLongitude else {
+
+            return
+            
+        }
+
+        if setTime.text == "" {
 
             let alertController = UIAlertController(title: "錯誤", message: "發團時間不可留白", preferredStyle: .alert)
 
@@ -100,11 +99,12 @@ class GroupSetViewController: UIViewController, GroupDelegate {
             return
         }
 
-
-        guard let gymLevel = gymLevel.text else {
+        guard let setTime = setTime.text else {
             return
         }
-        if gymLevel == "" {
+
+
+        if gymLevel.text == "" {
 
             let alertController = UIAlertController(title: "錯誤", message: "道館等級不可留白", preferredStyle: .alert)
 
@@ -117,12 +117,13 @@ class GroupSetViewController: UIViewController, GroupDelegate {
             return
         }
 
-
-        guard let bossName = bossName.text else {
+        guard let gymLevel = gymLevel.text else {
             return
         }
 
-        if bossName == "" {
+
+
+        if bossName.text == "" {
 
             let alertController = UIAlertController(title: "錯誤", message: "魔王名稱不可留白", preferredStyle: .alert)
 
@@ -135,6 +136,9 @@ class GroupSetViewController: UIViewController, GroupDelegate {
             return
         }
 
+        guard let bossName = bossName.text else {
+            return
+        }
 
 
         setGroupManager.setGroupItem(gymLevel: gymLevel, bossName: bossName, setTime: setTime, gymLocation: location, latitude: gymLatitude, longitude: gymLongitude)
@@ -144,9 +148,7 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
     }
 
-    @IBOutlet weak var setTime: UITextField!
 
-    @IBOutlet weak var comfirmFight: UIButton!
 
     func datePickerValueChanged(sender: UIDatePicker) {
 
@@ -188,6 +190,7 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
     }
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -204,6 +207,23 @@ class GroupSetViewController: UIViewController, GroupDelegate {
         gymTimePicker.addTarget(self, action: #selector(self.datePickerValueChanged(sender:)), for: UIControlEvents.valueChanged)
         setTime.inputView = gymTimePicker
 
+        // 設定地圖初始位置
+        let camera = GMSCameraPosition.camera(withLatitude: 25.0444805, longitude: 121.5216595, zoom: 12)
+
+        myMapImage.camera = camera
+
+        comfirmFight.layer.borderWidth = 2.5
+        comfirmFight.layer.borderColor = UIColor.brown.cgColor
+        comfirmFight.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
+        comfirmFight.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
+            , for: .normal)
+        comfirmFight.layer.cornerRadius = 10
+
+
+    }
+
+    override func viewDidLayoutSubviews() {
+        
         //建立地圖搜尋控制器
         resultsViewController = GMSAutocompleteResultsViewController()
         resultsViewController?.delegate = self
@@ -214,31 +234,12 @@ class GroupSetViewController: UIViewController, GroupDelegate {
         mySearchBarView.tintColor = UIColor.blue
 
         mySearchBarView.addSubview((searchController?.searchBar)!)
+
         view.addSubview(mySearchBarView)
         searchController?.searchBar.sizeToFit()
         searchController?.hidesNavigationBarDuringPresentation = false
 
         definesPresentationContext = true
-
-
-
-        // 設定地圖初始位置
-        let camera = GMSCameraPosition.camera(withLatitude: 25.0444805, longitude: 121.5216595, zoom: 12)
-
-        myMapImage.camera = camera
-
-
-
-        comfirmFight.layer.borderWidth = 2.5
-        comfirmFight.layer.borderColor = UIColor.brown.cgColor
-        comfirmFight.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
-        comfirmFight.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
-            , for: .normal)
-        comfirmFight.layer.cornerRadius = 10
-
-
-
-
 
     }
 

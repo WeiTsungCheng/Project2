@@ -20,13 +20,6 @@ enum Location{
 
 class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
 
-
-//
-//    //設置當前位置
-//    var placesClient: GMSPlacesClient!
-
-
-
     var gymLocationNameName = ""
     var latitudeNameName = 0.00
     var longitudeNameName = 0.00
@@ -45,7 +38,7 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
 
     @IBOutlet weak var destinatoionLocation: UITextField!
 
- @IBOutlet weak var getDriveRoute: UIButton!
+    @IBOutlet weak var getDriveRoute: UIButton!
 
     var locationManager = CLLocationManager()
     var locationSelected = Location.startLocation
@@ -70,15 +63,11 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startMonitoringSignificantLocationChanges()
 
-
-
-
         self.googleMaps.delegate = self
         self.googleMaps.isMyLocationEnabled = true
         self.googleMaps.settings.myLocationButton = true
         self.googleMaps.settings.zoomGestures = true
         self.googleMaps.settings.compassButton = true
-
 
         //初始化地圖 (設置地圖位置在道館位置)
         let camera = GMSCameraPosition.camera(withLatitude: latitudeNameName, longitude: longitudeNameName, zoom: 16)
@@ -86,7 +75,6 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
         //設定Gymlocation 的預設值
         destinatoionLocation.text = gymLocationNameName
         locationEnd = CLLocation(latitude: latitudeNameName, longitude: longitudeNameName)
-
 
         endMarker.map = nil
         endMarker.position = CLLocationCoordinate2D(latitude: latitudeNameName, longitude: longitudeNameName)
@@ -120,19 +108,16 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
 
     }
 
-
     //實作CLLocation manager的方法
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error to get location:  \(error)")
 
     }
-   
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //只取最後一個抓到的地址
 
         if let location = locations.last {
-
 
             currentLatitude = location.coordinate.latitude
             currentLongitude = location.coordinate.longitude
@@ -142,13 +127,10 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
             myMarker.icon = #imageLiteral(resourceName: "myLocation")
             myMarker.map = googleMaps
 
-print("⚽️⚽️⚽️")
             //停止抓取用戶裝置位置
-            self.locationManager.stopUpdatingLocation()
+         //   self.locationManager.stopUpdatingLocation()
 
         }
-
-print("🎾🎾🎾")
 
     }
 
@@ -309,9 +291,6 @@ extension GymDirectionViewController: GMSAutocompleteViewControllerDelegate{
             startMarker.icon = #imageLiteral(resourceName: "startLocation")
             startMarker.map = googleMaps
 
-            print("🍿")
-
-
         } else {
 
             destinatoionLocation.text = place.formattedAddress
@@ -343,8 +322,6 @@ extension GymDirectionViewController: GMSAutocompleteViewControllerDelegate{
     }
 
 }
-
-
 
 public extension UISearchBar {
 

@@ -12,6 +12,17 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
 
     @IBOutlet weak var headPhotoBase: UIView!
 
+
+
+    @IBAction func backWatchPersonInfo(_ sender: Any) {
+
+        dismiss(animated: true, completion: nil)
+    }
+
+    @IBOutlet weak var backPersonInfo: UIButton!
+
+
+
     func manager(_ controller: PersonManager, success: Bool) {
 
     }
@@ -32,11 +43,11 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
     let personManager = PersonManager()
     let headPhotoManager = HeadPhotoManager()
 
-    @IBAction func goBackFuncList(_ sender: Any) {
-
-         dismiss(animated: true, completion: nil)
-
-    }
+//    @IBAction func goBackFuncList(_ sender: Any) {
+//
+//         dismiss(animated: true, completion: nil)
+//
+//    }
 
     let gymLevelChoose = UIPickerView()
 
@@ -52,7 +63,7 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
 
     @IBOutlet weak var upLoadPhoto: UIButton!
     @IBOutlet weak var saveHeadPhoto: UIButton!
-    @IBOutlet weak var userShowcase: UIButton!
+
 
 
     @IBOutlet weak var headPhoto: UIImageView!
@@ -93,6 +104,7 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
         }
 
         guard let gymLevel = gymLevelSelect.text else {
+
             return
         }
 
@@ -110,17 +122,39 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
             alertController.addAction(alertAction)
 
             present(alertController, animated: true, completion: nil)
-            return
 
+            return
         }
 
 
+        let alertController = UIAlertController(title: "確認", message: "確認存檔", preferredStyle: .alert)
 
 
-        self.personManager.setValuePersonItem(teamSelect: teamSelect, levelSelect: Int(level)!, gymLevelSelect: gymLevel)
+        let comfirmAlertAction = UIAlertAction(title: "確認", style: .default, handler: { (action: UIAlertAction) -> () in
+
+            self.personManager.setValuePersonItem(teamSelect: teamSelect, levelSelect: Int(level)!, gymLevelSelect: gymLevel)
+            self.headPhotoManager.setHeadPhoto(headPhoto: self.headPhoto.image)
+/////
+            self.dismiss(animated: true, completion: nil)
+
+        })
+
+        let cancelAction = UIAlertAction(title: "取消", style: .default, handler: { (action: UIAlertAction) -> () in
+
+            alertController.dismiss(animated: true, completion: nil)
+        })
 
 
-        self.headPhotoManager.setHeadPhoto(headPhoto: headPhoto.image)
+
+        alertController.addAction(comfirmAlertAction)
+        alertController.addAction(cancelAction)
+
+        present(alertController, animated: true, completion: nil)
+
+
+
+
+
 
     }
 
@@ -215,14 +249,12 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
 , for: .normal)
         saveHeadPhoto.layer.cornerRadius = 10
 
-        userShowcase.layer.borderWidth = 2.5
-        userShowcase.layer.borderColor = UIColor.brown.cgColor
-        userShowcase.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
-        userShowcase.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
+        backPersonInfo.layer.borderWidth = 2.5
+        backPersonInfo.layer.borderColor = UIColor.brown.cgColor
+        backPersonInfo.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
+        backPersonInfo.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
             , for: .normal)
-        userShowcase.layer.cornerRadius = 10
-
-
+        backPersonInfo.layer.cornerRadius = 10
 
 
 

@@ -16,6 +16,13 @@ class PlayerShowcaseViewController: UIViewController, ShowcaseDelegate {
 
     @IBOutlet weak var savePokemon: UIButton!
 
+    @IBAction func backUserShowcase(_ sender: Any) {
+
+        dismiss(animated: true, completion: nil)
+
+    }
+    @IBOutlet weak var backShowcase: UIButton!
+
 
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -99,7 +106,32 @@ class PlayerShowcaseViewController: UIViewController, ShowcaseDelegate {
 
     @IBAction func saveUserPokemon(_ sender: Any) {
 
-         showcaseManager.setShowcaseItem(playerPokemonImage: playerPokemonImage)
+
+        let alertController = UIAlertController(title: "確認", message: "確認更新你的展示間？", preferredStyle: .alert)
+
+
+        let comfirmAlertAction = UIAlertAction(title: "確認", style: .default, handler: { (action: UIAlertAction) -> () in
+
+               self.showcaseManager.setShowcaseItem(playerPokemonImage: self.playerPokemonImage)
+
+            self.dismiss(animated: true, completion: nil)
+
+        })
+
+        let cancelAction = UIAlertAction(title: "取消", style: .default, handler: { (action: UIAlertAction) -> () in
+
+            alertController.dismiss(animated: true, completion: nil)
+        })
+
+
+
+        alertController.addAction(comfirmAlertAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+
+
+
 
     }
 
@@ -121,6 +153,14 @@ class PlayerShowcaseViewController: UIViewController, ShowcaseDelegate {
         savePokemon.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
             , for: .normal)
         savePokemon.layer.cornerRadius = 10
+
+
+        backShowcase.layer.borderWidth = 2.5
+        backShowcase.layer.borderColor = UIColor.brown.cgColor
+        backShowcase.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
+        backShowcase.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
+            , for: .normal)
+        backShowcase.layer.cornerRadius = 10
 
 //////////////////////////////////////////////////////////////////////
         let layout = UICollectionViewFlowLayout()
@@ -203,35 +243,7 @@ extension PlayerShowcaseViewController: UICollectionViewDataSource, UICollection
 
 
 
-//    func collectionView(_ collectionView: UICollectionView,
-//                        layout collectionViewLayout: UICollectionViewLayout,
-//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//        return CGSize(width: 129, height: 183)
-//    }
-//
-//
-//    func collectionView(_ collectionView: UICollectionView,
-//                        layout collectionViewLayout: UICollectionViewLayout,
-//                        insetForSectionAt section: Int) -> UIEdgeInsets {
-//
-//        let sectionInsets = UIEdgeInsets(top:20, left: 20, bottom: 0, right: 5)
-//
-//        return sectionInsets
-//    }
-//
-//
-//    func collectionView(_ collectionView: UICollectionView,
-//                        layout collectionViewLayout: UICollectionViewLayout,
-//                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 15
-
-//    func collectionView(<#T##collectionView: UICollectionView##UICollectionView#>, layout: <#T##UICollectionViewLayout#>, minimumLineSpacingForSectionAt: <#T##Int#>)
-//    func collectionView(<#T##collectionView: UICollectionView##UICollectionView#>, layout: <#T##UICollectionViewLayout#>, minimumInteritemSpacingForSectionAt: <#T##Int#>)
 
 
-
-
-
-    }
+}
 

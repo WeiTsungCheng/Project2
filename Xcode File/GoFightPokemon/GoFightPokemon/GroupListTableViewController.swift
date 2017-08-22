@@ -7,8 +7,69 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+
 
 class GroupListTableViewController: UITableViewController, GroupDelegate, PersonDelegate {
+
+    @IBAction func logout(_ sender: Any) {
+
+
+        Analytics.logEvent("logOut", parameters: nil)
+
+        let alertController = UIAlertController(title: "提醒", message: "真的要離開GoFightPokemon?", preferredStyle: .alert)
+
+        let comfirmAlertAction = UIAlertAction(title: "確認", style: .default, handler: { (action: UIAlertAction) -> () in
+
+            if Auth.auth().currentUser != nil {
+
+                do {
+
+                    try Auth.auth().signOut()
+
+                    //登出刪除已存入的userDefault
+                    let userDefauls = UserDefaults.standard
+
+                    userDefauls.removeObject(forKey: "getuserEmail")
+
+                    userDefauls.removeObject(forKey: "getuserPassword")
+
+                    userDefauls.synchronize()
+
+
+                    let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                    let nextVC = storyBoard.instantiateViewController(withIdentifier: "entree")
+                    let applicationDelegation = UIApplication.shared.delegate as? AppDelegate
+                    applicationDelegation?.window?.rootViewController = nextVC
+
+
+                } catch let error as NSError {
+                    print(error)
+
+                }
+
+            }
+
+        })
+
+        let cancelAlertAction = UIAlertAction(title: "取消", style: .default, handler: { (action: UIAlertAction) -> () in
+            alertController.dismiss(animated: true, completion: nil)
+        })
+        
+        
+        alertController.addAction(comfirmAlertAction)
+        alertController.addAction(cancelAlertAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+        
+        
+    }
+
+
+    @IBAction func ceateGroup(_ sender: Any) {
+        Analytics.logEvent("ceateGroup", parameters: nil)
+    }
 
     func manager(_ controller: PersonManager, success: Bool) {
 

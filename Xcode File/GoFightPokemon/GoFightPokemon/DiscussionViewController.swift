@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 
 var getURLImageDic: [String : UIImage] = [:]
@@ -45,6 +47,16 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
 
     @IBOutlet weak var howToGo: UIButton!
 
+    
+    @IBAction func gymHowToGo(_ sender: Any) {
+         Analytics.logEvent("gymHowToGo", parameters: nil)
+    }
+
+    @IBAction func participantList(_ sender: Any) {
+         Analytics.logEvent("participantList", parameters: nil)
+    }
+
+
     @IBAction func attendFight(_ sender: Any) {
 
         participantManager.setParticipantItem(childId: childIdName)
@@ -52,7 +64,9 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
         participantManager.getParticipantsCountItem(childId: childIdName)
 
         leaveFight.isEnabled = true
+        leaveFight.backgroundColor = UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1)
         attendFight.isEnabled  = false
+        attendFight.backgroundColor = UIColor.gray
     }
 
 
@@ -63,7 +77,9 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
         participantManager.getParticipantsCountItem(childId: childIdName)
 
         attendFight.isEnabled  = true
+        attendFight.backgroundColor = UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1)
         leaveFight.isEnabled = false
+        leaveFight.backgroundColor = UIColor.gray
 
     }
 
@@ -186,6 +202,8 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
         leaveFight.backgroundColor = UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1)
         leaveFight.setTitleColor(UIColor.white, for: .normal)
 
+        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -225,6 +243,20 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
 
 extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource {
 
+//    func updateTableContentInset() {
+//        let numRows = tableView(tableView, numberOfRowsInSection: 0)
+//        var contentInsetTop = self.tableView.bounds.size.height
+//        for i in 0..<numRows {
+//            contentInsetTop -= tableView(tableView, heightForRowAt: IndexPath(item: i, section: 0))
+//            if contentInsetTop <= 0 {
+//                contentInsetTop = 0
+//            }
+//        }
+//        tableView.contentInset = UIEdgeInsetsMake(contentInsetTop, 0, 0, 0)
+//    }
+
+
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.getItem.count
     }
@@ -245,6 +277,8 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
         } else {
 
             ownerCell.putComment.text = getItem[indexPath.row].participantComment
+
+            ownerCell.putComment.isUserInteractionEnabled = false
 
             ownerCell.ownerNickName.text = getPersonInfoDic[getItem[indexPath.row].participantId]?.nickName
 
@@ -290,6 +324,8 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
             } else {
 
                 playerCell.putComment.text = getItem[indexPath.row].participantComment
+
+                playerCell.putComment.isUserInteractionEnabled = false
 
                 playerCell.playerNickName.text = getPersonInfoDic[getItem[indexPath.row].participantId]?.nickName
 

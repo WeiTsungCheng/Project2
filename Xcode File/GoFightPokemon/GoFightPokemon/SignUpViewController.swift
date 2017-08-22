@@ -35,7 +35,25 @@ class SignUpViewController: UIViewController, PersonDelegate {
     @IBOutlet weak var loginPage: UIButton!
     @IBOutlet weak var resetPage: UIButton!
 
+    @IBAction func goLoginPage(_ sender: Any) {
+
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let nextVC = storyBoard.instantiateViewController(withIdentifier: "LoginViewController")
+        let applicationDelegation = UIApplication.shared.delegate as? AppDelegate
+        applicationDelegation?.window?.rootViewController = nextVC
+
+    }
     
+    @IBAction func goResetPage(_ sender: Any) {
+
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let nextVC = storyBoard.instantiateViewController(withIdentifier: "ResetViewController")
+        let applicationDelegation = UIApplication.shared.delegate as? AppDelegate
+        applicationDelegation?.window?.rootViewController = nextVC
+
+
+    }
+
 
     @IBAction func signUp(_ sender: AnyObject) {
 
@@ -61,8 +79,7 @@ class SignUpViewController: UIViewController, PersonDelegate {
 
 
                         //呼叫personmanager建立資料
-
-                        self.personmanager.setPersonItem(nickName: self.signUpNickName.text!, playerTeam: "尚未決定", playerLevel: 0, gymLevel: "未定單", headPhoto: "", userId: (Auth.auth().currentUser?.uid)!, userEmail: (Auth.auth().currentUser?.email)!)
+                        self.personmanager.setPersonItem(nickName: self.signUpNickName.text!, playerTeam: "尚未決定", playerLevel: 0, gymLevel: "未決定", headPhoto: "", userId: (Auth.auth().currentUser?.uid)!, userEmail: (Auth.auth().currentUser?.email)!)
 
 
                         user?.sendEmailVerification { error in
@@ -84,7 +101,8 @@ class SignUpViewController: UIViewController, PersonDelegate {
 
                         let alertController = UIAlertController(title: "恭喜", message: "成功創建帳號", preferredStyle: UIAlertControllerStyle.alert)
 
-                        let defaultAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil )
+                        let defaultAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+
 
                         alertController.addAction(defaultAction)
                         self.present(alertController, animated: true, completion: nil)
@@ -110,6 +128,16 @@ class SignUpViewController: UIViewController, PersonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let loginPageGradient = CAGradientLayer()
+        loginPageGradient.frame = self.view.frame
+        loginPageGradient.colors = [UIColor.brown.cgColor, UIColor.clear.cgColor]
+        loginPageGradient.opacity = 0.7
+        loginPageGradient.startPoint = CGPoint(x: 1, y: 1)
+        loginPageGradient.endPoint = CGPoint(x: 0, y: 0)
+        self.view.layer.insertSublayer(loginPageGradient, at: 1)
+
+        
         personmanager.delegate = self
 
         loginPage.setTitleShadowColor(UIColor.black, for: .normal)
@@ -118,7 +146,8 @@ class SignUpViewController: UIViewController, PersonDelegate {
         loginPage.titleLabel?.shadowOffset = CGSize(width: 0, height: 2)
 
 
-        signup.setTitleColor(UIColor.prjSunYellow, for: .normal)
+        signup.setTitleColor(UIColor.white, for: .normal)
+        signup.backgroundColor = UIColor.orange
 
 
         resetPage.setTitleShadowColor(UIColor.black, for: .normal)
