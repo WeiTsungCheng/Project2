@@ -73,17 +73,13 @@ class DiscussionManager {
 
             if snapshot.childrenCount > 0 {
 
-print("⚾️")
                 print(snapshot.childrenCount)
-print("⚾️")
 
                 var datalist: [DiscussionItem] = [DiscussionItem]()
 
                 for item in snapshot.children {
 
-                    print("🏁")
                     print(snapshot.children)
-                    print("🏁")
 
                     let data = DiscussionItem(snapshot: item as! DataSnapshot)
                     datalist.append(data)
