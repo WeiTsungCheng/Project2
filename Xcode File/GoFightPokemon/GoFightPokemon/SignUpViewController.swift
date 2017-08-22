@@ -109,6 +109,16 @@ class SignUpViewController: UIViewController, PersonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let loginPageGradient = CAGradientLayer()
+        loginPageGradient.frame = self.view.frame
+        loginPageGradient.colors = [UIColor.brown.cgColor, UIColor.clear.cgColor]
+        loginPageGradient.opacity = 0.7
+        loginPageGradient.startPoint = CGPoint(x: 1, y: 1)
+        loginPageGradient.endPoint = CGPoint(x: 0, y: 0)
+        self.view.layer.insertSublayer(loginPageGradient, at: 1)
+
+        
         personmanager.delegate = self
 
         loginPage.setTitleShadowColor(UIColor.black, for: .normal)
@@ -117,7 +127,8 @@ class SignUpViewController: UIViewController, PersonDelegate {
         loginPage.titleLabel?.shadowOffset = CGSize(width: 0, height: 2)
 
 
-        signup.setTitleColor(UIColor.prjSunYellow, for: .normal)
+        signup.setTitleColor(UIColor.white, for: .normal)
+        signup.backgroundColor = UIColor.orange
 
 
         resetPage.setTitleShadowColor(UIColor.black, for: .normal)

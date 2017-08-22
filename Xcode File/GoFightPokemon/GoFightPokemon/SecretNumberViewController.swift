@@ -63,6 +63,14 @@ class SecretNumberViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let loginPageGradient = CAGradientLayer()
+        loginPageGradient.frame = self.view.frame
+        loginPageGradient.colors = [UIColor(red: 255/255, green: 150/255, blue: 0/255, alpha: 1).cgColor, UIColor.clear.cgColor]
+        loginPageGradient.opacity = 0.7
+        loginPageGradient.startPoint = CGPoint(x: 0, y: 0)
+        loginPageGradient.endPoint = CGPoint(x: 1, y: 1)
+        self.view.layer.insertSublayer(loginPageGradient, at: 1)
+
         loginPage.setTitleShadowColor(UIColor.black, for: .normal)
 
         loginPage.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1), for: .normal)
@@ -77,7 +85,8 @@ class SecretNumberViewController: UIViewController {
 
 
     
-        resetNo.setTitleColor(UIColor.prjOrangeRed, for: .normal)
+        resetNo.setTitleColor(UIColor.white, for: .normal)
+        resetNo.backgroundColor = UIColor.prjOrangeRed
 
 
         resetEmail.layer.cornerRadius = 16

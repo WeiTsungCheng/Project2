@@ -16,9 +16,18 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let loginPageGradient = CAGradientLayer()
+        loginPageGradient.frame = self.view.frame
+        loginPageGradient.colors = [UIColor(red: 184/255, green: 233/255, blue: 134/255, alpha: 1).cgColor, UIColor.clear.cgColor]
+        loginPageGradient.opacity = 0.7
+        loginPageGradient.startPoint = CGPoint(x: 1, y: 0)
+        loginPageGradient.endPoint = CGPoint(x: 0, y: 1)
+        self.view.layer.insertSublayer(loginPageGradient, at: 1)
+
         titleWord.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
 
-        titleWord.shadowOffset = CGSize(width: 0, height: 1)
+        titleWord.shadowOffset = CGSize(width: 0, height: 3)
 
       
 
