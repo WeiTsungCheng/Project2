@@ -43,6 +43,15 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
 
     let participantManager = ParticipantManager()
 
+    @IBOutlet weak var clearComment: UIButton!
+
+
+    @IBAction func clearCommentBtn(_ sender: UIButton) {
+
+        writeComment.text = ""
+
+    }
+
 
     @IBOutlet weak var participantNumbers: UILabel!
 
@@ -110,7 +119,12 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
         //用updateValue找到key
         getPersonInfoDic.updateValue(userItem, forKey: userItem.userId)
 
+
+
         self.tableView.reloadData()
+
+//        let pathToLastRow = NSIndexPath(row: getPersonInfoDic.count - 1, section: 0)
+//        self.tableView.scrollToRow(at: pathToLastRow as IndexPath, at: UITableViewScrollPosition.top, animated: true)
 
     }
 
@@ -122,6 +136,10 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
        getItem = discussionItem
 
        self.tableView.reloadData()
+
+        //跳到最後的cell(因為從firebase 取資料時 倒轉了getItem的array,所以pathToLastRow 的row應該設為0)(如果並未倒轉,則row應該設為getItem.count -1)
+        let pathToLastRow = NSIndexPath(row: 0, section: 0)
+        self.tableView.scrollToRow(at: pathToLastRow as IndexPath, at: UITableViewScrollPosition.top ,animated: false)
 
     }
 
@@ -202,8 +220,15 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
 //            , for: .normal)
 //        howToGo.layer.cornerRadius = 10
 
+        howToGo.backgroundColor = UIColor.clear
         howToGo.setImage(#imageLiteral(resourceName: "howToGo"), for: .normal)
         howToGo.contentMode = .scaleAspectFill
+
+       clearComment.backgroundColor = UIColor.clear
+
+
+
+
 
         writeComment.layer.cornerRadius = 10
 

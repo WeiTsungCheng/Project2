@@ -13,6 +13,8 @@ import FirebaseAuth
 
 class GroupListTableViewController: UITableViewController, GroupDelegate, PersonDelegate {
 
+    @IBOutlet weak var logoutBtn: UIBarButtonItem!
+
     @IBAction func logout(_ sender: Any) {
 
 
@@ -116,6 +118,7 @@ class GroupListTableViewController: UITableViewController, GroupDelegate, Person
         groupsetManager.getGroupItem()
 
         personManager.delegate = self
+
 
     }
 
