@@ -30,6 +30,13 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
         attendFight.isEnabled  = attendButton
         leaveFight.isEnabled = cancelButton
 
+        if attendFight.isEnabled == false {
+            attendFight.backgroundColor = UIColor.gray
+        }
+        if leaveFight.isEnabled == false {
+            leaveFight.backgroundColor = UIColor.gray
+        }
+
 
     }
 
@@ -202,7 +209,7 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
         leaveFight.backgroundColor = UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1)
         leaveFight.setTitleColor(UIColor.white, for: .normal)
 
-        
+
 
     }
 
@@ -243,17 +250,6 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
 
 extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource {
 
-//    func updateTableContentInset() {
-//        let numRows = tableView(tableView, numberOfRowsInSection: 0)
-//        var contentInsetTop = self.tableView.bounds.size.height
-//        for i in 0..<numRows {
-//            contentInsetTop -= tableView(tableView, heightForRowAt: IndexPath(item: i, section: 0))
-//            if contentInsetTop <= 0 {
-//                contentInsetTop = 0
-//            }
-//        }
-//        tableView.contentInset = UIEdgeInsetsMake(contentInsetTop, 0, 0, 0)
-//    }
 
 
 

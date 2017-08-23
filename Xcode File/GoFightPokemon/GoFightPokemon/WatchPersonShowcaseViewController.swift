@@ -83,10 +83,12 @@ extension WatchPersonShowcaseViewController: UICollectionViewDataSource, UIColle
 
         if let dataDic = photoDic {
 
-            return dataDic.count
+                return dataDic.count
         }
 
-        return 0
+
+
+        return 8
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

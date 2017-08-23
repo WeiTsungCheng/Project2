@@ -150,13 +150,17 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
 
 
+
+
     func datePickerValueChanged(sender: UIDatePicker) {
 
 
         let formatter = DateFormatter()
         formatter.dateStyle = DateFormatter.Style.short
         formatter.timeStyle = DateFormatter.Style.short
+
         setTime.text = formatter.string(from: sender.date)
+
 
     }
 
@@ -195,6 +199,11 @@ class GroupSetViewController: UIViewController, GroupDelegate {
         super.viewDidLoad()
 
 
+        let formatter = DateFormatter()
+        formatter.dateStyle = DateFormatter.Style.short
+        formatter.timeStyle = DateFormatter.Style.short
+        setTime.text = formatter.string(from: Date())
+
         gymLocation.isEnabled = false
         gymLevelChoose.delegate = self
         gymLevel.inputView = gymLevelChoose
@@ -204,7 +213,10 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
         let gymTimePicker = UIDatePicker()
         gymTimePicker.datePickerMode = UIDatePickerMode.dateAndTime
+
+
         gymTimePicker.addTarget(self, action: #selector(self.datePickerValueChanged(sender:)), for: UIControlEvents.valueChanged)
+
         setTime.inputView = gymTimePicker
 
         // 設定地圖初始位置
