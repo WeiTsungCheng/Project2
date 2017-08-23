@@ -176,7 +176,6 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
         discussionManager.getDiscussionItem(childId: childIdName)
 
         personManager.delegate = self
-
         urlImageManager.delegate = self
 
 
@@ -189,19 +188,26 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
         //檢查是否已經加入過此團，決定哪一個button可以用
         participantManager.checkAttend(childId: childIdName)
 
-        giveComment.layer.borderWidth = 2.5
-        giveComment.layer.borderColor = UIColor.brown.cgColor
-        giveComment.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
-        giveComment.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
-            , for: .normal)
+//        giveComment.layer.borderWidth = 2.5
+//        giveComment.layer.borderColor = UIColor.brown.cgColor
+//        giveComment.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
+//        giveComment.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
+//            , for: .normal)
         giveComment.layer.cornerRadius = 10
 
-        howToGo.layer.borderWidth = 2.5
-        howToGo.layer.borderColor = UIColor.brown.cgColor
-        howToGo.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
-        howToGo.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
-            , for: .normal)
-        howToGo.layer.cornerRadius = 10
+//        howToGo.layer.borderWidth = 2.5
+//        howToGo.layer.borderColor = UIColor.brown.cgColor
+//        howToGo.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
+//        howToGo.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
+//            , for: .normal)
+//        howToGo.layer.cornerRadius = 10
+
+        howToGo.setImage(#imageLiteral(resourceName: "howToGo"), for: .normal)
+        howToGo.contentMode = .scaleAspectFill
+
+        writeComment.layer.cornerRadius = 10
+
+
 
         attendFight.backgroundColor = UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1)
         attendFight.setTitleColor(UIColor.white, for: .normal)
@@ -272,6 +278,8 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
 
         } else {
 
+            ownerCell.putComment.layer.cornerRadius = 10
+
             ownerCell.putComment.text = getItem[indexPath.row].participantComment
 
             ownerCell.putComment.isUserInteractionEnabled = false
@@ -279,7 +287,7 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
             ownerCell.ownerNickName.text = getPersonInfoDic[getItem[indexPath.row].participantId]?.nickName
 
             if let thePlayerLevel = getPersonInfoDic[getItem[indexPath.row].participantId]?.playerLevel {
-            ownerCell.ownerLevel.text = String(describing: thePlayerLevel)
+            ownerCell.ownerLevel.text = "等級" + String(describing: thePlayerLevel)
             }
 
             ownerCell.ownerTeam.text = getPersonInfoDic[getItem[indexPath.row].participantId]?.playerTeam
@@ -319,6 +327,8 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
 
             } else {
 
+                playerCell.putComment.layer.cornerRadius = 10
+                
                 playerCell.putComment.text = getItem[indexPath.row].participantComment
 
                 playerCell.putComment.isUserInteractionEnabled = false
@@ -326,7 +336,7 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
                 playerCell.playerNickName.text = getPersonInfoDic[getItem[indexPath.row].participantId]?.nickName
 
                 if let thePlayerLevel = getPersonInfoDic[getItem[indexPath.row].participantId]?.playerLevel{
-                playerCell.playerLevel.text = String(describing: thePlayerLevel)
+                playerCell.playerLevel.text = "等級" + String(describing: thePlayerLevel)
                 }
 
                 playerCell.playerTeam.text = getPersonInfoDic[getItem[indexPath.row].participantId]?.playerTeam
