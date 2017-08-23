@@ -42,7 +42,7 @@ class ShowcaseManager {
 
             let storageRef = Storage.storage().reference().child("userPhoto").child(uid!).child("userPokemon").child("\(uniqueString).png")
 
-            if let uploadData = UIImagePNGRepresentation(image) {
+            if let uploadData = UIImageJPEGRepresentation(image, 0.5) {
 
                 storageRef.putData(uploadData, metadata: nil, completion: { (data, error) in
 

@@ -288,7 +288,7 @@ extension GymDirectionViewController: GMSAutocompleteViewControllerDelegate{
             startMarker.map = nil
             startMarker.position = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
             startMarker.title = "出發位置"
-            startMarker.icon = #imageLiteral(resourceName: "startLocation")
+            startMarker.icon = #imageLiteral(resourceName: "currentLocation")
             startMarker.map = googleMaps
 
         } else {

@@ -83,13 +83,13 @@ class WatchPersonalInfoViewController: UIViewController, PersonDelegate, HeadPho
 
 
     case "急凍鳥隊":
-    self.teamBadge.image = #imageLiteral(resourceName: "if_Pokemon_Go-16_1320025")
+    self.teamBadge.image = #imageLiteral(resourceName: "ice")
     case "火焰鳥隊":
-    self.teamBadge.image = #imageLiteral(resourceName: "if_Pokemon_Go-15_1320026")
+    self.teamBadge.image = #imageLiteral(resourceName: "fire")
     case "閃電鳥隊":
-    self.teamBadge.image = #imageLiteral(resourceName: "if_Pokemon_Go-11_1320030")
+    self.teamBadge.image = #imageLiteral(resourceName: "lightening")
     default:
-    self.teamBadge.image = #imageLiteral(resourceName: "if__Pokeballs_1337535")
+    self.teamBadge.image = #imageLiteral(resourceName: "leaf")
 
         teamBadge.contentMode = .scaleAspectFill
     }

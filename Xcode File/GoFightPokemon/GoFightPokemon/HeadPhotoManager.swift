@@ -43,8 +43,8 @@ class HeadPhotoManager {
 
                 print("🍶🍶🍶🍶🍶")
 
-                //接收回傳的資料
-                if let uploadData = UIImagePNGRepresentation(selectedPhoto) {
+                //接收回傳的資料,記得要轉jpeg而非png，因為png不會保留圖片方向，拍照呈現時可能會轉90度
+                if let uploadData =  UIImageJPEGRepresentation(selectedPhoto, 0.5) {
                     storageRef.putData(uploadData, metadata: nil, completion: { (data, error) in
                         // 若發生錯誤
                         if error != nil {
@@ -143,6 +143,7 @@ class HeadPhotoManager {
                             DispatchQueue.main.async {
 
                                 headPhoto = UIImage(data: imageData)
+
                                 self.delegate?.manager(self, headPhoto: headPhoto!)
 
                             }
