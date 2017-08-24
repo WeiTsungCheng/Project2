@@ -327,10 +327,11 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
                 ownerCell.ownerPhoto.image = getURLImageDic[(getPersonInfoDic[getItem[indexPath.row].participantId]?.headPhoto)!]
 
                 ownerCell.ownerPhoto.contentMode = .scaleAspectFill
-                ownerCell.ownerPhoto.layer.cornerRadius = 30
+                ownerCell.ownerPhoto.layer.cornerRadius = ownerCell.ownerPhoto.frame.width/2
                 ownerCell.ownerPhoto.clipsToBounds = true
 
-                ownerCell.ownerPhotoBase.layer.cornerRadius = 30
+                ownerCell.ownerPhotoBase.layer.cornerRadius = ownerCell.ownerPhotoBase.frame.width/2
+             
 
 
 
@@ -375,10 +376,12 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
                    playerCell.playerPhoto.image = getURLImageDic[(getPersonInfoDic[getItem[indexPath.row].participantId]?.headPhoto)!]
 
                     playerCell.playerPhoto.contentMode = .scaleAspectFill
-                    playerCell.playerPhoto.layer.cornerRadius = 30
+                    playerCell.playerPhoto.layer.cornerRadius = playerCell.playerPhoto.frame.width/2
+
                     playerCell.playerPhoto.clipsToBounds = true
 
-                    playerCell.playerPhotoBase.layer.cornerRadius = 30
+                    playerCell.playerPhotoBase.layer.cornerRadius = playerCell.playerPhotoBase.frame.width/2
+
 
 
                 }

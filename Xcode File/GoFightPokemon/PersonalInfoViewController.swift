@@ -134,7 +134,7 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
 
             self.personManager.setValuePersonItem(teamSelect: teamSelect, levelSelect: Int(level)!, gymLevelSelect: gymLevel)
             self.headPhotoManager.setHeadPhoto(headPhoto: self.headPhoto.image)
-/////
+
             self.dismiss(animated: true, completion: nil)
 
         })
@@ -231,10 +231,9 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
 
 
         headPhoto.layer.borderWidth = 1.5
-        headPhoto.layer.borderColor = UIColor(red: 65/255, green: 117/255, blue: 5/255, alpha: 1).cgColor
+        headPhoto.layer.borderColor = UIColor.gray.cgColor
         headPhoto.clipsToBounds = true
         headPhoto.layer.cornerRadius = 62.5
-
         headPhotoBase.layer.cornerRadius = 62.5
 
 
@@ -242,21 +241,27 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
         upLoadPhoto.setTitleColor(UIColor.white, for: .normal)
         upLoadPhoto.setTitle("上傳圖片", for: .normal)
 
-        saveHeadPhoto.layer.borderWidth = 2.5
-        saveHeadPhoto.layer.borderColor = UIColor.brown.cgColor
-        saveHeadPhoto.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
-        saveHeadPhoto.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
-, for: .normal)
+        saveHeadPhoto.layer.borderWidth = 1.5
+        saveHeadPhoto.layer.borderColor = UIColor.blue.cgColor
         saveHeadPhoto.layer.cornerRadius = 10
 
-        backPersonInfo.layer.borderWidth = 2.5
-        backPersonInfo.layer.borderColor = UIColor.brown.cgColor
-        backPersonInfo.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
-        backPersonInfo.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
-            , for: .normal)
+        saveHeadPhoto.layer.shadowColor = UIColor.black.cgColor
+        saveHeadPhoto.layer.shadowRadius = 2
+        saveHeadPhoto.layer.shadowOffset = CGSize(width: 0, height: 2)
+        saveHeadPhoto.layer.shadowOpacity = 0.8
+
+
+
+
+
+        backPersonInfo.layer.borderWidth = 1.5
+        backPersonInfo.layer.borderColor = UIColor.blue.cgColor
         backPersonInfo.layer.cornerRadius = 10
 
-
+        backPersonInfo.layer.shadowColor = UIColor.black.cgColor
+        backPersonInfo.layer.shadowRadius = 2
+        backPersonInfo.layer.shadowOffset = CGSize(width: 0, height: 2)
+        backPersonInfo.layer.shadowOpacity = 0.8
 
     }
 

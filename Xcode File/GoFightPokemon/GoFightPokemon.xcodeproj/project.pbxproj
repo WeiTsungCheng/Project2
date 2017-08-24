@@ -150,6 +150,7 @@
 			children = (
 				C500344C1F28625A00DC51A8 /* AppDelegate.swift */,
 				C59D104D1F445D5300ED3B80 /* ColorFontExtension.swift */,
+				C500346E1F2889E700DC51A8 /* HomeViewController.swift */,
 				C50034501F28625A00DC51A8 /* Main.storyboard */,
 				C50034561F28625A00DC51A8 /* Assets.xcassets */,
 				C50034581F28625A00DC51A8 /* LaunchScreen.storyboard */,
@@ -176,7 +177,6 @@
 				C50034651F2869E500DC51A8 /* SignUpViewController.swift */,
 				C500346A1F286D3B00DC51A8 /* LoginViewController:.swift */,
 				C50034671F286A0B00DC51A8 /* SecretNumberViewController.swift */,
-				C500346E1F2889E700DC51A8 /* HomeViewController.swift */,
 				C5F2C81C1F3622CF009D636B /* UserItem.swift */,
 			);
 			name = LogIn;
