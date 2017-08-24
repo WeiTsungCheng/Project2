@@ -29,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics.self])
 
 
-        UITabBar.appearance().tintColor = UIColor.prjSunYellow
-        UITabBar.appearance().barTintColor = UIColor.black
+        UITabBar.appearance().tintColor = UIColor.white
+        UITabBar.appearance().barTintColor = UIColor.prjDarkSkyBlue
 
 
     GMSServices.provideAPIKey("AIzaSyDmf89vsA08hDiQ6ENi2GFhrU0cXf9ZOqA")

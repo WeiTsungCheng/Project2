@@ -22,7 +22,7 @@ class URLImageManager {
 
         if imageURL == "" {
 
-               getURLImageDic.updateValue(#imageLiteral(resourceName: "if_pokemon_go_play_game_charcter_5_1392688"), forKey: imageURL)
+               getURLImageDic.updateValue(#imageLiteral(resourceName: "head"), forKey: imageURL)
 
         } else {
 

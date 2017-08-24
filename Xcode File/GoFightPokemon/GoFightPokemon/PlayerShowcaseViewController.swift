@@ -145,20 +145,26 @@ class PlayerShowcaseViewController: UIViewController, ShowcaseDelegate {
         cancelPokemon.setTitleColor(UIColor.white, for: .normal)
 
 
-        savePokemon.layer.borderWidth = 2.5
-        savePokemon.layer.borderColor = UIColor.brown.cgColor
-        savePokemon.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
-        savePokemon.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
-            , for: .normal)
+        savePokemon.layer.borderWidth = 1.5
+        savePokemon.layer.borderColor = UIColor.blue.cgColor
         savePokemon.layer.cornerRadius = 10
 
+        savePokemon.layer.shadowColor = UIColor.black.cgColor
+        savePokemon.layer.shadowRadius = 2
+        savePokemon.layer.shadowOffset = CGSize(width: 0, height: 2)
+        savePokemon.layer.shadowOpacity = 0.8
 
-        backShowcase.layer.borderWidth = 2.5
-        backShowcase.layer.borderColor = UIColor.brown.cgColor
-        backShowcase.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
-        backShowcase.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
-            , for: .normal)
+        
+
+
+        backShowcase.layer.borderWidth = 1.5
+        backShowcase.layer.borderColor = UIColor.blue.cgColor
         backShowcase.layer.cornerRadius = 10
+
+        backShowcase.layer.shadowColor = UIColor.black.cgColor
+        backShowcase.layer.shadowRadius = 2
+        backShowcase.layer.shadowOffset = CGSize(width: 0, height: 2)
+        backShowcase.layer.shadowOpacity = 0.8
 
 //////////////////////////////////////////////////////////////////////
         let layout = UICollectionViewFlowLayout()
@@ -225,6 +231,7 @@ extension PlayerShowcaseViewController: UICollectionViewDataSource, UICollection
 
         cell.pokemonImage.image = playerPokemonImage[indexPath.row]
         cell.pokemonImage.contentMode = .scaleAspectFill
+        cell.pokemonImage.clipsToBounds = true
 
         //增加一個cell的target,此target為當deletePokemonAct被按時的方法
         //設定button的標籤數字為當前indexPath.row

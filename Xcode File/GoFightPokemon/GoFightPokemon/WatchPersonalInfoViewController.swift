@@ -100,26 +100,43 @@ class WatchPersonalInfoViewController: UIViewController, PersonDelegate, HeadPho
         super.viewDidLoad()
 
         personManager.delegate = self
-
         personManager.getPersonItem()
 
         headPhotoManager.delegate = self
-
         headPhotoManager.getHeadPhoto()
 
-        userShowcase.layer.borderWidth = 2.5
-        userShowcase.layer.borderColor = UIColor.brown.cgColor
-        userShowcase.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
-        userShowcase.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
-            , for: .normal)
+        nickName.layer.backgroundColor = UIColor(red: 0/255, green: 64/255, blue: 128/255, alpha: 1).cgColor
+        nickName.textColor = UIColor.white
+        nickName.layer.cornerRadius = 10
+
+        teamSelect.layer.backgroundColor = UIColor(red: 0/255, green: 64/255, blue: 128/255, alpha: 1).cgColor
+        teamSelect.textColor = UIColor.white
+        teamSelect.layer.cornerRadius = 10
+
+        levelSelect.layer.backgroundColor = UIColor(red: 0/255, green: 64/255, blue: 128/255, alpha: 1).cgColor
+        levelSelect.textColor = UIColor.white
+        levelSelect.layer.cornerRadius = 10
+
+        gymLevelSelect.layer.backgroundColor = UIColor(red: 0/255, green: 64/255, blue: 128/255, alpha: 1).cgColor
+        gymLevelSelect.textColor = UIColor.white
+        gymLevelSelect.layer.cornerRadius = 10
+
+
+        userShowcase.layer.borderWidth = 1.5
+        userShowcase.layer.borderColor = UIColor.blue.cgColor
         userShowcase.layer.cornerRadius = 10
 
-        self.headPhoto.layer.borderWidth = 1.5
-        self.headPhoto.layer.borderColor = UIColor(red: 65/255, green: 117/255, blue: 5/255, alpha: 1).cgColor
-        self.userHeadPhotoBase.layer.cornerRadius = 62.5
-        self.headPhoto.layer.cornerRadius = 62.5
+        userShowcase.layer.shadowColor = UIColor.black.cgColor
+        userShowcase.layer.shadowRadius = 2
+        userShowcase.layer.shadowOffset = CGSize(width: 0, height: 2)
+        userShowcase.layer.shadowOpacity = 0.8
 
+        self.headPhoto.layer.borderWidth = 1.5
+        self.headPhoto.layer.borderColor = UIColor.gray.cgColor
+        self.headPhoto.layer.cornerRadius = 62.5
         self.headPhoto.clipsToBounds = true
+
+        self.userHeadPhotoBase.layer.cornerRadius = 62.5
 
     }
 

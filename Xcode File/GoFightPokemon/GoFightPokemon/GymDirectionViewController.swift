@@ -86,11 +86,8 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
 
         destinatoionLocation.isEnabled = false
 
-        getDriveRoute.layer.borderWidth = 2.5
-        getDriveRoute.layer.borderColor = UIColor.brown.cgColor
-        getDriveRoute.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
-        getDriveRoute.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
-            , for: .normal)
+        getDriveRoute.layer.borderWidth = 1.5
+        getDriveRoute.layer.borderColor = UIColor.blue.cgColor
         getDriveRoute.layer.cornerRadius = 10
 
 

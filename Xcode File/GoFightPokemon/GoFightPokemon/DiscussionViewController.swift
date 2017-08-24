@@ -43,6 +43,15 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
 
     let participantManager = ParticipantManager()
 
+    @IBOutlet weak var clearComment: UIButton!
+
+
+    @IBAction func clearCommentBtn(_ sender: UIButton) {
+
+        writeComment.text = ""
+
+    }
+
 
     @IBOutlet weak var participantNumbers: UILabel!
 
@@ -110,7 +119,12 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
         //用updateValue找到key
         getPersonInfoDic.updateValue(userItem, forKey: userItem.userId)
 
+
+
         self.tableView.reloadData()
+
+//        let pathToLastRow = NSIndexPath(row: getPersonInfoDic.count - 1, section: 0)
+//        self.tableView.scrollToRow(at: pathToLastRow as IndexPath, at: UITableViewScrollPosition.top, animated: true)
 
     }
 
@@ -122,6 +136,10 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
        getItem = discussionItem
 
        self.tableView.reloadData()
+
+        //跳到最後的cell(因為從firebase 取資料時 倒轉了getItem的array,所以pathToLastRow 的row應該設為0)(如果並未倒轉,則row應該設為getItem.count -1)
+        let pathToLastRow = NSIndexPath(row: 0, section: 0)
+        self.tableView.scrollToRow(at: pathToLastRow as IndexPath, at: UITableViewScrollPosition.top ,animated: false)
 
     }
 
@@ -176,7 +194,6 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
         discussionManager.getDiscussionItem(childId: childIdName)
 
         personManager.delegate = self
-
         urlImageManager.delegate = self
 
 
@@ -189,19 +206,33 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
         //檢查是否已經加入過此團，決定哪一個button可以用
         participantManager.checkAttend(childId: childIdName)
 
-        giveComment.layer.borderWidth = 2.5
-        giveComment.layer.borderColor = UIColor.brown.cgColor
-        giveComment.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
-        giveComment.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
-            , for: .normal)
+//        giveComment.layer.borderWidth = 2.5
+//        giveComment.layer.borderColor = UIColor.brown.cgColor
+//        giveComment.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
+//        giveComment.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
+//            , for: .normal)
         giveComment.layer.cornerRadius = 10
 
-        howToGo.layer.borderWidth = 2.5
-        howToGo.layer.borderColor = UIColor.brown.cgColor
-        howToGo.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
-        howToGo.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
-            , for: .normal)
-        howToGo.layer.cornerRadius = 10
+//        howToGo.layer.borderWidth = 2.5
+//        howToGo.layer.borderColor = UIColor.brown.cgColor
+//        howToGo.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
+//        howToGo.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
+//            , for: .normal)
+//        howToGo.layer.cornerRadius = 10
+
+        howToGo.backgroundColor = UIColor.clear
+        howToGo.setImage(#imageLiteral(resourceName: "howToGo"), for: .normal)
+        howToGo.contentMode = .scaleAspectFill
+
+       clearComment.backgroundColor = UIColor.clear
+
+
+
+
+
+        writeComment.layer.cornerRadius = 10
+
+
 
         attendFight.backgroundColor = UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1)
         attendFight.setTitleColor(UIColor.white, for: .normal)
@@ -272,6 +303,8 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
 
         } else {
 
+            ownerCell.putComment.layer.cornerRadius = 10
+
             ownerCell.putComment.text = getItem[indexPath.row].participantComment
 
             ownerCell.putComment.isUserInteractionEnabled = false
@@ -279,7 +312,7 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
             ownerCell.ownerNickName.text = getPersonInfoDic[getItem[indexPath.row].participantId]?.nickName
 
             if let thePlayerLevel = getPersonInfoDic[getItem[indexPath.row].participantId]?.playerLevel {
-            ownerCell.ownerLevel.text = String(describing: thePlayerLevel)
+            ownerCell.ownerLevel.text = "等級" + String(describing: thePlayerLevel)
             }
 
             ownerCell.ownerTeam.text = getPersonInfoDic[getItem[indexPath.row].participantId]?.playerTeam
@@ -294,10 +327,11 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
                 ownerCell.ownerPhoto.image = getURLImageDic[(getPersonInfoDic[getItem[indexPath.row].participantId]?.headPhoto)!]
 
                 ownerCell.ownerPhoto.contentMode = .scaleAspectFill
-                ownerCell.ownerPhoto.layer.cornerRadius = 30
+                ownerCell.ownerPhoto.layer.cornerRadius = ownerCell.ownerPhoto.frame.width/2
                 ownerCell.ownerPhoto.clipsToBounds = true
 
-                ownerCell.ownerPhotoBase.layer.cornerRadius = 30
+                ownerCell.ownerPhotoBase.layer.cornerRadius = ownerCell.ownerPhotoBase.frame.width/2
+             
 
 
 
@@ -319,6 +353,8 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
 
             } else {
 
+                playerCell.putComment.layer.cornerRadius = 10
+                
                 playerCell.putComment.text = getItem[indexPath.row].participantComment
 
                 playerCell.putComment.isUserInteractionEnabled = false
@@ -326,7 +362,7 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
                 playerCell.playerNickName.text = getPersonInfoDic[getItem[indexPath.row].participantId]?.nickName
 
                 if let thePlayerLevel = getPersonInfoDic[getItem[indexPath.row].participantId]?.playerLevel{
-                playerCell.playerLevel.text = String(describing: thePlayerLevel)
+                playerCell.playerLevel.text = "等級" + String(describing: thePlayerLevel)
                 }
 
                 playerCell.playerTeam.text = getPersonInfoDic[getItem[indexPath.row].participantId]?.playerTeam
@@ -340,10 +376,12 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
                    playerCell.playerPhoto.image = getURLImageDic[(getPersonInfoDic[getItem[indexPath.row].participantId]?.headPhoto)!]
 
                     playerCell.playerPhoto.contentMode = .scaleAspectFill
-                    playerCell.playerPhoto.layer.cornerRadius = 30
+                    playerCell.playerPhoto.layer.cornerRadius = playerCell.playerPhoto.frame.width/2
+
                     playerCell.playerPhoto.clipsToBounds = true
 
-                    playerCell.playerPhotoBase.layer.cornerRadius = 30
+                    playerCell.playerPhotoBase.layer.cornerRadius = playerCell.playerPhotoBase.frame.width/2
+
 
 
                 }

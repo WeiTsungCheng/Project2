@@ -45,7 +45,7 @@ class ViewController: UIViewController {
         loginPageGradient.endPoint = CGPoint(x: 0, y: 1)
         self.view.layer.insertSublayer(loginPageGradient, at: 1)
 
-        titleWord.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        titleWord.shadowColor = UIColor.white
 
         titleWord.shadowOffset = CGSize(width: 0, height: 3)
 

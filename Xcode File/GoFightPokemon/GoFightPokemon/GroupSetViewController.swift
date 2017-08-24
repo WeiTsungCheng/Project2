@@ -224,10 +224,10 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
         myMapImage.camera = camera
 
-        comfirmFight.layer.borderWidth = 2.5
-        comfirmFight.layer.borderColor = UIColor.brown.cgColor
-        comfirmFight.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
-        comfirmFight.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
+        comfirmFight.layer.borderWidth = 1.5
+        comfirmFight.layer.borderColor = UIColor.blue.cgColor
+        comfirmFight.backgroundColor = UIColor.white
+        comfirmFight.setTitleColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1)
             , for: .normal)
         comfirmFight.layer.cornerRadius = 10
 
@@ -248,8 +248,12 @@ class GroupSetViewController: UIViewController, GroupDelegate {
         mySearchBarView.addSubview((searchController?.searchBar)!)
 
         view.addSubview(mySearchBarView)
+
+
         searchController?.searchBar.sizeToFit()
         searchController?.hidesNavigationBarDuringPresentation = false
+        searchController?.searchBar.barTintColor = UIColor.prjDarkSkyBlue
+
 
         definesPresentationContext = true
 
