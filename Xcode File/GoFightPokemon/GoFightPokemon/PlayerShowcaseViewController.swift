@@ -225,6 +225,7 @@ extension PlayerShowcaseViewController: UICollectionViewDataSource, UICollection
 
         cell.pokemonImage.image = playerPokemonImage[indexPath.row]
         cell.pokemonImage.contentMode = .scaleAspectFill
+        cell.pokemonImage.clipsToBounds = true
 
         //增加一個cell的target,此target為當deletePokemonAct被按時的方法
         //設定button的標籤數字為當前indexPath.row

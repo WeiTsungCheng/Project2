@@ -114,6 +114,7 @@ extension WatchPersonShowcaseViewController: UICollectionViewDataSource, UIColle
 
                                 cell.pokemonImage.image = UIImage(data: imageData)
                                 cell.pokemonImage.contentMode = .scaleAspectFill
+                                cell.pokemonImage.clipsToBounds = true
 
                             }
 

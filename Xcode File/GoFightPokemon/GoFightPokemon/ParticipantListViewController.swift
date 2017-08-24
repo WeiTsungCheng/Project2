@@ -217,11 +217,9 @@ extension ParticipantListViewController: UITableViewDelegate, UITableViewDataSou
             cell.playerLevel.text = String(describing: thePlayerLevel)
         }
 
-        cell.showcaseBtn.layer.borderWidth = 2.5
-        cell.showcaseBtn.layer.borderColor = UIColor.brown.cgColor
-        cell.showcaseBtn.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
-        cell.showcaseBtn.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
-            , for: .normal)
+        cell.showcaseBtn.layer.borderWidth = 1.5
+        cell.showcaseBtn.layer.borderColor = UIColor.blue.cgColor
+
         cell.showcaseBtn.layer.cornerRadius = 10
         
         cell.showcaseBtn.tag = indexPath.row
