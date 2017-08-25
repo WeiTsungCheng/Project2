@@ -292,6 +292,9 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
 
 
 
+        tableView.estimatedRowHeight = 60
+        tableView.rowHeight = UITableViewAutomaticDimension
+
         switch getItem[indexPath.row].participantId {
 
         case ownerIdName:
@@ -331,9 +334,11 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
                 ownerCell.ownerPhoto.image = getURLImageDic[(getPersonInfoDic[getItem[indexPath.row].participantId]?.headPhoto)!]
 
                 ownerCell.ownerPhoto.contentMode = .scaleAspectFill
-                ownerCell.ownerPhoto.layer.cornerRadius = ownerCell.ownerPhoto.frame.width/2
-                ownerCell.ownerPhoto.clipsToBounds = true
 
+                ownerCell.ownerPhoto.clipsToBounds = true
+                ownerCell.ownerPhotoBase.clipsToBounds = true
+
+                ownerCell.ownerPhoto.layer.cornerRadius = ownerCell.ownerPhoto.frame.width/2
                 ownerCell.ownerPhotoBase.layer.cornerRadius = ownerCell.ownerPhotoBase.frame.width/2
              
 
@@ -358,9 +363,6 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
             } else {
 
 
-                            tableView.estimatedRowHeight = playerCell.playerPhoto.frame.height + 10
-                            tableView.rowHeight = UITableViewAutomaticDimension
-
                 playerCell.putComment.layer.cornerRadius = 10
                 
                 playerCell.putComment.text = getItem[indexPath.row].participantComment
@@ -384,10 +386,12 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
                    playerCell.playerPhoto.image = getURLImageDic[(getPersonInfoDic[getItem[indexPath.row].participantId]?.headPhoto)!]
 
                     playerCell.playerPhoto.contentMode = .scaleAspectFill
-                    playerCell.playerPhoto.layer.cornerRadius = playerCell.playerPhoto.frame.width/2
+
 
                     playerCell.playerPhoto.clipsToBounds = true
 
+                    playerCell.playerPhotoBase.clipsToBounds = true
+                    playerCell.playerPhoto.layer.cornerRadius = playerCell.playerPhoto.frame.width/2
                     playerCell.playerPhotoBase.layer.cornerRadius = playerCell.playerPhotoBase.frame.width/2
 
 

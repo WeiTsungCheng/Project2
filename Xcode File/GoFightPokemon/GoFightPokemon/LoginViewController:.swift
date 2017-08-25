@@ -122,6 +122,11 @@ class LoginViewController_: UIViewController {
 
     }
 
+    override func viewDidLayoutSubviews() {
+        login.layer.cornerRadius = 10
+        login.clipsToBounds = true
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 

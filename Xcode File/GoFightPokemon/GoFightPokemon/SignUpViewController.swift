@@ -162,6 +162,13 @@ class SignUpViewController: UIViewController, PersonDelegate {
 
     }
 
+
+    override func viewDidLayoutSubviews() {
+        signup.layer.cornerRadius = 10
+        signup.clipsToBounds = true
+    }
+
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 

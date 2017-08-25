@@ -102,7 +102,20 @@ class SecretNumberViewController: UIViewController {
         resetNo.backgroundColor = UIColor.prjOrangeRed
 
 
+
         resetEmail.layer.cornerRadius = 16
+
+
+
+    }
+
+    override func viewDidLayoutSubviews() {
+        resetNo.layer.cornerRadius = 10
+        resetNo.clipsToBounds = true
+
+
+
+
 
 
     }
