@@ -290,6 +290,9 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
+        tableView.estimatedRowHeight = writeComment.frame.height + 10 
+        tableView.rowHeight = UITableViewAutomaticDimension
+
         switch getItem[indexPath.row].participantId {
 
         case ownerIdName:

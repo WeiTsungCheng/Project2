@@ -17,7 +17,6 @@
 		C50034661F2869E500DC51A8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50034651F2869E500DC51A8 /* SignUpViewController.swift */; };
 		C50034681F286A0B00DC51A8 /* SecretNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50034671F286A0B00DC51A8 /* SecretNumberViewController.swift */; };
 		C500346B1F286D3B00DC51A8 /* LoginViewController:.swift in Sources */ = {isa = PBXBuildFile; fileRef = C500346A1F286D3B00DC51A8 /* LoginViewController:.swift */; };
-		C500346F1F2889E700DC51A8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C500346E1F2889E700DC51A8 /* HomeViewController.swift */; };
 		C50078601F40228000EF21DC /* OtherShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C500785F1F40228000EF21DC /* OtherShowcaseViewController.swift */; };
 		C50078621F4022A200EF21DC /* OtherShowcaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50078611F4022A200EF21DC /* OtherShowcaseCollectionViewCell.swift */; };
 		C5011D5F1F2F56490006AE24 /* PlayerShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5011D5E1F2F56490006AE24 /* PlayerShowcaseViewController.swift */; };
@@ -26,6 +25,7 @@
 		C503DF901F3725C500FF7A97 /* HeadPhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C503DF8F1F3725C500FF7A97 /* HeadPhotoManager.swift */; };
 		C503DF921F37395500FF7A97 /* ShowcaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C503DF911F37395500FF7A97 /* ShowcaseManager.swift */; };
 		C503DF941F3749D700FF7A97 /* DiscussionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C503DF931F3749D700FF7A97 /* DiscussionManager.swift */; };
+		C50848DE1F50283E00DD9678 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50848DD1F50283E00DD9678 /* TabBarViewController.swift */; };
 		C51906491F41673B00C0A44C /* GymDirectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51906481F41673B00C0A44C /* GymDirectionViewController.swift */; };
 		C527C75D1F297E310099C2DB /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C527C75C1F297E310099C2DB /* PersonalInfoViewController.swift */; };
 		C550718D1F3D565700CCF51D /* ParticipantListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550718C1F3D565700CCF51D /* ParticipantListViewController.swift */; };
@@ -65,7 +65,6 @@
 		C50034651F2869E500DC51A8 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C50034671F286A0B00DC51A8 /* SecretNumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecretNumberViewController.swift; sourceTree = "<group>"; };
 		C500346A1F286D3B00DC51A8 /* LoginViewController:.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoginViewController:.swift"; sourceTree = "<group>"; };
-		C500346E1F2889E700DC51A8 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C500785F1F40228000EF21DC /* OtherShowcaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherShowcaseViewController.swift; sourceTree = "<group>"; };
 		C50078611F4022A200EF21DC /* OtherShowcaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherShowcaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		C5011D5E1F2F56490006AE24 /* PlayerShowcaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerShowcaseViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +73,7 @@
 		C503DF8F1F3725C500FF7A97 /* HeadPhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadPhotoManager.swift; sourceTree = "<group>"; };
 		C503DF911F37395500FF7A97 /* ShowcaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowcaseManager.swift; sourceTree = "<group>"; };
 		C503DF931F3749D700FF7A97 /* DiscussionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscussionManager.swift; path = GoFightPokemon/DiscussionManager.swift; sourceTree = "<group>"; };
+		C50848DD1F50283E00DD9678 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		C51906481F41673B00C0A44C /* GymDirectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GymDirectionViewController.swift; sourceTree = "<group>"; };
 		C527C75C1F297E310099C2DB /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonalInfoViewController.swift; path = ../PersonalInfoViewController.swift; sourceTree = "<group>"; };
 		C550718C1F3D565700CCF51D /* ParticipantListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantListViewController.swift; sourceTree = "<group>"; };
@@ -150,8 +150,8 @@
 			children = (
 				C500344C1F28625A00DC51A8 /* AppDelegate.swift */,
 				C59D104D1F445D5300ED3B80 /* ColorFontExtension.swift */,
-				C500346E1F2889E700DC51A8 /* HomeViewController.swift */,
 				C50034501F28625A00DC51A8 /* Main.storyboard */,
+				C50848DD1F50283E00DD9678 /* TabBarViewController.swift */,
 				C50034561F28625A00DC51A8 /* Assets.xcassets */,
 				C50034581F28625A00DC51A8 /* LaunchScreen.storyboard */,
 				C500345B1F28625A00DC51A8 /* Info.plist */,
@@ -429,6 +429,7 @@
 				C55071981F3D8AC800CCF51D /* ParticipantsManager.swift in Sources */,
 				C50078621F4022A200EF21DC /* OtherShowcaseCollectionViewCell.swift in Sources */,
 				C50034661F2869E500DC51A8 /* SignUpViewController.swift in Sources */,
+				C50848DE1F50283E00DD9678 /* TabBarViewController.swift in Sources */,
 				C5011D5F1F2F56490006AE24 /* PlayerShowcaseViewController.swift in Sources */,
 				C50034551F28625A00DC51A8 /* GoFightPokemon.xcdatamodeld in Sources */,
 				C500344F1F28625A00DC51A8 /* ViewController.swift in Sources */,
@@ -443,7 +444,6 @@
 				C50034681F286A0B00DC51A8 /* SecretNumberViewController.swift in Sources */,
 				C550718D1F3D565700CCF51D /* ParticipantListViewController.swift in Sources */,
 				C5F985441F31A9C50022295A /* GroupListTableViewController.swift in Sources */,
-				C500346F1F2889E700DC51A8 /* HomeViewController.swift in Sources */,
 				C5F9854A1F31FF620022295A /* DiscussionViewController.swift in Sources */,
 				C503DF901F3725C500FF7A97 /* HeadPhotoManager.swift in Sources */,
 				C503DF941F3749D700FF7A97 /* DiscussionManager.swift in Sources */,

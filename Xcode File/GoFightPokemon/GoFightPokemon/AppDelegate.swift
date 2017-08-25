@@ -25,13 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-
         Fabric.with([Crashlytics.self])
-
-
-        UITabBar.appearance().tintColor = UIColor.white
-        UITabBar.appearance().barTintColor = UIColor.prjDarkSkyBlue
-
 
     GMSServices.provideAPIKey("AIzaSyDmf89vsA08hDiQ6ENi2GFhrU0cXf9ZOqA")
     GMSPlacesClient.provideAPIKey("AIzaSyDmf89vsA08hDiQ6ENi2GFhrU0cXf9ZOqA")
