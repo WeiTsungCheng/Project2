@@ -114,6 +114,12 @@ class GroupListTableViewController: UITableViewController, GroupDelegate, Person
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.default
+
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 132/255, green: 180/255, blue: 255/255, alpha: 1)
+
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 0/255, green: 64/255, blue: 128/255, alpha: 1)
+
         groupsetManager.delegate = self
         groupsetManager.getGroupItem()
 

@@ -86,11 +86,6 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
 
         destinatoionLocation.isEnabled = false
 
-        getDriveRoute.layer.borderWidth = 1.5
-        getDriveRoute.layer.borderColor = UIColor.blue.cgColor
-        getDriveRoute.layer.cornerRadius = 10
-
-
         gymLocation.backgroundColor = UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1)
         gymLocation.setTitleColor(UIColor.white, for: .normal)
 
@@ -98,6 +93,25 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
         currentLocation.backgroundColor = UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1)
         currentLocation.setTitleColor(UIColor.white, for: .normal)
 
+    }
+
+    override func viewDidLayoutSubviews() {
+        getDriveRoute.layer.cornerRadius = 12
+        getDriveRoute.setTitleColor(UIColor.white, for: .normal)
+
+        let setSaveHeadPhotoGradient = CAGradientLayer()
+        setSaveHeadPhotoGradient.frame = getDriveRoute.bounds
+        setSaveHeadPhotoGradient.colors = [UIColor(red: 0/255, green: 64/255, blue: 128/255, alpha: 1).cgColor, UIColor(red: 0/255, green: 85/255, blue: 216/255, alpha: 1).cgColor]
+        setSaveHeadPhotoGradient.opacity = 0.85
+        setSaveHeadPhotoGradient.startPoint = CGPoint(x: 0, y: 0)
+        setSaveHeadPhotoGradient.endPoint = CGPoint(x: 1, y: 1)
+        setSaveHeadPhotoGradient.cornerRadius = 12
+        getDriveRoute.layer.insertSublayer(setSaveHeadPhotoGradient, at: 0)
+
+        getDriveRoute.layer.shadowColor = UIColor.black.cgColor
+        getDriveRoute.layer.shadowRadius = 2
+        getDriveRoute.layer.shadowOffset = CGSize(width: 0, height: 2)
+        getDriveRoute.layer.shadowOpacity = 0.8
     }
 
     override func didReceiveMemoryWarning() {

@@ -224,15 +224,9 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
         myMapImage.camera = camera
 
-        comfirmFight.layer.borderWidth = 1.5
-        comfirmFight.layer.borderColor = UIColor.blue.cgColor
-        comfirmFight.backgroundColor = UIColor.white
-        comfirmFight.setTitleColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-            , for: .normal)
-        comfirmFight.layer.cornerRadius = 10
-
 
     }
+
 
     override func viewDidLayoutSubviews() {
         
@@ -256,6 +250,27 @@ class GroupSetViewController: UIViewController, GroupDelegate {
 
 
         definesPresentationContext = true
+
+
+
+        comfirmFight.layer.cornerRadius = 12
+        comfirmFight.setTitleColor(UIColor.white, for: .normal)
+
+        let setSaveHeadPhotoGradient = CAGradientLayer()
+        setSaveHeadPhotoGradient.frame = comfirmFight.bounds
+        setSaveHeadPhotoGradient.colors = [UIColor(red: 0/255, green: 64/255, blue: 128/255, alpha: 1).cgColor, UIColor(red: 0/255, green: 85/255, blue: 216/255, alpha: 1).cgColor]
+        setSaveHeadPhotoGradient.opacity = 0.85
+        setSaveHeadPhotoGradient.startPoint = CGPoint(x: 0, y: 0)
+        setSaveHeadPhotoGradient.endPoint = CGPoint(x: 1, y: 1)
+        setSaveHeadPhotoGradient.cornerRadius = 12
+        comfirmFight.layer.insertSublayer(setSaveHeadPhotoGradient, at: 0)
+
+        comfirmFight.layer.shadowColor = UIColor.black.cgColor
+        comfirmFight.layer.shadowRadius = 2
+        comfirmFight.layer.shadowOffset = CGSize(width: 0, height: 2)
+        comfirmFight.layer.shadowOpacity = 0.8
+
+        
 
     }
 

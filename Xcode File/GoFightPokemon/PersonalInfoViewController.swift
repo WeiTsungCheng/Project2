@@ -241,9 +241,6 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
         upLoadPhoto.setTitleColor(UIColor.white, for: .normal)
         upLoadPhoto.setTitle("上傳圖片", for: .normal)
 
-        saveHeadPhoto.layer.borderWidth = 1.5
-        saveHeadPhoto.layer.borderColor = UIColor.blue.cgColor
-        saveHeadPhoto.layer.cornerRadius = 10
 
         saveHeadPhoto.layer.shadowColor = UIColor.black.cgColor
         saveHeadPhoto.layer.shadowRadius = 2
@@ -251,17 +248,41 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
         saveHeadPhoto.layer.shadowOpacity = 0.8
 
 
-
-
-
-        backPersonInfo.layer.borderWidth = 1.5
-        backPersonInfo.layer.borderColor = UIColor.blue.cgColor
-        backPersonInfo.layer.cornerRadius = 10
-
         backPersonInfo.layer.shadowColor = UIColor.black.cgColor
         backPersonInfo.layer.shadowRadius = 2
         backPersonInfo.layer.shadowOffset = CGSize(width: 0, height: 2)
         backPersonInfo.layer.shadowOpacity = 0.8
+
+    }
+
+    override func viewDidLayoutSubviews() {
+
+        saveHeadPhoto.layer.cornerRadius = 12
+        saveHeadPhoto.setTitleColor(UIColor.white, for: .normal)
+
+        let setSaveHeadPhotoGradient = CAGradientLayer()
+        setSaveHeadPhotoGradient.frame = saveHeadPhoto.bounds
+        setSaveHeadPhotoGradient.colors = [UIColor(red: 0/255, green: 64/255, blue: 128/255, alpha: 1).cgColor, UIColor(red: 0/255, green: 85/255, blue: 216/255, alpha: 1).cgColor]
+        setSaveHeadPhotoGradient.opacity = 0.85
+        setSaveHeadPhotoGradient.startPoint = CGPoint(x: 0, y: 0)
+        setSaveHeadPhotoGradient.endPoint = CGPoint(x: 1, y: 1)
+        setSaveHeadPhotoGradient.cornerRadius = 12
+        saveHeadPhoto.layer.insertSublayer(setSaveHeadPhotoGradient, at: 0)
+
+
+
+        backPersonInfo.layer.cornerRadius = 12
+        backPersonInfo.setTitleColor(UIColor.white, for: .normal)
+
+        let setBackPersonGradient = CAGradientLayer()
+        setBackPersonGradient.frame = backPersonInfo.bounds
+        setBackPersonGradient.colors = [UIColor(red: 0/255, green: 64/255, blue: 128/255, alpha: 1).cgColor, UIColor(red: 0/255, green: 85/255, blue: 216/255, alpha: 1).cgColor]
+        setBackPersonGradient.opacity = 0.85
+        setBackPersonGradient.startPoint = CGPoint(x: 0, y: 0)
+        setBackPersonGradient.endPoint = CGPoint(x: 1, y: 1)
+        setBackPersonGradient.cornerRadius = 12
+        self.backPersonInfo.layer.insertSublayer(setBackPersonGradient, at: 0)
+
 
     }
 

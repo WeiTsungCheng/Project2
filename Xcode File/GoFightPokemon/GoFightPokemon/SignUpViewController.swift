@@ -35,6 +35,9 @@ class SignUpViewController: UIViewController, PersonDelegate {
     @IBOutlet weak var loginPage: UIButton!
     @IBOutlet weak var resetPage: UIButton!
 
+    @IBOutlet weak var bbbbb: UIButton!
+
+    
     @IBAction func goLoginPage(_ sender: Any) {
 
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
@@ -98,7 +101,6 @@ class SignUpViewController: UIViewController, PersonDelegate {
 
 
                         //如果資料獲取成功跳轉頁面
-
                         let alertController = UIAlertController(title: "恭喜", message: "成功創建帳號", preferredStyle: UIAlertControllerStyle.alert)
 
                         let defaultAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
@@ -131,28 +133,24 @@ class SignUpViewController: UIViewController, PersonDelegate {
 
         let loginPageGradient = CAGradientLayer()
         loginPageGradient.frame = self.view.frame
-        loginPageGradient.colors = [UIColor.brown.cgColor, UIColor.clear.cgColor]
+        loginPageGradient.colors = [UIColor.yellow.cgColor, UIColor.white.cgColor]
         loginPageGradient.opacity = 0.7
-        loginPageGradient.startPoint = CGPoint(x: 1, y: 1)
-        loginPageGradient.endPoint = CGPoint(x: 0, y: 0)
-        self.view.layer.insertSublayer(loginPageGradient, at: 1)
+        loginPageGradient.startPoint = CGPoint(x: 0, y: 0)
+        loginPageGradient.endPoint = CGPoint(x: 1, y: 1)
+        self.view.layer.insertSublayer(loginPageGradient, at: 0)
 
         
         personmanager.delegate = self
 
-        loginPage.setTitleShadowColor(UIColor.black, for: .normal)
-
-        loginPage.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1), for: .normal)
+        loginPage.setTitleShadowColor(UIColor.white, for: .normal)
+        loginPage.setTitleColor(UIColor.black, for: .normal)
         loginPage.titleLabel?.shadowOffset = CGSize(width: 0, height: 2)
-
 
         signup.setTitleColor(UIColor.white, for: .normal)
         signup.backgroundColor = UIColor.orange
 
-
-        resetPage.setTitleShadowColor(UIColor.black, for: .normal)
-
-        resetPage.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1), for: .normal)
+        resetPage.setTitleShadowColor(UIColor.white, for: .normal)
+        resetPage.setTitleColor(UIColor.black, for: .normal)
         resetPage.titleLabel?.shadowOffset = CGSize(width: 0, height: 2)
 
 
@@ -160,6 +158,7 @@ class SignUpViewController: UIViewController, PersonDelegate {
         signUpEmail.layer.cornerRadius = 16
         signUpNickName.layer.cornerRadius = 16
         signUpPassword.layer.cornerRadius = 16
+
 
     }
 
