@@ -98,6 +98,13 @@ class WatchPersonalInfoViewController: UIViewController, PersonDelegate, HeadPho
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.default
+
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 132/255, green: 180/255, blue: 255/255, alpha: 1)
+
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 0/255, green: 64/255, blue: 128/255, alpha: 1)
+
 
         personManager.delegate = self
         personManager.getPersonItem()
@@ -122,9 +129,6 @@ class WatchPersonalInfoViewController: UIViewController, PersonDelegate, HeadPho
         gymLevelSelect.layer.cornerRadius = 10
 
 
-        userShowcase.layer.borderWidth = 1.5
-        userShowcase.layer.borderColor = UIColor.blue.cgColor
-        userShowcase.layer.cornerRadius = 10
 
         userShowcase.layer.shadowColor = UIColor.black.cgColor
         userShowcase.layer.shadowRadius = 2
@@ -137,6 +141,26 @@ class WatchPersonalInfoViewController: UIViewController, PersonDelegate, HeadPho
         self.headPhoto.clipsToBounds = true
 
         self.userHeadPhotoBase.layer.cornerRadius = 62.5
+
+
+
+    }
+    override func viewDidLayoutSubviews() {
+
+
+        userShowcase.layer.cornerRadius = 12
+        userShowcase.setTitleColor(UIColor.white, for: .normal)
+
+        let setSaveHeadPhotoGradient = CAGradientLayer()
+        setSaveHeadPhotoGradient.frame = userShowcase.bounds
+        setSaveHeadPhotoGradient.colors = [UIColor(red: 0/255, green: 64/255, blue: 128/255, alpha: 1).cgColor, UIColor(red: 0/255, green: 85/255, blue: 216/255, alpha: 1).cgColor]
+        setSaveHeadPhotoGradient.opacity = 0.85
+        setSaveHeadPhotoGradient.startPoint = CGPoint(x: 0, y: 0)
+        setSaveHeadPhotoGradient.endPoint = CGPoint(x: 1, y: 1)
+        setSaveHeadPhotoGradient.cornerRadius = 12
+        userShowcase.layer.insertSublayer(setSaveHeadPhotoGradient, at: 0)
+
+
 
     }
 

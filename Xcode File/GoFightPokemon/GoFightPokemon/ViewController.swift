@@ -39,11 +39,11 @@ class ViewController: UIViewController {
 
         let loginPageGradient = CAGradientLayer()
         loginPageGradient.frame = self.view.frame
-        loginPageGradient.colors = [UIColor(red: 184/255, green: 233/255, blue: 134/255, alpha: 1).cgColor, UIColor.clear.cgColor]
+        loginPageGradient.colors = [UIColor.green.cgColor, UIColor.white.cgColor]
         loginPageGradient.opacity = 0.7
         loginPageGradient.startPoint = CGPoint(x: 1, y: 0)
         loginPageGradient.endPoint = CGPoint(x: 0, y: 1)
-        self.view.layer.insertSublayer(loginPageGradient, at: 1)
+        self.view.layer.insertSublayer(loginPageGradient, at: 0)
 
         titleWord.shadowColor = UIColor.white
 
@@ -51,16 +51,17 @@ class ViewController: UIViewController {
 
       
 
-        loginPage.setTitleShadowColor(UIColor.black, for: .normal)
-
-        loginPage.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1), for: .normal)
+        loginPage.setTitleShadowColor(UIColor.white, for: .normal)
+        loginPage.setTitleColor(UIColor.black, for: .normal)
         loginPage.titleLabel?.shadowOffset = CGSize(width: 0, height: 2)
 
 
 
-        signupPage.setTitleShadowColor(UIColor.black, for: .normal)
 
-        signupPage.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1), for: .normal)
+
+
+        signupPage.setTitleShadowColor(UIColor.white, for: .normal)
+        signupPage.setTitleColor(UIColor.black, for: .normal)
         signupPage.titleLabel?.shadowOffset = CGSize(width: 0, height: 2)
 
 

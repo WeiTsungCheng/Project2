@@ -145,26 +145,7 @@ class PlayerShowcaseViewController: UIViewController, ShowcaseDelegate {
         cancelPokemon.setTitleColor(UIColor.white, for: .normal)
 
 
-        savePokemon.layer.borderWidth = 1.5
-        savePokemon.layer.borderColor = UIColor.blue.cgColor
-        savePokemon.layer.cornerRadius = 10
 
-        savePokemon.layer.shadowColor = UIColor.black.cgColor
-        savePokemon.layer.shadowRadius = 2
-        savePokemon.layer.shadowOffset = CGSize(width: 0, height: 2)
-        savePokemon.layer.shadowOpacity = 0.8
-
-        
-
-
-        backShowcase.layer.borderWidth = 1.5
-        backShowcase.layer.borderColor = UIColor.blue.cgColor
-        backShowcase.layer.cornerRadius = 10
-
-        backShowcase.layer.shadowColor = UIColor.black.cgColor
-        backShowcase.layer.shadowRadius = 2
-        backShowcase.layer.shadowOffset = CGSize(width: 0, height: 2)
-        backShowcase.layer.shadowOpacity = 0.8
 
 //////////////////////////////////////////////////////////////////////
         let layout = UICollectionViewFlowLayout()
@@ -186,6 +167,51 @@ print(lowerFrameHeight)
         collectionView!.collectionViewLayout = layout
 ///////////////////////////////////////////////////////////////////////
 
+    }
+
+    override func viewDidLayoutSubviews() {
+
+
+
+        savePokemon.layer.cornerRadius = 10
+
+        savePokemon.layer.shadowColor = UIColor.black.cgColor
+        savePokemon.layer.shadowRadius = 2
+        savePokemon.layer.shadowOffset = CGSize(width: 0, height: 2)
+        savePokemon.layer.shadowOpacity = 0.8
+
+
+        savePokemon.setTitleColor(UIColor.white, for: .normal)
+
+        let setSavePokemonGradient = CAGradientLayer()
+        setSavePokemonGradient.frame = savePokemon.bounds
+        setSavePokemonGradient.colors = [UIColor(red: 0/255, green: 64/255, blue: 128/255, alpha: 1).cgColor, UIColor(red: 0/255, green: 85/255, blue: 216/255, alpha: 1).cgColor]
+        setSavePokemonGradient.opacity = 0.85
+        setSavePokemonGradient.startPoint = CGPoint(x: 0, y: 0)
+        setSavePokemonGradient.endPoint = CGPoint(x: 1, y: 1)
+        setSavePokemonGradient.cornerRadius = 10
+        savePokemon.layer.insertSublayer(setSavePokemonGradient, at: 0)
+
+
+
+        backShowcase.layer.cornerRadius = 10
+
+        backShowcase.layer.shadowColor = UIColor.black.cgColor
+        backShowcase.layer.shadowRadius = 2
+        backShowcase.layer.shadowOffset = CGSize(width: 0, height: 2)
+        backShowcase.layer.shadowOpacity = 0.8
+
+
+        backShowcase.setTitleColor(UIColor.white, for: .normal)
+
+        let setBackShowcaseGradient = CAGradientLayer()
+        setBackShowcaseGradient.frame = backShowcase.bounds
+        setBackShowcaseGradient.colors = [UIColor(red: 0/255, green: 64/255, blue: 128/255, alpha: 1).cgColor, UIColor(red: 0/255, green: 85/255, blue: 216/255, alpha: 1).cgColor]
+        setBackShowcaseGradient.opacity = 0.85
+        setBackShowcaseGradient.startPoint = CGPoint(x: 0, y: 0)
+        setBackShowcaseGradient.endPoint = CGPoint(x: 1, y: 1)
+        setBackShowcaseGradient.cornerRadius = 10
+        backShowcase.layer.insertSublayer(setBackShowcaseGradient, at: 0)
     }
 
     override func didReceiveMemoryWarning() {

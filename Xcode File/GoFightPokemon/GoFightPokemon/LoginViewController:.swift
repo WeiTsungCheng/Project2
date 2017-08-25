@@ -97,25 +97,22 @@ class LoginViewController_: UIViewController {
 
         let loginPageGradient = CAGradientLayer()
         loginPageGradient.frame = self.view.frame
-        loginPageGradient.colors = [UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1).cgColor, UIColor.clear.cgColor]
+        loginPageGradient.colors = [UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1).cgColor, UIColor.white.cgColor]
         loginPageGradient.opacity = 0.7
         loginPageGradient.startPoint = CGPoint(x: 0, y: 1)
         loginPageGradient.endPoint = CGPoint(x: 1, y: 0)
-        self.view.layer.insertSublayer(loginPageGradient, at: 1)
+        self.view.layer.insertSublayer(loginPageGradient, at: 0)
 
 
         login.backgroundColor = UIColor(red: 0/255, green: 118/255, blue: 255/255, alpha: 1)
         login.setTitleColor(UIColor.white, for: .normal)
 
-        signupPage.setTitleShadowColor(UIColor.black, for: .normal)
-
-        signupPage.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1), for: .normal)
+        signupPage.setTitleShadowColor(UIColor.white, for: .normal)
+        signupPage.setTitleColor(UIColor.black, for: .normal)
         signupPage.titleLabel?.shadowOffset = CGSize(width: 0, height: 2)
 
-
-        resetPage.setTitleShadowColor(UIColor.black, for: .normal)
-
-        resetPage.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1), for: .normal)
+        resetPage.setTitleShadowColor(UIColor.white, for: .normal)
+        resetPage.setTitleColor(UIColor.black, for: .normal)
         resetPage.titleLabel?.shadowOffset = CGSize(width: 0, height: 2)
 
 
@@ -123,6 +120,11 @@ class LoginViewController_: UIViewController {
         loginEmail.layer.cornerRadius = 16
         loginPassword.layer.cornerRadius = 16
 
+    }
+
+    override func viewDidLayoutSubviews() {
+        login.layer.cornerRadius = 10
+        login.clipsToBounds = true
     }
 
     override func didReceiveMemoryWarning() {
