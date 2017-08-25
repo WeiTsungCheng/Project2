@@ -290,8 +290,7 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        tableView.estimatedRowHeight = writeComment.frame.height + 10 
-        tableView.rowHeight = UITableViewAutomaticDimension
+
 
         switch getItem[indexPath.row].participantId {
 
@@ -305,6 +304,8 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
 
 
         } else {
+
+
 
             ownerCell.putComment.layer.cornerRadius = 10
 
@@ -355,6 +356,10 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
                 personManager.getOtherPersonItem(userId: getItem[indexPath.row].participantId)
 
             } else {
+
+
+                            tableView.estimatedRowHeight = playerCell.playerPhoto.frame.height + 10
+                            tableView.rowHeight = UITableViewAutomaticDimension
 
                 playerCell.putComment.layer.cornerRadius = 10
                 
