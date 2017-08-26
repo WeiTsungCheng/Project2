@@ -230,11 +230,6 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
 
 
 
-        headPhoto.layer.borderWidth = 1.5
-        headPhoto.layer.borderColor = UIColor.gray.cgColor
-        headPhoto.clipsToBounds = true
-        headPhoto.layer.cornerRadius = 62.5
-        headPhotoBase.layer.cornerRadius = 62.5
 
 
         upLoadPhoto.backgroundColor = UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1)
@@ -256,6 +251,14 @@ class PersonalInfoViewController: UIViewController, PersonDelegate, HeadPhotoDel
     }
 
     override func viewDidLayoutSubviews() {
+
+        self.headPhoto.layer.borderWidth = 1.5
+        self.headPhoto.layer.borderColor = UIColor.black.cgColor
+        self.headPhoto.layer.cornerRadius = 51
+        self.headPhoto.clipsToBounds = true
+
+        self.headPhotoBase.layer.cornerRadius = 51
+
 
         saveHeadPhoto.layer.cornerRadius = 12
         saveHeadPhoto.setTitleColor(UIColor.white, for: .normal)

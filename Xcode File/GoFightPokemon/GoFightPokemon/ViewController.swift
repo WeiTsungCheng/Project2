@@ -56,10 +56,6 @@ class ViewController: UIViewController {
         loginPage.titleLabel?.shadowOffset = CGSize(width: 0, height: 2)
 
 
-
-
-
-
         signupPage.setTitleShadowColor(UIColor.white, for: .normal)
         signupPage.setTitleColor(UIColor.black, for: .normal)
         signupPage.titleLabel?.shadowOffset = CGSize(width: 0, height: 2)

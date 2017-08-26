@@ -22,7 +22,7 @@ class URLImageManager {
 
         if imageURL == "" {
 
-               getURLImageDic.updateValue(#imageLiteral(resourceName: "head"), forKey: imageURL)
+               getURLImageDic.updateValue(#imageLiteral(resourceName: "head_photo"), forKey: imageURL)
 
         } else {
 

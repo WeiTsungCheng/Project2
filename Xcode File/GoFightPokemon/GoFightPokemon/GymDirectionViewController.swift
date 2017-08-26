@@ -135,7 +135,7 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
 
             myMarker.position = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             myMarker.title = "我的位置"
-            myMarker.icon = #imageLiteral(resourceName: "myLocation")
+            myMarker.icon = #imageLiteral(resourceName: "currentLocation")
             myMarker.map = googleMaps
 
             //停止抓取用戶裝置位置
@@ -166,7 +166,7 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
 
     //點擊地圖時此function被執行
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        print("🍎")
+
         print("Coordinate: \(coordinate)")
     }
 
@@ -187,15 +187,14 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
 
         Alamofire.request(url).responseJSON{
             response in
-            print("🍧🍧🍧🍧🍧")
+
             print(response.request as Any)  // original URL request
-            print("🍧🍧🍧")
+
             print(response.response as Any) // HTTP URL response
-            print("🍧")
+
             print(response.data as Any)     // server data
-            print("🍧🍧🍧")
+
             print(response.result as Any)   // result of response serialization
-            print("🍧🍧🍧🍧🍧")
 
             let json = JSON(data: response.data!)
             let routes = json["routes"].arrayValue
@@ -299,7 +298,7 @@ extension GymDirectionViewController: GMSAutocompleteViewControllerDelegate{
             startMarker.map = nil
             startMarker.position = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
             startMarker.title = "出發位置"
-            startMarker.icon = #imageLiteral(resourceName: "currentLocation")
+            startMarker.icon = #imageLiteral(resourceName: "startLocation")
             startMarker.map = googleMaps
 
         } else {

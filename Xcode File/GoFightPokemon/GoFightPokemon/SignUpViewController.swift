@@ -35,7 +35,7 @@ class SignUpViewController: UIViewController, PersonDelegate {
     @IBOutlet weak var loginPage: UIButton!
     @IBOutlet weak var resetPage: UIButton!
 
-    @IBOutlet weak var bbbbb: UIButton!
+
 
     
     @IBAction func goLoginPage(_ sender: Any) {
@@ -100,14 +100,33 @@ class SignUpViewController: UIViewController, PersonDelegate {
                         }
 
 
-                        //如果資料獲取成功跳轉頁面
                         let alertController = UIAlertController(title: "恭喜", message: "成功創建帳號", preferredStyle: UIAlertControllerStyle.alert)
 
-                        let defaultAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+                        let defaultAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: { (action: UIAlertAction) -> () in
+
+
+                            //將資料存在用戶的userDefault，使其下次點開app不需要重新輸入email和密碼
+                            let userDefauls = UserDefaults.standard
+
+                            let userEmail = self.signUpEmail.text
+                            let userPassword = self.signUpPassword.text
+
+                            userDefauls.set(userEmail, forKey: "getuserEmail")
+                            userDefauls.set(userPassword, forKey: "getuserPassword")
+                            userDefauls.synchronize()
+
+                            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                            let nextVC = storyBoard.instantiateViewController(withIdentifier: "LoginViewController")
+                            let applicationDelegation = UIApplication.shared.delegate as? AppDelegate
+                            applicationDelegation?.window?.rootViewController = nextVC
+                            
+                            
+                        })
 
 
                         alertController.addAction(defaultAction)
                         self.present(alertController, animated: true, completion: nil)
+
 
 
                     } else {
@@ -117,14 +136,20 @@ class SignUpViewController: UIViewController, PersonDelegate {
 
                         let defaultAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
 
+
+
+
+
                         alertController.addAction(defaultAction)
 
 
                         self.present(alertController, animated: true, completion: nil)
+                        
                     }
             }
             )}
     }
+
 
 
 

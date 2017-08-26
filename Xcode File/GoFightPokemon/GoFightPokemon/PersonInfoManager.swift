@@ -116,24 +116,6 @@ class PersonManager {
         })
 
     }
-//////////////////////////////////////////////
-
-
-
-    
-//    func getBlueTeamNumber(palyerId: String){
-//
-//        let query = Database.database().reference().child("users").child(palyerId).queryOrdered(byChild: "playerTeam").queryEqual(toValue: "急凍鳥隊")
-//        query.observeSingleEvent(of: .value, with: {(snapshot) in
-//
-//
-//
-//            print(snapshot)
-//
-//
-//        })
-//
-//    }
 
 
 
