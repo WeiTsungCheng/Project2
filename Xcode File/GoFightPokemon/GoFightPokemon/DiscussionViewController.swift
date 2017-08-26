@@ -214,7 +214,8 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
         howToGo.setImage(#imageLiteral(resourceName: "howToGo"), for: .normal)
         howToGo.contentMode = .scaleAspectFill
 
-       clearComment.backgroundColor = UIColor.clear
+
+        clearComment.backgroundColor = UIColor.clear
 
 
 
@@ -240,7 +241,6 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
 
 
         if segue.identifier == "goToParticipantList" {

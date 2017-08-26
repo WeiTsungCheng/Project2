@@ -12,6 +12,7 @@ import FirebaseAuth
 
 class LoginViewController_: UIViewController {
 
+
     @IBOutlet weak var login: UIButton!
     @IBOutlet weak var signupPage: UIButton!
     @IBOutlet weak var resetPage: UIButton!
@@ -49,20 +50,10 @@ class LoginViewController_: UIViewController {
             Auth.auth().signIn(withEmail: self.loginEmail.text!, password: self.loginPassword.text!, completion: {(_, error) in
 
                 //是否通過驗證
-              //  if user?.isEmailVerified == true {
+                //  if user?.isEmailVerified == true {
 
                 if error == nil {
                     print ("login success")
-
-                    //將資料存在用戶的userDefault，使其下次點開app不需要重新輸入email和密碼
-                    let userDefauls = UserDefaults.standard
-
-                    let userEmail = self.loginEmail.text
-                    let userPassword = self.loginPassword.text
-
-                    userDefauls.set(userEmail, forKey: "getuserEmail")
-                    userDefauls.set(userPassword, forKey: "getuserPassword")
-                    userDefauls.synchronize()
 
                     let storyBoard = UIStoryboard(name: "Main", bundle: nil)
                     let nextVC = storyBoard.instantiateViewController(withIdentifier: "goHome")
@@ -94,6 +85,13 @@ class LoginViewController_: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let userDefaults = UserDefaults.standard
+
+        //註冊完跳轉loginPage 直接填入在signUp時存入的信箱和密碼
+        loginPassword.text = userDefaults.value(forKey: "getuserPassword") as? String
+        loginEmail.text = userDefaults.value(forKey: "getuserEmail") as? String
+
 
         let loginPageGradient = CAGradientLayer()
         loginPageGradient.frame = self.view.frame
