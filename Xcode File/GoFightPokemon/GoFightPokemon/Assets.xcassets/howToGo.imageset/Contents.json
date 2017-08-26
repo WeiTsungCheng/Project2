@@ -7,10 +7,12 @@
     },
     {
       "idiom" : "universal",
+      "filename" : "howToGo2.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "howToGo3.png",
       "scale" : "3x"
     }
   ],

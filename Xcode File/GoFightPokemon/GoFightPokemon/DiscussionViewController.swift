@@ -206,19 +206,9 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
         //檢查是否已經加入過此團，決定哪一個button可以用
         participantManager.checkAttend(childId: childIdName)
 
-//        giveComment.layer.borderWidth = 2.5
-//        giveComment.layer.borderColor = UIColor.brown.cgColor
-//        giveComment.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
-//        giveComment.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
-//            , for: .normal)
+
         giveComment.layer.cornerRadius = 10
 
-//        howToGo.layer.borderWidth = 2.5
-//        howToGo.layer.borderColor = UIColor.brown.cgColor
-//        howToGo.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1)
-//        howToGo.setTitleColor(UIColor(red: 86/255, green: 50/255, blue: 18/255, alpha: 1)
-//            , for: .normal)
-//        howToGo.layer.cornerRadius = 10
 
         howToGo.backgroundColor = UIColor.clear
         howToGo.setImage(#imageLiteral(resourceName: "howToGo"), for: .normal)
@@ -288,6 +278,7 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
         return self.getItem.count
     }
 
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
 
@@ -300,6 +291,12 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
         case ownerIdName:
 
         let ownerCell = tableView.dequeueReusableCell(withIdentifier: "OwnerDiscussionCell", for: indexPath) as! OwnerDiscussionTableViewCell
+
+        ownerCell.ownerPhoto.contentMode = .scaleAspectFill
+        ownerCell.ownerPhoto.clipsToBounds = true
+        ownerCell.ownerPhotoBase.clipsToBounds = true
+        ownerCell.ownerPhoto.layer.cornerRadius = ownerCell.ownerPhoto.frame.width/2
+        ownerCell.ownerPhotoBase.layer.cornerRadius = ownerCell.ownerPhotoBase.frame.width/2
 
         if getPersonInfoDic[getItem[indexPath.row].participantId] == nil {
 
@@ -331,15 +328,11 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
 
             } else {
 
+
+
                 ownerCell.ownerPhoto.image = getURLImageDic[(getPersonInfoDic[getItem[indexPath.row].participantId]?.headPhoto)!]
 
-                ownerCell.ownerPhoto.contentMode = .scaleAspectFill
 
-                ownerCell.ownerPhoto.clipsToBounds = true
-                ownerCell.ownerPhotoBase.clipsToBounds = true
-
-                ownerCell.ownerPhoto.layer.cornerRadius = ownerCell.ownerPhoto.frame.width/2
-                ownerCell.ownerPhotoBase.layer.cornerRadius = ownerCell.ownerPhotoBase.frame.width/2
              
 
 
@@ -355,6 +348,13 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
         default:
 
             let playerCell = tableView.dequeueReusableCell(withIdentifier: "PlayerDiscussionCell", for: indexPath) as! DiscussionTableViewCell
+
+            playerCell.playerPhoto.contentMode = .scaleAspectFill
+            playerCell.playerPhoto.clipsToBounds = true
+            playerCell.playerPhotoBase.clipsToBounds = true
+            playerCell.playerPhoto.layer.cornerRadius = playerCell.playerPhoto.frame.width/2
+            playerCell.playerPhotoBase.layer.cornerRadius = playerCell.playerPhotoBase.frame.width/2
+
 
             if getPersonInfoDic[getItem[indexPath.row].participantId] == nil {
 
@@ -383,16 +383,8 @@ extension DiscussionViewController : UITableViewDelegate, UITableViewDataSource 
 
                 } else {
 
-                   playerCell.playerPhoto.image = getURLImageDic[(getPersonInfoDic[getItem[indexPath.row].participantId]?.headPhoto)!]
+                    playerCell.playerPhoto.image = getURLImageDic[(getPersonInfoDic[getItem[indexPath.row].participantId]?.headPhoto)!]
 
-                    playerCell.playerPhoto.contentMode = .scaleAspectFill
-
-
-                    playerCell.playerPhoto.clipsToBounds = true
-
-                    playerCell.playerPhotoBase.clipsToBounds = true
-                    playerCell.playerPhoto.layer.cornerRadius = playerCell.playerPhoto.frame.width/2
-                    playerCell.playerPhotoBase.layer.cornerRadius = playerCell.playerPhotoBase.frame.width/2
 
 
 

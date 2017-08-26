@@ -7,10 +7,12 @@
     },
     {
       "idiom" : "universal",
+      "filename" : "endLocation1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "endLocation2.png",
       "scale" : "3x"
     }
   ],

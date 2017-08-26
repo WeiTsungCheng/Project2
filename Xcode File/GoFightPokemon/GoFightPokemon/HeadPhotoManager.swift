@@ -29,9 +29,9 @@ class HeadPhotoManager {
 
         // 當selectedPhoto有東西時，將照片上傳
 
-        //判定如果image 為預設原圖不要上傳  icons8-Lion Head Filled-50
+        //判定如果image 為預設原圖不要上傳
 
-        if headPhoto != #imageLiteral(resourceName: "icon_photo") {
+        if headPhoto != #imageLiteral(resourceName: "head_photo") {
 
             if let selectedPhoto = headPhoto {
 

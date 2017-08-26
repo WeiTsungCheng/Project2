@@ -49,7 +49,7 @@ class WatchPersonalInfoViewController: UIViewController, PersonDelegate, HeadPho
              self.levelSelect.text = String(describing: thePlayerLevel)
         }
 
-        selectTeamBadge()
+
 
     }
 
@@ -76,25 +76,6 @@ class WatchPersonalInfoViewController: UIViewController, PersonDelegate, HeadPho
     @IBOutlet weak var headPhoto: UIImageView!
 
     @IBOutlet weak var teamBadge: UIImageView!
-
-    func selectTeamBadge() {
-
-    switch self.teamSelect.text! {
-
-
-    case "急凍鳥隊":
-    self.teamBadge.image = #imageLiteral(resourceName: "ice")
-    case "火焰鳥隊":
-    self.teamBadge.image = #imageLiteral(resourceName: "fire")
-    case "閃電鳥隊":
-    self.teamBadge.image = #imageLiteral(resourceName: "lightening")
-    default:
-    self.teamBadge.image = #imageLiteral(resourceName: "leaf")
-
-        teamBadge.contentMode = .scaleAspectFill
-    }
-
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -136,7 +117,7 @@ class WatchPersonalInfoViewController: UIViewController, PersonDelegate, HeadPho
         userShowcase.layer.shadowOpacity = 0.8
 
         self.headPhoto.layer.borderWidth = 1.5
-        self.headPhoto.layer.borderColor = UIColor.gray.cgColor
+        self.headPhoto.layer.borderColor = UIColor.black.cgColor
         self.headPhoto.layer.cornerRadius = 62.5
         self.headPhoto.clipsToBounds = true
 
