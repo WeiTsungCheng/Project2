@@ -707,7 +707,7 @@
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="61" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="23i-YR-DKW">
                                 <rect key="frame" x="0.0" y="177" width="320" height="342"/>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.51639772309999998" green="0.70741324559999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PartivipantListCell" rowHeight="61" id="s9O-3R-OwW" customClass="ParticipantListTableViewCell" customModule="GoFightPokemon" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="61"/>
