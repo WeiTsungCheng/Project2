@@ -43,7 +43,6 @@ class WatchPersonShowcaseViewController: UIViewController, ShowcaseDelegate {
         showcaseＭanager.getShowcaseItem()
 
 
-        //////////////////////////////////////////////////////////////////////
         let layout = UICollectionViewFlowLayout()
 
         let lowerFrameHeight = self.collectionView.frame.height
@@ -61,7 +60,7 @@ class WatchPersonShowcaseViewController: UIViewController, ShowcaseDelegate {
         layout.minimumLineSpacing = 0
         layout.scrollDirection = .horizontal
         collectionView!.collectionViewLayout = layout
-        ///////////////////////////////////////////////////////////////////////
+
 
     }
 
