@@ -79,6 +79,8 @@ class GroupManager {
                     let data = GroupItem(snapshot: item as! DataSnapshot)
                     datalist.append(data)
 
+                    datalist = datalist.reversed()
+
                     print(datalist)
 
                 }
