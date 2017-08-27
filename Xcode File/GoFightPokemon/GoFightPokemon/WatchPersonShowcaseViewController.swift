@@ -81,9 +81,17 @@ extension WatchPersonShowcaseViewController: UICollectionViewDataSource, UIColle
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
+
         if let dataDic = photoDic {
 
+            if dataDic.count < 9 {
+
+                return 8
+
+            } else {
+
                 return dataDic.count
+            }
         }
 
 
@@ -97,6 +105,9 @@ extension WatchPersonShowcaseViewController: UICollectionViewDataSource, UIColle
         if let dataDic = photoDic {
 
             let keyArray = Array(dataDic.keys)
+
+            //確保dataDic數量比 indexPath.row 大，否則將會有nil的keyArray[indexPath.row],導致crash
+            if indexPath.row < dataDic.count {
 
             if let imageUrlString = dataDic[keyArray[indexPath.row]] as? String {
 
@@ -123,7 +134,8 @@ extension WatchPersonShowcaseViewController: UICollectionViewDataSource, UIColle
                     }).resume()
                 }
             }
-
+//
+            }
         }
 
         return cell
