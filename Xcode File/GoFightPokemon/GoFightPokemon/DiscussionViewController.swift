@@ -119,12 +119,7 @@ class DiscussionViewController: UIViewController, DiscussionDelegate, PersonDele
         //用updateValue找到key
         getPersonInfoDic.updateValue(userItem, forKey: userItem.userId)
 
-
-
         self.tableView.reloadData()
-
-//        let pathToLastRow = NSIndexPath(row: getPersonInfoDic.count - 1, section: 0)
-//        self.tableView.scrollToRow(at: pathToLastRow as IndexPath, at: UITableViewScrollPosition.top, animated: true)
 
     }
 

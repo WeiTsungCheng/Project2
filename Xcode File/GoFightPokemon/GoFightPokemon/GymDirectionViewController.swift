@@ -176,7 +176,6 @@ class GymDirectionViewController: UIViewController, GMSMapViewDelegate, CLLocati
         googleMaps.selectedMarker = nil
         return false
     }
-
     //畫出行進路徑的方法
     func drawpath(startLocation: CLLocation, endLocation: CLLocation){
 

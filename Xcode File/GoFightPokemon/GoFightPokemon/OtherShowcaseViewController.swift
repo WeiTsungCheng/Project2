@@ -37,6 +37,8 @@ class OtherShowcaseViewController: UIViewController, ShowcaseDelegate {
 
         OtherPlayerNickName.text = nickNameName + "的展示間:"
 
+        
+
         let layout = UICollectionViewFlowLayout()
 
         let lowerFrameHeight = self.collectionView.frame.height
@@ -54,6 +56,10 @@ class OtherShowcaseViewController: UIViewController, ShowcaseDelegate {
         layout.minimumLineSpacing = 0
         layout.scrollDirection = .horizontal
         collectionView!.collectionViewLayout = layout
+
+
+
+        
 
     }
 

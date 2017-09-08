@@ -270,8 +270,6 @@ class GroupSetViewController: UIViewController, GroupDelegate {
         comfirmFight.layer.shadowOffset = CGSize(width: 0, height: 2)
         comfirmFight.layer.shadowOpacity = 0.8
 
-        
-
     }
 
     override func didReceiveMemoryWarning() {

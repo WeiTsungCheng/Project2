@@ -146,15 +146,14 @@ class PlayerShowcaseViewController: UIViewController, ShowcaseDelegate {
 
 
 
-
-//////////////////////////////////////////////////////////////////////
         let layout = UICollectionViewFlowLayout()
 
         let lowerFrameHeight = self.collectionView.frame.height
 
         layout.itemSize = CGSize(width: 129, height: 183)
 
-print(lowerFrameHeight)
+
+        print(lowerFrameHeight)
 
         let separatorSpace = (lowerFrameHeight - 183 * 2 - 10)/2
 
@@ -165,7 +164,6 @@ print(lowerFrameHeight)
         layout.minimumLineSpacing = 0
         layout.scrollDirection = .horizontal
         collectionView!.collectionViewLayout = layout
-///////////////////////////////////////////////////////////////////////
 
     }
 
