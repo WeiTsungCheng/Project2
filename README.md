@@ -13,10 +13,14 @@ Feature
 
 Requirement
 -------------------------------------------------------------
-
+iOS 10.3+
+Xcode 8.3.3+
+Cocoapods
 Library
 -------------------------------------------------------------
+
 
 Contact
 -------------------------------------------------------------
 LinkedIn: https://www.linkedin.com/in/wei-tsung-cheng-1b6396a5/
+Email: sanctuary85c@gmail.com
