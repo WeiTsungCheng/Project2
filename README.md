@@ -18,6 +18,9 @@ Function
 
 Feature
 -------------------------------------------------------------
+*  Home
+    *  Profile Page
+    *  Showcase Page
 *  MAP
     *  Route Guidance
 
