@@ -16,11 +16,11 @@ Requirement
 #### iOS 10.3+ <br>
 #### Xcode 8.3.3+ <br>
 #### Cocoapods <br>
-#### Library <br>
+#### Library
 -------------------------------------------------------------
 
 
 Contact
 -------------------------------------------------------------
 #### LinkedIn: https://www.linkedin.com/in/wei-tsung-cheng-1b6396a5/ <br>
-#### Email: sanctuary85c@gmail.com <br>
+#### Email: sanctuary85c@gmail.com 
