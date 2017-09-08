@@ -7,3 +7,16 @@ GoFightTogether (一起來打怪)
 ScreenShot
 -------------------------------------------------------------
 ![img](https://github.com/WeiTsungCheng/Project2/blob/master/readmePic.png)
+
+Feature
+-------------------------------------------------------------
+
+Requirement
+-------------------------------------------------------------
+
+Library
+-------------------------------------------------------------
+
+Contact
+-------------------------------------------------------------
+LinkedIn: https://www.linkedin.com/in/wei-tsung-cheng
