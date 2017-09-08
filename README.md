@@ -13,6 +13,8 @@ ScreenShot
 
 Function
 -------------------------------------------------------------
+*  Seeking parners for warfare in order to catch legend Pokemon
+*  Discussing Pokemon information with other trainers 
 
 Feature
 -------------------------------------------------------------
