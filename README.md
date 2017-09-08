@@ -22,5 +22,5 @@ Requirement
 
 Contact
 -------------------------------------------------------------
-LinkedIn: https://www.linkedin.com/in/wei-tsung-cheng-1b6396a5/
-Email: sanctuary85c@gmail.com
+#### LinkedIn: https://www.linkedin.com/in/wei-tsung-cheng-1b6396a5/ <br>
+#### Email: sanctuary85c@gmail.com <br>
