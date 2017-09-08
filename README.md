@@ -28,9 +28,12 @@ Requirement
 Library
 -------------------------------------------------------------
 *  Firebase SDK
+    *  Authentication
+    *  Database
+    *  Storage
 *  Tracking Tool
     *  Firebase Analytics
-    *  Crashlytics
+    *  Crashlytics(Fabric)
 
 Contact
 -------------------------------------------------------------
