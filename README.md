@@ -1,16 +1,8 @@
 
-GoFightTogether 
+GoFightTogether (一起來打怪)
 =============================================================
-> ## This is a header
->
-> 1.   This is the first list item.
-> 2.   This is the second list item.
-> 
-> Here's some example code:
-> 
->         return shell_exec("echo $input | $markdown_script");
-
-
+> 為了解決挑戰道館時，遭遇人手不足無法打贏道館魔王的問題，因此開發了GoFightTogether APP。玩家可以在這個平台上發起揪團打怪的資訊 
+> (包含怪物名稱, 打怪時間, 道館地點)，想參與的玩家可以藉由可借由團戰資訊裡地圖中獲得交通資訊，並由參與人統計資訊選擇是否參與團戰。
 
 ScreenShot
 -------------------------------------------------------------
