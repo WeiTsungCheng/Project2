@@ -29,7 +29,7 @@ Requirement
 
 Library
 -------------------------------------------------------------
-*  FirebaseSDK
+*  Firebase SDK
 *  Tracking Tool
     *  Firebase Analytics
     *  Crashlytics
