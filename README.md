@@ -14,7 +14,7 @@ Feature
 Requirement
 -------------------------------------------------------------
 *    iOS 10.3+ <br>
-*  Xcode 8.3.3+ <br>
+  *  Xcode 8.3.3+ <br>
 *  Cocoapods
 
 Library
