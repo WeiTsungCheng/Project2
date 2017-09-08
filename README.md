@@ -13,9 +13,9 @@ Feature
 
 Requirement
 -------------------------------------------------------------
-#### 1. iOS 10.3+ <br>
-#### 2. Xcode 8.3.3+ <br>
-#### 3. Cocoapods
+#### ˙ iOS 10.3+ <br>
+#### 。 Xcode 8.3.3+ <br>
+#### . Cocoapods
 
 Library
 -------------------------------------------------------------
@@ -25,3 +25,4 @@ Contact
 -------------------------------------------------------------
 #### LinkedIn: https://www.linkedin.com/in/wei-tsung-cheng-1b6396a5/ <br>
 #### Email: sanctuary85c@gmail.com 
+ 
