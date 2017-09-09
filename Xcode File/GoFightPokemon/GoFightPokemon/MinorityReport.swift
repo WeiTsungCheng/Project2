@@ -6,6 +6,5 @@
 //  Copyright © 2017年 Wei-Tsung Cheng. All rights reserved.
 //
 
-import Foundation
-
+let googleMapKey = "AIzaSyDmf89vsA08hDiQ6ENi2GFhrU0cXf9ZOqA"
 

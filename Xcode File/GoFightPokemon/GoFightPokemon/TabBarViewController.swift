@@ -17,10 +17,9 @@ class TabBarViewController: UITabBarController {
         self.tabBar.tintColor = UIColor.white
 
         UITabBar.appearance().barTintColor = UIColor.prjDarkSkyBlue
-///
 
     }
-///dsd
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 
