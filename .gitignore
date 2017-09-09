@@ -3,7 +3,9 @@
 
 
 *.plist
-* MinorityReport.swift
+*MinorityReport.swift
+*abc.swift
+
 
 ### Swift ###
 # Xcode
