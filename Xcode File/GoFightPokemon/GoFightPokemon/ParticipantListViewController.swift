@@ -18,9 +18,6 @@ class ParticipantListViewController: UIViewController, ParticipantsDelegate, Per
     @IBOutlet weak var yellowTeamNumber: UILabel!
     @IBOutlet weak var averagePlayerLevel: UILabel!
 
-    @IBAction func goOthersShowcase(_ sender: Any) {
-        Analytics.logEvent("goOthersShowcase", parameters: nil)
-    }
 
     var playerTeamBlue = 0
     var playerTeamRed = 0

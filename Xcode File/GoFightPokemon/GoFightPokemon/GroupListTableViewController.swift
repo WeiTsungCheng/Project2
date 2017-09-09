@@ -69,10 +69,6 @@ class GroupListTableViewController: UITableViewController, GroupDelegate, Person
     }
 
 
-    @IBAction func ceateGroup(_ sender: Any) {
-        Analytics.logEvent("ceateGroup", parameters: nil)
-    }
-
     func manager(_ controller: PersonManager, success: Bool) {
 
     }

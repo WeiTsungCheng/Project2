@@ -27,8 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Fabric.with([Crashlytics.self])
 
-        GMSServices.provideAPIKey("AIzaSyDmf89vsA08hDiQ6ENi2GFhrU0cXf9ZOqA")
-        GMSPlacesClient.provideAPIKey("AIzaSyDmf89vsA08hDiQ6ENi2GFhrU0cXf9ZOqA")
+        GMSServices.provideAPIKey(googleMapKey)
+        GMSPlacesClient.provideAPIKey(googleMapKey)
 
         IQKeyboardManager.sharedManager().enable = true
 

@@ -28,7 +28,8 @@
 		C50848DE1F50283E00DD9678 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50848DD1F50283E00DD9678 /* TabBarViewController.swift */; };
 		C51906491F41673B00C0A44C /* GymDirectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51906481F41673B00C0A44C /* GymDirectionViewController.swift */; };
 		C527C75D1F297E310099C2DB /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C527C75C1F297E310099C2DB /* PersonalInfoViewController.swift */; };
-		C5305FC11F62C46A007DDA7F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5305FC01F62C46A007DDA7F /* GoogleService-Info.plist */; };
+		C5305FC31F62D13F007DDA7F /* MinorityReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5305FC21F62D13F007DDA7F /* MinorityReport.swift */; };
+		C5324F4D1F63CFF5008B8E29 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5324F4C1F63CFF5008B8E29 /* GoogleService-Info.plist */; };
 		C550718D1F3D565700CCF51D /* ParticipantListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550718C1F3D565700CCF51D /* ParticipantListViewController.swift */; };
 		C55071901F3D582600CCF51D /* ParticipantListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C550718F1F3D582600CCF51D /* ParticipantListTableViewCell.swift */; };
 		C55071961F3D877800CCF51D /* ParticipantsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55071951F3D877800CCF51D /* ParticipantsItem.swift */; };
@@ -76,7 +77,8 @@
 		C50848DD1F50283E00DD9678 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		C51906481F41673B00C0A44C /* GymDirectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GymDirectionViewController.swift; sourceTree = "<group>"; };
 		C527C75C1F297E310099C2DB /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonalInfoViewController.swift; path = ../PersonalInfoViewController.swift; sourceTree = "<group>"; };
-		C5305FC01F62C46A007DDA7F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C5305FC21F62D13F007DDA7F /* MinorityReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinorityReport.swift; sourceTree = "<group>"; };
+		C5324F4C1F63CFF5008B8E29 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C550718C1F3D565700CCF51D /* ParticipantListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantListViewController.swift; sourceTree = "<group>"; };
 		C550718F1F3D582600CCF51D /* ParticipantListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantListTableViewCell.swift; sourceTree = "<group>"; };
 		C55071951F3D877800CCF51D /* ParticipantsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantsItem.swift; sourceTree = "<group>"; };
@@ -150,13 +152,14 @@
 			children = (
 				C500344C1F28625A00DC51A8 /* AppDelegate.swift */,
 				C59D104D1F445D5300ED3B80 /* ColorFontExtension.swift */,
-				C50034501F28625A00DC51A8 /* Main.storyboard */,
 				C50848DD1F50283E00DD9678 /* TabBarViewController.swift */,
+				C50034501F28625A00DC51A8 /* Main.storyboard */,
+				C5305FC21F62D13F007DDA7F /* MinorityReport.swift */,
 				C50034561F28625A00DC51A8 /* Assets.xcassets */,
 				C50034581F28625A00DC51A8 /* LaunchScreen.storyboard */,
 				C500345B1F28625A00DC51A8 /* Info.plist */,
 				C50034531F28625A00DC51A8 /* GoFightPokemon.xcdatamodeld */,
-				C5305FC01F62C46A007DDA7F /* GoogleService-Info.plist */,
+				C5324F4C1F63CFF5008B8E29 /* GoogleService-Info.plist */,
 				C50034691F286A2100DC51A8 /* LogIn */,
 				C55F1BC91F334252000E4AAC /* PlayerInfo */,
 				C55F1BCA1F33433C000E4AAC /* WatchPlayerInfo */,
@@ -333,7 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C500345A1F28625A00DC51A8 /* LaunchScreen.storyboard in Resources */,
-				C5305FC11F62C46A007DDA7F /* GoogleService-Info.plist in Resources */,
+				C5324F4D1F63CFF5008B8E29 /* GoogleService-Info.plist in Resources */,
 				C50034571F28625A00DC51A8 /* Assets.xcassets in Resources */,
 				C50034521F28625A00DC51A8 /* Main.storyboard in Resources */,
 			);
@@ -445,6 +448,7 @@
 				C550718D1F3D565700CCF51D /* ParticipantListViewController.swift in Sources */,
 				C5F985441F31A9C50022295A /* GroupListTableViewController.swift in Sources */,
 				C5F9854A1F31FF620022295A /* DiscussionViewController.swift in Sources */,
+				C5305FC31F62D13F007DDA7F /* MinorityReport.swift in Sources */,
 				C503DF901F3725C500FF7A97 /* HeadPhotoManager.swift in Sources */,
 				C503DF941F3749D700FF7A97 /* DiscussionManager.swift in Sources */,
 				C5F985481F31D47E0022295A /* GroupListTableViewCell.swift in Sources */,
